@@ -51,7 +51,7 @@
     var(--text) 92%
   );
 
-  --canvas: linear-gradient(180deg, var(--background) 0%, var(--secondary) 200%);
+  --canvas: linear-gradient(180deg, var(--background) 0%, var(--card) 200%);
   --muted-gradient: linear-gradient(180deg, var(--muted) 0%, var(--background) 180%);
   --card-gradient: linear-gradient(180deg, var(--card) 0%, var(--muted) 180%);
   --card-gradient-soft: linear-gradient(
@@ -104,4 +104,5 @@
 
   color-scheme: dark;
 }
+
 
