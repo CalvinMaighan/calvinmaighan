@@ -1,0 +1,19 @@
+{
+  "scanned": "2026-07-22",
+  "framework": "vanilla HTML + ESM",
+  "fonts": [
+    "Instrument Serif",
+    "DM Sans",
+    "IBM Plex Mono"
+  ],
+  "palette": "custom OKLCH cool paper, navy accent, ember CTA",
+  "motion": "motion-cut (CSS hero entrance only)",
+  "spacing": "4pt named scale in tokens.css",
+  "preserved": [
+    "copy intent",
+    "EN/FR i18n",
+    "theme toggle",
+    "inquiry form keys",
+    "active-* vendors"
+  ]
+}

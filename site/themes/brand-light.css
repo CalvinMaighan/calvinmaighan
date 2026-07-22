@@ -1,0 +1,54 @@
+/*
+ * Light brand — Deedee-shaped surfaces:
+ *   --background  page ground (darker beige)
+ *   --muted       hero / lifted surface (current light hero beige)
+ *   --base        proof band — super dark (shared with dark mode)
+ */
+:root,
+:root[data-theme="light"] {
+  --chroma: var(--chroma-base);
+  --chroma-muted: calc(var(--chroma-base) * 1.15);
+  --chroma-text: calc(var(--chroma-base) * 1.7);
+
+  /* Deedee-style surface ladder */
+  --background: oklch(92% var(--chroma) var(--hue-lower));
+  --muted: oklch(96.5% var(--chroma-muted) var(--hue));
+  /* --base / --base-text* live in semantic.css (mode-stable) */
+  --card: oklch(100% 0 0);
+
+  /* Type */
+  --text: oklch(18% var(--chroma-text) var(--hue));
+  --text-2: oklch(34% calc(var(--chroma-base) * 1.55) var(--hue));
+  --muted-text: oklch(48% calc(var(--chroma-base) * 1.4) var(--hue));
+
+  --border: oklch(18% var(--chroma-text) var(--hue) / 0.14);
+  --border-strong: oklch(18% var(--chroma-text) var(--hue) / 0.24);
+  --focus: oklch(26% calc(var(--chroma-base) * 2.1) var(--hue));
+  --warm: oklch(55% calc(var(--chroma-base) * 2.8) var(--hue));
+  --warm-soft: oklch(55% calc(var(--chroma-base) * 2.8) var(--hue) / 0.2);
+
+  /* Compat aliases used by styles.css */
+  --color-paper: var(--background);
+  --color-paper-2: color-mix(in oklch, var(--background) 70%, var(--muted));
+  --color-paper-3: var(--card);
+  --color-band: var(--background);
+  --color-band-cool: var(--card);
+  --color-ink: var(--text);
+  --color-ink-2: var(--text-2);
+  --color-muted: var(--muted-text);
+  --color-rule: var(--border);
+  --color-rule-strong: var(--border-strong);
+  --color-accent: var(--text);
+  --color-accent-soft: var(--text-2);
+  --color-accent-ink: var(--card);
+  --color-warm: var(--warm);
+  --color-warm-soft: var(--warm-soft);
+  --color-focus: var(--focus);
+  --color-grid: oklch(18% var(--chroma-text) var(--hue) / 0.05);
+  /* Warm beige for secondary CTA, rule, ambient chips */
+  --color-beige: oklch(90.9% 0.043 73);
+  --color-beige-warm: oklch(87% 0.055 70);
+  --color-beige-deep: var(--color-beige-warm);
+
+  color-scheme: light;
+}

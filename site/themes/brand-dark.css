@@ -1,0 +1,55 @@
+/*
+ * Dark brand — soft shift, not a full invert (Deedee-style).
+ * --base stays super dark in both modes for the proof band.
+ */
+:root[data-theme="dark"] {
+  /* Cool slate charcoal — low chroma on page + header surfaces */
+  --chroma: 0.005;
+  --chroma-muted: 0.006;
+  --chroma-text: 0.008;
+  --surface-hue: 250;
+
+  /* Surfaces: soft lift, not full invert — --base stays in semantic.css */
+  --background: oklch(16.5% var(--chroma) var(--surface-hue));
+  --muted: oklch(20.5% var(--chroma-muted) var(--surface-hue));
+  --card: oklch(24% 0.007 calc(var(--surface-hue) + 2));
+
+  --text: oklch(94% 0.008 calc(var(--surface-hue) + 5));
+  --text-2: oklch(78% 0.012 var(--surface-hue));
+  --muted-text: oklch(64% 0.012 var(--surface-hue));
+
+  --border: oklch(94% 0.008 calc(var(--surface-hue) + 5) / 0.12);
+  --border-strong: oklch(94% 0.008 calc(var(--surface-hue) + 5) / 0.22);
+  --focus: oklch(88% 0.03 var(--surface-hue));
+  --warm: oklch(62% 0.03 var(--surface-hue));
+  --warm-soft: oklch(62% 0.03 var(--surface-hue) / 0.2);
+  --hue-secondary: 250;
+
+  --color-cta: oklch(76% 0.19 145);
+  --color-cta-soft: oklch(80% 0.17 145);
+  --color-cta-ink: oklch(14% calc(var(--chroma-base) * 2) var(--hue));
+
+  --color-paper: var(--background);
+  --color-paper-2: color-mix(in oklch, var(--background) 70%, var(--muted));
+  --color-paper-3: var(--card);
+  --color-band: var(--background);
+  --color-band-cool: var(--card);
+  --color-ink: var(--text);
+  --color-ink-2: var(--text-2);
+  --color-muted: var(--muted-text);
+  --color-rule: var(--border);
+  --color-rule-strong: var(--border-strong);
+  --color-accent: var(--text);
+  --color-accent-soft: var(--text-2);
+  --color-accent-ink: var(--background);
+  --color-warm: var(--warm);
+  --color-warm-soft: var(--warm-soft);
+  --color-focus: var(--focus);
+  --color-grid: oklch(94% 0.006 var(--surface-hue) / 0.05);
+  /* Secondary surfaces / button — slate, not warm beige */
+  --color-beige: oklch(28% 0.018 250);
+  --color-beige-warm: oklch(34% 0.022 250);
+  --color-beige-deep: var(--color-beige-warm);
+
+  color-scheme: dark;
+}

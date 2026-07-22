@@ -1,0 +1,11 @@
+/*
+ * Hallmark · theme system (Deedee client/themes layout)
+ * Compose: hue → shared → brand-light → semantic → brand-dark
+ *
+ * Runtime: active-theme writes --hue / --chroma-base + data-theme on <html>.
+ */
+@import "./hue.css";
+@import "./shared.css";
+@import "./brand-light.css";
+@import "./semantic.css";
+@import "./brand-dark.css";

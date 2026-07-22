@@ -1,5 +1,9 @@
 ## Calvin Maighan
 
+Senior AI & SaaS engineer for difficult product builds.
+
+**Portfolio (HTML + active-*):** [`site/`](./site/) — run `bun site/serve.ts` → http://localhost:5173
+
 Open-source client libraries for shared UI state, theming, and i18n.
 
 ### Libraries
