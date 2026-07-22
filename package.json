@@ -4,6 +4,10 @@
   "type": "module",
   "scripts": {
     "dev": "bun site/serve.ts",
-    "dev:kill": "lsof -ti tcp:5173 | xargs kill -9 2>/dev/null || true"
+    "dev:kill": "lsof -ti tcp:5173 | xargs kill -9 2>/dev/null || true",
+    "og": "bun scripts/render-og.ts"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2"
   }
 }
