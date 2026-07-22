@@ -1,55 +1,101 @@
 /*
- * Dark brand — soft shift, not a full invert (Deedee-style).
- * --base stays super dark in both modes for the proof band.
+ * Dark brand — Deedee soft lift on our hue (not a full invert).
  */
 :root[data-theme="dark"] {
-  /* Cool slate charcoal — low chroma on page + header surfaces */
-  --chroma: 0.005;
-  --chroma-muted: 0.006;
-  --chroma-text: 0.008;
-  --surface-hue: 250;
+  --chroma: calc(var(--chroma-base) * 0.333);
+  --chroma-muted: calc(var(--chroma-base) * 0.333);
+  --chroma-card: calc(var(--chroma-base) * 0.278);
+  --chroma-button: calc(var(--chroma-base) * 0.333);
+  --chroma-border: calc(var(--chroma-base) * 0.5);
+  --chroma-text: calc(var(--chroma-base) * 0.278);
+  --chroma-secondary: calc(var(--chroma-base) * 1.333);
+  --chroma-accent: calc(var(--chroma-base) * 8.333);
+  --chroma-label: calc(var(--chroma-base) * 2.222);
 
-  /* Surfaces: soft lift, not full invert — --base stays in semantic.css */
-  --background: oklch(16.5% var(--chroma) var(--surface-hue));
-  --muted: oklch(20.5% var(--chroma-muted) var(--surface-hue));
-  --card: oklch(24% 0.007 calc(var(--surface-hue) + 2));
+  /* Ladder: base < background < muted < card < button (+0.04 each) */
+  --l-0: 0.2;
+  --l-1: 0.24;
+  --l-2: 0.28;
+  --l-3: 0.32;
+  --l-5: 0.36;
 
-  --text: oklch(94% 0.008 calc(var(--surface-hue) + 5));
-  --text-2: oklch(78% 0.012 var(--surface-hue));
-  --muted-text: oklch(64% 0.012 var(--surface-hue));
+  --text: oklch(0.96 var(--chroma-text) var(--hue) / 88%);
+  --text-muted: oklch(0.78 var(--chroma-text) var(--hue) / 72%);
+  --secondary-text: oklch(0.74 var(--chroma-secondary) var(--hue-secondary));
 
-  --border: oklch(94% 0.008 calc(var(--surface-hue) + 5) / 0.12);
-  --border-strong: oklch(94% 0.008 calc(var(--surface-hue) + 5) / 0.22);
-  --focus: oklch(88% 0.03 var(--surface-hue));
-  --warm: oklch(62% 0.03 var(--surface-hue));
-  --warm-soft: oklch(62% 0.03 var(--surface-hue) / 0.2);
-  --hue-secondary: 250;
+  --base: oklch(var(--l-0) var(--chroma) var(--hue-lower));
+  --background: oklch(var(--l-1) var(--chroma) var(--hue-lower));
+  --muted: oklch(var(--l-2) var(--chroma-muted) var(--hue-low));
+  --card: oklch(var(--l-3) var(--chroma-card) var(--hue));
+  --button: oklch(var(--l-5) var(--chroma-button) var(--hue-high) / 65%);
+  --button-hover: oklch(0.4 var(--chroma-button) var(--hue) / 75%);
 
-  --color-cta: oklch(76% 0.19 145);
-  --color-cta-soft: oklch(80% 0.17 145);
-  --color-cta-ink: oklch(14% calc(var(--chroma-base) * 2) var(--hue));
+  --secondary: oklch(0.28 0.018 var(--hue));
+  --secondary-hover: oklch(0.34 0.022 var(--hue));
 
-  --color-paper: var(--background);
-  --color-paper-2: color-mix(in oklch, var(--background) 70%, var(--muted));
-  --color-paper-3: var(--card);
-  --color-band: var(--background);
-  --color-band-cool: var(--card);
-  --color-ink: var(--text);
-  --color-ink-2: var(--text-2);
-  --color-muted: var(--muted-text);
-  --color-rule: var(--border);
-  --color-rule-strong: var(--border-strong);
-  --color-accent: var(--text);
-  --color-accent-soft: var(--text-2);
-  --color-accent-ink: var(--background);
-  --color-warm: var(--warm);
-  --color-warm-soft: var(--warm-soft);
-  --color-focus: var(--focus);
-  --color-grid: oklch(94% 0.006 var(--surface-hue) / 0.05);
-  /* Secondary surfaces / button — slate, not warm beige */
-  --color-beige: oklch(28% 0.018 250);
-  --color-beige-warm: oklch(34% 0.022 250);
-  --color-beige-deep: var(--color-beige-warm);
+  --accent: oklch(0.78 var(--chroma-accent) var(--hue-accent));
+  --accent-text: oklch(0.16 calc(var(--chroma-base) * 2) var(--hue-accent));
+
+  --hero-text: oklch(0.92 var(--chroma-label) var(--hue-accent));
+  --text-gradient: linear-gradient(
+    118deg,
+    var(--cta) 8%,
+    color-mix(in oklch, var(--cta) 45%, var(--text)) 48%,
+    var(--text) 92%
+  );
+
+  --canvas: linear-gradient(180deg, var(--background) 0%, var(--secondary) 200%);
+  --muted-gradient: linear-gradient(180deg, var(--muted) 0%, var(--background) 180%);
+  --card-gradient: linear-gradient(180deg, var(--card) 0%, var(--muted) 180%);
+  --card-gradient-soft: linear-gradient(
+    180deg,
+    color-mix(in oklch, var(--card) 88%, transparent) 0%,
+    color-mix(in oklch, var(--muted) 88%, transparent) 180%
+  );
+  --button-gradient: linear-gradient(0deg, var(--card) 0%, var(--button) 150%);
+
+  --light: oklch(0.95 var(--chroma-muted) var(--hue) / 12%);
+  --lighter: oklch(0.95 var(--chroma-muted) var(--hue) / 25%);
+  --lightest: oklch(0.95 var(--chroma-muted) var(--hue) / 35%);
+  --dark: oklch(0.05 var(--chroma) var(--hue) / 15%);
+  --darker: oklch(0.05 var(--chroma) var(--hue) / 30%);
+  --darkest: oklch(0.05 var(--chroma) var(--hue) / 45%);
+
+  --shadow: inset 0 1px 2px -1px var(--light), 0 1px 2px -1px var(--darker),
+    0 2px 4px -1px var(--dark);
+  --shadow-ghost: 0 1px 2px -1px var(--darker), 0 2px 4px -1px var(--dark);
+  --shadow-card: inset 0 1px 2px -1px var(--light), 0 4px 10px -2px var(--darker),
+    0 10px 20px -4px var(--darkest);
+  --shadow-button: inset 0 1px 2px -1px var(--lighter), 0 4px 6px -1px var(--darker),
+    0 4px 8px -1px var(--dark);
+  --shadow-hover: inset 0 1px 3px -1px var(--lightest), 0 6px 6px -1px var(--darker),
+    0 6px 12px -1px var(--dark);
+  --shadow-cutout: inset -1px -1px 4px -2px var(--button), inset 0 1px 8px -1px var(--darkest),
+    inset 0 -1px 1px 1px var(--light);
+  --shadow-cutout-muted: inset -1px -1px 2px -2px color-mix(in oklch, var(--button) 50%, transparent),
+    inset 0 1px 4px -1px color-mix(in oklch, var(--darkest) 45%, transparent),
+    inset 0 -1px 1px 0 color-mix(in oklch, var(--light) 55%, transparent);
+  --shadow-cutout-card: inset -1px -1px 4px -2px var(--card), inset 0 1px 8px -1px var(--darkest),
+    inset 0 -1px 1px 1px var(--light);
+
+  --button-shadow: var(--shadow-hover);
+
+  --border: oklch(var(--l-3) var(--chroma-muted) var(--hue) / 0.55);
+  --border-hover: oklch(var(--l-5) var(--chroma-muted) var(--hue) / 0.75);
+  --border-muted: color-mix(in oklch, var(--border) 65%, transparent);
+
+  --cta: oklch(76% 0.19 145);
+  --cta-border: oklch(64% 0.17 145 / 0.15);
+  --cta-text: oklch(14% calc(var(--chroma-base) * 2) var(--hue));
+
+  --cta-shadow:
+    inset 0 1px 2px -1px var(--lighter),
+    0 2px 4px -1px var(--darker),
+    0 6px 14px -2px color-mix(in oklch, var(--cta) 48%, transparent);
+  --cta-shadow-hover:
+    inset 0 1px 3px -1px var(--lightest),
+    0 3px 5px -1px var(--darkest),
+    0 8px 18px -2px color-mix(in oklch, var(--cta) 58%, transparent);
 
   color-scheme: dark;
 }

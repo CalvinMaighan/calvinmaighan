@@ -1,6 +1,6 @@
-import { catalog, key, set, get, init } from "active-state";
-import { defineTheme, setMode, hydrateTheme } from "active-theme";
-import { defineI18n, setLocale, t, hydrateI18n, getLocale } from "active-i18n";
+import { catalog, key, set, get, init } from "./vendor/active-state.js";
+import { defineTheme, setMode, hydrateTheme } from "./vendor/active-theme.js";
+import { defineI18n, setLocale, t, hydrateI18n, getLocale } from "./vendor/active-i18n.js";
 import { startAmbient } from "./ambient.mjs";
 
 const theme = defineTheme({
@@ -22,9 +22,12 @@ const dictionaries = {
     "nav.contact": "Contact",
     "nav.cta": "Book a call",
     "hero.eyebrow": "Senior AI and SaaS engineer",
-    "hero.title": "Ship your backlog this week.",
+    "hero.title": "AI consultant to help move ideas forward.",
+    "hero.title.before": "AI consultant to help move ",
+    "hero.title.word": "ideas",
+    "hero.title.after": " forward.",
     "hero.lede":
-      "I help startups, SaaS teams, and agencies design and ship AI systems, document workflows, and complex Next.js platforms. Your team owns the system after handoff.",
+      "I help startups, SaaS teams, and agencies design and ship AI systems, document workflows, and complex web platforms. Your team and agents run the system after handoff.",
     "hero.cta": "Discuss your project",
     "hero.secondary": "See selected work",
     "proof.1.t": "Production AI systems",
@@ -161,9 +164,12 @@ const dictionaries = {
     "nav.contact": "Contact",
     "nav.cta": "Réserver un appel",
     "hero.eyebrow": "Ingénieur senior IA et SaaS",
-    "hero.title": "Livrez votre backlog cette semaine.",
+    "hero.title": "Consultant IA pour aider à faire avancer les idées.",
+    "hero.title.before": "Consultant IA pour aider à faire avancer les ",
+    "hero.title.word": "idées",
+    "hero.title.after": ".",
     "hero.lede":
-      "J’aide les startups, les équipes SaaS et les agences à concevoir et livrer des systèmes d’IA, des flux documentaires et des plateformes Next.js complexes. Votre équipe possède le système après le transfert.",
+      "J’aide les startups, les équipes SaaS et les agences à concevoir et livrer des systèmes d’IA, des flux documentaires et des plateformes web complexes. Votre équipe et vos agents font tourner le système après le transfert.",
     "hero.cta": "Discuter de votre projet",
     "hero.secondary": "Voir les travaux",
     "proof.1.t": "Systèmes d’IA en production",
@@ -315,11 +321,10 @@ const INQUIRY = key("INQUIRY", {
 });
 
 const MENU_OPEN = key("MENU_OPEN", false);
-const SCROLLED = key("SCROLLED", false);
 const POINTER = key("POINTER", { x: 0.68, y: 0.42, active: false });
 const TEMPO = key("TEMPO", 2, { persist: true });
 
-init(catalog(INQUIRY, MENU_OPEN, SCROLLED, POINTER, TEMPO));
+init(catalog(INQUIRY, MENU_OPEN, POINTER, TEMPO));
 
 hydrateTheme(theme);
 hydrateI18n();
@@ -351,12 +356,13 @@ function applyI18n() {
   }
 
   const localeLabel = document.getElementById("locale-label");
-  if (localeLabel) localeLabel.textContent = locale === "en" ? "FR" : "EN";
+  if (localeLabel) localeLabel.textContent = locale.toUpperCase();
   const localeBtn = document.getElementById("locale-toggle");
-  localeBtn?.setAttribute(
-    "aria-label",
-    locale === "en" ? "Switch to French" : "Passer en anglais",
-  );
+  localeBtn?.setAttribute("aria-label", locale === "en" ? "Language" : "Langue");
+  document.querySelectorAll(".locale-option").forEach((opt) => {
+    const selected = opt.getAttribute("data-locale") === locale;
+    opt.setAttribute("aria-selected", String(selected));
+  });
 }
 
 function applyThemeUi() {
@@ -370,6 +376,8 @@ function applyThemeUi() {
 function setMenu(open) {
   set(MENU_OPEN, open);
   document.body.classList.toggle("menu-open", open);
+  document.getElementById("nav-drawer")?.classList.toggle("is-open", open);
+  document.getElementById("menu-backdrop")?.classList.toggle("is-open", open);
   const toggle = document.getElementById("menu-toggle");
   const use = document.getElementById("menu-icon-use");
   toggle?.setAttribute("aria-expanded", String(open));
@@ -379,15 +387,6 @@ function setMenu(open) {
 }
 
 function wireHeader() {
-  const header = document.getElementById("site-header");
-  const onScroll = () => {
-    const scrolled = window.scrollY > 12;
-    set(SCROLLED, scrolled);
-    header?.classList.toggle("is-scrolled", scrolled);
-  };
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
-
   document.getElementById("menu-toggle")?.addEventListener("click", () => {
     setMenu(!get(MENU_OPEN));
   });
@@ -397,11 +396,40 @@ function wireHeader() {
   });
 }
 
+function setLocaleMenu(open) {
+  const pop = document.getElementById("locale-popover");
+  const btn = document.getElementById("locale-toggle");
+  pop?.classList.toggle("is-open", open);
+  btn?.setAttribute("aria-expanded", String(open));
+}
+
 function wireControls() {
-  document.getElementById("locale-toggle")?.addEventListener("click", () => {
-    setLocale(getLocale() === "en" ? "fr" : "en");
-    applyI18n();
+  const localeBtn = document.getElementById("locale-toggle");
+  const localeMenu = document.getElementById("locale-menu");
+
+  localeBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const open = localeBtn.getAttribute("aria-expanded") === "true";
+    setLocaleMenu(!open);
   });
+
+  document.querySelectorAll(".locale-option").forEach((opt) => {
+    opt.addEventListener("click", () => {
+      const next = opt.getAttribute("data-locale");
+      if (!next || (next !== "en" && next !== "fr")) return;
+      setLocale(next);
+      applyI18n();
+      setLocaleMenu(false);
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!localeMenu?.contains(e.target)) setLocaleMenu(false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setLocaleMenu(false);
+  });
+
   document.getElementById("theme-toggle")?.addEventListener("click", () => {
     setMode(currentMode() === "light" ? "dark" : "light");
     applyThemeUi();
@@ -512,3 +540,4 @@ wireForm();
 wirePointer();
 wireTempo();
 wireAmbient();
+
