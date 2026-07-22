@@ -1,14 +1,9 @@
 /*
- * Fixed semantic colors — unchanged when brand hue / mode shifts
- * (Deedee semantic.ts). Green CTA fills + super-dark --base band.
+ * Fixed semantic colors — unchanged when brand hue / mode shifts.
+ * Green CTA fill; status tokens only if UI needs them later.
  */
 :root {
-  --color-cta: oklch(74% 0.2 145);
-  --color-cta-soft: oklch(78% 0.18 145);
-  --color-cta-ink: oklch(16% calc(var(--chroma-base) * 2) var(--hue));
-
-  /* Proof band — same in light + dark */
-  --base: oklch(12% calc(var(--chroma-base) * 1.2) var(--hue-lower));
-  --base-text: oklch(96% calc(var(--chroma-base) * 0.9) calc(var(--hue) + 5));
-  --base-text-2: oklch(78% calc(var(--chroma-base) * 0.8) calc(var(--hue) + 3));
+  --cta: oklch(74% 0.2 145);
+  --cta-border: oklch(62% 0.18 145 / 0.15);
+  --cta-text: oklch(16% calc(var(--chroma-base) * 2) var(--hue));
 }

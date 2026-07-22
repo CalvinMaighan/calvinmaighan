@@ -121,7 +121,8 @@ export function startAmbient({ canvas, getPointer, getTempo, getDark }) {
     const heroH = hero.offsetHeight || 1;
     dpr = min(window.devicePixelRatio || 1, 2);
     w = max(1, Math.floor(window.innerWidth));
-    h = max(1, Math.floor(headerH + heroH));
+    /* Hero fills viewport under fixed header — canvas matches hero only */
+    h = max(1, Math.floor(heroH));
     const pw = Math.floor(w * dpr);
     const ph = Math.floor(h * dpr);
 
@@ -336,3 +337,4 @@ export function startAmbient({ canvas, getPointer, getTempo, getDark }) {
     window.removeEventListener("resize", resize);
   };
 }
+

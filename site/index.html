@@ -7,17 +7,87 @@
       name="description"
       content="Calvin Maighan: senior AI and SaaS engineer for difficult product builds. Contract and fractional engagements."
     />
-    <title>Calvin Maighan: Ship your backlog this week</title>
-    <link rel="stylesheet" href="./styles.css" />
-    <script type="importmap">
+    <title>Calvin Maighan: AI consultant to help move ideas forward.</title>
+    <link rel="canonical" href="https://calvinmaighan.com/" />
+    <meta name="theme-color" content="#E6E2D4" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Calvin Maighan" />
+    <meta property="og:locale" content="en_CA" />
+    <meta property="og:title" content="Calvin Maighan: AI consultant to help move ideas forward." />
+    <meta
+      property="og:description"
+      content="Calvin Maighan: senior AI and SaaS engineer for difficult product builds. Contract and fractional engagements."
+    />
+    <meta property="og:url" content="https://calvinmaighan.com/" />
+    <meta property="og:image" content="https://calvinmaighan.com/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Calvin Maighan — Senior AI and SaaS Engineer" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Calvin Maighan: AI consultant to help move ideas forward." />
+    <meta
+      name="twitter:description"
+      content="Calvin Maighan: senior AI and SaaS engineer for difficult product builds. Contract and fractional engagements."
+    />
+    <meta name="twitter:image" content="https://calvinmaighan.com/og.png" />
+    <script type="application/ld+json">
       {
-        "imports": {
-          "active-state": "./vendor/active-state.js",
-          "active-theme": "./vendor/active-theme.js",
-          "active-i18n": "./vendor/active-i18n.js"
-        }
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://calvinmaighan.com/#website",
+            "name": "Calvin Maighan",
+            "url": "https://calvinmaighan.com/",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://calvinmaighan.com/#person" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://calvinmaighan.com/#webpage",
+            "url": "https://calvinmaighan.com/",
+            "name": "Calvin Maighan: AI consultant to help move ideas forward.",
+            "description": "Calvin Maighan: senior AI and SaaS engineer for difficult product builds. Contract and fractional engagements.",
+            "isPartOf": { "@id": "https://calvinmaighan.com/#website" },
+            "about": { "@id": "https://calvinmaighan.com/#person" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "Person",
+            "@id": "https://calvinmaighan.com/#person",
+            "name": "Calvin Maighan",
+            "url": "https://calvinmaighan.com/",
+            "email": "hello@calvinmaighan.com",
+            "jobTitle": "Senior AI and SaaS Engineer",
+            "homeLocation": {
+              "@type": "Place",
+              "name": "Montreal"
+            },
+            "sameAs": ["https://github.com/CalvinMaighan"],
+            "knowsAbout": [
+              "AI systems",
+              "SaaS architecture",
+              "Next.js",
+              "TypeScript",
+              "Document intelligence"
+            ]
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://calvinmaighan.com/#service",
+            "name": "Calvin Maighan",
+            "url": "https://calvinmaighan.com/",
+            "image": "https://calvinmaighan.com/og.png",
+            "description": "Contract and fractional AI and SaaS engineering for startups, SaaS teams, and agencies.",
+            "areaServed": "Remote",
+            "availableLanguage": ["en", "fr"],
+            "founder": { "@id": "https://calvinmaighan.com/#person" },
+            "sameAs": ["https://github.com/CalvinMaighan"]
+          }
+        ]
       }
     </script>
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <!-- Lucide icons from Iconify icon-sets (inline for reliable <use>) -->
@@ -61,24 +131,34 @@
     ></canvas>
 
     <header class="site-header" id="site-header">
-      <div class="wrap bar">
+      <div class="bar">
         <a class="brand" href="#top" data-i18n="brand">Calvin Maighan</a>
-        <nav class="nav-desktop" aria-label="Primary">
-          <a href="#work" data-i18n="nav.work">Work</a>
-          <a href="#services" data-i18n="nav.services">Services</a>
-          <a href="#process" data-i18n="nav.process">Process</a>
-          <a href="#writing" data-i18n="nav.writing">Libraries</a>
-          <a href="#contact" data-i18n="nav.contact">Contact</a>
-        </nav>
         <div class="header-actions">
-          <button type="button" class="icon-btn icon-btn-wide" id="locale-toggle" aria-label="Language">
-            <svg class="icon" aria-hidden="true"><use href="#icon-languages"></use></svg>
-            <span class="icon-btn-text" id="locale-label">FR</span>
-          </button>
+          <div class="locale-menu" id="locale-menu">
+            <button
+              type="button"
+              class="icon-btn icon-btn-wide"
+              id="locale-toggle"
+              aria-label="Language"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              aria-controls="locale-popover"
+            >
+              <svg class="icon" aria-hidden="true"><use href="#icon-languages"></use></svg>
+              <span class="icon-btn-text" id="locale-label">EN</span>
+            </button>
+            <div class="locale-popover" id="locale-popover" role="listbox" aria-label="Language">
+              <button type="button" class="locale-option" role="option" data-locale="en" aria-selected="true">
+                EN
+              </button>
+              <button type="button" class="locale-option" role="option" data-locale="fr" aria-selected="false">
+                FR
+              </button>
+            </div>
+          </div>
           <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch to dark theme">
             <svg class="icon" aria-hidden="true"><use id="theme-icon-use" href="#icon-moon"></use></svg>
           </button>
-          <a class="btn btn-primary btn-header" href="#contact" data-i18n="nav.cta">Book a call</a>
           <button
             type="button"
             class="menu-toggle"
@@ -94,7 +174,7 @@
     </header>
 
     <div class="backdrop" id="menu-backdrop"></div>
-    <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile">
+    <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
       <a href="#work" data-i18n="nav.work">Work</a>
       <a href="#services" data-i18n="nav.services">Services</a>
       <a href="#process" data-i18n="nav.process">Process</a>
@@ -108,11 +188,15 @@
         <section class="hero band-base">
           <div class="wrap hero-content">
             <div class="hero-copy">
-              <h1 data-i18n="hero.title">Ship your backlog this week.</h1>
+              <h1>
+                <span data-i18n="hero.title.before">AI consultant to help move </span
+                ><span class="hero-word" data-i18n="hero.title.word">ideas</span
+                ><span data-i18n="hero.title.after"> forward.</span>
+              </h1>
               <span class="hero-rule" aria-hidden="true"></span>
               <p class="lede" data-i18n="hero.lede">
                 I help startups, SaaS teams, and agencies design and ship AI systems,
-                document workflows, and complex Next.js platforms. Your team owns the
+                document workflows, and complex web platforms. Your team and agents run the
                 system after handoff.
               </p>
               <div class="cta-row">
@@ -545,3 +629,5 @@
     <script type="module" src="./app.mjs"></script>
   </body>
 </html>
+
+

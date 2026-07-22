@@ -10,6 +10,7 @@
   --hue-higher: calc(var(--hue) + 6);
   --hue-accent: calc(var(--hue) - 3);
   --hue-secondary: calc(var(--hue) - 6);
+  --hue-cta-end: calc(var(--hue) - 33);
 
   --chroma-base: 0.014;
 }
