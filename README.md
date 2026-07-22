@@ -1,16 +1,28 @@
-## Hi there 👋
+## Calvin Maighan
 
-<!--
-**CalvinMaighan/calvinmaighan** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Open-source client libraries for shared UI state, theming, and i18n.
 
-Here are some ideas to get you started:
+### Libraries
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+| Package | What it does | Repo |
+| --- | --- | --- |
+| **[active-state](https://github.com/CalvinMaighan/active-state)** | Tiny keyed pub/sub store — React, DOM bindings, persist / shared / SSR | [CalvinMaighan/active-state](https://github.com/CalvinMaighan/active-state) |
+| **[active-theme](https://github.com/CalvinMaighan/active-theme)** | Mode + color on `:root` — persist by default, `/lite`, `/state` + `<ActiveTheme />` | [CalvinMaighan/active-theme](https://github.com/CalvinMaighan/active-theme) |
+| **[active-i18n](https://github.com/CalvinMaighan/active-i18n)** | Typed dictionaries + `t()` — persist by default, `/lite`, `/state` + `<ActiveI18n />` | [CalvinMaighan/active-i18n](https://github.com/CalvinMaighan/active-i18n) |
+
+### Together
+
+```tsx
+import { ActiveState } from "active-state/react";
+import { ActiveTheme } from "active-theme/state";
+import { ActiveI18n } from "active-i18n/state";
+
+<>
+  <ActiveState init={state} ssr />
+  <ActiveTheme init={theme} />
+  <ActiveI18n init={i18n} />
+  {children}
+</>
+```
+
+One bus for prefs. Theme paints `data-theme` / CSS vars. i18n sets `<html lang>` and copy.
