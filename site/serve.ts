@@ -17,6 +17,8 @@ function contentType(path: string) {
   if (path.endsWith(".svg")) return "image/svg+xml";
   if (path.endsWith(".png")) return "image/png";
   if (path.endsWith(".webp")) return "image/webp";
+  if (path.endsWith(".ico")) return "image/x-icon";
+  if (path.endsWith(".webmanifest")) return "application/manifest+json";
   return "application/octet-stream";
 }
 
@@ -75,3 +77,4 @@ watch(root, { recursive: true }, (_event, filename) => {
 });
 
 console.log(`portfolio → ${server.url}`);
+

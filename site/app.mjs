@@ -371,6 +371,9 @@ function applyThemeUi() {
   const dark = currentMode() === "dark";
   if (use) use.setAttribute("href", dark ? "#icon-sun" : "#icon-moon");
   btn?.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+  for (const meta of document.querySelectorAll('meta[name="theme-color"]')) {
+    meta.setAttribute("content", dark ? "#221D19" : "#E6E2D4");
+  }
 }
 
 function setMenu(open) {
@@ -540,4 +543,5 @@ wireForm();
 wirePointer();
 wireTempo();
 wireAmbient();
+
 
