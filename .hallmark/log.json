@@ -1,0 +1,68 @@
+[
+  {
+    "date": "2026-07-22",
+    "macrostructure": "Letter",
+    "theme": "custom",
+    "theme_axes": "light / display-heavy / chromatic-other",
+    "vibe": "beige paper, black type, green action",
+    "enrichment": "none",
+    "nav": "N1b",
+    "footer": "Ft5",
+    "brief": "Beige restore + Archivo Black hero + green CTAs"
+  },
+  {
+    "date": "2026-07-22",
+    "macrostructure": "Letter",
+    "theme": "custom",
+    "theme_axes": "light / classical-serif / warm-cta",
+    "vibe": "decisive senior contractor, cool paper",
+    "enrichment": "none",
+    "nav": "N1b",
+    "footer": "Ft5",
+    "brief": "Full conversion refresh: Instrument Serif + DM Sans, ember CTA"
+  },
+  {
+    "date": "2026-07-22",
+    "macrostructure": "Split Studio",
+    "theme": "custom",
+    "theme_axes": "light / roman-serif / cool",
+    "vibe": "calm senior consultancy, warm paper",
+    "enrichment": "none",
+    "nav": "N9",
+    "footer": "Ft4",
+    "brief": "Display face: Source Serif 4 + IBM Plex Sans body"
+  },
+  {
+    "date": "2026-07-22",
+    "macrostructure": "Split Studio",
+    "theme": "custom",
+    "theme_axes": "light / grotesk-sans / cool",
+    "vibe": "calm senior consultancy, warm paper",
+    "enrichment": "none",
+    "nav": "N9",
+    "footer": "Ft4",
+    "brief": "Audit punch list: minors + majors (bands, grids, hero, writing, pad)"
+  },
+  {
+    "date": "2026-07-22",
+    "macrostructure": "Split Studio",
+    "theme": "custom",
+    "theme_axes": "light / grotesk-sans / cool",
+    "vibe": "calm senior consultancy, warm paper",
+    "enrichment": "none",
+    "nav": "N9",
+    "footer": "Ft4",
+    "brief": "Fix Fraunces + audit: kill ASCII diagrams, mono choir, dashed SVG"
+  },
+  {
+    "date": "2026-07-22",
+    "macrostructure": "Split Studio",
+    "theme": "custom",
+    "theme_axes": "light / high-contrast-serif / cool",
+    "vibe": "calm senior consultancy, warm paper",
+    "enrichment": "Tier-B SVG",
+    "nav": "N9",
+    "footer": "Ft4",
+    "brief": "Calvin Maighan portfolio \u2014 Hallmark redesign of site/"
+  }
+]

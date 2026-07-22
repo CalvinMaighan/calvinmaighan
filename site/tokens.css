@@ -1,0 +1,5 @@
+/*
+ * Compatibility entry — theme system lives in ./themes (Deedee-style).
+ * styles.css keeps `@import "./tokens.css"`.
+ */
+@import "./themes/index.css";
