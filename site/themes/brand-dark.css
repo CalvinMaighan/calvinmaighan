@@ -1,37 +1,44 @@
 /*
- * Dark brand — Deedee soft lift on our hue (not a full invert).
+ * Dark brand — warm espresso ladder (not cool slate invert).
+ * Surfaces (deep → bright):
+ *   Deep shadow #130F0B · Dark espresso #1D1815 · Main #221D19
+ *   Warm brown #27211D · Soft highlight #2F2824 · Brightest #453B36
+ * CTA green + secondary beige match light (semantic / light values).
  */
 :root[data-theme="dark"] {
-  --chroma: calc(var(--chroma-base) * 0.333);
-  --chroma-muted: calc(var(--chroma-base) * 0.333);
-  --chroma-card: calc(var(--chroma-base) * 0.278);
-  --chroma-button: calc(var(--chroma-base) * 0.333);
-  --chroma-border: calc(var(--chroma-base) * 0.5);
-  --chroma-text: calc(var(--chroma-base) * 0.278);
-  --chroma-secondary: calc(var(--chroma-base) * 1.333);
+  --chroma: 0.011;
+  --chroma-muted: 0.012;
+  --chroma-card: 0.013;
+  --chroma-button: 0.016;
+  --chroma-border: 0.016;
+  --chroma-text: 0.012;
+  --chroma-secondary: 0.043;
   --chroma-accent: calc(var(--chroma-base) * 8.333);
   --chroma-label: calc(var(--chroma-base) * 2.222);
 
-  /* Ladder: base < background < muted < card < button (+0.04 each) */
-  --l-0: 0.2;
-  --l-1: 0.24;
-  --l-2: 0.28;
-  --l-3: 0.32;
-  --l-5: 0.36;
+  /* Ladder L matches espresso table */
+  --l-0: 0.172; /* Deep shadow */
+  --l-espresso: 0.214; /* Dark espresso */
+  --l-1: 0.235; /* Main background */
+  --l-2: 0.253; /* Warm brown */
+  --l-3: 0.283; /* Soft highlight */
+  --l-5: 0.361; /* Brightest reflection */
 
-  --text: oklch(0.96 var(--chroma-text) var(--hue) / 88%);
-  --text-muted: oklch(0.78 var(--chroma-text) var(--hue) / 72%);
-  --secondary-text: oklch(0.74 var(--chroma-secondary) var(--hue-secondary));
+  --text: oklch(0.96 0.012 60 / 90%);
+  --text-muted: oklch(0.78 0.014 55 / 72%);
+  --secondary-text: oklch(0.82 0.03 70 / 78%);
 
-  --base: oklch(var(--l-0) var(--chroma) var(--hue-lower));
-  --background: oklch(var(--l-1) var(--chroma) var(--hue-lower));
-  --muted: oklch(var(--l-2) var(--chroma-muted) var(--hue-low));
-  --card: oklch(var(--l-3) var(--chroma-card) var(--hue));
-  --button: oklch(var(--l-5) var(--chroma-button) var(--hue-high) / 65%);
-  --button-hover: oklch(0.4 var(--chroma-button) var(--hue) / 75%);
+  --base: oklch(0.172 0.01 67); /* #130F0B Deep shadow */
+  --espresso: oklch(0.214 0.01 53); /* #1D1815 Dark espresso */
+  --background: oklch(0.235 0.011 61); /* #221D19 Main background */
+  --muted: oklch(0.253 0.012 56); /* #27211D Warm brown */
+  --card: oklch(0.283 0.013 52); /* #2F2824 Soft highlight */
+  --button: oklch(0.361 0.016 48); /* #453B36 Brightest reflection */
+  --button-hover: oklch(0.4 0.018 48);
 
-  --secondary: oklch(0.28 0.018 var(--hue));
-  --secondary-hover: oklch(0.34 0.022 var(--hue));
+  /* Warm beige at ~button lift (not light cream) */
+  --secondary: oklch(0.361 0.028 70);
+  --secondary-hover: oklch(0.4 0.032 68);
 
   --accent: oklch(0.78 var(--chroma-accent) var(--hue-accent));
   --accent-text: oklch(0.16 calc(var(--chroma-base) * 2) var(--hue-accent));
@@ -54,12 +61,12 @@
   );
   --button-gradient: linear-gradient(0deg, var(--card) 0%, var(--button) 150%);
 
-  --light: oklch(0.95 var(--chroma-muted) var(--hue) / 12%);
-  --lighter: oklch(0.95 var(--chroma-muted) var(--hue) / 25%);
-  --lightest: oklch(0.95 var(--chroma-muted) var(--hue) / 35%);
-  --dark: oklch(0.05 var(--chroma) var(--hue) / 15%);
-  --darker: oklch(0.05 var(--chroma) var(--hue) / 30%);
-  --darkest: oklch(0.05 var(--chroma) var(--hue) / 45%);
+  --light: oklch(0.361 0.016 48 / 18%);
+  --lighter: oklch(0.361 0.016 48 / 28%);
+  --lightest: oklch(0.4 0.018 48 / 38%);
+  --dark: oklch(0.172 0.01 67 / 35%);
+  --darker: oklch(0.172 0.01 67 / 50%);
+  --darkest: oklch(0.172 0.01 67 / 65%);
 
   --shadow: inset 0 1px 2px -1px var(--light), 0 1px 2px -1px var(--darker),
     0 2px 4px -1px var(--dark);
@@ -80,22 +87,21 @@
 
   --button-shadow: var(--shadow-hover);
 
-  --border: oklch(var(--l-3) var(--chroma-muted) var(--hue) / 0.55);
-  --border-hover: oklch(var(--l-5) var(--chroma-muted) var(--hue) / 0.75);
+  --border: oklch(0.361 0.016 48 / 0.4);
+  --border-hover: oklch(0.4 0.018 48 / 0.55);
   --border-muted: color-mix(in oklch, var(--border) 65%, transparent);
 
-  --cta: oklch(76% 0.19 145);
-  --cta-border: oklch(64% 0.17 145 / 0.15);
-  --cta-text: oklch(14% calc(var(--chroma-base) * 2) var(--hue));
+  /* CTA: inherit semantic.css (same green as light) — no dark override */
 
   --cta-shadow:
     inset 0 1px 2px -1px var(--lighter),
     0 2px 4px -1px var(--darker),
-    0 6px 14px -2px color-mix(in oklch, var(--cta) 48%, transparent);
+    0 6px 14px -2px color-mix(in oklch, var(--cta) 42%, transparent);
   --cta-shadow-hover:
     inset 0 1px 3px -1px var(--lightest),
     0 3px 5px -1px var(--darkest),
-    0 8px 18px -2px color-mix(in oklch, var(--cta) 58%, transparent);
+    0 8px 18px -2px color-mix(in oklch, var(--cta) 52%, transparent);
 
   color-scheme: dark;
 }
+
