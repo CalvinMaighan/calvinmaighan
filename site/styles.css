@@ -1429,10 +1429,11 @@ main {
   gap: var(--gap-s);
 }
 .article-series-card-head {
-  display: flex;
-  align-items: center;
-  min-width: 0;
+  display: inline-flex;
+  align-items: baseline;
   max-width: 100%;
+  min-width: 0;
+  vertical-align: top;
 }
 .article-series-card-title {
   flex: 1 1 auto;
@@ -1446,17 +1447,19 @@ main {
 .article-series-card-check {
   flex: 0 0 auto;
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--gap-s);
+  align-items: baseline;
+  margin-left: var(--gap-s);
+  padding: 0;
   background: transparent;
   color: var(--cta);
-  line-height: 0;
+  line-height: 1.4;
 }
 .article-series-card-check .icon {
-  width: 14px;
-  height: 14px;
+  width: 1em;
+  height: 1em;
   display: block;
+  position: relative;
+  top: 0.12em;
 }
 .article-series-card-subtitle {
   display: block;
