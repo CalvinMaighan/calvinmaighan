@@ -6,18 +6,18 @@ nextLabel: "Next article"
 nextHref: "./keep-ai-coding-changes-minimal-with-ponytail.html"
 standalone: false
 out: site/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html
-title: "Cut AI agent tokens with caveman"
-primaryKeyword: "cut AI agent tokens with caveman"
+title: "Agent talk less with caveman"
+primaryKeyword: "agent talk less with caveman"
 secondaryKeywords: ["caveman communication mode","compress agent output tokens","terse AI agent replies"]
 intent: informational
 slug: "cut-ai-agent-tokens-with-caveman"
-metaDescription: "cut AI agent tokens with caveman by forcing terse, filler-free agent replies while keeping code and errors exact. Use intensity levels, measure real savings, and drop compression when clarity is on the line."
+metaDescription: "agent talk less with caveman by forcing terse, filler-free agent replies while keeping code and errors exact. Use intensity levels, measure real savings, and drop compression when clarity is on the line."
 canonical: "https://calvinmaighan.com/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html"
 updatedAt: "2026-07-22"
 author: "Calvin Maighan"
 ogImage: "https://calvinmaighan.com/calvin-article-3.png"
 inBodyImage: "../../calvin-article-3.png"
-inBodyImageAlt: "Cover for skill 3: cut AI agent tokens with caveman"
+inBodyImageAlt: "Cover for skill 3: agent talk less with caveman"
 internalLinks: ["./scrape-websites-for-ai-agent-research.html","./read-dependency-source-code-with-opensrc.html","../name-ai-agent-skills-after-the-job.html","../../index.html#contact"]
 externalSources: ["https://github.com/JuliusBrussee/caveman","https://github.com/JuliusBrussee/caveman/blob/HEAD/skills/caveman/SKILL.md","https://blog.jetbrains.com/ai/2026/07/speak-to-ai-agents-like-cavemen-tosave-tokens/","https://cursor.com/docs/skills"]
 faq:
@@ -33,13 +33,13 @@ ctaAboveFold: "Book a call"
 ctaEnd: "Want token budgets and skill kits tuned for your agent fleet? Book a call. Next tip covers keeping coding changes minimal with ponytail."
 ---
 
-# Cut AI agent tokens with caveman
+# Agent talk less with caveman
 
 **Summary**
 
-cut AI agent tokens with caveman. You can cut AI agent tokens with caveman by installing a skill that strips filler, hedging, and throat-clearing from agent narration while leaving code, commands, and errors byte-exact. The open JuliusBrussee/caveman skill advertises large output savings on chatty answers. JetBrains’ SkillsBench write-up shows smaller gains on agentic coding because code and tool calls dominate. Use caveman for status, reviews, and Q&A. Drop it for security warnings and ambiguous multi-step sequences. Measure your own sessions before you promise finance a 65% bill cut.
+agent talk less with caveman. You can agent talk less with caveman by installing a skill that strips filler, hedging, and throat-clearing from agent narration while leaving code, commands, and errors byte-exact. The open JuliusBrussee/caveman skill advertises large output savings on chatty answers. JetBrains’ SkillsBench write-up shows smaller gains on agentic coding because code and tool calls dominate. Use caveman for status, reviews, and Q&A. Drop it for security warnings and ambiguous multi-step sequences. Measure your own sessions before you promise finance a 65% bill cut.
 
-Product teams that cut AI agent tokens with caveman attack the part of the bill they can shrink without starving the model of code. Caveman is a communication skill. It tells the agent to drop filler, pleasantries, and hedging, keep technical terms exact, and answer in tight fragments when fragments carry the meaning. Code blocks stay untouched. Error strings stay untouched. The savings live in the sentences between tool calls.
+Product teams that agent talk less with caveman attack the part of the bill they can shrink without starving the model of code. Caveman is a communication skill. It tells the agent to drop filler, pleasantries, and hedging, keep technical terms exact, and answer in tight fragments when fragments carry the meaning. Code blocks stay untouched. Error strings stay untouched. The savings live in the sentences between tool calls.
 
 ## What caveman changes
 
@@ -116,7 +116,7 @@ If you want a calibrated install across Cursor, Claude Code, and your internal a
 
 ## The short operating rule
 
-Cut filler. Keep code exact. Measure on your workload. Drop caveman when clarity is the product. That is how you cut AI agent tokens with caveman without lying to yourself about the size of the win.
+Cut filler. Keep code exact. Measure on your workload. Drop caveman when clarity is the product. That is how you agent talk less with caveman without lying to yourself about the size of the win.
 
 One last operator note: keep a short "clarity card" pinned in your team channel. Four bullets: security warnings in full sentences, irreversible confirms explicit, multi-step order preserved, user confusion resets to normal mode. When someone pastes a confusing caveman reply, point at the card instead of debating style. The card turns taste into policy.
 
@@ -177,7 +177,7 @@ Week one: install and demo. Week two: default full on engineering agents. Week t
 
 Token compression is a lever, not a religion. Flip it for engineering agents. Measure. Keep the exits. Refuse to market chatty-benchmark percentages as coding-fleet savings. Your credibility with finance and with engineers both depend on that honesty.
 
-If you remember one operating line, remember this: cut filler, keep code exact, measure your mix, protect clarity. That is how product teams cut AI agent tokens with caveman and still ship work humans trust.
+If you remember one operating line, remember this: cut filler, keep code exact, measure your mix, protect clarity. That is how product teams agent talk less with caveman and still ship work humans trust.
 
 
 ## Keep the feedback loop short

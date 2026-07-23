@@ -1416,26 +1416,56 @@ main {
   line-height: 1.4;
   box-sizing: border-box;
 }
-.article-series-card-subtitle[hidden] {
+.article-series-card-subtitle[hidden],
+.article-series-card-check[hidden] {
   display: none;
 }
 .article-series-card-copy {
- min-width: 0;
- max-width: 100%;
- overflow: hidden;
- display: flex;
- flex-direction: column;
- gap: var(--gap-s);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
 }
-.article-series-card-title,
+.article-series-card-head {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+}
+.article-series-card-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+.article-series-card-check {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gap-s);
+  background: transparent;
+  color: var(--cta);
+  line-height: 0;
+}
+.article-series-card-check .icon {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
 .article-series-card-subtitle {
- display: block;
- min-width: 0;
- max-width: 100%;
- overflow: hidden;
- white-space: nowrap;
- text-overflow: ellipsis;
- line-height: 1.4;
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 1.4;
 }
 .article-series-card-subtitle {
  font-size: var(--font-s);

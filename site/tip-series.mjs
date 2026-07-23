@@ -20,7 +20,7 @@ export const SERIES = [
   },
   {
     slug: "cut-ai-agent-tokens-with-caveman",
-    title: "Cut AI agent tokens with caveman",
+    title: "Agent talk less with caveman",
     subtitle: "Terse replies without mangling code",
     path: "/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html",
   },

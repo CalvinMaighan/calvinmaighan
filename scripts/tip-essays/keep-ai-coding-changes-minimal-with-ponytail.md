@@ -102,7 +102,7 @@ When a PR fails two or more of those checks, send it back with the ladder pasted
 
 ## Pair ponytail with the rest of the series
 
-Ponytail sits next to token-tight talk and compressed context. Tip 3 on [cutting AI agent tokens with caveman](./cut-ai-agent-tokens-with-caveman.html) keeps the prompt short. Tip 5 on [compressing agent context before you code](./compress-agent-context-before-you-code.html) keeps the files short. Ponytail keeps the diff short. Together they reduce cost, noise, and merge risk.
+Ponytail sits next to token-tight talk and compressed context. Tip 3 on [agent talk less with caveman](./cut-ai-agent-tokens-with-caveman.html) keeps the prompt short. Tip 5 on [compressing agent context before you code](./compress-agent-context-before-you-code.html) keeps the files short. Ponytail keeps the diff short. Together they reduce cost, noise, and merge risk.
 
 On this portfolio I also keep product copy and theme work under the same bias: reuse `active-*` vendors, paint with theme tokens, avoid new infra unless a client asks. The skill matches how I already ship consulting work. Browse more tips from the [tips index](../../index.html#tips).
 
@@ -195,7 +195,7 @@ On fixed-bid consulting I also write the ladder into the statement of work as a 
 - [You aren't gonna need it (Wikipedia)](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it)
 - [Building effective agents (Anthropic)](https://www.anthropic.com/engineering/building-effective-agents)
 - [Claude Code best practices (Anthropic)](https://www.anthropic.com/engineering/claude-code-best-practices)
-- Related: [Cut AI agent tokens with caveman](./cut-ai-agent-tokens-with-caveman.html)
+- Related: [Agent talk less with caveman](./cut-ai-agent-tokens-with-caveman.html)
 - Series cards on [calvinmaighan.com tips](../../index.html#tips)
 
 ## FAQ

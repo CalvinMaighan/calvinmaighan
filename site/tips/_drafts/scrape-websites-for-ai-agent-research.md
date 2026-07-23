@@ -76,7 +76,7 @@ That last rule matters. Research without a gate becomes decorative. Research wit
 
 Scraped markdown is cheaper than HTML and still too large for casual pasting. Save outputs under something like site/tips/_research/ or a private .firecrawl/ folder. Have the agent read the saved file, summarize, and keep the path in the answer. Your future self can reopen the artifact. Your context window stays alive.
 
-Tip 3 in this series shows how to [cut AI agent tokens with caveman](./cut-ai-agent-tokens-with-caveman.html) once the research returns. Compression helps the narration around citations. It does not replace saving the source artifact.
+Tip 3 in this series shows how to [agent talk less with caveman](./cut-ai-agent-tokens-with-caveman.html) once the research returns. Compression helps the narration around citations. It does not replace saving the source artifact.
 
 ## Schemas beat vibes
 

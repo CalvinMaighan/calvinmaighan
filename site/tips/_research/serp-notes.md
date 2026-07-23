@@ -9,7 +9,7 @@ Firecrawl CLI search returned 403 in this environment; used web search + primary
 | Standalone | name AI agent skills after the job |
 | 1 opensrc | read dependency source code with opensrc |
 | 2 Firecrawl | scrape websites for AI agent research |
-| 3 caveman | cut AI agent tokens with caveman |
+| 3 caveman | agent talk less with caveman |
 | 4 ponytail | keep AI coding changes minimal with ponytail |
 | 5 lean-ctx | compress agent context before you code |
 | 6 memory | persist codebase knowledge across AI chats |

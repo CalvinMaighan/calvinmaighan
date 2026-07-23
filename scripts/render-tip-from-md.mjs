@@ -309,7 +309,12 @@ function pageHtml({ data, bodyHtml, faq, readMinutes }) {
                 ${locked ? 'aria-disabled="true"' : ""}
               >
                 <span class="article-series-card-copy">
-                  <span class="article-series-card-title">${escapeHtml(label)}</span>
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">${escapeHtml(label)}</span>
+                    <span class="article-series-card-check"${locked ? " hidden" : ""} aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
                   <span class="article-series-card-subtitle"${!sub ? " hidden" : ""}>${escapeHtml(sub)}</span>
                 </span>
               </a>
@@ -396,6 +401,9 @@ ${JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2)
           <path d="M10 14L21 3" />
           <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
         </g>
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5" />
       </symbol>
     </svg>
 

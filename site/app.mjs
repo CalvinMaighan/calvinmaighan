@@ -578,6 +578,7 @@ function paintSeriesRail() {
     const href = el.getAttribute("data-href") || "#";
     const titleEl = el.querySelector(".article-series-card-title");
     const subtitleEl = el.querySelector(".article-series-card-subtitle");
+    const checkEl = el.querySelector(".article-series-card-check");
 
     el.classList.toggle("is-locked", !open);
     el.classList.toggle("is-current", slug === current);
@@ -592,6 +593,7 @@ function paintSeriesRail() {
         subtitleEl.textContent = subtitle;
         subtitleEl.hidden = !subtitle;
       }
+      if (checkEl) checkEl.hidden = false;
     } else {
       el.setAttribute("href", "#");
       el.setAttribute("aria-disabled", "true");
@@ -600,6 +602,7 @@ function paintSeriesRail() {
         subtitleEl.textContent = subtitle;
         subtitleEl.hidden = !subtitle;
       }
+      if (checkEl) checkEl.hidden = true;
     }
   });
 }
