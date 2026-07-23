@@ -9,8 +9,8 @@ updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "Compress agent context before you code by routing reads, searches, and shell output through a context-engineering layer such as lean-ctx. Agents then start from ranked symbols and task-relevant slices instead of pasting whole directories into the window. You spend tokens on the change, cut retries, and keep long sessions usable."
 standalone: false
-kicker: "Tip 5 of 14"
-series: "14 secret agent tips for product teams"
+kicker: ""
+series: ""
 nextHref: "./persist-codebase-knowledge-across-ai-chats.html"
 nextLabel: "Next article"
 nextLocked: "true"

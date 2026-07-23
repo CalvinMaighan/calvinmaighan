@@ -9,8 +9,8 @@ updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "expose product actions as MCP tools when a chat wrapper that cannot act has become your roadmap. On Deedee I design a capability registry: named tools, schemas, scopes, and audit metadata. MCP is the transport. Start with read tools. Add writes only with confirmations and least privilege. Name capabilities like jobs, the same way you name skills."
 standalone: false
-kicker: "Tip 11 of 14"
-series: "14 secret agent tips for product teams"
+kicker: ""
+series: ""
 nextHref: "./catch-ai-code-mistakes-with-lint.html"
 nextLabel: "Next article"
 nextLocked: "true"

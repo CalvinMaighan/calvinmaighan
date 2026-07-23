@@ -2,20 +2,20 @@
 import { readFileSync, writeFileSync } from "node:fs";
 
 const chain = [
-  ["read-dependency-source-code-with-opensrc.md", "./scrape-websites-for-ai-agent-research.html", "Next article", "Tip 1 of 14"],
-  ["scrape-websites-for-ai-agent-research.md", "./cut-ai-agent-tokens-with-caveman.html", "Next article", "Tip 2 of 14"],
-  ["cut-ai-agent-tokens-with-caveman.md", "./keep-ai-coding-changes-minimal-with-ponytail.html", "Next article", "Tip 3 of 14"],
-  ["keep-ai-coding-changes-minimal-with-ponytail.md", "./compress-agent-context-before-you-code.html", "Next article", "Tip 4 of 14"],
-  ["compress-agent-context-before-you-code.md", "./persist-codebase-knowledge-across-ai-chats.html", "Next article", "Tip 5 of 14"],
-  ["persist-codebase-knowledge-across-ai-chats.md", "./research-what-people-said-last-month.html", "Next article", "Tip 6 of 14"],
-  ["research-what-people-said-last-month.md", "./remove-ai-writing-tells-from-prose.html", "Next article", "Tip 7 of 14"],
-  ["remove-ai-writing-tells-from-prose.md", "./design-landing-pages-without-ai-slop.html", "Next article", "Tip 8 of 14"],
-  ["design-landing-pages-without-ai-slop.md", "./build-product-videos-with-hyperframes.html", "Next article", "Tip 9 of 14"],
-  ["build-product-videos-with-hyperframes.md", "./expose-product-actions-as-mcp-tools.html", "Next article", "Tip 10 of 14"],
-  ["expose-product-actions-as-mcp-tools.md", "./catch-ai-code-mistakes-with-lint.html", "Next article", "Tip 11 of 14"],
-  ["catch-ai-code-mistakes-with-lint.md", "./ship-production-releases-with-agent-checks.html", "Next article", "Tip 12 of 14"],
-  ["ship-production-releases-with-agent-checks.md", "./write-seo-articles-agents-can-follow.html", "Next article", "Tip 13 of 14"],
-  ["write-seo-articles-agents-can-follow.md", "../../index.html#contact", "Book a call", "Tip 14 of 14"],
+  ["read-dependency-source-code-with-opensrc.md", "./scrape-websites-for-ai-agent-research.html", "Next article"],
+  ["scrape-websites-for-ai-agent-research.md", "./cut-ai-agent-tokens-with-caveman.html", "Next article"],
+  ["cut-ai-agent-tokens-with-caveman.md", "./keep-ai-coding-changes-minimal-with-ponytail.html", "Next article"],
+  ["keep-ai-coding-changes-minimal-with-ponytail.md", "./compress-agent-context-before-you-code.html", "Next article"],
+  ["compress-agent-context-before-you-code.md", "./persist-codebase-knowledge-across-ai-chats.html", "Next article"],
+  ["persist-codebase-knowledge-across-ai-chats.md", "./research-what-people-said-last-month.html", "Next article"],
+  ["research-what-people-said-last-month.md", "./remove-ai-writing-tells-from-prose.html", "Next article"],
+  ["remove-ai-writing-tells-from-prose.md", "./design-landing-pages-without-ai-slop.html", "Next article"],
+  ["design-landing-pages-without-ai-slop.md", "./build-product-videos-with-hyperframes.html", "Next article"],
+  ["build-product-videos-with-hyperframes.md", "./expose-product-actions-as-mcp-tools.html", "Next article"],
+  ["expose-product-actions-as-mcp-tools.md", "./catch-ai-code-mistakes-with-lint.html", "Next article"],
+  ["catch-ai-code-mistakes-with-lint.md", "./ship-production-releases-with-agent-checks.html", "Next article"],
+  ["ship-production-releases-with-agent-checks.md", "./write-seo-articles-agents-can-follow.html", "Next article"],
+  ["write-seo-articles-agents-can-follow.md", "../../index.html#contact", "Book a call"],
 ];
 
 function upsert(fm, key, value) {
@@ -26,7 +26,7 @@ function upsert(fm, key, value) {
   return fm.replace(/^---\n/, `---\n${line}\n`);
 }
 
-for (const [file, href, label, kicker] of chain) {
+for (const [file, href, label] of chain) {
   const path = `site/tips/_drafts/${file}`;
   const t = readFileSync(path, "utf8");
   const end = t.indexOf("\n---\n", 4);
@@ -35,8 +35,6 @@ for (const [file, href, label, kicker] of chain) {
   fm = upsert(fm, "nextHref", href);
   fm = upsert(fm, "nextLabel", label);
   fm = upsert(fm, "nextLocked", label === "Book a call" ? "false" : "true");
-  fm = upsert(fm, "kicker", kicker);
-  fm = upsert(fm, "series", "14 secret agent tips for product teams");
   writeFileSync(path, fm + body);
   console.log("chain", file, "->", href);
 }

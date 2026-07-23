@@ -9,8 +9,8 @@ updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "Research what people said last month with the last30days skill so your team hears current language, complaints, and workarounds before you lock a roadmap bet. The skill pulls multi-source posts with citations and engagement context instead of a generic model prior from training day. You get faster discovery, clearer copy, and fewer features aimed at problems nobody still has."
 standalone: false
-kicker: "Tip 7 of 14"
-series: "14 secret agent tips for product teams"
+kicker: ""
+series: ""
 nextHref: "./remove-ai-writing-tells-from-prose.html"
 nextLabel: "Next tip"
 nextLocked: "true"

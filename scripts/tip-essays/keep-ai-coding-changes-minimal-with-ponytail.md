@@ -9,8 +9,8 @@ updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "Keep AI coding changes minimal with ponytail by forcing every agent edit through a YAGNI ladder: skip work that should not exist, reuse what the repo already has, prefer stdlib and native features, then ship the shortest correct diff. You get smaller pull requests, fewer speculative abstractions, and reviews that finish in one pass."
 standalone: false
-kicker: "Tip 4 of 14"
-series: "14 secret agent tips for product teams"
+kicker: ""
+series: ""
 nextHref: "./compress-agent-context-before-you-code.html"
 nextLabel: "Next tip"
 nextLocked: "true"

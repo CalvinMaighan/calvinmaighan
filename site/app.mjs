@@ -35,8 +35,8 @@ const dictionaries = {
     "tips.series1.meta": "Series · intro + 14 tips",
     "tips.series1.title": "14 AI agent skills to speed up developers",
     "tips.series1.cta": "Read More",
-    "article.kicker": "Tip 1 of 14",
-    "article.series": "14 secret agent tips for product teams",
+    "article.kicker": "",
+    "article.series": "",
     "article.home": "Home",
     "article.next.locked": "Scroll to the end to unlock",
     "article.next": "Next article",
@@ -182,8 +182,8 @@ const dictionaries = {
     "tips.series1.meta": "Série · intro + 14 astuces",
     "tips.series1.title": "14 compétences d’agents IA pour accélérer les développeurs",
     "tips.series1.cta": "Lire la suite",
-    "article.kicker": "Astuce 1 sur 14",
-    "article.series": "14 astuces d’agents secrètes pour les équipes produit",
+    "article.kicker": "",
+    "article.series": "",
     "article.home": "Accueil",
     "article.next.locked": "Défilez jusqu’à la fin pour débloquer",
     "article.next": "Article suivant",
@@ -607,7 +607,7 @@ function paintSeriesRail() {
         indexEl.hidden = true;
         indexEl.textContent = "";
       }
-      if (titleEl) titleEl.textContent = `Part ${tipNum}: Keep reading to unlock`;
+      if (titleEl) titleEl.textContent = `Skill #${tipNum}: Keep reading to unlock`;
       if (subtitleEl) {
         subtitleEl.textContent = subtitle;
         subtitleEl.hidden = !subtitle;
@@ -633,6 +633,9 @@ function wireSeriesUnlockLinks() {
 function wireArticleNext() {
   const next = document.getElementById("article-next");
   if (!next) return;
+  const hint = document.getElementById("article-chrome-hint");
+  const lockedHint = hint?.dataset.lockedText || hint?.textContent || "";
+  const unlockedHint = hint ? "You've unlocked the next skill 🎉" : "";
 
   // Final series tip / contact CTA: never scroll-lock.
   if (next.getAttribute("data-i18n") === "article.book" || next.dataset.lock === "false") {
@@ -647,6 +650,11 @@ function wireArticleNext() {
   const setLocked = (locked) => {
     next.classList.toggle("is-locked", locked);
     next.setAttribute("aria-disabled", locked ? "true" : "false");
+    if (hint && unlockedHint) {
+      hint.hidden = false;
+      hint.textContent = locked ? lockedHint : unlockedHint;
+      hint.classList.toggle("is-unlocked", !locked);
+    }
   };
 
   const update = () => {
@@ -684,6 +692,7 @@ wireAmbient();
 paintSeriesRail();
 wireSeriesUnlockLinks();
 wireArticleNext();
+
 
 
 

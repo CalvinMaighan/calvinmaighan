@@ -9,8 +9,8 @@ updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "build product videos with HyperFrames when you need motion with a contract: HTML compositions, timing attributes, and renders agents can revise without timeline spaghetti. I use the skill pack for launch clips, PR explainers, slideshow decks, and captioned talking-head packages. Write the beat sheet first. Freeze media assets. Show real product UI when you can capture it."
 standalone: false
-kicker: "Tip 10 of 14"
-series: "14 secret agent tips for product teams"
+kicker: ""
+series: ""
 nextHref: "./expose-product-actions-as-mcp-tools.html"
 nextLabel: "Next article"
 nextLocked: "true"

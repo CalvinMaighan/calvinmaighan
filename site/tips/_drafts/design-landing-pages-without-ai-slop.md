@@ -9,8 +9,8 @@ updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "design landing pages without AI slop when default model layouts converge on purple gradients, cream terracotta serif kits, and dashboard heroes. hallmark pushes distinctive composition and a brand-first first viewport. I use it on greenfield marketing pages and on audits where hiding the nav would make the page unrecognizable as yours."
 standalone: false
-kicker: "Tip 9 of 14"
-series: "14 secret agent tips for product teams"
+kicker: ""
+series: ""
 nextHref: "./build-product-videos-with-hyperframes.html"
 nextLabel: "Next article"
 nextLocked: "true"

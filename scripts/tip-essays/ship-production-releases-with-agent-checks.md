@@ -9,8 +9,8 @@ updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "Ship production releases with agent checks by giving the agent a fixed validate-then-publish script: sync main, pick a safe branch, bump the release, run typecheck and build, commit only intended files, push, and open a PR for human merge. Agents must never merge to production. Protection rules, reviewers, and environment secrets stay in GitHub."
 standalone: false
-kicker: "Tip 13 of 14"
-series: "14 secret agent tips for product teams"
+kicker: ""
+series: ""
 nextHref: "./write-seo-articles-agents-can-follow.html"
 nextLabel: "Next tip"
 nextLocked: "true"

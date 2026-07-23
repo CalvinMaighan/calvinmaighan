@@ -9,8 +9,8 @@ updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "Persist codebase knowledge across AI chats by attaching a codebase-memory MCP server that stores architecture decisions, naming rules, and prior fixes as queryable entities. New threads start with recall instead of rediscovery. You cut repeated mistakes, keep conventions stable, and give agents a project memory that survives closed tabs."
 standalone: false
-kicker: "Tip 6 of 14"
-series: "14 secret agent tips for product teams"
+kicker: ""
+series: ""
 nextHref: "./research-what-people-said-last-month.html"
 nextLabel: "Next article"
 nextLocked: "true"

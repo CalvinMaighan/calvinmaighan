@@ -9,8 +9,8 @@ updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "Write SEO articles agents can follow by locking a longtail keyword, one intent, a summary that answers first, honest Article and FAQ JSON-LD, real citations, and a stop-slop pass before publish. The /article skill turns content SEO into a checklist an agent executes the same way /lint and /prod gate code."
 standalone: false
-kicker: "Tip 14 of 14"
-series: "14 secret agent tips for product teams"
+kicker: ""
+series: ""
 nextHref: "../../index.html#contact"
 nextLabel: "Book a call"
 nextLocked: "false"

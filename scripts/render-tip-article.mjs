@@ -328,10 +328,8 @@ ${JSON.stringify(jsonLd, null, 2)}
       <article class="article">
         <header class="article-hero">
           <div class="wrap">
-            <p class="article-kicker">Tip ${esc(tipNum)} of 14</p>
-            <h1>${esc(title)}</h1>
-            <p class="article-series">14 secret agent tips for product teams</p>
-            <figure class="article-cover">
+                        <h1>${esc(title)}</h1>
+                        <figure class="article-cover">
               <img
                 src="../../calvinmaighan-article-series-1.png"
                 alt="${esc(imgAlt)}"

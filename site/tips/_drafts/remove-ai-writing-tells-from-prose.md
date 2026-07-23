@@ -9,8 +9,8 @@ updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "remove AI writing tells from prose before you publish anything that left an agent chat. stop-slop cuts filler, false agency, binary contrasts, and em dash crutches. I run it on articles, proposals, and UI microcopy. Read the draft aloud. If it sounds like a keynote, cut until it sounds like a colleague. Trust ranks longer than clever cadence."
 standalone: false
-kicker: "Tip 8 of 14"
-series: "14 secret agent tips for product teams"
+kicker: ""
+series: ""
 nextHref: "./design-landing-pages-without-ai-slop.html"
 nextLabel: "Next article"
 nextLocked: "true"

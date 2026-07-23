@@ -1,6 +1,6 @@
 ---
-kicker: "Tip 1 of 14"
-series: "14 secret agent tips for product teams"
+kicker: ""
+series: ""
 nextLocked: "true"
 nextLabel: "Next article"
 nextHref: "./scrape-websites-for-ai-agent-research.html"

@@ -204,6 +204,11 @@ function pageHtml({ data, bodyHtml, faq, readMinutes }) {
   const isBookCta = /^book a call$/i.test(nextLabel.trim());
   // Scroll-lock next-article CTAs; never lock a Book a call CTA.
   const nextLocked = !isBookCta && data.nextLocked !== "false";
+  const seriesIdx = SERIES.findIndex((s) => s.slug === (data.slug || ""));
+  const nextPart =
+    !isBookCta && seriesIdx >= 0 && seriesIdx < SERIES.length - 1
+      ? seriesIdx + 1
+      : null;
   const imgAlt = data.inBodyImageAlt || title;
   const updated = data.updatedAt || "2026-07-22";
   const updatedHuman = data.updatedHuman || "July 22, 2026";
@@ -272,7 +277,7 @@ function pageHtml({ data, bodyHtml, faq, readMinutes }) {
     const locked = !isIntro;
     const label = isIntro
       ? item.title
-      : `Part ${tipNum}: Keep reading to unlock`;
+      : `Skill #${tipNum}: Keep reading to unlock`;
     const index =
       isIntro || locked ? "" : String(tipNum);
     const sub = item.subtitle || "";
@@ -475,6 +480,11 @@ ${faqHtml}
     <div class="article-chrome">
       <div class="read-progress" aria-hidden="true"></div>
       <div class="article-chrome-inner">
+        ${
+          nextPart != null
+            ? `<p class="article-chrome-hint" id="article-chrome-hint" data-unlock-part="${nextPart}" data-locked-text="Keep reading to unlock skill #${nextPart}">Keep reading to unlock skill #${nextPart}</p>`
+            : ""
+        }
         <a class="btn btn-primary${nextLocked ? " is-locked" : ""}" id="article-next" href="${escapeHtml(nextHref)}"${nextLocked ? ' aria-disabled="true"' : ""} data-i18n="${isBookCta ? "article.book" : "article.next"}">${escapeHtml(nextLabel)}</a>
       </div>
     </div>
@@ -527,12 +537,9 @@ for (const file of files) {
   if (!data.canonical) {
     data.canonical = `https://calvinmaighan.com/${data.out.replace(/^site\//, "")}`;
   }
-  if (data.intro === "true") {
-    data.kicker = "";
-    data.series = "";
-  } else if (!data.series && data.standalone !== "true") {
-    data.series = "14 secret agent tips for product teams";
-  }
+  // No above-title kicker / series blurb on tip pages.
+  data.kicker = "";
+  data.series = "";
   if (!data.nextHref) {
     data.nextHref =
       data.standalone === "true"

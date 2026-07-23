@@ -1,6 +1,6 @@
 ---
-kicker: "Tip 3 of 14"
-series: "14 secret agent tips for product teams"
+kicker: ""
+series: ""
 nextLocked: "true"
 nextLabel: "Next article"
 nextHref: "./keep-ai-coding-changes-minimal-with-ponytail.html"
