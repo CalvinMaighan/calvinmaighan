@@ -42,7 +42,7 @@
   --secondary: oklch(0.361 0.028 70);
   --secondary-hover: oklch(0.4 0.032 68);
 
-  --accent: oklch(0.78 var(--chroma-accent) var(--hue-accent));
+  --accent: oklch(0.88 var(--chroma-accent) var(--hue-accent));
   --accent-text: oklch(0.16 calc(var(--chroma-base) * 2) var(--hue-accent));
 
   --hero-text: oklch(0.92 var(--chroma-label) var(--hue-accent));

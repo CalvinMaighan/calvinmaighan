@@ -1700,6 +1700,11 @@ main {
   margin-left: 0.28em;
   margin-right: 0;
 }
+.article-body a .article-link-ico-external,
+.article-summary a .article-link-ico-external {
+  width: calc(0.95em - 2px);
+  height: calc(0.95em - 2px);
+}
 .article-page {
  --article-chrome-h: 76px;
  background: var(--reading);

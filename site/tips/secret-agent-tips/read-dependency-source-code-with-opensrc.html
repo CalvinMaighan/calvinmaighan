@@ -477,11 +477,11 @@
 
 <h2>What opensrc actually does</h2>
 
-<p>The <a class="article-link is-external is-github" href="https://github.com/vercel-labs/opensrc/" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">vercel-labs/opensrc</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a> CLI resolves a package to its repository, detects a version when it can, shallow-clones that tag, and caches the tree. The headline command is simple:</p>
+<p>The <a class="article-link is-external is-github" href="https://github.com/vercel-labs/opensrc/" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">vercel-labs/opensrc</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> CLI resolves a package to its repository, detects a version when it can, shallow-clones that tag, and caches the tree. The headline command is simple:</p>
 
 <p><code>rg &quot;parse&quot; $(opensrc path zod)</code></p>
 
-<p>Progress goes to stderr. The path goes to stdout. Subshells stay clean. The <a class="article-link is-external is-github" href="https://github.com/vercel-labs/opensrc/blob/main/packages/opensrc/README.md" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">CLI readme</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a> shows the same pattern for PyPI, crates.io, and git hosts. npm is the default registry. Prefixes cover the rest: pypi:requests, crates:serde, vercel/next.js.</p>
+<p>Progress goes to stderr. The path goes to stdout. Subshells stay clean. The <a class="article-link is-external is-github" href="https://github.com/vercel-labs/opensrc/blob/main/packages/opensrc/README.md" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">CLI readme</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> shows the same pattern for PyPI, crates.io, and git hosts. npm is the default registry. Prefixes cover the rest: pypi:requests, crates:serde, vercel/next.js.</p>
 
 <p>That design matters for agents. Agents already know how to grep, read files, and follow imports. They fail when the source is not on disk. opensrc removes the missing-disk problem without teaching a new research language.</p>
 

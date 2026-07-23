@@ -59,7 +59,7 @@ function linkHtml(text, href) {
     ? `<svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg>`
     : "";
   const externalIco = isExternal
-    ? `<svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg>`
+    ? `<svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg>`
     : "";
   return `<a class="${classes.join(" ")}" href="${href}" rel="noopener"${
     isExternal ? ' target="_blank"' : ""
