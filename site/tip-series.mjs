@@ -3,7 +3,7 @@ export const SERIES = [
   {
     slug: "how-ai-agents-speed-up-developers",
     title: "14 AI agent skills to speed up developers",
-    subtitle: "Cut dead time between intent and a mergeable change",
+    subtitle: "A product-owner map you can hand to engineering",
     path: "/tips/how-ai-agents-speed-up-developers.html",
   },
   {
@@ -104,3 +104,4 @@ export function slugFromHref(href) {
     return "";
   }
 }
+

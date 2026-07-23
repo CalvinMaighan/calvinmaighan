@@ -254,7 +254,7 @@ function pageHtml({ data, bodyHtml, faq, readMinutes }) {
                 <span class="article-series-card-index"${isIntro || locked ? " hidden" : ""}>${index}</span>
                 <span class="article-series-card-copy">
                   <span class="article-series-card-title">${escapeHtml(label)}</span>
-                  <span class="article-series-card-subtitle"${locked || !sub ? " hidden" : ""}>${escapeHtml(isIntro || !locked ? sub : "")}</span>
+                  <span class="article-series-card-subtitle"${!sub ? " hidden" : ""}>${escapeHtml(sub)}</span>
                 </span>
               </a>
             </li>`;

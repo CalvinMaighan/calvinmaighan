@@ -1285,7 +1285,7 @@ main {
   "summary"
   "aside"
   "prose";
- gap: var(--space-md);
+ gap: var(--gap-xl);
  align-items: start;
  min-height: 70vh;
  padding-bottom: var(--space-3xl);
@@ -1304,7 +1304,9 @@ main {
  font-size: var(--font-h3);
  font-weight: 400;
  letter-spacing: -0.5px;
- line-height: 1.08;
+ line-height: 1.15;
+ overflow: visible;
+ padding-bottom: 0.08em;
 }
 .article-subtitle {
  grid-area: subtitle;
@@ -1324,7 +1326,7 @@ main {
  gap: var(--gap-m);
  max-width: var(--measure);
  width: 100%;
- margin-block: var(--gap-m);
+ margin-block: var(--gap-m) 0;
  padding-block: var(--gap-m);
  border-block: 1px solid var(--border);
  font-family: var(--font-body);
@@ -1404,8 +1406,7 @@ main {
  align-items: center;
  gap: var(--gap-s);
  width: 100%;
- min-height: 72px;
- padding: var(--gap-s) 0;
+ padding: var(--pad-s) 0;
  border: 0;
  border-radius: 0;
  background: transparent;
@@ -1415,7 +1416,7 @@ main {
  font-family: var(--font-body);
  font-size: var(--font-m);
  font-weight: 700;
- line-height: 1.25;
+ line-height: 1.4;
  box-sizing: border-box;
 }
 .article-series-card-index {
@@ -1433,7 +1434,7 @@ main {
  overflow: hidden;
  display: flex;
  flex-direction: column;
- gap: var(--gap-m);
+ gap: var(--gap-s);
 }
 .article-series-card-title,
 .article-series-card-subtitle {
@@ -1443,14 +1444,11 @@ main {
  overflow: hidden;
  white-space: nowrap;
  text-overflow: ellipsis;
-}
-.article-series-card-title {
- line-height: 1.25;
+ line-height: 1.4;
 }
 .article-series-card-subtitle {
  font-size: var(--font-s);
  font-weight: 500;
- line-height: 1.3;
  color: var(--text-muted);
 }
 .article-series-card.is-locked {
@@ -1493,7 +1491,7 @@ main {
       "prose aside";
   justify-content: stretch;
   column-gap: var(--space-xl);
-  row-gap: var(--space-md);
+  row-gap: var(--gap-xl);
   align-items: stretch;
 }
  .article-layout > h1 {
@@ -1652,7 +1650,7 @@ main {
   transition: none;
 }}
 .article-body a {
- color: var(--link, var(--accent-text, inherit));
+ color: var(--link, var(--accent));
  text-underline-offset: 0.15em;
 }
 .article-page {

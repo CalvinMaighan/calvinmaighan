@@ -609,8 +609,8 @@ function paintSeriesRail() {
       }
       if (titleEl) titleEl.textContent = `Part ${tipNum}: Keep reading to unlock`;
       if (subtitleEl) {
-        subtitleEl.textContent = "";
-        subtitleEl.hidden = true;
+        subtitleEl.textContent = subtitle;
+        subtitleEl.hidden = !subtitle;
       }
     }
   });

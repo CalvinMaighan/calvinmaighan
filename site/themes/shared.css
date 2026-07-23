@@ -22,6 +22,11 @@
   --gap-l: 20px;
   --gap-xl: 32px;
 
+  /* Padding scale */
+  --pad-s: 8px;
+  --pad-m: 16px;
+  --pad-l: 24px;
+
   /* Type scale */
   --font-s: 14px;
   --font-m: 16px;
