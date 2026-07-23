@@ -1502,9 +1502,16 @@ main {
   align-self: start;
   min-width: 0;
 }}
-.article-body code {
+.article-body code,
+.article-summary code {
  font-family: var(--mono);
  font-size: inherit;
+ color: var(--cta);
+ background: var(--background);
+ padding: 4px 8px;
+ border-radius: var(--radius-m);
+ corner-shape: squircle;
+ box-shadow: var(--shadow);
 }
 .article-body h2 {
  font-family: var(--font-display);

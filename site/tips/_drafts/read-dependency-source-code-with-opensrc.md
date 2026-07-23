@@ -37,7 +37,7 @@ ctaEnd: "Want this research habit installed across your agent skills?"
 
 **Summary**
 
-read dependency source code with opensrc. Teach your coding agent to read dependency source code with opensrc before it invents behavior from README samples. opensrc resolves npm, PyPI, crates.io, and git hosts, shallow-clones the matching version, and caches under ~/.opensrc/. Compose opensrc path zod with rg, cat, or your agent’s file tools. Use it when types lie, docs lag, or a bug smells like framework internals. Skip it for simple API questions docs already answer. Install the CLI, add the agent skill, and make “open the installed version” a default research step.
+read dependency source code with opensrc is not about better README browsing. It is about cutting the guesswork between a library bug and a change your team trusts: open the installed version, search the real implementation, then patch. Types are more accurate than docs at build time, and agents are trained to read code. In practice, type `/opensrc` with a GitHub URL so the agent opens that source instead of guessing from samples. Skip it for simple API questions docs already answer. Make that a default research step on the team.
 
 Product teams that read dependency source code with opensrc stop paying the tax of confident wrong guesses. Docs sell the happy path. Types show the surface. Runtime bugs live one layer deeper. opensrc gives coding agents a local, version-matched checkout they can search like any other folder.
 
@@ -194,3 +194,4 @@ Skip it for straightforward public API usage that types and official docs alread
 
 ### Can I use opensrc outside JavaScript?
 Yes. Prefix PyPI with pypi:, crates with crates:, and pass owner/repo for GitHub. The same path composition pattern works across registries.
+
