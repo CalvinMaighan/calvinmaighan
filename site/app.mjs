@@ -576,7 +576,6 @@ function paintSeriesRail() {
     const tipNum = Number(el.getAttribute("data-series-tip") || "0");
     const open = tipNum === 0 || unlocked.has(slug);
     const href = el.getAttribute("data-href") || "#";
-    const indexEl = el.querySelector(".article-series-card-index");
     const titleEl = el.querySelector(".article-series-card-title");
     const subtitleEl = el.querySelector(".article-series-card-subtitle");
 
@@ -586,16 +585,9 @@ function paintSeriesRail() {
     if (open) {
       el.setAttribute("href", href);
       el.removeAttribute("aria-disabled");
-      if (indexEl) {
-        if (tipNum === 0) {
-          indexEl.hidden = true;
-          indexEl.textContent = "";
-        } else {
-          indexEl.hidden = false;
-          indexEl.textContent = String(tipNum);
-        }
+      if (titleEl) {
+        titleEl.textContent = tipNum === 0 ? title : `${tipNum}. ${title}`;
       }
-      if (titleEl) titleEl.textContent = title;
       if (subtitleEl) {
         subtitleEl.textContent = subtitle;
         subtitleEl.hidden = !subtitle;
@@ -603,10 +595,6 @@ function paintSeriesRail() {
     } else {
       el.setAttribute("href", "#");
       el.setAttribute("aria-disabled", "true");
-      if (indexEl) {
-        indexEl.hidden = true;
-        indexEl.textContent = "";
-      }
       if (titleEl) titleEl.textContent = `Skill #${tipNum}: Keep reading to unlock`;
       if (subtitleEl) {
         subtitleEl.textContent = subtitle;

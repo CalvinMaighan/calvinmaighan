@@ -5,6 +5,8 @@ intent: howto
 slug: catch-ai-code-mistakes-with-lint
 metaDescription: "catch AI code mistakes with lint by running ESLint after every agent edit, fixing new warnings first, and feeding structured rule errors back so the model repairs empty catches, floating promises, and async map bugs before review."
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html
+inBodyImage: "../../calvin-article-2.png"
+ogImage: "https://calvinmaighan.com/calvin-article-2.png"
 updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "Catch AI code mistakes with lint by treating ESLint as a hard gate after every agent edit. Run the same command your CI runs, fix new warnings first, then chip away at old debt. Agents repeat empty catch blocks, floating promises, and async map callbacks; lint surfaces those patterns before review. Wire lint into the agent stop path so the model sees structured errors and repairs them in the same turn."

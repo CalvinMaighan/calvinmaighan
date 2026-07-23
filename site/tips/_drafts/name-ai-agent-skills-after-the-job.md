@@ -5,6 +5,8 @@ intent: informational
 slug: name-ai-agent-skills-after-the-job
 metaDescription: "14 ai agent skills to speed up developers when you treat them like junior contractors with sharp jobs, real sources, and release gates. This URL redirects to the series intro."
 canonical: https://calvinmaighan.com/tips/how-ai-agents-speed-up-developers.html
+inBodyImage: "../calvin-article-2.png"
+ogImage: "https://calvinmaighan.com/calvin-article-2.png"
 updatedAt: 2026-07-23
 updatedHuman: July 23, 2026
 summary: "This page moved. Read how AI agents can speed up developers, then continue into the fourteen secret agent tips."

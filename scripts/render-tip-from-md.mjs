@@ -210,10 +210,10 @@ function pageHtml({ data, bodyHtml, faq, readMinutes }) {
   const title = data.title;
   const meta = data.metaDescription;
   const canonical = data.canonical;
-  const ogImage = data.ogImage || `${toRoot}/calvinmaighan-article-series-1.png`.replace("../..", "https://calvinmaighan.com").replace("..", "https://calvinmaighan.com");
+  const ogImage = data.ogImage || `${toRoot}/calvin-article-2.png`.replace("../..", "https://calvinmaighan.com").replace("..", "https://calvinmaighan.com");
   const ogAbs = data.ogImage?.startsWith("http")
     ? data.ogImage
-    : `https://calvinmaighan.com/calvinmaighan-article-series-1.png`;
+    : `https://calvinmaighan.com/calvin-article-2.png`;
   const summary = data.summary;
   const kicker = data.kicker || "";
   const series = data.series || "";
@@ -296,8 +296,6 @@ function pageHtml({ data, bodyHtml, faq, readMinutes }) {
     const label = isIntro
       ? item.title
       : `Skill #${tipNum}: Keep reading to unlock`;
-    const index =
-      isIntro || locked ? "" : String(tipNum);
     const sub = item.subtitle || "";
     return `            <li>
               <a
@@ -310,7 +308,6 @@ function pageHtml({ data, bodyHtml, faq, readMinutes }) {
                 href="${isIntro ? escapeHtml(item.path) : "#"}"
                 ${locked ? 'aria-disabled="true"' : ""}
               >
-                <span class="article-series-card-index"${isIntro || locked ? " hidden" : ""}>${index}</span>
                 <span class="article-series-card-copy">
                   <span class="article-series-card-title">${escapeHtml(label)}</span>
                   <span class="article-series-card-subtitle"${!sub ? " hidden" : ""}>${escapeHtml(sub)}</span>
@@ -458,7 +455,7 @@ ${JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2)
             <a class="btn btn-primary article-byline-cta" href="${toRoot}/index.html#contact" data-i18n="article.book">${escapeHtml(ctaFold)}</a>
           </div>
           <figure class="article-cover">
-            <img src="${escapeHtml(data.inBodyImage || `${toRoot}/calvinmaighan-article-series-1.png`)}" alt="${escapeHtml(imgAlt)}" width="1672" height="941" decoding="async" />
+            <img src="${escapeHtml(data.inBodyImage || `${toRoot}/calvin-article-2.png`)}" alt="${escapeHtml(imgAlt)}" width="1672" height="941" decoding="async" />
           </figure>
           <p class="article-summary">${inline(summary)}</p>
           <aside class="article-aside" aria-label="Series">

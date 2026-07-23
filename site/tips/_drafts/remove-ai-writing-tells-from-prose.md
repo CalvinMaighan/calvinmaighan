@@ -5,6 +5,8 @@ intent: howto
 slug: remove-ai-writing-tells-from-prose
 metaDescription: "remove AI writing tells from prose with a stop-slop pass so public writing sounds like a person with judgment, not a model performing intelligence."
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/remove-ai-writing-tells-from-prose.html
+inBodyImage: "../../calvin-article-2.png"
+ogImage: "https://calvinmaighan.com/calvin-article-2.png"
 updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "remove AI writing tells from prose before you publish anything that left an agent chat. stop-slop cuts filler, false agency, binary contrasts, and em dash crutches. I run it on articles, proposals, and UI microcopy. Read the draft aloud. If it sounds like a keynote, cut until it sounds like a colleague. Trust ranks longer than clever cadence."

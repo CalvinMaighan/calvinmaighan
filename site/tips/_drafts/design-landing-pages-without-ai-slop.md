@@ -5,6 +5,8 @@ intent: howto
 slug: design-landing-pages-without-ai-slop
 metaDescription: "design landing pages without AI slop by forcing brand-first first viewports, real imagery, and fewer decorative cards so the page could not belong to any random SaaS."
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/design-landing-pages-without-ai-slop.html
+inBodyImage: "../../calvin-article-2.png"
+ogImage: "https://calvinmaighan.com/calvin-article-2.png"
 updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "design landing pages without AI slop when default model layouts converge on purple gradients, cream terracotta serif kits, and dashboard heroes. hallmark pushes distinctive composition and a brand-first first viewport. I use it on greenfield marketing pages and on audits where hiding the nav would make the page unrecognizable as yours."

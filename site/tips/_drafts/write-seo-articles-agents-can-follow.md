@@ -5,6 +5,8 @@ intent: howto
 slug: write-seo-articles-agents-can-follow
 metaDescription: "write SEO articles agents can follow with a locked longtail keyword, answer-first summary, honest Article and FAQ JSON-LD, real citations, CTAs, and a stop-slop pass so the /article skill ships indexable tips without improvised SEO."
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html
+inBodyImage: "../../calvin-article-2.png"
+ogImage: "https://calvinmaighan.com/calvin-article-2.png"
 updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "Write SEO articles agents can follow by locking a longtail keyword, one intent, a summary that answers first, honest Article and FAQ JSON-LD, real citations, and a stop-slop pass before publish. The /article skill turns content SEO into a checklist an agent executes the same way /lint and /prod gate code."

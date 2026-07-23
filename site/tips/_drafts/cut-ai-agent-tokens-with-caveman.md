@@ -15,9 +15,9 @@ metaDescription: "cut AI agent tokens with caveman by forcing terse, filler-free
 canonical: "https://calvinmaighan.com/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html"
 updatedAt: "2026-07-22"
 author: "Calvin Maighan"
-ogImage: "https://calvinmaighan.com/calvinmaighan-article-series-1.png"
-inBodyImage: "../../calvinmaighan-article-series-1.png"
-inBodyImageAlt: "Brand series image for a tip about compressing agent narration with caveman mode while preserving exact code"
+ogImage: "https://calvinmaighan.com/calvin-article-3.png"
+inBodyImage: "../../calvin-article-3.png"
+inBodyImageAlt: "Cover for skill 3: cut AI agent tokens with caveman"
 internalLinks: ["./scrape-websites-for-ai-agent-research.html","./read-dependency-source-code-with-opensrc.html","../name-ai-agent-skills-after-the-job.html","../../index.html#contact"]
 externalSources: ["https://github.com/JuliusBrussee/caveman","https://github.com/JuliusBrussee/caveman/blob/HEAD/skills/caveman/SKILL.md","https://blog.jetbrains.com/ai/2026/07/speak-to-ai-agents-like-cavemen-tosave-tokens/","https://cursor.com/docs/skills"]
 faq:

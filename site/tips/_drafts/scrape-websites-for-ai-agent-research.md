@@ -15,8 +15,8 @@ metaDescription: "scrape websites for AI agent research with Firecrawl so agents
 canonical: "https://calvinmaighan.com/tips/secret-agent-tips/scrape-websites-for-ai-agent-research.html"
 updatedAt: "2026-07-22"
 author: "Calvin Maighan"
-ogImage: "https://calvinmaighan.com/calvinmaighan-article-series-1.png"
-inBodyImage: "../../calvinmaighan-article-series-1.png"
+ogImage: "https://calvinmaighan.com/calvin-article-2.png"
+inBodyImage: "../../calvin-article-2.png"
 inBodyImageAlt: "Brand series image introducing a Firecrawl workflow for agent web research on product teams"
 internalLinks: ["./read-dependency-source-code-with-opensrc.html","./cut-ai-agent-tokens-with-caveman.html","../name-ai-agent-skills-after-the-job.html","../../index.html#contact"]
 externalSources: ["https://docs.firecrawl.dev/","https://docs.firecrawl.dev/features/agent","https://docs.firecrawl.dev/developer-guides/usage-guides/choosing-the-data-extractor","https://github.com/firecrawl/firecrawl","https://www.firecrawl.dev/agent"]

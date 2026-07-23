@@ -5,6 +5,8 @@ intent: informational
 slug: how-ai-agents-speed-up-developers
 metaDescription: "14 ai agent skills to speed up developers: a plain-language map for product owners who want AI in the build loop, plus a shareable path for the engineering team."
 canonical: https://calvinmaighan.com/tips/how-ai-agents-speed-up-developers.html
+inBodyImage: "../calvin-article-2.png"
+ogImage: "https://calvinmaighan.com/calvin-article-2.png"
 updatedAt: 2026-07-23
 updatedHuman: July 23, 2026
 summary: "14 ai agent skills to speed up developers is not about typing faster. It is about cutting the waiting between a clear goal and a change your team trusts: research, reading unfamiliar code, drafting, review, and release checks. This page is the map. The next fourteen tips are the practical skills I use with teams so agents help you ship instead of creating cleanup."

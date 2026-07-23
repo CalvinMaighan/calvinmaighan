@@ -5,6 +5,8 @@ intent: howto
 slug: ship-production-releases-with-agent-checks
 metaDescription: "ship production releases with agent checks using a fixed /prod skill: sync main, bump the version, run typecheck and build, commit only intended files, push, and open a PR humans merge while GitHub environment rules still gate deploy."
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html
+inBodyImage: "../../calvin-article-2.png"
+ogImage: "https://calvinmaighan.com/calvin-article-2.png"
 updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "Ship production releases with agent checks by giving the agent a fixed validate-then-publish script: sync main, pick a safe branch, bump the release, run typecheck and build, commit only intended files, push, and open a PR for human merge. Agents must never merge to production. Protection rules, reviewers, and environment secrets stay in GitHub."
