@@ -73,18 +73,22 @@ Scroll to the end to unlock tip 1. These are practical tips you can share with t
 
 ## FAQ
 
-### Is this page one of the fourteen tips?
+### Who is this page for?
 
-No. This is the series intro for product owners. The fourteen tips start at tip 1.
+Product owners who bought AI coding tools and still feel the sprint drag. Hand tip 1 to engineering when you want the concrete skills.
+
+### What should I understand before I share this?
+
+Why agents feel fast in demos and slow in real work, which stalls burn cycle time, and why jobs beat a chat box pointed at the repo.
+
+### How do I roll this out without overwhelming the team?
+
+Unlock tip 1, share it with the best devs you know, and ask for one research habit this week. Skip installing fourteen skills on day one.
 
 ### Will agents replace my engineers?
 
 No. They compress grunt work. Your seniors still own architecture, risk, and what ships.
 
-### Where should a team start after this intro?
+### Do we need one specific coding tool?
 
-Share tip 1 with engineering and install one research habit this week. Do not install fourteen skills on day one.
-
-### Does this only work in one coding tool?
-
-No. The jobs transfer. The packaging may change. Research discipline, quality gates, and release checklists work across tools.
+No. The jobs transfer. Packaging changes by editor. Shared playbooks, quality gates, and release habits still apply.

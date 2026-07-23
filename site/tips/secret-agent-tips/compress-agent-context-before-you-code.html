@@ -657,21 +657,29 @@
 
 <h2>FAQ</h2>
 
-<h3>What does lean-ctx do for coding agents?</h3>
+<div class="faq-list">
 
-<p>lean-ctx compresses file reads, search results, and shell output so agents get ranked symbols and task-relevant slices instead of full file dumps that burn the context window.</p>
+<details class="faq-item">
+<summary class="faq-question">What does lean-ctx do for coding agents?</summary>
+<p class="faq-answer">lean-ctx compresses file reads, search results, and shell output so agents get ranked symbols and task-relevant slices instead of full file dumps that burn the context window.</p>
+</details>
 
-<h3>Is context compression the same as summarization?</h3>
+<details class="faq-item">
+<summary class="faq-question">Is context compression the same as summarization?</summary>
+<p class="faq-answer">Related but different. Summarization rewrites history. lean-ctx focuses on how tools return code and command output: modes, caching, and ranked compose so the model sees structure without noise.</p>
+</details>
 
-<p>Related but different. Summarization rewrites history. lean-ctx focuses on how tools return code and command output: modes, caching, and ranked compose so the model sees structure without noise.</p>
+<details class="faq-item">
+<summary class="faq-question">When should I still read a full file?</summary>
+<p class="faq-answer">Read full or anchored mode when you will edit that file, when a bug depends on exact formatting, or when compression hid a symbol you still need. Prefer compose first, then expand.</p>
+</details>
 
-<h3>When should I still read a full file?</h3>
+<details class="faq-item">
+<summary class="faq-question">Does compression hurt accuracy?</summary>
+<p class="faq-answer">Bad compression does. Good compression removes repetition and off-task files while keeping the symbols on the critical path. Measure with escaped defects and retry rate, not vibes.</p>
+</details>
 
-<p>Read full or anchored mode when you will edit that file, when a bug depends on exact formatting, or when compression hid a symbol you still need. Prefer compose first, then expand.</p>
-
-<h3>Does compression hurt accuracy?</h3>
-
-<p>Bad compression does. Good compression removes repetition and off-task files while keeping the symbols on the critical path. Measure with escaped defects and retry rate, not vibes.</p>
+</div>
 
 </section>
 

@@ -604,21 +604,29 @@
 
 <h2>FAQ</h2>
 
-<h3>Should every research question use Firecrawl Agent?</h3>
+<div class="faq-list">
 
-<p>No. Firecrawl’s own guide says JSON mode on /scrape is cheaper and synchronous for a single known URL. Reserve /agent for discovery when URLs are unknown or navigation spans many sites.</p>
+<details class="faq-item">
+<summary class="faq-question">Should every research question use Firecrawl Agent?</summary>
+<p class="faq-answer">No. Firecrawl’s own guide says JSON mode on /scrape is cheaper and synchronous for a single known URL. Reserve /agent for discovery when URLs are unknown or navigation spans many sites.</p>
+</details>
 
-<h3>How do I keep scrapes out of the hot context window?</h3>
+<details class="faq-item">
+<summary class="faq-question">How do I keep scrapes out of the hot context window?</summary>
+<p class="faq-answer">Write results to disk under a project research folder, then have the agent summarize with links. Tip 3 covers compressing the narration that remains.</p>
+</details>
 
-<p>Write results to disk under a project research folder, then have the agent summarize with links. Tip 3 covers compressing the narration that remains.</p>
+<details class="faq-item">
+<summary class="faq-question">What belongs in the skill description?</summary>
+<p class="faq-answer">Name the job: gather evidence from live web pages for product decisions. List triggers such as pricing checks, changelog reads, and competitor feature claims.</p>
+</details>
 
-<h3>What belongs in the skill description?</h3>
+<details class="faq-item">
+<summary class="faq-question">Can agents scrape authenticated product surfaces?</summary>
+<p class="faq-answer">Only with explicit credentials and an allowlist your security team approves. Default research skills should target public docs and marketing pages.</p>
+</details>
 
-<p>Name the job: gather evidence from live web pages for product decisions. List triggers such as pricing checks, changelog reads, and competitor feature claims.</p>
-
-<h3>Can agents scrape authenticated product surfaces?</h3>
-
-<p>Only with explicit credentials and an allowlist your security team approves. Default research skills should target public docs and marketing pages.</p>
+</div>
 
 </section>
 

@@ -611,21 +611,29 @@
 
 <h2>FAQ</h2>
 
-<h3>Does opensrc match my lockfile version?</h3>
+<div class="faq-list">
 
-<p>For npm packages, opensrc detects the installed version from package-lock.json, pnpm-lock.yaml, or yarn.lock. Pass --cwd when the agent works outside the app root. Pin with package@version when you need an explicit tag.</p>
+<details class="faq-item">
+<summary class="faq-question">Does opensrc match my lockfile version?</summary>
+<p class="faq-answer">For npm packages, opensrc detects the installed version from package-lock.json, pnpm-lock.yaml, or yarn.lock. Pass --cwd when the agent works outside the app root. Pin with package@version when you need an explicit tag.</p>
+</details>
 
-<h3>Where does the cache live?</h3>
+<details class="faq-item">
+<summary class="faq-question">Where does the cache live?</summary>
+<p class="faq-answer">By default under ~/.opensrc/. Override with OPENSRC_HOME. First fetch shallow-clones; later opensrc path calls return the cached directory.</p>
+</details>
 
-<p>By default under ~/.opensrc/. Override with OPENSRC_HOME. First fetch shallow-clones; later opensrc path calls return the cached directory.</p>
+<details class="faq-item">
+<summary class="faq-question">When should the agent skip opensrc?</summary>
+<p class="faq-answer">Skip it for straightforward public API usage that types and official docs already cover. Fetch source for internals, edge cases, and mismatches between docs and runtime.</p>
+</details>
 
-<h3>When should the agent skip opensrc?</h3>
+<details class="faq-item">
+<summary class="faq-question">Can I use opensrc outside JavaScript?</summary>
+<p class="faq-answer">Yes. Prefix PyPI with pypi:, crates with crates:, and pass owner/repo for GitHub. The same path composition pattern works across registries.</p>
+</details>
 
-<p>Skip it for straightforward public API usage that types and official docs already cover. Fetch source for internals, edge cases, and mismatches between docs and runtime.</p>
-
-<h3>Can I use opensrc outside JavaScript?</h3>
-
-<p>Yes. Prefix PyPI with pypi:, crates with crates:, and pass owner/repo for GitHub. The same path composition pattern works across registries.</p>
+</div>
 
 </section>
 

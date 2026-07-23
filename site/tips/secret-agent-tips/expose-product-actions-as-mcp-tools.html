@@ -574,21 +574,29 @@
 
 <h2>FAQ</h2>
 
-<h3>Is MCP only for IDEs?</h3>
+<div class="faq-list">
 
-<p>No. Any client that speaks MCP can call your tools. IDEs are early adopters.</p>
+<details class="faq-item">
+<summary class="faq-question">Is MCP only for IDEs?</summary>
+<p class="faq-answer">No. Any client that speaks MCP can call your tools. IDEs are early adopters.</p>
+</details>
 
-<h3>How do I price agent access?</h3>
+<details class="faq-item">
+<summary class="faq-question">How do I price agent access?</summary>
+<p class="faq-answer">Meter like an API. Keys, scopes, and credit costs should match compute reality.</p>
+</details>
 
-<p>Meter like an API. Keys, scopes, and credit costs should match compute reality.</p>
+<details class="faq-item">
+<summary class="faq-question">What about write actions?</summary>
+<p class="faq-answer">Require explicit confirmation, narrow scopes, and audit logs. Start read-only when unsure.</p>
+</details>
 
-<h3>What about write actions?</h3>
+<details class="faq-item">
+<summary class="faq-question">Can I wrap existing REST?</summary>
+<p class="faq-answer">Yes. Still present job-shaped names and stable schemas.</p>
+</details>
 
-<p>Require explicit confirmation, narrow scopes, and audit logs. Start read-only when unsure.</p>
-
-<h3>Can I wrap existing REST?</h3>
-
-<p>Yes. Still present job-shaped names and stable schemas.</p>
+</div>
 
 </section>
 

@@ -86,6 +86,27 @@ function mdToHtml(md) {
       continue;
     }
     if (line.startsWith("### ")) {
+      if (inFaq) {
+        const q = inline(line.slice(4));
+        i++;
+        while (i < lines.length && !lines[i].trim()) i++;
+        const ans = [];
+        while (
+          i < lines.length &&
+          lines[i].trim() &&
+          !lines[i].startsWith("#") &&
+          !lines[i].startsWith("- ") &&
+          !lines[i].startsWith("<")
+        ) {
+          ans.push(lines[i]);
+          i++;
+        }
+        const a = inline(ans.join(" "));
+        parts.push(
+          `<details class="faq-item">\n<summary class="faq-question">${q}</summary>\n<p class="faq-answer">${a}</p>\n</details>`,
+        );
+        continue;
+      }
       parts.push(`<h3>${inline(line.slice(4))}</h3>`);
       i++;
       continue;
@@ -93,12 +114,14 @@ function mdToHtml(md) {
     if (line.startsWith("## ")) {
       const title = line.slice(3).trim();
       if (inFaq) {
+        parts.push("</div>");
         parts.push("</section>");
         inFaq = false;
       }
       if (/^faq$/i.test(title)) {
         parts.push(`<section class="article-faq">`);
         parts.push(`<h2>${inline(title)}</h2>`);
+        parts.push(`<div class="faq-list">`);
         inFaq = true;
       } else {
         parts.push(`<h2>${inline(title)}</h2>`);
@@ -122,19 +145,32 @@ function mdToHtml(md) {
     }
     parts.push(`<p>${inline(para.join(" "))}</p>`);
   }
-  if (inFaq) parts.push("</section>");
+  if (inFaq) {
+    parts.push("</div>");
+    parts.push("</section>");
+  }
   return parts.join("\n\n");
 }
 
 function faqFromBody(html) {
-  // Extract h3 after <h2>FAQ</h2> for JSON-LD
+  // Extract accordion Q&A after <h2>FAQ</h2> for JSON-LD
   const idx = html.search(/<h2>FAQ<\/h2>/i);
   if (idx < 0) return [];
   const slice = html.slice(idx);
-  const re = /<h3>(.*?)<\/h3>\s*<p>(.*?)<\/p>/gs;
+  const re =
+    /<summary class="faq-question">(.*?)<\/summary>\s*<p class="faq-answer">(.*?)<\/p>/gs;
   const out = [];
   let m;
   while ((m = re.exec(slice)) && out.length < 8) {
+    out.push({
+      q: m[1].replace(/<[^>]+>/g, ""),
+      a: m[2].replace(/<[^>]+>/g, ""),
+    });
+  }
+  if (out.length) return out;
+  // Legacy h3/p FAQ
+  const legacy = /<h3>(.*?)<\/h3>\s*<p>(.*?)<\/p>/gs;
+  while ((m = legacy.exec(slice)) && out.length < 8) {
     out.push({
       q: m[1].replace(/<[^>]+>/g, ""),
       a: m[2].replace(/<[^>]+>/g, ""),

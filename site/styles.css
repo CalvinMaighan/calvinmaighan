@@ -1568,8 +1568,9 @@ main {
 }
 .article-faq {
  margin: var(--space-xl) 0;
- padding-top: var(--space-lg);
+ padding: var(--space-lg) 0 var(--space-xl);
  border-top: 1px solid var(--border);
+ background: transparent;
 }
 .faq-list {
  margin-top: var(--gap-xl);
@@ -1633,11 +1634,11 @@ main {
  margin: 0;
  padding: 0 var(--gap-l) 18px;
  max-width: 64ch;
- font-family: var(--serif);
+ font-family: var(--font-body);
  font-weight: 400;
- font-size: inherit;
+ font-size: var(--font-m);
  line-height: 1.65;
- color: var(--article);
+ color: var(--text-muted);
 }
 @media (prefers-reduced-motion: reduce) {
  .faq-item {

@@ -645,21 +645,29 @@
 
 <h2>FAQ</h2>
 
-<h3>What is the ponytail skill for AI coding agents?</h3>
+<div class="faq-list">
 
-<p>Ponytail is a coding discipline skill that forces the laziest solution that still works: YAGNI first, reuse existing code, prefer stdlib and native features, then ship the shortest correct diff.</p>
+<details class="faq-item">
+<summary class="faq-question">What is the ponytail skill for AI coding agents?</summary>
+<p class="faq-answer">Ponytail is a coding discipline skill that forces the laziest solution that still works: YAGNI first, reuse existing code, prefer stdlib and native features, then ship the shortest correct diff.</p>
+</details>
 
-<h3>Does minimal mean skip tests and error handling?</h3>
+<details class="faq-item">
+<summary class="faq-question">Does minimal mean skip tests and error handling?</summary>
+<p class="faq-answer">No. Ponytail never cuts validation at trust boundaries, data-loss protection, security basics, or anything you explicitly requested. Lazy means fewer files and fewer abstractions, not careless code.</p>
+</details>
 
-<p>No. Ponytail never cuts validation at trust boundaries, data-loss protection, security basics, or anything you explicitly requested. Lazy means fewer files and fewer abstractions, not careless code.</p>
+<details class="faq-item">
+<summary class="faq-question">How do I know an agent ignored ponytail?</summary>
+<p class="faq-answer">Look for new folders, unused interfaces, config for values that never change, and drive-by refactors outside the ticket. A healthy ponytail PR touches the fewest files that fix the root cause.</p>
+</details>
 
-<h3>How do I know an agent ignored ponytail?</h3>
+<details class="faq-item">
+<summary class="faq-question">When should I turn ponytail off?</summary>
+<p class="faq-answer">Turn it off when the user asks for the full design, when you are doing greenfield architecture on purpose, or when a measured bottleneck proves the simple path failed.</p>
+</details>
 
-<p>Look for new folders, unused interfaces, config for values that never change, and drive-by refactors outside the ticket. A healthy ponytail PR touches the fewest files that fix the root cause.</p>
-
-<h3>When should I turn ponytail off?</h3>
-
-<p>Turn it off when the user asks for the full design, when you are doing greenfield architecture on purpose, or when a measured bottleneck proves the simple path failed.</p>
+</div>
 
 </section>
 

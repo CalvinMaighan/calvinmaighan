@@ -664,21 +664,29 @@
 
 <h2>FAQ</h2>
 
-<h3>What is a codebase-memory MCP server?</h3>
+<div class="faq-list">
 
-<p>It is an MCP server that stores entities, relations, and observations about your repository so agents can query prior decisions and structure across chats instead of relying on one thread's context window.</p>
+<details class="faq-item">
+<summary class="faq-question">What is a codebase-memory MCP server?</summary>
+<p class="faq-answer">It is an MCP server that stores entities, relations, and observations about your repository so agents can query prior decisions and structure across chats instead of relying on one thread's context window.</p>
+</details>
 
-<h3>How is memory different from Cursor rules?</h3>
+<details class="faq-item">
+<summary class="faq-question">How is memory different from Cursor rules?</summary>
+<p class="faq-answer">Rules are static instructions you maintain by hand. Memory accumulates project facts and decisions over time through graph or search tools. Use both: rules for invariants, memory for living context.</p>
+</details>
 
-<p>Rules are static instructions you maintain by hand. Memory accumulates project facts and decisions over time through graph or search tools. Use both: rules for invariants, memory for living context.</p>
+<details class="faq-item">
+<summary class="faq-question">What should we store in memory first?</summary>
+<p class="faq-answer">Boot order, forbidden patterns, naming conventions, tenancy or auth boundaries, and the last three production incidents with root causes. Skip trivia and transient UI tweaks.</p>
+</details>
 
-<h3>What should we store in memory first?</h3>
+<details class="faq-item">
+<summary class="faq-question">Can memory go stale and hurt agents?</summary>
+<p class="faq-answer">Yes. Require dates on observations, delete superseded facts, and re-index after large refactors. Stale memory is worse than no memory when it contradicts the code.</p>
+</details>
 
-<p>Boot order, forbidden patterns, naming conventions, tenancy or auth boundaries, and the last three production incidents with root causes. Skip trivia and transient UI tweaks.</p>
-
-<h3>Can memory go stale and hurt agents?</h3>
-
-<p>Yes. Require dates on observations, delete superseded facts, and re-index after large refactors. Stale memory is worse than no memory when it contradicts the code.</p>
+</div>
 
 </section>
 
