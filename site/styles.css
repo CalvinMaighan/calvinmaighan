@@ -1144,7 +1144,7 @@ main {
 }}
 .site-footer {
  padding: var(--space-2xl) 0 var(--space-xl);
- background: var(--background);
+ background: linear-gradient(180deg, var(--button) 0%, var(--cta) 400%);
  border-top: 1px solid var(--border);
 }
 .foot-statement {
@@ -1551,7 +1551,18 @@ main {
  color: var(--text-muted);
 }
 .article-cta-end {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ gap: var(--gap-m);
  margin: var(--space-lg) 0 var(--space-xl);
+}
+.article-cta-end p {
+ margin: 0;
+ font-family: var(--font-body);
+ font-size: var(--font-m);
+ line-height: 1.55;
+ color: var(--text);
 }
 .article-inline-figure {
  margin: var(--space-xl) 0;
@@ -1650,7 +1661,7 @@ main {
  .faq-question::after {
   transition: none;
 }}
-.article-body a {
+.article-body a:not(.btn) {
  color: var(--link, var(--accent));
  text-underline-offset: 0.15em;
 }

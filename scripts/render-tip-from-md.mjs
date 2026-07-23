@@ -296,6 +296,10 @@ function pageHtml({ data, bodyHtml, faq, readMinutes }) {
             </li>`;
   }).join("\n");
 
+  const faqStart = bodyHtml.search(/<section class="article-faq">/i);
+  const bodyMain = faqStart >= 0 ? bodyHtml.slice(0, faqStart).trimEnd() : bodyHtml;
+  const faqHtml = faqStart >= 0 ? bodyHtml.slice(faqStart).trim() : "";
+
   return `<!doctype html>
 <html lang="en" data-theme="light" data-accent="beige">
   <head>
@@ -436,12 +440,14 @@ ${seriesRail}
             </ol>
           </aside>
           <div class="article-body">
-${bodyHtml}
+${bodyMain}
 
-            <p class="article-cta-end">${inline(ctaEnd)} <a href="${toRoot}/index.html#contact">Book a call</a>.</p>
-            <p class="article-book-mobile">
-              <a class="btn btn-primary" href="${toRoot}/index.html#contact" data-i18n="article.book">${escapeHtml(ctaFold)}</a>
-            </p>
+            <div class="article-cta-end">
+              <p>${inline(ctaEnd)}</p>
+              <a class="btn btn-primary" href="${toRoot}/index.html#contact" data-i18n="article.book">Book a call</a>
+            </div>
+
+${faqHtml}
           </div>
         </div>
       </article>

@@ -17,7 +17,7 @@ nextHref: "./secret-agent-tips/read-dependency-source-code-with-opensrc.html"
 nextLabel: "Next article"
 nextLocked: true
 ctaAboveFold: "Book a call"
-ctaEnd: "If you want this operating system installed on your team"
+ctaEnd: "If you want me to coach your team, I'm here to help"
 inBodyImageAlt: "Cover for 14 AI agent skills to speed up developers"
 out: site/tips/how-ai-agents-speed-up-developers.html
 ---
