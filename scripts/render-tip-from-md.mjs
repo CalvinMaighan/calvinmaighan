@@ -348,6 +348,17 @@ function pageHtml({ data, bodyHtml, faq, readMinutes }) {
     <script type="application/ld+json">
 ${JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2)}
     </script>
+    <script>
+      (() => {
+        try {
+          const root = document.documentElement;
+          const mode = localStorage.getItem("active-theme:mode");
+          const color = localStorage.getItem("active-theme:color");
+          if (mode === "light" || mode === "dark") root.dataset.theme = mode;
+          if (color) root.dataset.accent = color;
+        } catch (_) {}
+      })();
+    </script>
     <link rel="stylesheet" href="${toRoot}/styles.css" />
   </head>
   <body class="article-page" data-series-slug="${escapeHtml(seriesSlug)}">

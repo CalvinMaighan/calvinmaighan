@@ -94,6 +94,17 @@
   ]
 }
     </script>
+    <script>
+      (() => {
+        try {
+          const root = document.documentElement;
+          const mode = localStorage.getItem("active-theme:mode");
+          const color = localStorage.getItem("active-theme:color");
+          if (mode === "light" || mode === "dark") root.dataset.theme = mode;
+          if (color) root.dataset.accent = color;
+        } catch (_) {}
+      })();
+    </script>
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body class="article-page" data-series-slug="how-ai-agents-speed-up-developers">

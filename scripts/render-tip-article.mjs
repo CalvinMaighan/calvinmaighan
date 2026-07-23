@@ -234,6 +234,17 @@ const html = `<!doctype html>
     <meta name="twitter:title" content="${esc(title)}" />
     <meta name="twitter:description" content="${esc(meta)}" />
     <meta name="twitter:image" content="${esc(ogImage)}" />
+    <script>
+      (() => {
+        try {
+          const root = document.documentElement;
+          const mode = localStorage.getItem("active-theme:mode");
+          const color = localStorage.getItem("active-theme:color");
+          if (mode === "light" || mode === "dark") root.dataset.theme = mode;
+          if (color) root.dataset.accent = color;
+        } catch (_) {}
+      })();
+    </script>
     <link rel="stylesheet" href="../../styles.css" />
     <script type="application/ld+json">
 ${JSON.stringify(jsonLd, null, 2)}
