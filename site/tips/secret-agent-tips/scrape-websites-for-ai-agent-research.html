@@ -109,15 +109,19 @@
         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
       </symbol>
       <symbol id="icon-github" viewBox="0 0 24 24">
-        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
-          <path d="M9 18c-4.51 2-5-2-7-2" />
-        </g>
+        <path fill="currentColor" d="M12 1C5.9225 1 1 5.9225 1 12C1 16.8675 4.14875 20.9787 8.52125 22.4362C9.07125 22.5325 9.2775 22.2025 9.2775 21.9137C9.2775 21.6525 9.26375 20.7862 9.26375 19.865C6.5 20.3737 5.785 19.1912 5.565 18.5725C5.44125 18.2562 4.905 17.28 4.4375 17.0187C4.0525 16.8125 3.5025 16.3037 4.42375 16.29C5.29 16.2762 5.90875 17.0875 6.115 17.4175C7.105 19.0812 8.68625 18.6137 9.31875 18.325C9.415 17.61 9.70375 17.1287 10.02 16.8537C7.5725 16.5787 5.015 15.63 5.015 11.4225C5.015 10.2262 5.44125 9.23625 6.1425 8.46625C6.0325 8.19125 5.6475 7.06375 6.2525 5.55125C6.2525 5.55125 7.17375 5.2625 9.2775 6.67875C10.1575 6.43125 11.0925 6.3075 12.0275 6.3075C12.9625 6.3075 13.8975 6.43125 14.7775 6.67875C16.8813 5.24875 17.8025 5.55125 17.8025 5.55125C18.4075 7.06375 18.0225 8.19125 17.9125 8.46625C18.6138 9.23625 19.04 10.2125 19.04 11.4225C19.04 15.6437 16.4688 16.5787 14.0213 16.8537C14.42 17.1975 14.7638 17.8575 14.7638 18.8887C14.7638 20.36 14.75 21.5425 14.75 21.9137C14.75 22.2025 14.9563 22.5462 15.5063 22.4362C19.8513 20.9787 23 16.8537 23 12C23 5.9225 18.0775 1 12 1Z" />
       </symbol>
       <symbol id="icon-mail" viewBox="0 0 24 24">
         <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
           <path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
           <rect width="20" height="16" x="2" y="4" rx="2" />
+        </g>
+      </symbol>
+      <symbol id="icon-external" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M15 3h6v6" />
+          <path d="M10 14L21 3" />
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
         </g>
       </symbol>
     </svg>
@@ -473,11 +477,11 @@
 
 <p>Product work leans on the public web more than engineers admit. Support macros quote docs. Sales asks whether a rival shipped SSO. Design wants the exact constraint from a browser API page. If those lookups stay outside the agent loop, humans become the scraper. If they enter the loop without structure, agents drown the session in HTML.</p>
 
-<p>A dedicated skill fixes both failure modes. Name it after the job, per <a href="../name-ai-agent-skills-after-the-job.html" rel="noopener">name AI agent skills after the job</a>. Something like research-live-web-evidence beats firecrawl-utils. The description should say when to scrape and when to stop.</p>
+<p>A dedicated skill fixes both failure modes. Name it after the job, per <a class="article-link" href="../name-ai-agent-skills-after-the-job.html" rel="noopener"><span class="article-link-text">name AI agent skills after the job</span></a>. Something like research-live-web-evidence beats firecrawl-utils. The description should say when to scrape and when to stop.</p>
 
 <h2>Pick the Firecrawl surface that matches the question</h2>
 
-<p>Firecrawl’s guide on <a href="https://docs.firecrawl.dev/developer-guides/usage-guides/choosing-the-data-extractor" rel="noopener">choosing the data extractor</a> draws a clean line. Know the exact URL and need one page? Use /scrape, optionally with JSON mode. Need autonomous discovery across sites? Use <a href="https://docs.firecrawl.dev/features/agent" rel="noopener">/agent</a>. Their docs are blunt: Agent is right when you do not know the URLs or need navigation across the web. For a single known URL, scrape stays cheaper and synchronous.</p>
+<p>Firecrawl’s guide on <a class="article-link is-external" href="https://docs.firecrawl.dev/developer-guides/usage-guides/choosing-the-data-extractor" rel="noopener" target="_blank"><span class="article-link-text">choosing the data extractor</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a> draws a clean line. Know the exact URL and need one page? Use /scrape, optionally with JSON mode. Need autonomous discovery across sites? Use <a class="article-link is-external" href="https://docs.firecrawl.dev/features/agent" rel="noopener" target="_blank"><span class="article-link-text">/agent</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a>. Their docs are blunt: Agent is right when you do not know the URLs or need navigation across the web. For a single known URL, scrape stays cheaper and synchronous.</p>
 
 <h3>Practical defaults for product teams</h3>
 
@@ -501,17 +505,17 @@
 
 <p>Scraped markdown is cheaper than HTML and still too large for casual pasting. Save outputs under something like site/tips/_research/ or a private .firecrawl/ folder. Have the agent read the saved file, summarize, and keep the path in the answer. Your future self can reopen the artifact. Your context window stays alive.</p>
 
-<p>Tip 3 in this series shows how to <a href="./cut-ai-agent-tokens-with-caveman.html" rel="noopener">cut AI agent tokens with caveman</a> once the research returns. Compression helps the narration around citations. It does not replace saving the source artifact.</p>
+<p>Tip 3 in this series shows how to <a class="article-link" href="./cut-ai-agent-tokens-with-caveman.html" rel="noopener"><span class="article-link-text">cut AI agent tokens with caveman</span></a> once the research returns. Compression helps the narration around citations. It does not replace saving the source artifact.</p>
 
 <h2>Schemas beat vibes</h2>
 
 <p>When you need structured comparison, give Firecrawl a schema. Pricing tiers, feature flags, support channels, last-updated dates. Structured extract turns a marketing page into rows you can diff next month. Free-form summaries are fine for a quick read. They fail for recurring competitive tracking.</p>
 
-<p>Example prompt shape for Agent: “Find public pricing pages for tools A, B, and C. Return plan name, monthly price, and SSO availability. Prefer primary vendor pages over blogs.” Optional URL seeds help when you already know the homepages. The <a href="https://www.firecrawl.dev/agent" rel="noopener">Firecrawl Agent product page</a> shows the same prompt-to-dataset pattern.</p>
+<p>Example prompt shape for Agent: “Find public pricing pages for tools A, B, and C. Return plan name, monthly price, and SSO availability. Prefer primary vendor pages over blogs.” Optional URL seeds help when you already know the homepages. The <a class="article-link is-external" href="https://www.firecrawl.dev/agent" rel="noopener" target="_blank"><span class="article-link-text">Firecrawl Agent product page</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a> shows the same prompt-to-dataset pattern.</p>
 
 <h2>Compose with opensrc, do not collapse the tools</h2>
 
-<p>Tip 1 covered <a href="./read-dependency-source-code-with-opensrc.html" rel="noopener">read dependency source code with opensrc</a>. That tool answers “what does our installed library do?” Firecrawl answers “what does this public page say today?” Mixing them into one mega-skill creates muddy triggers. Keep two job names. Let the agent pick.</p>
+<p>Tip 1 covered <a class="article-link" href="./read-dependency-source-code-with-opensrc.html" rel="noopener"><span class="article-link-text">read dependency source code with opensrc</span></a>. That tool answers “what does our installed library do?” Firecrawl answers “what does this public page say today?” Mixing them into one mega-skill creates muddy triggers. Keep two job names. Let the agent pick.</p>
 
 <p>A clean split looks like this. Bug in zod coercion → opensrc. Claim on a vendor status page → Firecrawl. Architecture decision that needs both → run both, cite both, then decide.</p>
 
@@ -531,11 +535,11 @@
 
 <p>Morning: install the Firecrawl CLI or SDK your agents already call, confirm auth, and scrape one known docs URL by hand. Midday: write the job-named skill with the contract above. Afternoon: run three real questions from your backlog. Evening: keep the two scrapes that changed a decision, delete the rest, and note credit spend.</p>
 
-<p>Open source context lives on <a href="https://github.com/firecrawl/firecrawl" rel="noopener">github.com/firecrawl/firecrawl</a> and the <a href="https://docs.firecrawl.dev/" rel="noopener">docs root</a>. Read the extractor guide before you let agents choose tools unsupervised.</p>
+<p>Open source context lives on <a class="article-link is-external is-github" href="https://github.com/firecrawl/firecrawl" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">github.com/firecrawl/firecrawl</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a> and the <a class="article-link is-external" href="https://docs.firecrawl.dev/" rel="noopener" target="_blank"><span class="article-link-text">docs root</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a>. Read the extractor guide before you let agents choose tools unsupervised.</p>
 
 <h2>Where consultants earn their keep</h2>
 
-<p>Most teams stall on prompt fluff: “research the web thoroughly.” That instruction burns credits and returns essays. The install that works is boring. Job name. Allowed domains. Tool chooser. Schema. Disk artifacts. Citation gate. If you want that kit dropped into Cursor or Claude Code for your product org, <a href="../../index.html#contact" rel="noopener">book a call</a>.</p>
+<p>Most teams stall on prompt fluff: “research the web thoroughly.” That instruction burns credits and returns essays. The install that works is boring. Job name. Allowed domains. Tool chooser. Schema. Disk artifacts. Citation gate. If you want that kit dropped into Cursor or Claude Code for your product org, <a class="article-link" href="../../index.html#contact" rel="noopener"><span class="article-link-text">book a call</span></a>.</p>
 
 <p>Web pages move. Your agent stack should move with them, on purpose, with receipts.</p>
 

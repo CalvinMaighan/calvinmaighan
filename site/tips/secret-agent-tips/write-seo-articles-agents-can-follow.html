@@ -109,15 +109,19 @@
         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
       </symbol>
       <symbol id="icon-github" viewBox="0 0 24 24">
-        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
-          <path d="M9 18c-4.51 2-5-2-7-2" />
-        </g>
+        <path fill="currentColor" d="M12 1C5.9225 1 1 5.9225 1 12C1 16.8675 4.14875 20.9787 8.52125 22.4362C9.07125 22.5325 9.2775 22.2025 9.2775 21.9137C9.2775 21.6525 9.26375 20.7862 9.26375 19.865C6.5 20.3737 5.785 19.1912 5.565 18.5725C5.44125 18.2562 4.905 17.28 4.4375 17.0187C4.0525 16.8125 3.5025 16.3037 4.42375 16.29C5.29 16.2762 5.90875 17.0875 6.115 17.4175C7.105 19.0812 8.68625 18.6137 9.31875 18.325C9.415 17.61 9.70375 17.1287 10.02 16.8537C7.5725 16.5787 5.015 15.63 5.015 11.4225C5.015 10.2262 5.44125 9.23625 6.1425 8.46625C6.0325 8.19125 5.6475 7.06375 6.2525 5.55125C6.2525 5.55125 7.17375 5.2625 9.2775 6.67875C10.1575 6.43125 11.0925 6.3075 12.0275 6.3075C12.9625 6.3075 13.8975 6.43125 14.7775 6.67875C16.8813 5.24875 17.8025 5.55125 17.8025 5.55125C18.4075 7.06375 18.0225 8.19125 17.9125 8.46625C18.6138 9.23625 19.04 10.2125 19.04 11.4225C19.04 15.6437 16.4688 16.5787 14.0213 16.8537C14.42 17.1975 14.7638 17.8575 14.7638 18.8887C14.7638 20.36 14.75 21.5425 14.75 21.9137C14.75 22.2025 14.9563 22.5462 15.5063 22.4362C19.8513 20.9787 23 16.8537 23 12C23 5.9225 18.0775 1 12 1Z" />
       </symbol>
       <symbol id="icon-mail" viewBox="0 0 24 24">
         <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
           <path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
           <rect width="20" height="16" x="2" y="4" rx="2" />
+        </g>
+      </symbol>
+      <symbol id="icon-external" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M15 3h6v6" />
+          <path d="M10 14L21 3" />
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
         </g>
       </symbol>
     </svg>
@@ -473,9 +477,9 @@
 
 <h2>Why content SEO belongs in an agent skill</h2>
 
-<p>Google still asks whether the page helps people. The <a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener">creating helpful, people-first content</a> guide and the <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" rel="noopener">SEO starter guide</a> remain the baseline. Structured data stays useful for machines even when rich result features change; <a href="https://schema.org/Article" rel="noopener">schema.org Article</a> and FAQ types give crawlers and LLM tools a clean graph when the visible page matches the markup.</p>
+<p>Google still asks whether the page helps people. The <a class="article-link is-external" href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener" target="_blank"><span class="article-link-text">creating helpful, people-first content</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a> guide and the <a class="article-link is-external" href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" rel="noopener" target="_blank"><span class="article-link-text">SEO starter guide</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a> remain the baseline. Structured data stays useful for machines even when rich result features change; <a class="article-link is-external" href="https://schema.org/Article" rel="noopener" target="_blank"><span class="article-link-text">schema.org Article</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a> and FAQ types give crawlers and LLM tools a clean graph when the visible page matches the markup.</p>
 
-<p>Agents skip those steps unless the skill forbids skipping. Cursor’s own <a href="https://cursor.com/docs/skills" rel="noopener">skills documentation</a> frames skills as reusable jobs. Name the job after the outcome: <code>write-seo-articles-agents-can-follow</code>, then put the rules in the file the agent must read. Follow <a href="https://www.linkedin.com/company/google-search-central/" rel="noopener">Google Search Central on LinkedIn</a> for platform updates that should refresh dated claims.</p>
+<p>Agents skip those steps unless the skill forbids skipping. Cursor’s own <a class="article-link is-external" href="https://cursor.com/docs/skills" rel="noopener" target="_blank"><span class="article-link-text">skills documentation</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a> frames skills as reusable jobs. Name the job after the outcome: <code>write-seo-articles-agents-can-follow</code>, then put the rules in the file the agent must read. Follow <a class="article-link is-external" href="https://www.linkedin.com/company/google-search-central/" rel="noopener" target="_blank"><span class="article-link-text">Google Search Central on LinkedIn</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a> for platform updates that should refresh dated claims.</p>
 
 <h2>Lock research before prose</h2>
 
@@ -512,13 +516,13 @@
 
 <h2>Schema that matches the page</h2>
 
-<p>JSON-LD must stay honest. Headline, description, dates, author Person, image, and mainEntityOfPage belong on every article. When the page has an FAQ section, add a FAQPage node whose questions match the visible H3s. Schema.org’s <a href="https://schema.org/FAQPage" rel="noopener">FAQPage</a> type exists for that graph. Do not invent questions for markup alone.</p>
+<p>JSON-LD must stay honest. Headline, description, dates, author Person, image, and mainEntityOfPage belong on every article. When the page has an FAQ section, add a FAQPage node whose questions match the visible H3s. Schema.org’s <a class="article-link is-external" href="https://schema.org/FAQPage" rel="noopener" target="_blank"><span class="article-link-text">FAQPage</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a> type exists for that graph. Do not invent questions for markup alone.</p>
 
 <p>Google’s guidance on generative AI features still stresses technical clarity and index eligibility. Follow people-first content first; treat schema as a clarity layer, not a ranking cheat code.</p>
 
 <h2>Voice: stop-slop before publish</h2>
 
-<p>Agents default to throat-clearing, binary contrasts, and em dash crutches. The <a href="./remove-ai-writing-tells-from-prose.html" rel="noopener">stop-slop tip</a> in this series covers the cleanup. The /article skill requires that pass. Cut filler, name actors, vary sentence length, keep technical terms exact.</p>
+<p>Agents default to throat-clearing, binary contrasts, and em dash crutches. The <a class="article-link" href="./remove-ai-writing-tells-from-prose.html" rel="noopener"><span class="article-link-text">stop-slop tip</span></a> in this series covers the cleanup. The /article skill requires that pass. Cut filler, name actors, vary sentence length, keep technical terms exact.</p>
 
 <p>Thought-leadership voice on a consulting site means specific experience signals: what you installed, what failed, what the checklist prevents. Generic landscape copy fails both SEO and sales.</p>
 
@@ -550,11 +554,11 @@
 
 <p>Tip 1 teaches reading dependency source. Later tips cut tokens, compress context, and remove prose slop. /article consumes those skills: research with scrape tools, keep the draft minimal, strip AI tells, then publish with the same discipline /prod uses for code. Content and code share one operating system for agents.</p>
 
-<p>Teams that only automate coding still lose days to blog and docs debt. Teams that only automate content ship pretty pages that break production. Install both. See <a href="./catch-ai-code-mistakes-with-lint.html" rel="noopener">lint</a> and <a href="./ship-production-releases-with-agent-checks.html" rel="noopener">production checks</a> for the coding side of that system.</p>
+<p>Teams that only automate coding still lose days to blog and docs debt. Teams that only automate content ship pretty pages that break production. Install both. See <a class="article-link" href="./catch-ai-code-mistakes-with-lint.html" rel="noopener"><span class="article-link-text">lint</span></a> and <a class="article-link" href="./ship-production-releases-with-agent-checks.html" rel="noopener"><span class="article-link-text">production checks</span></a> for the coding side of that system.</p>
 
 <h2>Series chrome and internal links</h2>
 
-<p>Standalone articles skip series kickers. Series tips show Tip N of 14 and a next tip control. Internal links should point to related tips and to <a href="../../index.html#contact" rel="noopener">contact</a> or <a href="../../index.html#tips" rel="noopener">tips</a> on the home page. This finale links back because content SEO sits in the same agent operating system as code gates.</p>
+<p>Standalone articles skip series kickers. Series tips show Tip N of 14 and a next tip control. Internal links should point to related tips and to <a class="article-link" href="../../index.html#contact" rel="noopener"><span class="article-link-text">contact</span></a> or <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">tips</span></a> on the home page. This finale links back because content SEO sits in the same agent operating system as code gates.</p>
 
 <h2>Quality bar for consulting sites</h2>
 
@@ -586,7 +590,7 @@
 
 <p>The skill ends with a strict checklist the agent must tick: keyword researched, intent stated, SERP skim noted, meta valid, summary under 150 words, first sentence keyed, slug aligned, heading hierarchy clean, length met, citations real, internal links present, images set, JSON-LD valid, FAQ honest, CTAs placed, date and byline visible, stop-slop done, portable MD written, site page shipped, sitemap updated. Unticked items mean the article is unfinished.</p>
 
-<p>If you want this /article skill installed beside your coding skills so your team ships indexable tips without inventing process each time, <a href="../../index.html#contact" rel="noopener">book a call</a>.</p>
+<p>If you want this /article skill installed beside your coding skills so your team ships indexable tips without inventing process each time, <a class="article-link" href="../../index.html#contact" rel="noopener"><span class="article-link-text">book a call</span></a>.</p>
 
 <h2>Keep a swipe file of good openings</h2>
 

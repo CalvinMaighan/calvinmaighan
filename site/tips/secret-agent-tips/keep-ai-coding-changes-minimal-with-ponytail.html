@@ -109,15 +109,19 @@
         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
       </symbol>
       <symbol id="icon-github" viewBox="0 0 24 24">
-        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
-          <path d="M9 18c-4.51 2-5-2-7-2" />
-        </g>
+        <path fill="currentColor" d="M12 1C5.9225 1 1 5.9225 1 12C1 16.8675 4.14875 20.9787 8.52125 22.4362C9.07125 22.5325 9.2775 22.2025 9.2775 21.9137C9.2775 21.6525 9.26375 20.7862 9.26375 19.865C6.5 20.3737 5.785 19.1912 5.565 18.5725C5.44125 18.2562 4.905 17.28 4.4375 17.0187C4.0525 16.8125 3.5025 16.3037 4.42375 16.29C5.29 16.2762 5.90875 17.0875 6.115 17.4175C7.105 19.0812 8.68625 18.6137 9.31875 18.325C9.415 17.61 9.70375 17.1287 10.02 16.8537C7.5725 16.5787 5.015 15.63 5.015 11.4225C5.015 10.2262 5.44125 9.23625 6.1425 8.46625C6.0325 8.19125 5.6475 7.06375 6.2525 5.55125C6.2525 5.55125 7.17375 5.2625 9.2775 6.67875C10.1575 6.43125 11.0925 6.3075 12.0275 6.3075C12.9625 6.3075 13.8975 6.43125 14.7775 6.67875C16.8813 5.24875 17.8025 5.55125 17.8025 5.55125C18.4075 7.06375 18.0225 8.19125 17.9125 8.46625C18.6138 9.23625 19.04 10.2125 19.04 11.4225C19.04 15.6437 16.4688 16.5787 14.0213 16.8537C14.42 17.1975 14.7638 17.8575 14.7638 18.8887C14.7638 20.36 14.75 21.5425 14.75 21.9137C14.75 22.2025 14.9563 22.5462 15.5063 22.4362C19.8513 20.9787 23 16.8537 23 12C23 5.9225 18.0775 1 12 1Z" />
       </symbol>
       <symbol id="icon-mail" viewBox="0 0 24 24">
         <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
           <path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
           <rect width="20" height="16" x="2" y="4" rx="2" />
+        </g>
+      </symbol>
+      <symbol id="icon-external" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M15 3h6v6" />
+          <path d="M10 14L21 3" />
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
         </g>
       </symbol>
     </svg>
@@ -469,7 +473,7 @@
           <div class="article-body">
 <p>You keep AI coding changes minimal with ponytail when you treat every agent session like a senior engineer who has been paged at 3am for one clever abstraction too many. Ponytail is a skill file that encodes that laziness on purpose. Lazy here means efficient. The best code is the code nobody wrote. Agents default the other way: they scaffold folders, invent interfaces with one implementation, and rename half the module while fixing a null check. Your job is to put a hard ladder in front of that impulse before the first file opens.</p>
 
-<p>I use ponytail on consulting builds where clients care about merge speed and blast radius. A five-file fix that solves the ticket beats a forty-file cleanup that invents a plugin system. <a href="https://martinfowler.com/bliki/Yagni.html" rel="noopener">Martin Fowler's note on YAGNI</a> still names the cost: you pay for design you never use, then you pay again to delete or drag it through later changes. Wikipedia's overview of <a href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it" rel="noopener">You aren't gonna need it</a> tracks the same Extreme Programming rule. Ponytail turns that rule into agent-readable steps so the model cannot skip them while looking helpful.</p>
+<p>I use ponytail on consulting builds where clients care about merge speed and blast radius. A five-file fix that solves the ticket beats a forty-file cleanup that invents a plugin system. <a class="article-link is-external" href="https://martinfowler.com/bliki/Yagni.html" rel="noopener" target="_blank"><span class="article-link-text">Martin Fowler's note on YAGNI</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a> still names the cost: you pay for design you never use, then you pay again to delete or drag it through later changes. Wikipedia's overview of <a class="article-link is-external" href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it" rel="noopener" target="_blank"><span class="article-link-text">You aren't gonna need it</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a> tracks the same Extreme Programming rule. Ponytail turns that rule into agent-readable steps so the model cannot skip them while looking helpful.</p>
 
 <h2>Why agents overbuild by default</h2>
 
@@ -477,7 +481,7 @@
 
 <p>Agents also optimize for looking complete. A long diff signals effort. A one-line fix can feel too small to the model, so it pads the change with comments, helpers, and future-proof options. Reviewers pay for that padding in attention. CI pays in flake surface. Future you pays when the unused factory finally conflicts with a real requirement.</p>
 
-<p><a href="https://www.anthropic.com/engineering/building-effective-agents" rel="noopener">Anthropic's guidance on building effective agents</a> pushes the same simplicity bias at the system level: start with simple composable patterns, add complexity when measurement says you must. Ponytail applies that bias at the pull request level. One skill. One ladder. No essay after the code unless you asked for a report.</p>
+<p><a class="article-link is-external" href="https://www.anthropic.com/engineering/building-effective-agents" rel="noopener" target="_blank"><span class="article-link-text">Anthropic's guidance on building effective agents</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a> pushes the same simplicity bias at the system level: start with simple composable patterns, add complexity when measurement says you must. Ponytail applies that bias at the pull request level. One skill. One ladder. No essay after the code unless you asked for a report.</p>
 
 <h2>The ponytail ladder</h2>
 
@@ -517,7 +521,7 @@
 
 <p>This is where teams get ponytail wrong. They confuse small diff with touch only the file named in the ticket. Small in the wrong place is a second bug. Read fully, then climb the ladder.</p>
 
-<p><a href="https://www.anthropic.com/engineering/claude-code-best-practices" rel="noopener">Claude Code best practices from Anthropic</a> stress exploring and planning before heavy edits. Ponytail agrees, then refuses the tour-guide prose after the edit. Code first. At most three short lines on what you skipped and when to add it.</p>
+<p><a class="article-link is-external" href="https://www.anthropic.com/engineering/claude-code-best-practices" rel="noopener" target="_blank"><span class="article-link-text">Claude Code best practices from Anthropic</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a> stress exploring and planning before heavy edits. Ponytail agrees, then refuses the tour-guide prose after the edit. Code first. At most three short lines on what you skipped and when to add it.</p>
 
 <h2>What ponytail refuses to cut</h2>
 
@@ -545,9 +549,9 @@
 
 <h2>Pair ponytail with the rest of the series</h2>
 
-<p>Ponytail sits next to token-tight talk and compressed context. Tip 3 on <a href="./cut-ai-agent-tokens-with-caveman.html" rel="noopener">cutting AI agent tokens with caveman</a> keeps the prompt short. Tip 5 on <a href="./compress-agent-context-before-you-code.html" rel="noopener">compressing agent context before you code</a> keeps the files short. Ponytail keeps the diff short. Together they reduce cost, noise, and merge risk.</p>
+<p>Ponytail sits next to token-tight talk and compressed context. Tip 3 on <a class="article-link" href="./cut-ai-agent-tokens-with-caveman.html" rel="noopener"><span class="article-link-text">cutting AI agent tokens with caveman</span></a> keeps the prompt short. Tip 5 on <a class="article-link" href="./compress-agent-context-before-you-code.html" rel="noopener"><span class="article-link-text">compressing agent context before you code</span></a> keeps the files short. Ponytail keeps the diff short. Together they reduce cost, noise, and merge risk.</p>
 
-<p>On this portfolio I also keep product copy and theme work under the same bias: reuse <code>active-*</code> vendors, paint with theme tokens, avoid new infra unless a client asks. The skill matches how I already ship consulting work. Browse more tips from the <a href="../../index.html#tips" rel="noopener">tips index</a>.</p>
+<p>On this portfolio I also keep product copy and theme work under the same bias: reuse <code>active-*</code> vendors, paint with theme tokens, avoid new infra unless a client asks. The skill matches how I already ship consulting work. Browse more tips from the <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">tips index</span></a>.</p>
 
 <h2>Team install pattern</h2>
 
@@ -632,12 +636,12 @@
 <h2>Sources</h2>
 
 <ul>
-<li><a href="https://martinfowler.com/bliki/Yagni.html" rel="noopener">Martin Fowler on YAGNI</a></li>
-<li><a href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it" rel="noopener">You aren't gonna need it (Wikipedia)</a></li>
-<li><a href="https://www.anthropic.com/engineering/building-effective-agents" rel="noopener">Building effective agents (Anthropic)</a></li>
-<li><a href="https://www.anthropic.com/engineering/claude-code-best-practices" rel="noopener">Claude Code best practices (Anthropic)</a></li>
-<li>Related: <a href="./cut-ai-agent-tokens-with-caveman.html" rel="noopener">Cut AI agent tokens with caveman</a></li>
-<li>Series cards on <a href="../../index.html#tips" rel="noopener">calvinmaighan.com tips</a></li>
+<li><a class="article-link is-external" href="https://martinfowler.com/bliki/Yagni.html" rel="noopener" target="_blank"><span class="article-link-text">Martin Fowler on YAGNI</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it" rel="noopener" target="_blank"><span class="article-link-text">You aren't gonna need it (Wikipedia)</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://www.anthropic.com/engineering/building-effective-agents" rel="noopener" target="_blank"><span class="article-link-text">Building effective agents (Anthropic)</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://www.anthropic.com/engineering/claude-code-best-practices" rel="noopener" target="_blank"><span class="article-link-text">Claude Code best practices (Anthropic)</span><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li>Related: <a class="article-link" href="./cut-ai-agent-tokens-with-caveman.html" rel="noopener"><span class="article-link-text">Cut AI agent tokens with caveman</span></a></li>
+<li>Series cards on <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">calvinmaighan.com tips</span></a></li>
 </ul>
 
             <div class="article-cta-end">

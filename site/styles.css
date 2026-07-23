@@ -1668,9 +1668,37 @@ main {
  .faq-question::after {
   transition: none;
 }}
-.article-body a:not(.btn) {
- color: var(--link, var(--accent));
- text-underline-offset: 0.15em;
+.article-body a:not(.btn),
+.article-summary a:not(.btn) {
+  color: var(--link, var(--accent));
+  text-underline-offset: 0.18em;
+}
+.article-body a.is-external,
+.article-summary a.is-external {
+  text-decoration: underline dashed;
+  text-decoration-thickness: from-font;
+}
+.article-body a.article-link,
+.article-summary a.article-link {
+  display: inline;
+}
+.article-body a .article-link-ico,
+.article-summary a .article-link-ico {
+  display: inline-block;
+  width: 0.95em;
+  height: 0.95em;
+  vertical-align: -0.12em;
+  margin: 0 0.2em;
+}
+.article-body a.is-github .article-link-ico:first-child,
+.article-summary a.is-github .article-link-ico:first-child {
+  margin-left: 0;
+  margin-right: 0.28em;
+}
+.article-body a.is-external .article-link-ico:last-child,
+.article-summary a.is-external .article-link-ico:last-child {
+  margin-left: 0.28em;
+  margin-right: 0;
 }
 .article-page {
  --article-chrome-h: 76px;
