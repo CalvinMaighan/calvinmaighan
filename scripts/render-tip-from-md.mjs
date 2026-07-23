@@ -436,7 +436,7 @@ ${JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2)
             <a class="btn btn-primary article-byline-cta" href="${toRoot}/index.html#contact" data-i18n="article.book">${escapeHtml(ctaFold)}</a>
           </div>
           <figure class="article-cover">
-            <img src="${toRoot}/calvinmaighan-article-series-1.png" alt="${escapeHtml(imgAlt)}" width="1672" height="941" decoding="async" />
+            <img src="${escapeHtml(data.inBodyImage || `${toRoot}/calvinmaighan-article-series-1.png`)}" alt="${escapeHtml(imgAlt)}" width="1672" height="941" decoding="async" />
           </figure>
           <p class="article-summary">${inline(summary)}</p>
           <aside class="article-aside" aria-label="Series">

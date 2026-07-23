@@ -15,9 +15,9 @@ metaDescription: "read dependency source code with opensrc so agents stop guessi
 canonical: "https://calvinmaighan.com/tips/secret-agent-tips/read-dependency-source-code-with-opensrc.html"
 updatedAt: "2026-07-22"
 author: "Calvin Maighan"
-ogImage: "https://calvinmaighan.com/calvinmaighan-article-series-1.png"
-inBodyImage: "../../calvinmaighan-article-series-1.png"
-inBodyImageAlt: "Brand series image framing a tip about fetching library source into an agent cache with opensrc"
+ogImage: "https://calvinmaighan.com/calvin-article-1.png"
+inBodyImage: "../../calvin-article-1.png"
+inBodyImageAlt: "Cover for skill 1: read dependency source code with opensrc"
 internalLinks: ["../name-ai-agent-skills-after-the-job.html","./scrape-websites-for-ai-agent-research.html","../../index.html#contact","../../index.html#tips"]
 externalSources: ["https://github.com/vercel-labs/opensrc/","https://github.com/vercel-labs/opensrc/blob/main/packages/opensrc/README.md","https://opensrc.sh","https://www.npmjs.com/package/opensrc","https://cursor.com/docs/skills"]
 faq:
@@ -39,7 +39,9 @@ ctaEnd: "Want this research habit installed across your agent skills?"
 
 read dependency source code with opensrc is not about better README browsing. It is about cutting the guesswork between a library bug and a change your team trusts: open the installed version, search the real implementation, then patch. Types are more accurate than docs at build time, and agents are trained to read code. In practice, type `/opensrc` with a GitHub URL so the agent opens that source instead of guessing from samples. Skip it for simple API questions docs already answer. Make that a default research step on the team.
 
-Product teams that read dependency source code with opensrc stop paying the tax of confident wrong guesses. Docs sell the happy path. Types show the surface. Runtime bugs live one layer deeper. opensrc gives coding agents a local, version-matched checkout they can search like any other folder.
+Your agent can sound sure and still be wrong about a library. Docs lag. README samples skip the edge cases. The bug is often in the real package source. This tip is for product owners who want engineering to open that source before they patch.
+
+opensrc puts a version-matched checkout in a local folder the agent can search like any other project file. Less guessing. Cleaner fixes.
 
 ## What opensrc actually does
 
