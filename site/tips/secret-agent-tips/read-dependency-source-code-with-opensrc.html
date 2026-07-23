@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-accent="beige">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="read dependency source code with opensrc so agents stop guessing from docs and types. Fetch the installed package version, cache it locally, then search the real implementation before you patch." />
+    <title>Read dependency source code with opensrc · Calvin Maighan</title>
+    <link rel="canonical" href="https://calvinmaighan.com/tips/secret-agent-tips/read-dependency-source-code-with-opensrc.html" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#E6E2D4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#221D19" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Calvin Maighan" />
+    <meta property="og:title" content="Read dependency source code with opensrc" />
+    <meta property="og:description" content="read dependency source code with opensrc so agents stop guessing from docs and types. Fetch the installed package version, cache it locally, then search the real implementation before you patch." />
+    <meta property="og:url" content="https://calvinmaighan.com/tips/secret-agent-tips/read-dependency-source-code-with-opensrc.html" />
+    <meta property="og:image" content="https://calvinmaighan.com/calvinmaighan-article-series-1.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Read dependency source code with opensrc" />
+    <meta name="twitter:description" content="read dependency source code with opensrc so agents stop guessing from docs and types. Fetch the installed package version, cache it locally, then search the real implementation before you patch." />
+    <meta name="twitter:image" content="https://calvinmaighan.com/calvinmaighan-article-series-1.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Read dependency source code with opensrc",
+      "description": "read dependency source code with opensrc so agents stop guessing from docs and types. Fetch the installed package version, cache it locally, then search the real implementation before you patch.",
+      "datePublished": "2026-07-22",
+      "dateModified": "2026-07-22",
+      "author": {
+        "@type": "Person",
+        "name": "Calvin Maighan",
+        "url": "https://calvinmaighan.com/"
+      },
+      "image": [
+        "https://calvinmaighan.com/calvinmaighan-article-series-1.png"
+      ],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://calvinmaighan.com/tips/secret-agent-tips/read-dependency-source-code-with-opensrc.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does opensrc match my lockfile version?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For npm packages, opensrc detects the installed version from package-lock.json, pnpm-lock.yaml, or yarn.lock. Pass --cwd when the agent works outside the app root. Pin with package@version when you need an explicit tag."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does the cache live?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By default under ~/.opensrc/. Override with OPENSRC_HOME. First fetch shallow-clones; later opensrc path calls return the cached directory."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should the agent skip opensrc?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Skip it for straightforward public API usage that types and official docs already cover. Fetch source for internals, edge cases, and mismatches between docs and runtime."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use opensrc outside JavaScript?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Prefix PyPI with pypi:, crates with crates:, and pass owner/repo for GitHub. The same path composition pattern works across registries."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body class="article-page" data-series-slug="read-dependency-source-code-with-opensrc">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-sun" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+        </g>
+      </symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+      </symbol>
+      <symbol id="icon-languages" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 8l6 6m-7 0l6-6l2-3M2 5h12M7 2h1m14 20l-5-10l-5 10m2-4h6" />
+      </symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16" />
+      </symbol>
+      <symbol id="icon-x" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
+      </symbol>
+      <symbol id="icon-github" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
+          <path d="M9 18c-4.51 2-5-2-7-2" />
+        </g>
+      </symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+        </g>
+      </symbol>
+    </svg>
+
+    <header class="site-header" id="site-header">
+      <div class="bar">
+        <a class="brand" href="../../index.html" data-i18n="brand">Calvin Maighan</a>
+        <div class="header-actions">
+          <div class="locale-menu" id="locale-menu">
+            <button type="button" class="icon-btn icon-btn-wide" id="locale-toggle" aria-label="Language" aria-haspopup="listbox" aria-expanded="false" aria-controls="locale-popover">
+              <svg class="icon" aria-hidden="true"><use href="#icon-languages"></use></svg>
+              <span class="icon-btn-text" id="locale-label">EN</span>
+            </button>
+            <div class="locale-popover" id="locale-popover" role="listbox" aria-label="Language">
+              <button type="button" class="locale-option" role="option" data-locale="en" aria-selected="true">EN</button>
+              <button type="button" class="locale-option" role="option" data-locale="fr" aria-selected="false">FR</button>
+            </div>
+          </div>
+          <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch to dark theme">
+            <svg class="icon" aria-hidden="true"><use id="theme-icon-use" href="#icon-moon"></use></svg>
+          </button>
+          <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+            <svg class="icon" aria-hidden="true"><use id="menu-icon-use" href="#icon-menu"></use></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="backdrop" id="menu-backdrop"></div>
+    <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
+      <a href="../../index.html#tips" data-i18n="article.back">Back to tips</a>
+      <a href="../../index.html#work" data-i18n="nav.work">Work</a>
+      <a href="../../index.html#contact" data-i18n="nav.contact">Contact</a>
+      <a class="btn btn-primary" href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+    </nav>
+
+    <main id="top">
+      <article class="article">
+        <header class="article-hero">
+          <div class="wrap">
+            <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+              <ol>
+                <li><a href="../../index.html" data-i18n="article.home">Home</a></li>
+                <li aria-current="page">Read dependency source code with opensrc</li>
+              </ol>
+            </nav>
+            <p class="article-kicker">Tip 1 of 14</p>
+            <p class="article-series">14 secret agent tips for product teams</p>
+          </div>
+        </header>
+
+        <div class="wrap article-layout">
+          <h1>Read dependency source code with opensrc</h1>
+          <p class="article-subtitle">Pull package source into the agent loop</p>
+          <div class="article-byline">
+            <img
+              class="article-byline-avatar"
+              src="../../calvinprofile.jpg"
+              alt="Calvin Maighan"
+              width="48"
+              height="48"
+              decoding="async"
+            />
+            <span class="article-byline-name">Calvin Maighan</span>
+            <span class="article-byline-meta">
+              <span>10 min read</span>
+              <span class="sep" aria-hidden="true">·</span>
+              <time datetime="2026-07-22">July 22, 2026</time>
+            </span>
+            <a class="btn btn-primary article-byline-cta" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+          </div>
+          <figure class="article-cover">
+            <img src="../../calvinmaighan-article-series-1.png" alt="Brand series image framing a tip about fetching library source into an agent cache with opensrc" width="1672" height="941" decoding="async" />
+          </figure>
+          <p class="article-summary">read dependency source code with opensrc. Teach your coding agent to read dependency source code with opensrc before it invents behavior from README samples. opensrc resolves npm, PyPI, crates.io, and git hosts, shallow-clones the matching version, and caches under ~/.opensrc/. Compose opensrc path zod with rg, cat, or your agent’s file tools. Use it when types lie, docs lag, or a bug smells like framework internals. Skip it for simple API questions docs already answer. Install the CLI, add the agent skill, and make “open the installed version” a default research step.</p>
+          <aside class="article-aside" aria-label="Series">
+            <ol class="article-series-rail">
+            <li>
+              <a
+                class="article-series-card"
+                data-series-slug="how-ai-agents-speed-up-developers"
+                data-series-title="How AI agents speed up developers"
+                data-series-subtitle="Cut dead time between intent and a mergeable change"
+                data-series-tip="0"
+                data-href="/tips/how-ai-agents-speed-up-developers.html"
+                href="/tips/how-ai-agents-speed-up-developers.html"
+                
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">How AI agents speed up developers</span>
+                  <span class="article-series-card-subtitle">Cut dead time between intent and a mergeable change</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked is-current"
+                data-series-slug="read-dependency-source-code-with-opensrc"
+                data-series-title="Read dependency source code with opensrc"
+                data-series-subtitle="Pull package source into the agent loop"
+                data-series-tip="1"
+                data-href="/tips/secret-agent-tips/read-dependency-source-code-with-opensrc.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 1: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="scrape-websites-for-ai-agent-research"
+                data-series-title="Scrape websites for AI agent research"
+                data-series-subtitle="Turn live pages into research the agent can cite"
+                data-series-tip="2"
+                data-href="/tips/secret-agent-tips/scrape-websites-for-ai-agent-research.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 2: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="cut-ai-agent-tokens-with-caveman"
+                data-series-title="Cut AI agent tokens with caveman"
+                data-series-subtitle="Terse replies without mangling code"
+                data-series-tip="3"
+                data-href="/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 3: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="keep-ai-coding-changes-minimal-with-ponytail"
+                data-series-title="Keep AI coding changes minimal with ponytail"
+                data-series-subtitle="Smallest working diff, no speculative fluff"
+                data-series-tip="4"
+                data-href="/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 4: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="compress-agent-context-before-you-code"
+                data-series-title="Compress agent context before you code"
+                data-series-subtitle="Ranked symbols instead of whole-repo paste"
+                data-series-tip="5"
+                data-href="/tips/secret-agent-tips/compress-agent-context-before-you-code.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 5: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="persist-codebase-knowledge-across-ai-chats"
+                data-series-title="Persist codebase knowledge across AI chats"
+                data-series-subtitle="Memory that survives the next chat"
+                data-series-tip="6"
+                data-href="/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 6: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="research-what-people-said-last-month"
+                data-series-title="Research what people said last month"
+                data-series-subtitle="Real voices from the last thirty days"
+                data-series-tip="7"
+                data-href="/tips/secret-agent-tips/research-what-people-said-last-month.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 7: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="remove-ai-writing-tells-from-prose"
+                data-series-title="Remove AI writing tells from prose"
+                data-series-subtitle="Kill the patterns that scream model-written"
+                data-series-tip="8"
+                data-href="/tips/secret-agent-tips/remove-ai-writing-tells-from-prose.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 8: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="design-landing-pages-without-ai-slop"
+                data-series-title="Design landing pages without AI slop"
+                data-series-subtitle="Brand-first pages that pass the hide-the-nav test"
+                data-series-tip="9"
+                data-href="/tips/secret-agent-tips/design-landing-pages-without-ai-slop.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 9: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="build-product-videos-with-hyperframes"
+                data-series-title="Build product videos with HyperFrames"
+                data-series-subtitle="HTML compositions agents can revise"
+                data-series-tip="10"
+                data-href="/tips/secret-agent-tips/build-product-videos-with-hyperframes.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 10: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="expose-product-actions-as-mcp-tools"
+                data-series-title="Expose product actions as MCP tools"
+                data-series-subtitle="Tools with schemas, scopes, and audit trails"
+                data-series-tip="11"
+                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 11: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="catch-ai-code-mistakes-with-lint"
+                data-series-title="Catch AI code mistakes with lint"
+                data-series-subtitle="Lint as a hard gate after every agent edit"
+                data-series-tip="12"
+                data-href="/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 12: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="ship-production-releases-with-agent-checks"
+                data-series-title="Ship production releases with agent checks"
+                data-series-subtitle="Release checks agents cannot skip"
+                data-series-tip="13"
+                data-href="/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 13: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="write-seo-articles-agents-can-follow"
+                data-series-title="Write SEO articles agents can follow"
+                data-series-subtitle="Structure humans and agents can both follow"
+                data-series-tip="14"
+                data-href="/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 14: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            </ol>
+          </aside>
+          <div class="article-body">
+<p>Product teams that read dependency source code with opensrc stop paying the tax of confident wrong guesses. Docs sell the happy path. Types show the surface. Runtime bugs live one layer deeper. opensrc gives coding agents a local, version-matched checkout they can search like any other folder.</p>
+
+<h2>What opensrc actually does</h2>
+
+<p>The <a href="https://github.com/vercel-labs/opensrc/" rel="noopener">vercel-labs/opensrc</a> CLI resolves a package to its repository, detects a version when it can, shallow-clones that tag, and caches the tree. The headline command is simple:</p>
+
+<p><code>rg &quot;parse&quot; $(opensrc path zod)</code></p>
+
+<p>Progress goes to stderr. The path goes to stdout. Subshells stay clean. The <a href="https://github.com/vercel-labs/opensrc/blob/main/packages/opensrc/README.md" rel="noopener">CLI readme</a> shows the same pattern for PyPI, crates.io, and git hosts. npm is the default registry. Prefixes cover the rest: pypi:requests, crates:serde, vercel/next.js.</p>
+
+<p>That design matters for agents. Agents already know how to grep, read files, and follow imports. They fail when the source is not on disk. opensrc removes the missing-disk problem without teaching a new research language.</p>
+
+<h2>Why agents guess without source</h2>
+
+<p>Coding agents overweight README examples and generated API summaries. Those sources skip private helpers, error branches, and version drift. Your lockfile may pin zod@3.22.0 while the model remembers a newer public story. The agent then “fixes” your app against an imaginary library.</p>
+
+<p>Opening the installed version collapses that gap. The agent sees the same code your runtime loads. Edge-case handling stops being folklore. You get citations that point at files, not vibes.</p>
+
+<h2>Install once, teach forever</h2>
+
+<p>Global install is enough for most teams:</p>
+
+<p><code>npm install -g opensrc</code></p>
+
+<p>Then add the agent skill so the tool shows up when the task needs implementation context. The opensrc repo ships a skill that tells agents when to fetch versus when to stay on docs. Pair that with job-first naming from <a href="../name-ai-agent-skills-after-the-job.html" rel="noopener">name AI agent skills after the job</a> so the skill folder reads like read-dependency-source, not opensrc-helpers.</p>
+
+<h3>Minimum skill body</h3>
+
+<p>Keep the skill short. State the trigger: unexpected library behavior, missing edge-case docs, or a need to verify how a helper handles nulls. State the method: run opensrc path &lt;package&gt;, search, read, quote file paths in the answer. State the stop rule: do not fetch for trivial public API questions.</p>
+
+<h2>A research loop that survives review</h2>
+
+<p>1. Name the package and the question in one sentence. 2. Resolve the local path with opensrc. 3. Search for the symbol or error string. 4. Read the implementing file, not only the type declaration. 5. Cite path plus behavior before you change product code.</p>
+
+<p>This loop turns “the library probably…” into “in src/types.ts on the pinned tag, the function returns…”. Reviewers can verify. Future agents can replay the same steps.</p>
+
+<h2>Version truth beats latest truth</h2>
+
+<p>Latest docs can be correct for latest packages and wrong for your lockfile. opensrc’s npm path reads lockfiles so the clone matches what you ship. When you debug a customer on an older release, pin explicitly: opensrc path zod@3.22.0. When the agent sits in a monorepo package, pass --cwd to the app that owns the lockfile.</p>
+
+<p>Pre-fetch hot dependencies during onboarding with opensrc fetch if first-hit latency bothers you. Day-to-day work can stay lazy: fetch on cache miss, reuse forever after.</p>
+
+<h2>Where opensrc shines for product teams</h2>
+
+<h3>Framework footguns</h3>
+
+<p>Next.js routing, auth middleware order, ORM transaction boundaries. These areas produce bugs that look like app mistakes and resolve as framework sequencing. Source reading ends the debate faster than another blog post.</p>
+
+<h3>Validation and parsing libraries</h3>
+
+<p>Schema libraries hide coercion rules in helpers. Agents that only read types invent transforms that never run. opensrc lets them open the transform.</p>
+
+<h3>Multi-language services</h3>
+
+<p>Product teams rarely stay in one registry. A TypeScript BFF talking to a Python worker still needs truth on both sides. One CLI covering npm and PyPI keeps the research habit consistent.</p>
+
+<h2>Failure modes to coach against</h2>
+
+<p>Agents will over-fetch if you reward curiosity without a stop rule. Fetching React to answer “how do I use useState” wastes time. Put the stop rule in the skill. Agents will also paste huge source dumps into chat. Require summaries with file citations instead of whole modules.</p>
+
+<p>Cache growth is real. Teach opensrc list and opensrc clean as hygiene, the same way you prune Docker images. Disk is cheaper than wrong production patches, yet infinite caches still need a janitor.</p>
+
+<h2>Compose with the rest of the series</h2>
+
+<p>Source reading covers libraries you already depend on. Web research covers pages outside the repo. Tip 2 shows how to <a href="./scrape-websites-for-ai-agent-research.html" rel="noopener">scrape websites for AI agent research</a> when the answer lives on a docs site, changelog, or competitor page. Keep both skills. Different jobs.</p>
+
+<p>If you want a consultant to wire opensrc into your Cursor or Claude Code kit with job-named skills and review checklists, <a href="../../index.html#contact" rel="noopener">book a call</a>. More practitioner notes live under <a href="../../index.html#tips" rel="noopener">tips</a>.</p>
+
+<h2>Ship the habit this week</h2>
+
+<p>Pick one recurring bug class that smells like a dependency. Install opensrc. Add a skill that forces a source read before code edits. Run the loop on the next incident. Keep the citation in the pull request. After three clean wins, expand the skill to your default research checklist.</p>
+
+<p>Agents get sharper when the filesystem holds the truth. opensrc is the shortest path from “I think the library works like this” to “here is the function on the version we ship.”</p>
+
+<p>One last operator note: when two packages share a symbol name, pass the full package id to opensrc and search inside that tree only. Broad system greps across ~/.opensrc can mix versions and waste a session. Narrow beats clever.</p>
+
+<h2>Worked session: chasing a false validation bug</h2>
+
+<p>An agent once “fixed” a signup form by loosening a client schema after a user report. Types looked fine. Docs showed a happy example. Production still rejected a subset of emails. We ran opensrc path zod, searched for the email path, and found the coercion and issue-map behavior the README never stressed. The product fix was a two-line preprocess. The library did not need a rewrite. Without source, the agent was about to invent a parallel validator.</p>
+
+<p>That session is the poster case. opensrc did not make the agent smarter. It gave the agent the same filesystem a senior engineer would open after the second wrong guess.</p>
+
+<h2>Monorepo tactics</h2>
+
+<p>In a pnpm workspace, the lockfile may live at the repo root while the agent edits a package two levels down. Pass --cwd to the root when resolving versions. Prefetch the shared stack during onboarding: next, react, your ORM, your auth library. First-hit latency disappears for the packages you touch weekly.</p>
+
+<p>For internal packages published from the same monorepo, prefer the local workspace path over opensrc. opensrc shines for third-party registries. Your own packages are already on disk.</p>
+
+<h2>Teaching juniors the citation habit</h2>
+
+<p>Require pull request notes that include one library citation when the change leans on framework behavior. Path, symbol, one sentence. This trains humans and agents together. It also creates a paper trail when a dependency upgrade later changes that symbol.</p>
+
+<p>Refuse “according to my knowledge of Next.js” as a review answer. Ask for the file. If the file is missing, run opensrc. The culture shift matters more than the CLI flag.</p>
+
+<h2>Security and supply chain notes</h2>
+
+<p>Cloning source from registries inherits the trust model of those registries and git hosts. Keep opensrc on developer machines and CI research jobs, not on production app servers. Treat the cache like other vendor checkouts. If your company vendors critical libraries, point agents at the vendored tree first.</p>
+
+<p>Do not let agents commit the opensrc cache into the product repo. Cache belongs under the home directory or a ignored research path. Product git stays about product code.</p>
+
+<h2>Agent prompt patterns that force source reads</h2>
+
+<p>Soft prompts fail. &quot;Consider reading the source if needed&quot; lets the model skip the step. Hard prompts work. &quot;Before editing application code that depends on an external package, run opensrc path on that package, search for the relevant symbol, and cite a file path in your plan.&quot; Put that sentence in the skill body. Put a checklist in the pull request template. Social pressure plus skill text beats hope.</p>
+
+<p>For chat UX, give humans a slash command that only runs the research loop. Some teams keep disable-model-invocation on for opensrc so juniors trigger it on purpose until the habit sticks. After a month, flip auto-invocation on with a tight description.</p>
+
+<h2>Comparing opensrc to node_modules spelunking</h2>
+
+<p>You can always open node_modules. Dist folders lie. Minified builds hide structure. Published package layouts differ from the repository layout maintainers actually reason about. opensrc clones the repo at the version tag, which is closer to how maintainers discuss fixes. When both trees exist, start in opensrc, confirm against the installed dist only when you suspect publish skew.</p>
+
+<p>Publish skew is rare and nasty. If the repo tag and the tarball disagree, stop and verify the package contents. Do not let the agent &quot;fix&quot; your app around a broken publish without naming the skew in the ticket.</p>
+
+<h2>Checklist for skill authors</h2>
+
+<ul>
+<li>Job-named folder and matching YAML name.</li>
+<li>Description with outcome plus trigger.</li>
+<li>Stop rule for trivial API questions.</li>
+<li>Lockfile or version pin guidance.</li>
+<li>Citation format for answers and PRs.</li>
+<li>Cache hygiene commands.</li>
+</ul>
+
+<p>Print that checklist in the skill. Agents follow checklists more than essays. Humans reviewing the skill file can audit completeness in one glance.</p>
+
+<h2>What good looks like after thirty days</h2>
+
+<p>You will know the habit landed when pull requests cite library paths without being asked, when incident channels paste opensrc commands, and when juniors argue from files instead of vibes. You will know it failed if the cache is empty and the skill file is a museum piece. Habits need rehearsal. Schedule two dependency bugs for practice if production refuses to cooperate.</p>
+
+<h2>A closing field guide</h2>
+
+<p>Keep opensrc on the critical path for dependency mysteries. Keep docs for happy-path API shapes. Keep tests as the final judge. When an agent proposes a change that &quot;should work according to the README,&quot; ask for the opensrc path citation. When the citation exists and still disagrees with runtime, you have a real bug report for upstream or a publish skew case worth a war room.</p>
+
+<p>Product teams win when research tools become boring. Boring means defaults, checklists, and citations. Exciting means heroics. Heroics do not scale across fourteen tips or fourteen engineers. Install opensrc. Name the skill after the job. Make the citation mandatory. Then move to the next secret tip with a cleaner baseline.</p>
+
+<h2>Keep the feedback loop short</h2>
+
+<p>After each opensrc session, ask whether the citation changed the patch. If it did not, the fetch was optional and the stop rule needs teeth. If it did, paste the path into the pull request so the next agent inherits the trail. Short loops beat yearly process docs.</p>
+
+<section class="article-faq">
+
+<h2>FAQ</h2>
+
+<h3>Does opensrc match my lockfile version?</h3>
+
+<p>For npm packages, opensrc detects the installed version from package-lock.json, pnpm-lock.yaml, or yarn.lock. Pass --cwd when the agent works outside the app root. Pin with package@version when you need an explicit tag.</p>
+
+<h3>Where does the cache live?</h3>
+
+<p>By default under ~/.opensrc/. Override with OPENSRC_HOME. First fetch shallow-clones; later opensrc path calls return the cached directory.</p>
+
+<h3>When should the agent skip opensrc?</h3>
+
+<p>Skip it for straightforward public API usage that types and official docs already cover. Fetch source for internals, edge cases, and mismatches between docs and runtime.</p>
+
+<h3>Can I use opensrc outside JavaScript?</h3>
+
+<p>Yes. Prefix PyPI with pypi:, crates with crates:, and pass owner/repo for GitHub. The same path composition pattern works across registries.</p>
+
+</section>
+
+            <p class="article-cta-end">Want this research habit installed across your agent skills? <a href="../../index.html#contact">Book a call</a>.</p>
+            <p class="article-book-mobile">
+              <a class="btn btn-primary" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+            </p>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p class="foot-statement" data-i18n="footer.statement">Available for hard builds.</p>
+        <p class="foot-meta">
+          <strong>Calvin Maighan</strong>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.role">Senior AI and SaaS Engineer</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.meta">Montreal · remote contracts</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="https://github.com/CalvinMaighan" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="mailto:hello@calvinmaighan.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+        </p>
+      </div>
+    </footer>
+
+    <div class="article-chrome">
+      <div class="read-progress" aria-hidden="true"></div>
+      <div class="article-chrome-inner">
+        <a class="btn btn-primary is-locked" id="article-next" href="./scrape-websites-for-ai-agent-research.html" aria-disabled="true" data-i18n="article.next">Next article</a>
+      </div>
+    </div>
+
+    <script type="module" src="../../app.mjs"></script>
+  </body>
+</html>

@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-accent="beige">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="cut AI agent tokens with caveman by forcing terse, filler-free agent replies while keeping code and errors exact. Use intensity levels, measure real savings, and drop compression when clarity is on the line." />
+    <title>Cut AI agent tokens with caveman · Calvin Maighan</title>
+    <link rel="canonical" href="https://calvinmaighan.com/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#E6E2D4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#221D19" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Calvin Maighan" />
+    <meta property="og:title" content="Cut AI agent tokens with caveman" />
+    <meta property="og:description" content="cut AI agent tokens with caveman by forcing terse, filler-free agent replies while keeping code and errors exact. Use intensity levels, measure real savings, and drop compression when clarity is on the line." />
+    <meta property="og:url" content="https://calvinmaighan.com/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html" />
+    <meta property="og:image" content="https://calvinmaighan.com/calvinmaighan-article-series-1.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Cut AI agent tokens with caveman" />
+    <meta name="twitter:description" content="cut AI agent tokens with caveman by forcing terse, filler-free agent replies while keeping code and errors exact. Use intensity levels, measure real savings, and drop compression when clarity is on the line." />
+    <meta name="twitter:image" content="https://calvinmaighan.com/calvinmaighan-article-series-1.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Cut AI agent tokens with caveman",
+      "description": "cut AI agent tokens with caveman by forcing terse, filler-free agent replies while keeping code and errors exact. Use intensity levels, measure real savings, and drop compression when clarity is on the line.",
+      "datePublished": "2026-07-22",
+      "dateModified": "2026-07-22",
+      "author": {
+        "@type": "Person",
+        "name": "Calvin Maighan",
+        "url": "https://calvinmaighan.com/"
+      },
+      "image": [
+        "https://calvinmaighan.com/calvinmaighan-article-series-1.png"
+      ],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://calvinmaighan.com/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Will caveman break code in diffs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The skill rules say code, commands, and error strings stay verbatim. Compression targets narration. Still spot-check the first week on your stack."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which intensity should a product team start with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with lite or full. Lite keeps articles and full sentences. Full drops articles and allows fragments. Ultra is for operators who already trust the style."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do blog claims and coding benchmarks disagree?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Chat answers are mostly prose, so filler removal looks huge. Agentic sessions are mostly code and tool payloads, which caveman correctly leaves alone. JetBrains measured that gap on SkillsBench."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When must the agent leave caveman mode?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Security warnings, irreversible confirms, and multi-step sequences where missing conjunctions create ambiguity. Resume compression after the clear part."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body class="article-page" data-series-slug="cut-ai-agent-tokens-with-caveman">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-sun" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+        </g>
+      </symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+      </symbol>
+      <symbol id="icon-languages" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 8l6 6m-7 0l6-6l2-3M2 5h12M7 2h1m14 20l-5-10l-5 10m2-4h6" />
+      </symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16" />
+      </symbol>
+      <symbol id="icon-x" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
+      </symbol>
+      <symbol id="icon-github" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
+          <path d="M9 18c-4.51 2-5-2-7-2" />
+        </g>
+      </symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+        </g>
+      </symbol>
+    </svg>
+
+    <header class="site-header" id="site-header">
+      <div class="bar">
+        <a class="brand" href="../../index.html" data-i18n="brand">Calvin Maighan</a>
+        <div class="header-actions">
+          <div class="locale-menu" id="locale-menu">
+            <button type="button" class="icon-btn icon-btn-wide" id="locale-toggle" aria-label="Language" aria-haspopup="listbox" aria-expanded="false" aria-controls="locale-popover">
+              <svg class="icon" aria-hidden="true"><use href="#icon-languages"></use></svg>
+              <span class="icon-btn-text" id="locale-label">EN</span>
+            </button>
+            <div class="locale-popover" id="locale-popover" role="listbox" aria-label="Language">
+              <button type="button" class="locale-option" role="option" data-locale="en" aria-selected="true">EN</button>
+              <button type="button" class="locale-option" role="option" data-locale="fr" aria-selected="false">FR</button>
+            </div>
+          </div>
+          <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch to dark theme">
+            <svg class="icon" aria-hidden="true"><use id="theme-icon-use" href="#icon-moon"></use></svg>
+          </button>
+          <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+            <svg class="icon" aria-hidden="true"><use id="menu-icon-use" href="#icon-menu"></use></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="backdrop" id="menu-backdrop"></div>
+    <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
+      <a href="../../index.html#tips" data-i18n="article.back">Back to tips</a>
+      <a href="../../index.html#work" data-i18n="nav.work">Work</a>
+      <a href="../../index.html#contact" data-i18n="nav.contact">Contact</a>
+      <a class="btn btn-primary" href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+    </nav>
+
+    <main id="top">
+      <article class="article">
+        <header class="article-hero">
+          <div class="wrap">
+            <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+              <ol>
+                <li><a href="../../index.html" data-i18n="article.home">Home</a></li>
+                <li aria-current="page">Cut AI agent tokens with caveman</li>
+              </ol>
+            </nav>
+            <p class="article-kicker">Tip 3 of 14</p>
+            <p class="article-series">14 secret agent tips for product teams</p>
+          </div>
+        </header>
+
+        <div class="wrap article-layout">
+          <h1>Cut AI agent tokens with caveman</h1>
+          <p class="article-subtitle">Terse replies without mangling code</p>
+          <div class="article-byline">
+            <img
+              class="article-byline-avatar"
+              src="../../calvinprofile.jpg"
+              alt="Calvin Maighan"
+              width="48"
+              height="48"
+              decoding="async"
+            />
+            <span class="article-byline-name">Calvin Maighan</span>
+            <span class="article-byline-meta">
+              <span>10 min read</span>
+              <span class="sep" aria-hidden="true">·</span>
+              <time datetime="2026-07-22">July 22, 2026</time>
+            </span>
+            <a class="btn btn-primary article-byline-cta" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+          </div>
+          <figure class="article-cover">
+            <img src="../../calvinmaighan-article-series-1.png" alt="Brand series image for a tip about compressing agent narration with caveman mode while preserving exact code" width="1672" height="941" decoding="async" />
+          </figure>
+          <p class="article-summary">cut AI agent tokens with caveman. You can cut AI agent tokens with caveman by installing a skill that strips filler, hedging, and throat-clearing from agent narration while leaving code, commands, and errors byte-exact. The open JuliusBrussee/caveman skill advertises large output savings on chatty answers. JetBrains’ SkillsBench write-up shows smaller gains on agentic coding because code and tool calls dominate. Use caveman for status, reviews, and Q&amp;A. Drop it for security warnings and ambiguous multi-step sequences. Measure your own sessions before you promise finance a 65% bill cut.</p>
+          <aside class="article-aside" aria-label="Series">
+            <ol class="article-series-rail">
+            <li>
+              <a
+                class="article-series-card"
+                data-series-slug="how-ai-agents-speed-up-developers"
+                data-series-title="How AI agents speed up developers"
+                data-series-subtitle="Cut dead time between intent and a mergeable change"
+                data-series-tip="0"
+                data-href="/tips/how-ai-agents-speed-up-developers.html"
+                href="/tips/how-ai-agents-speed-up-developers.html"
+                
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">How AI agents speed up developers</span>
+                  <span class="article-series-card-subtitle">Cut dead time between intent and a mergeable change</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="read-dependency-source-code-with-opensrc"
+                data-series-title="Read dependency source code with opensrc"
+                data-series-subtitle="Pull package source into the agent loop"
+                data-series-tip="1"
+                data-href="/tips/secret-agent-tips/read-dependency-source-code-with-opensrc.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 1: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="scrape-websites-for-ai-agent-research"
+                data-series-title="Scrape websites for AI agent research"
+                data-series-subtitle="Turn live pages into research the agent can cite"
+                data-series-tip="2"
+                data-href="/tips/secret-agent-tips/scrape-websites-for-ai-agent-research.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 2: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked is-current"
+                data-series-slug="cut-ai-agent-tokens-with-caveman"
+                data-series-title="Cut AI agent tokens with caveman"
+                data-series-subtitle="Terse replies without mangling code"
+                data-series-tip="3"
+                data-href="/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 3: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="keep-ai-coding-changes-minimal-with-ponytail"
+                data-series-title="Keep AI coding changes minimal with ponytail"
+                data-series-subtitle="Smallest working diff, no speculative fluff"
+                data-series-tip="4"
+                data-href="/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 4: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="compress-agent-context-before-you-code"
+                data-series-title="Compress agent context before you code"
+                data-series-subtitle="Ranked symbols instead of whole-repo paste"
+                data-series-tip="5"
+                data-href="/tips/secret-agent-tips/compress-agent-context-before-you-code.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 5: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="persist-codebase-knowledge-across-ai-chats"
+                data-series-title="Persist codebase knowledge across AI chats"
+                data-series-subtitle="Memory that survives the next chat"
+                data-series-tip="6"
+                data-href="/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 6: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="research-what-people-said-last-month"
+                data-series-title="Research what people said last month"
+                data-series-subtitle="Real voices from the last thirty days"
+                data-series-tip="7"
+                data-href="/tips/secret-agent-tips/research-what-people-said-last-month.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 7: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="remove-ai-writing-tells-from-prose"
+                data-series-title="Remove AI writing tells from prose"
+                data-series-subtitle="Kill the patterns that scream model-written"
+                data-series-tip="8"
+                data-href="/tips/secret-agent-tips/remove-ai-writing-tells-from-prose.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 8: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="design-landing-pages-without-ai-slop"
+                data-series-title="Design landing pages without AI slop"
+                data-series-subtitle="Brand-first pages that pass the hide-the-nav test"
+                data-series-tip="9"
+                data-href="/tips/secret-agent-tips/design-landing-pages-without-ai-slop.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 9: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="build-product-videos-with-hyperframes"
+                data-series-title="Build product videos with HyperFrames"
+                data-series-subtitle="HTML compositions agents can revise"
+                data-series-tip="10"
+                data-href="/tips/secret-agent-tips/build-product-videos-with-hyperframes.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 10: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="expose-product-actions-as-mcp-tools"
+                data-series-title="Expose product actions as MCP tools"
+                data-series-subtitle="Tools with schemas, scopes, and audit trails"
+                data-series-tip="11"
+                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 11: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="catch-ai-code-mistakes-with-lint"
+                data-series-title="Catch AI code mistakes with lint"
+                data-series-subtitle="Lint as a hard gate after every agent edit"
+                data-series-tip="12"
+                data-href="/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 12: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="ship-production-releases-with-agent-checks"
+                data-series-title="Ship production releases with agent checks"
+                data-series-subtitle="Release checks agents cannot skip"
+                data-series-tip="13"
+                data-href="/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 13: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="write-seo-articles-agents-can-follow"
+                data-series-title="Write SEO articles agents can follow"
+                data-series-subtitle="Structure humans and agents can both follow"
+                data-series-tip="14"
+                data-href="/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 14: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            </ol>
+          </aside>
+          <div class="article-body">
+<p>Product teams that cut AI agent tokens with caveman attack the part of the bill they can shrink without starving the model of code. Caveman is a communication skill. It tells the agent to drop filler, pleasantries, and hedging, keep technical terms exact, and answer in tight fragments when fragments carry the meaning. Code blocks stay untouched. Error strings stay untouched. The savings live in the sentences between tool calls.</p>
+
+<h2>What caveman changes</h2>
+
+<p>The <a href="https://github.com/JuliusBrussee/caveman" rel="noopener">JuliusBrussee/caveman</a> repository packages a skill for Claude Code, Cursor, Codex, and a long list of other agents. The <a href="https://github.com/JuliusBrussee/caveman/blob/HEAD/skills/caveman/SKILL.md" rel="noopener">SKILL.md</a> sets intensity levels: lite, full, ultra, plus wenyan variants. Lite keeps grammar and cuts fluff. Full drops articles and allows fragments. Ultra compresses harder while still forbidding invented abbreviations that hurt decode clarity.</p>
+
+<p>Pattern to teach teammates: state the thing, the action, the reason, then the next step. “Inline object prop creates a new reference each render. Wrap it in useMemo.” That beats a paragraph that announces the journey of discovery.</p>
+
+<h2>Honest numbers beat slogan numbers</h2>
+
+<p>Marketing copy around caveman often leads with large output-token cuts on chatty answers. That can be true when the answer is mostly prose. Agentic coding is a different animal. <a href="https://blog.jetbrains.com/ai/2026/07/speak-to-ai-agents-like-cavemen-tosave-tokens/" rel="noopener">JetBrains’ SkillsBench write-up</a> forced caveman on across paired tasks and found no meaningful quality drop, while output-token savings landed near the high single digits on agentic work. Their explanation is the one your finance partner needs: code, diffs, and tool payloads dominate those sessions, and caveman correctly leaves them alone.</p>
+
+<p>Use that nuance in planning. Promise clearer status and leaner narration. Measure cost. Do not promise a two-thirds cut on a coding fleet that already emits mostly patches.</p>
+
+<h2>Where caveman pays immediately</h2>
+
+<h3>Status updates during long runs</h3>
+
+<p>Agents love narrating every tool call. “Sure, I will now inspect the file, then I will consider…” burns tokens and patience. Caveman turns that into “Checking auth middleware. Guard uses &lt; not &lt;=. Fix next.” Humans still follow. The meter spins less.</p>
+
+<h3>Code review comments</h3>
+
+<p>Short review notes land better in pull requests. Caveman’s sibling commands in the upstream kit lean into one-line findings. Even without those extras, full intensity review voice reduces throat-clearing that reviewers skip.</p>
+
+<h3>Research summaries after scrapes</h3>
+
+<p>Tip 2 taught you to <a href="./scrape-websites-for-ai-agent-research.html" rel="noopener">scrape websites for AI agent research</a> and keep artifacts on disk. Caveman helps the summary layer: claim, URL, quote, decision. No essay about the journey across tabs.</p>
+
+<h2>Install it as a job-named skill</h2>
+
+<p>Do not bury the skill under a cute brand folder. Follow <a href="../name-ai-agent-skills-after-the-job.html" rel="noopener">name AI agent skills after the job</a> and call it something like compress-agent-replies if you wrap the upstream skill, or keep caveman if slash invocation is already muscle memory for the team. The description should say when to activate: token pressure, long sessions, status-heavy work. It should also list the auto-clarity exits.</p>
+
+<h3>Auto-clarity exits you must keep</h3>
+
+<ul>
+<li>Security warnings stay in full sentences.</li>
+<li>Irreversible confirms stay explicit.</li>
+<li>Multi-step sequences keep conjunctions when order can be misread.</li>
+<li>User confusion triggers a normal-language reset.</li>
+</ul>
+
+<p>Compression that creates ambiguity is not a savings. It is a future incident.</p>
+
+<h2>Pair with source reading, not against it</h2>
+
+<p>Caveman shrinks narration. It does not replace evidence. <a href="./read-dependency-source-code-with-opensrc.html" rel="noopener">Read dependency source code with opensrc</a> when the library is the question. Scrape when the page is the question. Compress when the agent starts performing its reasoning for an audience of none. Teams that only compress still hallucinate. Teams that only research still waste tokens explaining the research twice.</p>
+
+<h2>Operational playbook for a week</h2>
+
+<p>1. Install caveman for one pilot pod. 2. Force full intensity on chat-heavy tasks for two days. 3. Force it on coding tasks for two days. 4. Compare token dashboards and review friction. 5. Keep the level that wins on your mix. Document the exits.</p>
+
+<p>If coding savings look small, keep caveman for planning and research threads. If chat savings look large, make it default for support macros and internal Q&amp;A bots. One intensity across every surface is a slogan, not a plan.</p>
+
+<h2>Failure modes</h2>
+
+<h3>Fake abbreviations</h3>
+
+<p>Some compression styles invent shorthand like “cfg” or “impl.” Upstream caveman ultra guidance warns that many of those tokens do not save money under real tokenizers and they tax the reader. Prefer short real words. Keep API names exact.</p>
+
+<h3>Emoji status theater</h3>
+
+<p>Decorative tables and emoji checklists look friendly and still cost tokens. Caveman’s rules push them out of default replies. Your brand voice in customer emails can stay warm. Agent-to-engineer channels can stay dense.</p>
+
+<h3>Silent overconfidence</h3>
+
+<p>Terse answers can sound more certain than the evidence supports. Require citations for factual claims even when the sentence is five words. Compression removes fluff. It does not remove the need for proof.</p>
+
+<h2>How this sets up tip 4</h2>
+
+<p>Token thrift without change thrift still produces giant diffs. The next tip, <a href="./keep-ai-coding-changes-minimal-with-ponytail.html" rel="noopener">keep AI coding changes minimal with ponytail</a>, attacks over-building. Caveman cleans the talk. Ponytail cleans the patch. Together they keep agent sessions cheap and reviewable.</p>
+
+<p>If you want a calibrated install across Cursor, Claude Code, and your internal agents, <a href="../../index.html#contact" rel="noopener">book a call</a>. I help product teams set intensity defaults, measurement, and the clarity exits so compression never becomes a liability.</p>
+
+<h2>The short operating rule</h2>
+
+<p>Cut filler. Keep code exact. Measure on your workload. Drop caveman when clarity is the product. That is how you cut AI agent tokens with caveman without lying to yourself about the size of the win.</p>
+
+<p>One last operator note: keep a short &quot;clarity card&quot; pinned in your team channel. Four bullets: security warnings in full sentences, irreversible confirms explicit, multi-step order preserved, user confusion resets to normal mode. When someone pastes a confusing caveman reply, point at the card instead of debating style. The card turns taste into policy.</p>
+
+<p>If your agents also write customer-facing prose, route that work through a different skill with stop-slop rules and full sentences. Caveman is for machine-heavy loops. Reader-facing loops need a human register. Split the jobs the same way you split research tools.</p>
+
+<p>Ship the clarity card. Keep the measurements. Move on to minimal diffs in tip 4.</p>
+
+<h2>Worked example: long CI repair session</h2>
+
+<p>An agent spent forty minutes repairing a flaky suite. With default narration, half the transcript was ceremony. With caveman full, the transcript read like a lab notebook: failing test name, hypothesis, command, result, next probe. The patch size stayed the same. The human time to audit the session dropped. Token use on narration dropped with it.</p>
+
+<p>That is the shape of a real win. Caveman did not invent a better fix. It removed the Broadway performance around the fix.</p>
+
+<h2>Choosing intensity by channel</h2>
+
+<p>Internal engineering chat: full. Executive summaries that leave the engineering channel: lite. Customer-facing drafts: off, then run a separate editing pass. Classical wenyan modes are optional culture, not a default for mixed EN/FR product teams in Montreal. Keep the experiments fun in a sandbox. Keep production defaults boring.</p>
+
+<p>Document the channel map in one markdown table next to the skill. Agents cannot guess your politics about tone.</p>
+
+<h2>Metrics worth logging</h2>
+
+<ul>
+<li>Output tokens per session, before and after.</li>
+<li>Human “please clarify” follow-ups per session.</li>
+<li>Escape hatches used for security or irreversible steps.</li>
+<li>Reviewer complaints about terse comments that hid risk.</li>
+</ul>
+
+<p>If follow-ups rise faster than tokens fall, dial intensity down. Savings that create more turns can erase themselves.</p>
+
+<h2>Teaching the team without making a joke of it</h2>
+
+<p>Caveman invites jokes. Jokes are fine once. Process needs a straight face. Frame the skill as an engineering control, like log levels. Nobody ships debug logs to production for fun. Nobody should ship purple prose to a token meter for fun either.</p>
+
+<p>Run a fifteen-minute lunch demo. Show the same bug fix with and without caveman. Show the JetBrains caveat so people trust you. Then set the default and move on.</p>
+
+<h2>Sample before and after replies</h2>
+
+<p>Before: &quot;Sure! I would be happy to help investigate this issue. It seems like the problem might be related to how the authentication middleware validates tokens. I will take a look at the relevant files and get back to you with a detailed analysis.&quot; After: &quot;Bug in auth middleware. Token expiry check uses &lt; not &lt;=. Patch next.&quot; Same facts. Fewer tokens. Faster human parse.</p>
+
+<p>Before on a research summary: &quot;I explored several sources and gathered a comprehensive overview of the competitive landscape across multiple dimensions.&quot; After: &quot;Three vendors. Only Acme lists SCIM on Pro. Sources: [urls].&quot; The second version can ship into a decision record without editing.</p>
+
+<h2>Rolling caveman into shared agents</h2>
+
+<p>Shared agents need a default intensity and an override phrase. &quot;normal mode&quot; and &quot;stop caveman&quot; should remain sacred. So should &quot;security detail&quot; as a local escape. Publish those phrases in the team handbook. If only one engineer knows the escape hatch, on-call becomes theater when compression hides a warning.</p>
+
+<p>For multi-agent setups, compress subagent chatter harder than the parent summary. Parents speak to humans. Children speak to parents. Ultra can be fine between machines. Lite may be better at the human boundary.</p>
+
+<h2>Compatibility with stop-slop and brand voice</h2>
+
+<p>Caveman and stop-slop share enemies: filler, false contrasts, em dash crutches, adverb stacks. They differ in audience. Stop-slop polishes prose for readers. Caveman compresses agent chatter for meters and speed. Use stop-slop on articles and customer emails. Use caveman inside agent sessions. Do not run caveman on public marketing copy unless you want a brand incident.</p>
+
+<p>On this site, articles stay in thought-leadership voice. Agents working on the site can still talk caveman while they edit. Humans read the article. Agents read the skill.</p>
+
+<h2>Thirty-day adoption scorecard</h2>
+
+<p>Week one: install and demo. Week two: default full on engineering agents. Week three: review metrics and escape-hatch logs. Week four: freeze the channel map and write the exception list. If leadership asks for a single ROI number, give two: narration token change, and human audit time change. Both matter. Only one shows up on the model invoice.</p>
+
+<h2>A closing field guide</h2>
+
+<p>Token compression is a lever, not a religion. Flip it for engineering agents. Measure. Keep the exits. Refuse to market chatty-benchmark percentages as coding-fleet savings. Your credibility with finance and with engineers both depend on that honesty.</p>
+
+<p>If you remember one operating line, remember this: cut filler, keep code exact, measure your mix, protect clarity. That is how product teams cut AI agent tokens with caveman and still ship work humans trust.</p>
+
+<h2>Keep the feedback loop short</h2>
+
+<p>After one week on caveman, compare two numbers side by side: narration tokens and clarification turns. If both fall, keep the intensity. If clarification turns rise, step down a level before you abandon the skill. Compression that causes rework is expensive theater.</p>
+
+<section class="article-faq">
+
+<h2>FAQ</h2>
+
+<h3>Will caveman break code in diffs?</h3>
+
+<p>The skill rules say code, commands, and error strings stay verbatim. Compression targets narration. Still spot-check the first week on your stack.</p>
+
+<h3>Which intensity should a product team start with?</h3>
+
+<p>Start with lite or full. Lite keeps articles and full sentences. Full drops articles and allows fragments. Ultra is for operators who already trust the style.</p>
+
+<h3>Why do blog claims and coding benchmarks disagree?</h3>
+
+<p>Chat answers are mostly prose, so filler removal looks huge. Agentic sessions are mostly code and tool payloads, which caveman correctly leaves alone. JetBrains measured that gap on SkillsBench.</p>
+
+<h3>When must the agent leave caveman mode?</h3>
+
+<p>Security warnings, irreversible confirms, and multi-step sequences where missing conjunctions create ambiguity. Resume compression after the clear part.</p>
+
+</section>
+
+            <p class="article-cta-end">Want token budgets and skill kits tuned for your agent fleet? Book a call. Next tip covers keeping coding changes minimal with ponytail. <a href="../../index.html#contact">Book a call</a>.</p>
+            <p class="article-book-mobile">
+              <a class="btn btn-primary" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+            </p>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p class="foot-statement" data-i18n="footer.statement">Available for hard builds.</p>
+        <p class="foot-meta">
+          <strong>Calvin Maighan</strong>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.role">Senior AI and SaaS Engineer</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.meta">Montreal · remote contracts</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="https://github.com/CalvinMaighan" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="mailto:hello@calvinmaighan.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+        </p>
+      </div>
+    </footer>
+
+    <div class="article-chrome">
+      <div class="read-progress" aria-hidden="true"></div>
+      <div class="article-chrome-inner">
+        <a class="btn btn-primary is-locked" id="article-next" href="./keep-ai-coding-changes-minimal-with-ponytail.html" aria-disabled="true" data-i18n="article.next">Next article</a>
+      </div>
+    </div>
+
+    <script type="module" src="../../app.mjs"></script>
+  </body>
+</html>

@@ -7,7 +7,7 @@
       name="description"
       content="Calvin Maighan: senior AI and SaaS engineer for difficult product builds. Contract and fractional engagements."
     />
-    <title>Calvin Maighan: AI consultant to help move ideas forward.</title>
+    <title>Calvin Maighan: AI consulting to help move ideas forward.</title>
     <link rel="canonical" href="https://calvinmaighan.com/" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -19,7 +19,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Calvin Maighan" />
     <meta property="og:locale" content="en_CA" />
-    <meta property="og:title" content="Calvin Maighan: AI consultant to help move ideas forward." />
+    <meta property="og:title" content="Calvin Maighan: AI consulting to help move ideas forward." />
     <meta
       property="og:description"
       content="Calvin Maighan: senior AI and SaaS engineer for difficult product builds. Contract and fractional engagements."
@@ -28,9 +28,9 @@
     <meta property="og:image" content="https://calvinmaighan.com/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Calvin Maighan — AI consultant to help move ideas forward." />
+    <meta property="og:image:alt" content="Calvin Maighan — AI consulting to help move ideas forward." />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Calvin Maighan: AI consultant to help move ideas forward." />
+    <meta name="twitter:title" content="Calvin Maighan: AI consulting to help move ideas forward." />
     <meta
       name="twitter:description"
       content="Calvin Maighan: senior AI and SaaS engineer for difficult product builds. Contract and fractional engagements."
@@ -52,7 +52,7 @@
             "@type": "WebPage",
             "@id": "https://calvinmaighan.com/#webpage",
             "url": "https://calvinmaighan.com/",
-            "name": "Calvin Maighan: AI consultant to help move ideas forward.",
+            "name": "Calvin Maighan: AI consulting to help move ideas forward.",
             "description": "Calvin Maighan: senior AI and SaaS engineer for difficult product builds. Contract and fractional engagements.",
             "isPartOf": { "@id": "https://calvinmaighan.com/#website" },
             "about": { "@id": "https://calvinmaighan.com/#person" },
@@ -130,6 +130,16 @@
           <rect width="20" height="16" x="2" y="4" rx="2" />
         </g>
       </symbol>
+      <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 12h14m-7-7l7 7l-7 7"
+        />
+      </symbol>
     </svg>
 
     <canvas
@@ -197,7 +207,7 @@
           <div class="wrap hero-content">
             <div class="hero-copy">
               <h1>
-                <span data-i18n="hero.title.before">AI consultant to help move </span
+                <span data-i18n="hero.title.before">AI consulting to help move </span
                 ><span class="hero-word" data-i18n="hero.title.word">ideas</span
                 ><span data-i18n="hero.title.after"> forward.</span>
               </h1>
@@ -232,27 +242,44 @@
           </label>
         </section>
 
-        <section class="proof band-ink" aria-label="Credibility">
+        <section id="tips" class="tips band-ink pad-tall" aria-label="Tips">
           <div class="wrap">
-            <div class="proof-line">
-              <div class="proof-item">
-                <strong data-i18n="proof.1.t">Production AI systems</strong>
-                <span data-i18n="proof.1.d"
-                  >I turn research concepts into product surfaces you can run.</span
+            <div class="section-head tips-head">
+              <h2 data-i18n="tips.title">Tricks I use to ship fast and save tokens</h2>
+            </div>
+            <div class="tips-grid">
+              <article class="tips-card">
+                <a
+                  class="tips-card-media"
+                  href="./tips/how-ai-agents-speed-up-developers.html"
+                  data-series-unlock="how-ai-agents-speed-up-developers"
                 >
-              </div>
-              <div class="proof-item">
-                <strong data-i18n="proof.2.t">Complex SaaS platforms</strong>
-                <span data-i18n="proof.2.d"
-                  >Multi-tenant products with real operational constraints.</span
-                >
-              </div>
-              <div class="proof-item">
-                <strong data-i18n="proof.3.t">Architecture through delivery</strong>
-                <span data-i18n="proof.3.d"
-                  >I design the architecture and ship the code in one engagement.</span
-                >
-              </div>
+                  <img
+                    src="./calvinmaighan-article-series-1.png"
+                    alt="Cover for how AI agents speed up developers"
+                    width="1672"
+                    height="941"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+                <div class="tips-card-body">
+                  <p class="tips-card-meta" data-i18n="tips.series1.meta">
+                    Series · intro + 14 tips
+                  </p>
+                  <h3 data-i18n="tips.series1.title">
+                    How AI agents speed up developers
+                  </h3>
+                  <a
+                    class="btn btn-primary tips-card-cta"
+                    href="./tips/how-ai-agents-speed-up-developers.html"
+                    data-series-unlock="how-ai-agents-speed-up-developers"
+                  >
+                    <span data-i18n="tips.series1.cta">Read More</span>
+                    <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+                  </a>
+                </div>
+              </article>
             </div>
           </div>
         </section>
@@ -609,6 +636,8 @@
       </section>
     </main>
 
+    <div class="read-progress" aria-hidden="true"></div>
+
     <footer class="site-footer">
       <div class="wrap">
         <p class="foot-statement" data-i18n="footer.statement">Available for hard builds.</p>
@@ -637,6 +666,8 @@
     <script type="module" src="./app.mjs"></script>
   </body>
 </html>
+
+
 
 
 

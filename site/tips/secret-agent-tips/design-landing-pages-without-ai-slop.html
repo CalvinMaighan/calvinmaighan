@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-accent="beige">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="design landing pages without AI slop by forcing brand-first first viewports, real imagery, and fewer decorative cards so the page could not belong to any random SaaS." />
+    <title>Design landing pages without AI slop · Calvin Maighan</title>
+    <link rel="canonical" href="https://calvinmaighan.com/tips/secret-agent-tips/design-landing-pages-without-ai-slop.html" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#E6E2D4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#221D19" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Calvin Maighan" />
+    <meta property="og:title" content="Design landing pages without AI slop" />
+    <meta property="og:description" content="design landing pages without AI slop by forcing brand-first first viewports, real imagery, and fewer decorative cards so the page could not belong to any random SaaS." />
+    <meta property="og:url" content="https://calvinmaighan.com/tips/secret-agent-tips/design-landing-pages-without-ai-slop.html" />
+    <meta property="og:image" content="https://calvinmaighan.com/calvinmaighan-article-series-1.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Design landing pages without AI slop" />
+    <meta name="twitter:description" content="design landing pages without AI slop by forcing brand-first first viewports, real imagery, and fewer decorative cards so the page could not belong to any random SaaS." />
+    <meta name="twitter:image" content="https://calvinmaighan.com/calvinmaighan-article-series-1.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Design landing pages without AI slop",
+      "description": "design landing pages without AI slop by forcing brand-first first viewports, real imagery, and fewer decorative cards so the page could not belong to any random SaaS.",
+      "datePublished": "2026-07-22",
+      "dateModified": "2026-07-22",
+      "author": {
+        "@type": "Person",
+        "name": "Calvin Maighan",
+        "url": "https://calvinmaighan.com/"
+      },
+      "image": [
+        "https://calvinmaighan.com/calvinmaighan-article-series-1.png"
+      ],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://calvinmaighan.com/tips/secret-agent-tips/design-landing-pages-without-ai-slop.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can hallmark work inside an existing design system?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Preserve the system. Use the skill to kill sloppy composition inside it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need custom illustration?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You need a real visual anchor. Product UI, place, or process beats abstract blobs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about dark mode defaults?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Do not default to glow-on-black because generators like it. Choose on purpose."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I review agent output quickly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Brand test without nav, first viewport budget, card necessity, motion purpose, accessibility."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body class="article-page" data-series-slug="design-landing-pages-without-ai-slop">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-sun" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+        </g>
+      </symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+      </symbol>
+      <symbol id="icon-languages" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 8l6 6m-7 0l6-6l2-3M2 5h12M7 2h1m14 20l-5-10l-5 10m2-4h6" />
+      </symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16" />
+      </symbol>
+      <symbol id="icon-x" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
+      </symbol>
+      <symbol id="icon-github" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
+          <path d="M9 18c-4.51 2-5-2-7-2" />
+        </g>
+      </symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+        </g>
+      </symbol>
+    </svg>
+
+    <header class="site-header" id="site-header">
+      <div class="bar">
+        <a class="brand" href="../../index.html" data-i18n="brand">Calvin Maighan</a>
+        <div class="header-actions">
+          <div class="locale-menu" id="locale-menu">
+            <button type="button" class="icon-btn icon-btn-wide" id="locale-toggle" aria-label="Language" aria-haspopup="listbox" aria-expanded="false" aria-controls="locale-popover">
+              <svg class="icon" aria-hidden="true"><use href="#icon-languages"></use></svg>
+              <span class="icon-btn-text" id="locale-label">EN</span>
+            </button>
+            <div class="locale-popover" id="locale-popover" role="listbox" aria-label="Language">
+              <button type="button" class="locale-option" role="option" data-locale="en" aria-selected="true">EN</button>
+              <button type="button" class="locale-option" role="option" data-locale="fr" aria-selected="false">FR</button>
+            </div>
+          </div>
+          <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch to dark theme">
+            <svg class="icon" aria-hidden="true"><use id="theme-icon-use" href="#icon-moon"></use></svg>
+          </button>
+          <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+            <svg class="icon" aria-hidden="true"><use id="menu-icon-use" href="#icon-menu"></use></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="backdrop" id="menu-backdrop"></div>
+    <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
+      <a href="../../index.html#tips" data-i18n="article.back">Back to tips</a>
+      <a href="../../index.html#work" data-i18n="nav.work">Work</a>
+      <a href="../../index.html#contact" data-i18n="nav.contact">Contact</a>
+      <a class="btn btn-primary" href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+    </nav>
+
+    <main id="top">
+      <article class="article">
+        <header class="article-hero">
+          <div class="wrap">
+            <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+              <ol>
+                <li><a href="../../index.html" data-i18n="article.home">Home</a></li>
+                <li aria-current="page">Design landing pages without AI slop</li>
+              </ol>
+            </nav>
+            <p class="article-kicker">Tip 9 of 14</p>
+            <p class="article-series">14 secret agent tips for product teams</p>
+          </div>
+        </header>
+
+        <div class="wrap article-layout">
+          <h1>Design landing pages without AI slop</h1>
+          <p class="article-subtitle">Brand-first pages that pass the hide-the-nav test</p>
+          <div class="article-byline">
+            <img
+              class="article-byline-avatar"
+              src="../../calvinprofile.jpg"
+              alt="Calvin Maighan"
+              width="48"
+              height="48"
+              decoding="async"
+            />
+            <span class="article-byline-name">Calvin Maighan</span>
+            <span class="article-byline-meta">
+              <span>5 min read</span>
+              <span class="sep" aria-hidden="true">·</span>
+              <time datetime="2026-07-22">July 22, 2026</time>
+            </span>
+            <a class="btn btn-primary article-byline-cta" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+          </div>
+          <figure class="article-cover">
+            <img src="../../calvinmaighan-article-series-1.png" alt="Cover art for designing landing pages without AI slop" width="1672" height="941" decoding="async" />
+          </figure>
+          <p class="article-summary">design landing pages without AI slop when default model layouts converge on purple gradients, cream terracotta serif kits, and dashboard heroes. hallmark pushes distinctive composition and a brand-first first viewport. I use it on greenfield marketing pages and on audits where hiding the nav would make the page unrecognizable as yours.</p>
+          <aside class="article-aside" aria-label="Series">
+            <ol class="article-series-rail">
+            <li>
+              <a
+                class="article-series-card"
+                data-series-slug="how-ai-agents-speed-up-developers"
+                data-series-title="How AI agents speed up developers"
+                data-series-subtitle="Cut dead time between intent and a mergeable change"
+                data-series-tip="0"
+                data-href="/tips/how-ai-agents-speed-up-developers.html"
+                href="/tips/how-ai-agents-speed-up-developers.html"
+                
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">How AI agents speed up developers</span>
+                  <span class="article-series-card-subtitle">Cut dead time between intent and a mergeable change</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="read-dependency-source-code-with-opensrc"
+                data-series-title="Read dependency source code with opensrc"
+                data-series-subtitle="Pull package source into the agent loop"
+                data-series-tip="1"
+                data-href="/tips/secret-agent-tips/read-dependency-source-code-with-opensrc.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 1: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="scrape-websites-for-ai-agent-research"
+                data-series-title="Scrape websites for AI agent research"
+                data-series-subtitle="Turn live pages into research the agent can cite"
+                data-series-tip="2"
+                data-href="/tips/secret-agent-tips/scrape-websites-for-ai-agent-research.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 2: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="cut-ai-agent-tokens-with-caveman"
+                data-series-title="Cut AI agent tokens with caveman"
+                data-series-subtitle="Terse replies without mangling code"
+                data-series-tip="3"
+                data-href="/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 3: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="keep-ai-coding-changes-minimal-with-ponytail"
+                data-series-title="Keep AI coding changes minimal with ponytail"
+                data-series-subtitle="Smallest working diff, no speculative fluff"
+                data-series-tip="4"
+                data-href="/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 4: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="compress-agent-context-before-you-code"
+                data-series-title="Compress agent context before you code"
+                data-series-subtitle="Ranked symbols instead of whole-repo paste"
+                data-series-tip="5"
+                data-href="/tips/secret-agent-tips/compress-agent-context-before-you-code.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 5: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="persist-codebase-knowledge-across-ai-chats"
+                data-series-title="Persist codebase knowledge across AI chats"
+                data-series-subtitle="Memory that survives the next chat"
+                data-series-tip="6"
+                data-href="/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 6: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="research-what-people-said-last-month"
+                data-series-title="Research what people said last month"
+                data-series-subtitle="Real voices from the last thirty days"
+                data-series-tip="7"
+                data-href="/tips/secret-agent-tips/research-what-people-said-last-month.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 7: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="remove-ai-writing-tells-from-prose"
+                data-series-title="Remove AI writing tells from prose"
+                data-series-subtitle="Kill the patterns that scream model-written"
+                data-series-tip="8"
+                data-href="/tips/secret-agent-tips/remove-ai-writing-tells-from-prose.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 8: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked is-current"
+                data-series-slug="design-landing-pages-without-ai-slop"
+                data-series-title="Design landing pages without AI slop"
+                data-series-subtitle="Brand-first pages that pass the hide-the-nav test"
+                data-series-tip="9"
+                data-href="/tips/secret-agent-tips/design-landing-pages-without-ai-slop.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 9: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="build-product-videos-with-hyperframes"
+                data-series-title="Build product videos with HyperFrames"
+                data-series-subtitle="HTML compositions agents can revise"
+                data-series-tip="10"
+                data-href="/tips/secret-agent-tips/build-product-videos-with-hyperframes.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 10: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="expose-product-actions-as-mcp-tools"
+                data-series-title="Expose product actions as MCP tools"
+                data-series-subtitle="Tools with schemas, scopes, and audit trails"
+                data-series-tip="11"
+                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 11: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="catch-ai-code-mistakes-with-lint"
+                data-series-title="Catch AI code mistakes with lint"
+                data-series-subtitle="Lint as a hard gate after every agent edit"
+                data-series-tip="12"
+                data-href="/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 12: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="ship-production-releases-with-agent-checks"
+                data-series-title="Ship production releases with agent checks"
+                data-series-subtitle="Release checks agents cannot skip"
+                data-series-tip="13"
+                data-href="/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 13: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="write-seo-articles-agents-can-follow"
+                data-series-title="Write SEO articles agents can follow"
+                data-series-subtitle="Structure humans and agents can both follow"
+                data-series-tip="14"
+                data-href="/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 14: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            </ol>
+          </aside>
+          <div class="article-body">
+<p>design landing pages without AI slop if your site could belong to another company after you remove the logo. That brand test is rude and useful. I run it in critiques on purpose.</p>
+
+<p>hallmark is the design skill I use for greenfield pages, audits, and redesigns. It is judgment, not a component library. Your CSS tokens still ship the look. The skill kills generic composition. Pair visual direction with <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" rel="noopener">Google's SEO starter guidance</a> for clear pages and <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" rel="noopener">WCAG</a> so distinctive never means unreadable. <a href="https://cursor.com/docs/skills" rel="noopener">Cursor skills</a> are just how I package the checklist for agents.</p>
+
+<h2>First viewport budget</h2>
+
+<p>One composition. Brand as a hero-level signal. One headline. One short supporting sentence. One CTA group. One dominant image or atmosphere. No stat strips, schedule widgets, or promo stickers floating on the hero.</p>
+
+<p>If the first screen looks like a dashboard, you already lost people who came for a story.</p>
+
+<h2>Cards and chrome</h2>
+
+<p>Default to no cards. Cards earn their border when they contain an interaction. If removing shadow, radius, or background does not hurt understanding, remove them.</p>
+
+<p>Avoid pill clusters, badge stickers on media, and glow stacks that scream &quot;generated.&quot; Motion should create hierarchy. Two or three intentional motions beat a particle zoo.</p>
+
+<h2>Imagery and type</h2>
+
+<p>Use a real visual anchor: product UI, place, process, or people doing the work. Decorative gradients alone do not count as the idea.</p>
+
+<p>Typography should be expressive on purpose. Default stacks signal placeholder design. Accessibility stays non-negotiable. Pretty that fails contrast still fails.</p>
+
+<h2>Working inside a system</h2>
+
+<p>If a design system exists, preserve it. hallmark should kill sloppy composition inside those constraints, not invent a second brand for fun. When redesigning from a URL or screenshot, extract patterns, then rebuild with restraint instead of cloning decorations.</p>
+
+<p>Pair with stop-slop so headlines match the visual ambition. Pretty type over soggy copy is still soggy.</p>
+
+<h2>How I review agent output</h2>
+
+<p>1. Hide the nav. Does the page still feel owned? 2. Count jobs in the first viewport. More than one is usually too many. 3. Remove card chrome mentally. Does meaning survive? 4. Check motion count and purpose. 5. Check contrast and focus states like you mean it.</p>
+
+<p>For consulting, show before and after. Clients buy the delta, not your vocabulary about vibes.</p>
+
+<h2>Composition defaults I push back on</h2>
+
+<p>Purple-to-indigo gradients on white. Warm cream plus terracotta serif kits that all look related. Broadsheet hairline layouts with zero radius pretending to be a newspaper. Multi-layer shadows on every card. Rounded-full pill rows that say nothing. Glow effects on dark backgrounds that hide weak hierarchy.</p>
+
+<p>You can use any of those on purpose. Defaulting into them because the model likes them is how brands die of sameness.</p>
+
+<h2>Section jobs</h2>
+
+<p>Each section gets one headline and usually one supporting sentence. If you need a second job, make a second section. Agents love stuffing stats, logos, and testimonials into the hero because demos look &quot;complete.&quot; Complete is not the same as clear.</p>
+
+<p>Full-bleed hero media should feel like a plane, not a floating card. Inset hero images in rounded frames read as templates unless your system already owns that pattern for a reason.</p>
+
+<h2>Implementation notes for agents</h2>
+
+<p>Define CSS variables for the direction you chose. Paint with tokens. Do not hardcode a one-off purple in a component when the theme already has a hue ladder.</p>
+
+<p>On this portfolio, theme tokens and ambient motion live under the same pressure: atmosphere without generic AI cosplay. The tips pages keep reading surfaces calm so the words can work.</p>
+
+<h2>Failure modes</h2>
+
+<p>Defaulting to dark glow because models like it. Choose on purpose.</p>
+
+<p>Shipping five sections that all try to close. One job per section.</p>
+
+<p>Treating hallmark as a Figma replacement. It judges direction. Someone still implements tokens and layout.</p>
+
+<p>Asking the agent to &quot;make it pop.&quot; Pop is not a requirement. Clarity is.</p>
+
+<h2>Copy and layout together</h2>
+
+<p>A sharp layout with soggy headlines still fails. Run stop-slop on the hero and section opens before you debate spacing. Agents will happily kern a bad sentence.</p>
+
+<p>Hire CTAs should sound like an invitation with a cost of time, not a plea. &quot;Book a call&quot; is enough. &quot;We would love to partner with visionary teams like yours&quot; is how you lose serious buyers.</p>
+
+<h2>Mobile is not an afterthought</h2>
+
+<p>First viewport on a phone is smaller than your laptop preview. If the brand mark, headline, and CTA do not fit without pinch zoom theater, cut. Agents stack desktop-only flourishes. Check the narrow width every time.</p>
+
+<h2>A 30-minute audit script</h2>
+
+<p>1. Screenshot first viewport at 390px and 1280px. 2. Hide the logo in the screenshot. Guess the company. If you cannot, branding is weak. 3. Count interactive cards. Remove any that are only decoration. 4. List section jobs. Merge duplicates. 5. Read hero copy aloud after a stop-slop pass. 6. Check contrast on body text and buttons.</p>
+
+<p>I run this before I accept an agent redesign. It takes less time than arguing about taste.</p>
+
+<h2>What I tell agents instead of &quot;make it beautiful&quot;</h2>
+
+<p>&quot;One composition in the first viewport. Brand name is the loudest text. One headline, one supporting sentence, one CTA group, one full-bleed visual. No cards in the hero. No floating badges. No purple default. Use theme tokens. Mobile first at 390px.&quot;</p>
+
+<p>That prompt is boring on purpose. Boring prompts produce owned pages. Vague beauty prompts produce the same SaaS costume you have already seen.</p>
+
+<h2>Sources</h2>
+
+<ul>
+<li><a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" rel="noopener">Google SEO starter guide</a></li>
+<li><a href="https://www.w3.org/WAI/standards-guidelines/wcag/" rel="noopener">WCAG overview</a></li>
+<li><a href="https://cursor.com/docs/skills" rel="noopener">Cursor skills docs</a></li>
+<li>Related: <a href="../name-ai-agent-skills-after-the-job.html" rel="noopener">Name AI agent skills after the job</a></li>
+<li>Series: <a href="../../index.html#tips" rel="noopener">tips on calvinmaighan.com</a></li>
+</ul>
+
+<section class="article-faq">
+
+<h2>FAQ</h2>
+
+<h3>Can hallmark work inside an existing design system?</h3>
+
+<p>Yes. Preserve the system. Use the skill to kill sloppy composition inside it.</p>
+
+<h3>Do I need custom illustration?</h3>
+
+<p>You need a real visual anchor. Product UI, place, or process beats abstract blobs.</p>
+
+<h3>What about dark mode defaults?</h3>
+
+<p>Do not default to glow-on-black because generators like it. Choose on purpose.</p>
+
+<h3>How do I review agent output quickly?</h3>
+
+<p>Brand test without nav, first viewport budget, card necessity, motion purpose, accessibility.</p>
+
+</section>
+
+            <p class="article-cta-end">If you want a sharper marketing surface for your product <a href="../../index.html#contact">Book a call</a>.</p>
+            <p class="article-book-mobile">
+              <a class="btn btn-primary" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+            </p>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p class="foot-statement" data-i18n="footer.statement">Available for hard builds.</p>
+        <p class="foot-meta">
+          <strong>Calvin Maighan</strong>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.role">Senior AI and SaaS Engineer</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.meta">Montreal · remote contracts</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="https://github.com/CalvinMaighan" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="mailto:hello@calvinmaighan.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+        </p>
+      </div>
+    </footer>
+
+    <div class="article-chrome">
+      <div class="read-progress" aria-hidden="true"></div>
+      <div class="article-chrome-inner">
+        <a class="btn btn-primary is-locked" id="article-next" href="./build-product-videos-with-hyperframes.html" aria-disabled="true" data-i18n="article.next">Next article</a>
+      </div>
+    </div>
+
+    <script type="module" src="../../app.mjs"></script>
+  </body>
+</html>

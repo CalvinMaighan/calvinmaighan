@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-accent="beige">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="how AI agents speed up developers when you treat them like junior contractors with sharp jobs, real sources, and release gates instead of magical chat boxes that invent APIs." />
+    <title>How AI agents speed up developers · Calvin Maighan</title>
+    <link rel="canonical" href="https://calvinmaighan.com/tips/how-ai-agents-speed-up-developers.html" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#E6E2D4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#221D19" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Calvin Maighan" />
+    <meta property="og:title" content="How AI agents speed up developers" />
+    <meta property="og:description" content="how AI agents speed up developers when you treat them like junior contractors with sharp jobs, real sources, and release gates instead of magical chat boxes that invent APIs." />
+    <meta property="og:url" content="https://calvinmaighan.com/tips/how-ai-agents-speed-up-developers.html" />
+    <meta property="og:image" content="https://calvinmaighan.com/calvinmaighan-article-series-1.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How AI agents speed up developers" />
+    <meta name="twitter:description" content="how AI agents speed up developers when you treat them like junior contractors with sharp jobs, real sources, and release gates instead of magical chat boxes that invent APIs." />
+    <meta name="twitter:image" content="https://calvinmaighan.com/calvinmaighan-article-series-1.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How AI agents speed up developers",
+      "description": "how AI agents speed up developers when you treat them like junior contractors with sharp jobs, real sources, and release gates instead of magical chat boxes that invent APIs.",
+      "datePublished": "2026-07-23",
+      "dateModified": "2026-07-23",
+      "author": {
+        "@type": "Person",
+        "name": "Calvin Maighan",
+        "url": "https://calvinmaighan.com/"
+      },
+      "image": [
+        "https://calvinmaighan.com/calvinmaighan-article-series-1.png"
+      ],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://calvinmaighan.com/tips/how-ai-agents-speed-up-developers.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this page one of the fourteen tips?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This is the series intro. The fourteen tips start at tip 1 with opensrc."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do agents replace senior engineers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. They compress grunt work. Seniors still own architecture, risk, and merge decisions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where should a team start after this intro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Open tip 1 and install one research habit this week. Do not install fourteen skills on day one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can this work outside Cursor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The jobs transfer. The packaging may change. MCP, lint, and release discipline are editor-agnostic."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="article-page" data-series-slug="how-ai-agents-speed-up-developers">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-sun" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+        </g>
+      </symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+      </symbol>
+      <symbol id="icon-languages" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 8l6 6m-7 0l6-6l2-3M2 5h12M7 2h1m14 20l-5-10l-5 10m2-4h6" />
+      </symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16" />
+      </symbol>
+      <symbol id="icon-x" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
+      </symbol>
+      <symbol id="icon-github" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
+          <path d="M9 18c-4.51 2-5-2-7-2" />
+        </g>
+      </symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+        </g>
+      </symbol>
+    </svg>
+
+    <header class="site-header" id="site-header">
+      <div class="bar">
+        <a class="brand" href="../index.html" data-i18n="brand">Calvin Maighan</a>
+        <div class="header-actions">
+          <div class="locale-menu" id="locale-menu">
+            <button type="button" class="icon-btn icon-btn-wide" id="locale-toggle" aria-label="Language" aria-haspopup="listbox" aria-expanded="false" aria-controls="locale-popover">
+              <svg class="icon" aria-hidden="true"><use href="#icon-languages"></use></svg>
+              <span class="icon-btn-text" id="locale-label">EN</span>
+            </button>
+            <div class="locale-popover" id="locale-popover" role="listbox" aria-label="Language">
+              <button type="button" class="locale-option" role="option" data-locale="en" aria-selected="true">EN</button>
+              <button type="button" class="locale-option" role="option" data-locale="fr" aria-selected="false">FR</button>
+            </div>
+          </div>
+          <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch to dark theme">
+            <svg class="icon" aria-hidden="true"><use id="theme-icon-use" href="#icon-moon"></use></svg>
+          </button>
+          <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+            <svg class="icon" aria-hidden="true"><use id="menu-icon-use" href="#icon-menu"></use></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="backdrop" id="menu-backdrop"></div>
+    <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
+      <a href="../index.html#tips" data-i18n="article.back">Back to tips</a>
+      <a href="../index.html#work" data-i18n="nav.work">Work</a>
+      <a href="../index.html#contact" data-i18n="nav.contact">Contact</a>
+      <a class="btn btn-primary" href="../index.html#contact" data-i18n="nav.cta">Book a call</a>
+    </nav>
+
+    <main id="top">
+      <article class="article">
+        <header class="article-hero">
+          <div class="wrap">
+            <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+              <ol>
+                <li><a href="../index.html" data-i18n="article.home">Home</a></li>
+                <li aria-current="page">How AI agents speed up developers</li>
+              </ol>
+            </nav>
+            
+          </div>
+        </header>
+
+        <div class="wrap article-layout">
+          <h1>How AI agents speed up developers</h1>
+          <p class="article-subtitle">Cut dead time between intent and a mergeable change</p>
+          <div class="article-byline">
+            <img
+              class="article-byline-avatar"
+              src="../calvinprofile.jpg"
+              alt="Calvin Maighan"
+              width="48"
+              height="48"
+              decoding="async"
+            />
+            <span class="article-byline-name">Calvin Maighan</span>
+            <span class="article-byline-meta">
+              <span>3 min read</span>
+              <span class="sep" aria-hidden="true">·</span>
+              <time datetime="2026-07-23">July 23, 2026</time>
+            </span>
+            <a class="btn btn-primary article-byline-cta" href="../index.html#contact" data-i18n="article.book">Book a call</a>
+          </div>
+          <figure class="article-cover">
+            <img src="../calvinmaighan-article-series-1.png" alt="Cover for how AI agents speed up developers" width="1672" height="941" decoding="async" />
+          </figure>
+          <p class="article-summary">how AI agents speed up developers is not about typing faster. It is about cutting the dead time between intent and a mergeable change: research, reading foreign code, drafting, review, and release checks. This piece is the wide view. The next fourteen tips are the concrete skills I use on consulting work so agents ship with you instead of past you.</p>
+          <aside class="article-aside" aria-label="Series">
+            <ol class="article-series-rail">
+            <li>
+              <a
+                class="article-series-card is-current"
+                data-series-slug="how-ai-agents-speed-up-developers"
+                data-series-title="How AI agents speed up developers"
+                data-series-subtitle="Cut dead time between intent and a mergeable change"
+                data-series-tip="0"
+                data-href="/tips/how-ai-agents-speed-up-developers.html"
+                href="/tips/how-ai-agents-speed-up-developers.html"
+                
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">How AI agents speed up developers</span>
+                  <span class="article-series-card-subtitle">Cut dead time between intent and a mergeable change</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="read-dependency-source-code-with-opensrc"
+                data-series-title="Read dependency source code with opensrc"
+                data-series-subtitle="Pull package source into the agent loop"
+                data-series-tip="1"
+                data-href="/tips/secret-agent-tips/read-dependency-source-code-with-opensrc.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 1: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="scrape-websites-for-ai-agent-research"
+                data-series-title="Scrape websites for AI agent research"
+                data-series-subtitle="Turn live pages into research the agent can cite"
+                data-series-tip="2"
+                data-href="/tips/secret-agent-tips/scrape-websites-for-ai-agent-research.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 2: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="cut-ai-agent-tokens-with-caveman"
+                data-series-title="Cut AI agent tokens with caveman"
+                data-series-subtitle="Terse replies without mangling code"
+                data-series-tip="3"
+                data-href="/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 3: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="keep-ai-coding-changes-minimal-with-ponytail"
+                data-series-title="Keep AI coding changes minimal with ponytail"
+                data-series-subtitle="Smallest working diff, no speculative fluff"
+                data-series-tip="4"
+                data-href="/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 4: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="compress-agent-context-before-you-code"
+                data-series-title="Compress agent context before you code"
+                data-series-subtitle="Ranked symbols instead of whole-repo paste"
+                data-series-tip="5"
+                data-href="/tips/secret-agent-tips/compress-agent-context-before-you-code.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 5: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="persist-codebase-knowledge-across-ai-chats"
+                data-series-title="Persist codebase knowledge across AI chats"
+                data-series-subtitle="Memory that survives the next chat"
+                data-series-tip="6"
+                data-href="/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 6: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="research-what-people-said-last-month"
+                data-series-title="Research what people said last month"
+                data-series-subtitle="Real voices from the last thirty days"
+                data-series-tip="7"
+                data-href="/tips/secret-agent-tips/research-what-people-said-last-month.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 7: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="remove-ai-writing-tells-from-prose"
+                data-series-title="Remove AI writing tells from prose"
+                data-series-subtitle="Kill the patterns that scream model-written"
+                data-series-tip="8"
+                data-href="/tips/secret-agent-tips/remove-ai-writing-tells-from-prose.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 8: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="design-landing-pages-without-ai-slop"
+                data-series-title="Design landing pages without AI slop"
+                data-series-subtitle="Brand-first pages that pass the hide-the-nav test"
+                data-series-tip="9"
+                data-href="/tips/secret-agent-tips/design-landing-pages-without-ai-slop.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 9: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="build-product-videos-with-hyperframes"
+                data-series-title="Build product videos with HyperFrames"
+                data-series-subtitle="HTML compositions agents can revise"
+                data-series-tip="10"
+                data-href="/tips/secret-agent-tips/build-product-videos-with-hyperframes.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 10: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="expose-product-actions-as-mcp-tools"
+                data-series-title="Expose product actions as MCP tools"
+                data-series-subtitle="Tools with schemas, scopes, and audit trails"
+                data-series-tip="11"
+                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 11: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="catch-ai-code-mistakes-with-lint"
+                data-series-title="Catch AI code mistakes with lint"
+                data-series-subtitle="Lint as a hard gate after every agent edit"
+                data-series-tip="12"
+                data-href="/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 12: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="ship-production-releases-with-agent-checks"
+                data-series-title="Ship production releases with agent checks"
+                data-series-subtitle="Release checks agents cannot skip"
+                data-series-tip="13"
+                data-href="/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 13: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="write-seo-articles-agents-can-follow"
+                data-series-title="Write SEO articles agents can follow"
+                data-series-subtitle="Structure humans and agents can both follow"
+                data-series-tip="14"
+                data-href="/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 14: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            </ol>
+          </aside>
+          <div class="article-body">
+<p>how AI agents speed up developers when you stop asking them to &quot;be helpful&quot; and start giving them jobs with evidence, limits, and a definition of done. Speed is not vibes in a sidebar. Speed is fewer days between a ticket and a green PR that a human still trusts.</p>
+
+<p>I work with startups, SaaS teams, and agencies that want AI in the build loop without turning the codebase into a novelty demo. The dream is simple: the agent does the expensive grunt work, you keep judgment, and shipping gets quieter.</p>
+
+<h2>The dead time you can actually kill</h2>
+
+<p>Most engineering calendars are not full of pure invention. They are full of waiting on context.</p>
+
+<p>Waiting to find the right docs page. Waiting to understand a dependency that types only half-explain. Waiting to rewrite the same release notes shape. Waiting for a lint storm after a bulk agent edit. Waiting for someone to remember how you deploy on this repo.</p>
+
+<p>Agents compress that waiting when you wire them to truth: live pages, installed package source, project memory, lint, and a release checklist. They waste time when you feed them slogans and hope.</p>
+
+<h2>What &quot;faster&quot; looks like on a real team</h2>
+
+<p>Faster means the junior path gets shorter. A new hire plus a good agent skill catalog can open the right procedure without pinging you on Slack. Faster means research lands as dated markdown next to the ticket, not as a forgotten chat. Faster means the PR is small enough to review before lunch.</p>
+
+<p>It does not mean the agent owns production. Humans still merge. Humans still say no. The win is that saying yes costs less attention.</p>
+
+<h2>The shape of an agent operating system</h2>
+
+<p>Think less &quot;chat with our codebase&quot; and more &quot;jobs the agent can run.&quot;</p>
+
+<ul>
+<li>Research jobs that fetch sources before claims.</li>
+<li>Reading jobs that open real dependency code before patches.</li>
+<li>Writing jobs that strip AI sludge before publish.</li>
+<li>Design and video jobs that keep brand and product truth.</li>
+<li>Product jobs that expose safe capabilities over MCP.</li>
+<li>Gate jobs that lint and release with rollback notes.</li>
+</ul>
+
+<p>That stack is what the fourteen tips after this page unpack. Each tip is one secret I actually use. This page is only the map.</p>
+
+<h2>Why teams stall</h2>
+
+<p>They buy a model subscription and stop at the text box. They name skills after vendors. They let agents invent APIs. They skip lint because the chat sounded confident. They treat deploy as a button without a rollback sentence.</p>
+
+<p>None of that is a model problem. It is an operating problem. Fix the operating problem and the same models look brilliant. Ignore it and every new model feels like the same expensive intern.</p>
+
+<h2>The consulting promise, without the fog</h2>
+
+<p>If we work together, I am not selling you a prompt pack. I am installing habits and skills your team can run when I leave: job-named procedures, research that cites, diffs that stay small, and release gates that survive a bad Thursday.</p>
+
+<p>Dream big on outcomes. Stay strict on process. That combination is how AI agents speed up developers without speeding up incidents.</p>
+
+<p>Scroll to the end. Unlock the next article. Tip 1 starts with reading dependency source instead of guessing.</p>
+
+<h2>Sources</h2>
+
+<ul>
+<li><a href="https://cursor.com/docs/skills" rel="noopener">Cursor Agent Skills</a></li>
+<li><a href="https://modelcontextprotocol.io/" rel="noopener">Model Context Protocol</a></li>
+<li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener">Google helpful content guidance</a></li>
+<li>Series tip 1: <a href="./secret-agent-tips/read-dependency-source-code-with-opensrc.html" rel="noopener">read dependency source code with opensrc</a></li>
+<li>Hire: <a href="../index.html#contact" rel="noopener">Book a call</a></li>
+</ul>
+
+<section class="article-faq">
+
+<h2>FAQ</h2>
+
+<h3>Is this page one of the fourteen tips?</h3>
+
+<p>No. This is the series intro. The fourteen tips start at tip 1 with opensrc.</p>
+
+<h3>Do agents replace senior engineers?</h3>
+
+<p>No. They compress grunt work. Seniors still own architecture, risk, and merge decisions.</p>
+
+<h3>Where should a team start after this intro?</h3>
+
+<p>Open tip 1 and install one research habit this week. Do not install fourteen skills on day one.</p>
+
+<h3>Can this work outside Cursor?</h3>
+
+<p>Yes. The jobs transfer. The packaging may change. MCP, lint, and release discipline are editor-agnostic.</p>
+
+</section>
+
+            <p class="article-cta-end">If you want this operating system installed on your team <a href="../index.html#contact">Book a call</a>.</p>
+            <p class="article-book-mobile">
+              <a class="btn btn-primary" href="../index.html#contact" data-i18n="article.book">Book a call</a>
+            </p>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p class="foot-statement" data-i18n="footer.statement">Available for hard builds.</p>
+        <p class="foot-meta">
+          <strong>Calvin Maighan</strong>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.role">Senior AI and SaaS Engineer</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.meta">Montreal · remote contracts</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="https://github.com/CalvinMaighan" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="mailto:hello@calvinmaighan.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a href="../index.html#contact" data-i18n="nav.cta">Book a call</a>
+        </p>
+      </div>
+    </footer>
+
+    <div class="article-chrome">
+      <div class="read-progress" aria-hidden="true"></div>
+      <div class="article-chrome-inner">
+        <a class="btn btn-primary is-locked" id="article-next" href="./secret-agent-tips/read-dependency-source-code-with-opensrc.html" aria-disabled="true" data-i18n="article.next">Next article</a>
+      </div>
+    </div>
+
+    <script type="module" src="../app.mjs"></script>
+  </body>
+</html>

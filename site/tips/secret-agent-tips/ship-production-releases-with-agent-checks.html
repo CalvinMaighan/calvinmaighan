@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-accent="beige">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="ship production releases with agent checks using a fixed /prod skill: sync main, bump the version, run typecheck and build, commit only intended files, push, and open a PR humans merge while GitHub environment rules still gate deploy." />
+    <title>Ship production releases with agent checks · Calvin Maighan</title>
+    <link rel="canonical" href="https://calvinmaighan.com/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#E6E2D4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#221D19" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Calvin Maighan" />
+    <meta property="og:title" content="Ship production releases with agent checks" />
+    <meta property="og:description" content="ship production releases with agent checks using a fixed /prod skill: sync main, bump the version, run typecheck and build, commit only intended files, push, and open a PR humans merge while GitHub environment rules still gate deploy." />
+    <meta property="og:url" content="https://calvinmaighan.com/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html" />
+    <meta property="og:image" content="https://calvinmaighan.com/calvinmaighan-article-series-1.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ship production releases with agent checks" />
+    <meta name="twitter:description" content="ship production releases with agent checks using a fixed /prod skill: sync main, bump the version, run typecheck and build, commit only intended files, push, and open a PR humans merge while GitHub environment rules still gate deploy." />
+    <meta name="twitter:image" content="https://calvinmaighan.com/calvinmaighan-article-series-1.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Ship production releases with agent checks",
+      "description": "ship production releases with agent checks using a fixed /prod skill: sync main, bump the version, run typecheck and build, commit only intended files, push, and open a PR humans merge while GitHub environment rules still gate deploy.",
+      "datePublished": "2026-07-22",
+      "dateModified": "2026-07-22",
+      "author": {
+        "@type": "Person",
+        "name": "Calvin Maighan",
+        "url": "https://calvinmaighan.com/"
+      },
+      "image": [
+        "https://calvinmaighan.com/calvinmaighan-article-series-1.png"
+      ],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://calvinmaighan.com/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Should an agent merge the production PR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The agent prepares the branch, passes gates, and opens or updates the PR. A human reviews and merges. That split keeps secrets, approvals, and rollback judgment with the team."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if the worktree has unrelated dirty files?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Leave them alone. Stage only files that belong to the release. If scope stays ambiguous, the agent stops and asks instead of sweeping the whole tree into the commit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do agents replace GitHub environment protection rules?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Use required reviewers, deployment branches, and environment secrets as GitHub documents in its Actions deployment guides. The agent prepares evidence; the environment rules still gate the job."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should the agent bump the version?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After a successful fetch of origin/main and before the production build, using the repo’s version script. Include package and lockfile changes in the same PR so the release number matches the build log."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body class="article-page" data-series-slug="ship-production-releases-with-agent-checks">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-sun" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+        </g>
+      </symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+      </symbol>
+      <symbol id="icon-languages" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 8l6 6m-7 0l6-6l2-3M2 5h12M7 2h1m14 20l-5-10l-5 10m2-4h6" />
+      </symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16" />
+      </symbol>
+      <symbol id="icon-x" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
+      </symbol>
+      <symbol id="icon-github" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
+          <path d="M9 18c-4.51 2-5-2-7-2" />
+        </g>
+      </symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+        </g>
+      </symbol>
+    </svg>
+
+    <header class="site-header" id="site-header">
+      <div class="bar">
+        <a class="brand" href="../../index.html" data-i18n="brand">Calvin Maighan</a>
+        <div class="header-actions">
+          <div class="locale-menu" id="locale-menu">
+            <button type="button" class="icon-btn icon-btn-wide" id="locale-toggle" aria-label="Language" aria-haspopup="listbox" aria-expanded="false" aria-controls="locale-popover">
+              <svg class="icon" aria-hidden="true"><use href="#icon-languages"></use></svg>
+              <span class="icon-btn-text" id="locale-label">EN</span>
+            </button>
+            <div class="locale-popover" id="locale-popover" role="listbox" aria-label="Language">
+              <button type="button" class="locale-option" role="option" data-locale="en" aria-selected="true">EN</button>
+              <button type="button" class="locale-option" role="option" data-locale="fr" aria-selected="false">FR</button>
+            </div>
+          </div>
+          <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch to dark theme">
+            <svg class="icon" aria-hidden="true"><use id="theme-icon-use" href="#icon-moon"></use></svg>
+          </button>
+          <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+            <svg class="icon" aria-hidden="true"><use id="menu-icon-use" href="#icon-menu"></use></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="backdrop" id="menu-backdrop"></div>
+    <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
+      <a href="../../index.html#tips" data-i18n="article.back">Back to tips</a>
+      <a href="../../index.html#work" data-i18n="nav.work">Work</a>
+      <a href="../../index.html#contact" data-i18n="nav.contact">Contact</a>
+      <a class="btn btn-primary" href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+    </nav>
+
+    <main id="top">
+      <article class="article">
+        <header class="article-hero">
+          <div class="wrap">
+            <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+              <ol>
+                <li><a href="../../index.html" data-i18n="article.home">Home</a></li>
+                <li aria-current="page">Ship production releases with agent checks</li>
+              </ol>
+            </nav>
+            <p class="article-kicker">Tip 13 of 14</p>
+            <p class="article-series">14 secret agent tips for product teams</p>
+          </div>
+        </header>
+
+        <div class="wrap article-layout">
+          <h1>Ship production releases with agent checks</h1>
+          <p class="article-subtitle">Release checks agents cannot skip</p>
+          <div class="article-byline">
+            <img
+              class="article-byline-avatar"
+              src="../../calvinprofile.jpg"
+              alt="Calvin Maighan"
+              width="48"
+              height="48"
+              decoding="async"
+            />
+            <span class="article-byline-name">Calvin Maighan</span>
+            <span class="article-byline-meta">
+              <span>10 min read</span>
+              <span class="sep" aria-hidden="true">·</span>
+              <time datetime="2026-07-22">July 22, 2026</time>
+            </span>
+            <a class="btn btn-primary article-byline-cta" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+          </div>
+          <figure class="article-cover">
+            <img src="../../calvinmaighan-article-series-1.png" alt="Cover for tip 13: ship production releases with agent checks" width="1672" height="941" decoding="async" />
+          </figure>
+          <p class="article-summary">Ship production releases with agent checks by giving the agent a fixed validate-then-publish script: sync main, pick a safe branch, bump the release, run typecheck and build, commit only intended files, push, and open a PR for human merge. Agents must never merge to production. Protection rules, reviewers, and environment secrets stay in GitHub.</p>
+          <aside class="article-aside" aria-label="Series">
+            <ol class="article-series-rail">
+            <li>
+              <a
+                class="article-series-card"
+                data-series-slug="how-ai-agents-speed-up-developers"
+                data-series-title="How AI agents speed up developers"
+                data-series-subtitle="Cut dead time between intent and a mergeable change"
+                data-series-tip="0"
+                data-href="/tips/how-ai-agents-speed-up-developers.html"
+                href="/tips/how-ai-agents-speed-up-developers.html"
+                
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">How AI agents speed up developers</span>
+                  <span class="article-series-card-subtitle">Cut dead time between intent and a mergeable change</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="read-dependency-source-code-with-opensrc"
+                data-series-title="Read dependency source code with opensrc"
+                data-series-subtitle="Pull package source into the agent loop"
+                data-series-tip="1"
+                data-href="/tips/secret-agent-tips/read-dependency-source-code-with-opensrc.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 1: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="scrape-websites-for-ai-agent-research"
+                data-series-title="Scrape websites for AI agent research"
+                data-series-subtitle="Turn live pages into research the agent can cite"
+                data-series-tip="2"
+                data-href="/tips/secret-agent-tips/scrape-websites-for-ai-agent-research.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 2: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="cut-ai-agent-tokens-with-caveman"
+                data-series-title="Cut AI agent tokens with caveman"
+                data-series-subtitle="Terse replies without mangling code"
+                data-series-tip="3"
+                data-href="/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 3: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="keep-ai-coding-changes-minimal-with-ponytail"
+                data-series-title="Keep AI coding changes minimal with ponytail"
+                data-series-subtitle="Smallest working diff, no speculative fluff"
+                data-series-tip="4"
+                data-href="/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 4: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="compress-agent-context-before-you-code"
+                data-series-title="Compress agent context before you code"
+                data-series-subtitle="Ranked symbols instead of whole-repo paste"
+                data-series-tip="5"
+                data-href="/tips/secret-agent-tips/compress-agent-context-before-you-code.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 5: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="persist-codebase-knowledge-across-ai-chats"
+                data-series-title="Persist codebase knowledge across AI chats"
+                data-series-subtitle="Memory that survives the next chat"
+                data-series-tip="6"
+                data-href="/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 6: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="research-what-people-said-last-month"
+                data-series-title="Research what people said last month"
+                data-series-subtitle="Real voices from the last thirty days"
+                data-series-tip="7"
+                data-href="/tips/secret-agent-tips/research-what-people-said-last-month.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 7: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="remove-ai-writing-tells-from-prose"
+                data-series-title="Remove AI writing tells from prose"
+                data-series-subtitle="Kill the patterns that scream model-written"
+                data-series-tip="8"
+                data-href="/tips/secret-agent-tips/remove-ai-writing-tells-from-prose.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 8: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="design-landing-pages-without-ai-slop"
+                data-series-title="Design landing pages without AI slop"
+                data-series-subtitle="Brand-first pages that pass the hide-the-nav test"
+                data-series-tip="9"
+                data-href="/tips/secret-agent-tips/design-landing-pages-without-ai-slop.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 9: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="build-product-videos-with-hyperframes"
+                data-series-title="Build product videos with HyperFrames"
+                data-series-subtitle="HTML compositions agents can revise"
+                data-series-tip="10"
+                data-href="/tips/secret-agent-tips/build-product-videos-with-hyperframes.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 10: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="expose-product-actions-as-mcp-tools"
+                data-series-title="Expose product actions as MCP tools"
+                data-series-subtitle="Tools with schemas, scopes, and audit trails"
+                data-series-tip="11"
+                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 11: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="catch-ai-code-mistakes-with-lint"
+                data-series-title="Catch AI code mistakes with lint"
+                data-series-subtitle="Lint as a hard gate after every agent edit"
+                data-series-tip="12"
+                data-href="/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 12: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked is-current"
+                data-series-slug="ship-production-releases-with-agent-checks"
+                data-series-title="Ship production releases with agent checks"
+                data-series-subtitle="Release checks agents cannot skip"
+                data-series-tip="13"
+                data-href="/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 13: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="write-seo-articles-agents-can-follow"
+                data-series-title="Write SEO articles agents can follow"
+                data-series-subtitle="Structure humans and agents can both follow"
+                data-series-tip="14"
+                data-href="/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 14: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            </ol>
+          </aside>
+          <div class="article-body">
+<p>Ship production releases with agent checks by turning deploy into a skill with a fixed order: inspect the worktree, sync with <code>origin/main</code>, choose the smallest safe branch strategy, bump the app version, run typecheck and production build, commit only intended files, push, and open a pull request for a human to merge. The agent prepares the release. The team still owns the merge button.</p>
+
+<p>I keep that workflow in a skill named <code>/prod</code> on product teams that already trust agents for coding. Without it, models invent deploy steps, force-push, or commit half the dirty worktree. With it, production day looks like a repeatable script with clear stop conditions.</p>
+
+<h2>Why production needs a skill, not a vibe</h2>
+
+<p>Coding agents optimize for local green. Production optimizes for blast radius. Those goals diverge when the model “helps” by committing unrelated files, skipping the version bump, or pushing straight to <code>main</code>. A production skill states the non-goals in the first screen: never merge the PR, never commit secrets, never rewrite shared history unless a human asked in writing.</p>
+
+<p>GitHub’s own docs on <a href="https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments" rel="noopener">controlling deployments</a> and <a href="https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment" rel="noopener">managing environments</a> describe the platform side: required reviewers, wait timers, branch filters, and environment secrets that stay locked until protection rules pass. Your agent skill should assume those controls exist and refuse to bypass them.</p>
+
+<h2>Step 1: Establish scope before you touch git</h2>
+
+<p>Start every <code>/prod</code> run with status and diff commands. Print the branch, short status, unstaged diff stats, and staged diff stats. If the intended release scope stays unclear, stop and ask. Agents that “clean up” neighboring WIP create the worst merge conflicts of the week.</p>
+
+<p>Fetch <code>origin/main</code> next. Compare <code>origin/main..HEAD</code> so the agent knows which commits already belong on the branch. Prefer the smallest safe strategy: reuse the current branch when its commits belong in the PR; cut a fresh branch from current state when main already absorbed the old work; cherry-pick onto a branch from <code>origin/main</code> when the history mixes unrelated commits.</p>
+
+<h3>Never publish from a casual main checkout</h3>
+
+<p>The skill forbids committing new work on <code>main</code>. It also forbids checking out main only to publish. Publishing happens from a reviewable branch that tracks remote.</p>
+
+<h2>Step 2: Bump the release on purpose</h2>
+
+<p>After a clean fetch, run the repo version bump script. Default behavior on my teams: patch bump when the branch equals main’s line of work; skip a second bump when the branch already sits ahead with a bump. Rare minor or major bumps need an explicit human request in the prompt.</p>
+
+<p>Include <code>package.json</code> and the lockfile in the same PR. Build logs should print the same version the package file claims. Agents that leave version drift force support to guess which artifact hit production.</p>
+
+<h2>Step 3: Run the production gates the humans trust</h2>
+
+<p>Typecheck and production build are the minimum. Many repos also run lint and unit tests inside <code>bun run check</code> or an equivalent. The agent fixes failures caused by intended changes and re-runs until green. Unrelated dirty-tree failures get reported, not “fixed” by deleting a coworker’s WIP.</p>
+
+<p>Tie this step to the previous tip: <a href="./catch-ai-code-mistakes-with-lint.html" rel="noopener">catch AI code mistakes with lint</a>. A release skill that skips lint invites the empty-catch class of bugs into the artifact you are about to ship.</p>
+
+<h2>Step 4: Review the exact commit surface</h2>
+
+<p>Before staging, run status, <code>git diff --check</code>, and full diffs. Stage only intended paths. Refuse <code>.env</code>, credential JSON, and generated secret dumps. Use a conventional commit message that states why the release exists. Do not skip hooks unless a human named the skip in the request.</p>
+
+<p>If a pre-commit hook rejects the commit, fix the issue and create a new commit. Do not amend a commit that already left the machine. That rule keeps agent history auditable.</p>
+
+<h2>Step 5: Push and open the PR for humans</h2>
+
+<p>Push with upstream tracking. Check for an existing open PR before creating another. Prefer updating the open PR. When creating, target <code>main</code>, use a specific title, and write a body with summary, test plan, and rollback notes.</p>
+
+<p>The agent returns the PR URL and stops. Merge stays human. Deploy jobs that reference a <code>production</code> environment still wait on reviewers as <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments" rel="noopener">GitHub documents for deployments and environments</a>. That is the point: agent speed on the boring checklist, human judgment on the irreversible step.</p>
+
+<h2>Write the /prod skill like an incident runbook</h2>
+
+<p>Incident runbooks succeed because they remove improvisation under stress. Production agent skills need the same tone. Numbered steps. Explicit stops. Named commands. No “use your judgment” lines that invite force-push. If the fetch fails over SSH, document the HTTPS fallback with <code>gh auth</code> once, then reuse it.</p>
+
+<p>Keep the skill short enough to fit in context. Link out to longer deploy docs in the repo instead of pasting a novel. Agents lose the plot when the skill file rivals a chapter of a book.</p>
+
+<h2>Branch strategy decision tree</h2>
+
+<p>Encode the decision tree in bullets the agent can evaluate:</p>
+
+<ul>
+<li>If HEAD already contains only intended commits ahead of main, reuse the branch.</li>
+<li>If main already merged the old tip and new work sits dirty, create a named branch from current state.</li>
+<li>If history mixes release work with experiments, branch from origin/main and cherry-pick only intended commits.</li>
+<li>If rebase conflicts look large, stop and ask a human before rewriting.</li>
+</ul>
+
+<p>That tree prevents the common agent move of rebasing everything “to keep history clean” and then losing a coworker’s commit. Clean history matters less than recoverable history on release day.</p>
+
+<h2>Build artifacts and environment parity</h2>
+
+<p>Production builds must use the same install command CI uses. Prefer lockfile-strict installs. Pin Actions to version tags or SHAs as GitHub’s hardening guides recommend. The agent should not upgrade a third-party Action mid-release unless the release goal names that upgrade.</p>
+
+<p>When the app deploys through a platform that reads a release version from <code>package.json</code>, confirm the build log prints that version. Mismatch means the bump step failed or the wrong workspace package bumped.</p>
+
+<h3>Database and migration gates</h3>
+
+<p>If the release includes migrations, the skill requires a migration note in the PR: expand/contract plan, lock duration risk, and rollback path. Agents that ship destructive migrations without a note fail the checklist even when the build is green. Pre-production repos may allow more flexibility; production SaaS should not.</p>
+
+<h2>Secrets and the dirty worktree</h2>
+
+<p>Agents love to “be helpful” by staging everything. The skill must list refuse patterns: <code>.env</code>, <code>.env.*</code>, credential JSON, PEM files, and local dump directories. If a secret appears in the diff, stop and alert. Do not rewrite history in the same turn; rotate the secret first with a human.</p>
+
+<p>Unrelated dirty files stay untouched. Mention them in the PR notes so the human knows the tree was noisy. Silence here causes false blame later.</p>
+
+<h2>PR body template the agent must fill</h2>
+
+<p>Require sections: Summary, Test plan, Rollback, Risk. Summary covers user-visible change. Test plan lists commands already run. Rollback names the previous tag or flag. Risk calls out migrations, auth, billing, or tenant boundaries. Empty sections fail the skill even when the PR URL exists.</p>
+
+<p>Link the CI run if the host provides one. Humans merge faster when evidence sits in the first screen of the PR.</p>
+
+<h2>After merge: what the agent may do</h2>
+
+<p>Some teams let the agent watch deploy status and paste the result into Slack. That is safe when the agent only reads. Writing to production consoles, running destructive kubectl commands, or approving its own deployment breaks the model. Keep approvals on humans and environment rules.</p>
+
+<p>If the deploy fails, the agent opens a follow-up issue with logs and stops. Hotfix branches still go through the same gates. Speed comes from checklist fluency, not from skipping reviewers.</p>
+
+<h2>Rollback and observability belong in the skill</h2>
+
+<p>A production skill that ends at “PR opened” still fails teams. Require a short rollback plan in the PR body: previous release tag, feature flag, or database forward-fix note. Require a health check URL or dashboard link when the app has one. Agents forget these unless the skill checklist names them.</p>
+
+<p>For multi-tenant SaaS work, add tenant-isolation and migration safety checks to the skill. Production readiness means the build passed and the data path stays safe under partial deploy.</p>
+
+<h2>Practice the skill on a boring Tuesday</h2>
+
+<p>Do not debut <code>/prod</code> during an outage. Run it on a low-risk patch: a copy change, a dependency bump with tests green, a docs-only release if your pipeline still builds. Time the steps. Fix skill wording where the agent hesitated.</p>
+
+<p>Keep a short debrief note: minutes to green, human interventions, surprises in the dirty worktree. After three practice runs, Friday deploys feel like Tuesday with more eyes. The agent already knows the checklist; humans keep the merge.</p>
+
+<p>If your host uses Netlify, Sevalla, or another platform hook after GitHub merge, document that hook in the skill as read-only context. The agent should know where to look for deploy logs without clicking production consoles.</p>
+
+<h2>Align marketing and eng on shipped</h2>
+
+<p>Shipped means merged, deployed, and healthy. Agents that stop at green CI confuse stakeholders who already announced the feature. Put the health check URL in the skill. Require the agent to paste deploy status before it claims done in chat.</p>
+
+<p>When a release needs a status page note or a changelog entry, add those as checklist items. Agents forget changelog files unless the skill names the path.</p>
+
+<p>For contract work I also require a handoff bullet: who owns the on-call channel for 48 hours after merge. That sentence prevents silent weekends.</p>
+
+<h2>Refuse dark launches without a flag note</h2>
+
+<p>If the release hides behind a feature flag, the PR must name the flag key and the default state in production. Agents that ship code without the flag note create support tickets that blame random behavior. Write the flag name into the skill checklist beside rollback.</p>
+
+<h2>Consulting angle</h2>
+
+<p>I install <code>/prod</code> skills when agencies and startups already generate code with agents but still fear Friday deploys. The skill encodes the house process so a junior engineer and an agent share the same checklist. If your team needs that install on a Next.js or TypeScript monorepo, use <a href="../../index.html#contact" rel="noopener">the contact form</a>. Pair it with <a href="./compress-agent-context-before-you-code.html" rel="noopener">context compression</a> so the agent sees the release docs without flooding the window. Next tip covers <a href="./write-seo-articles-agents-can-follow.html" rel="noopener">writing SEO articles agents can follow</a>.</p>
+
+<h2>Document the freeze windows</h2>
+
+<p>Some teams freeze deploys Friday afternoon or during peak traffic. Encode freeze windows in the skill so the agent refuses to open a production PR during those hours unless a human typed an override phrase. A polite refusal beats a 6pm surprise merge.</p>
+
+<p>Keep the override phrase boring and logged. Marketing emergencies still happen. The log is how you review whether overrides became the real process.</p>
+
+<h2>Pair /prod with a release owner</h2>
+
+<p>Name a human release owner in the PR template. Agents can fill the field from the team roster, but a blank owner fails the checklist. Ownership is how you avoid “the agent shipped it” as an incident postmortem line.</p>
+
+<section class="article-faq">
+
+<h2>FAQ</h2>
+
+<h3>Should an agent merge the production PR?</h3>
+
+<p>No. The agent prepares the branch, passes gates, and opens or updates the PR. A human reviews and merges. That split keeps secrets, approvals, and rollback judgment with the team.</p>
+
+<h3>What if the worktree has unrelated dirty files?</h3>
+
+<p>Leave them alone. Stage only files that belong to the release. If scope stays ambiguous, the agent stops and asks instead of sweeping the whole tree into the commit.</p>
+
+<h3>Do agents replace GitHub environment protection rules?</h3>
+
+<p>No. Use required reviewers, deployment branches, and environment secrets as GitHub documents in its Actions deployment guides. The agent prepares evidence; the environment rules still gate the job.</p>
+
+<h3>When should the agent bump the version?</h3>
+
+<p>After a successful fetch of origin/main and before the production build, using the repo’s version script. Include package and lockfile changes in the same PR so the release number matches the build log.</p>
+
+</section>
+
+            <p class="article-cta-end">Want a production agent checklist wired to your CI and GitHub environments <a href="../../index.html#contact">Book a call</a>.</p>
+            <p class="article-book-mobile">
+              <a class="btn btn-primary" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+            </p>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p class="foot-statement" data-i18n="footer.statement">Available for hard builds.</p>
+        <p class="foot-meta">
+          <strong>Calvin Maighan</strong>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.role">Senior AI and SaaS Engineer</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.meta">Montreal · remote contracts</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="https://github.com/CalvinMaighan" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="mailto:hello@calvinmaighan.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+        </p>
+      </div>
+    </footer>
+
+    <div class="article-chrome">
+      <div class="read-progress" aria-hidden="true"></div>
+      <div class="article-chrome-inner">
+        <a class="btn btn-primary is-locked" id="article-next" href="./write-seo-articles-agents-can-follow.html" aria-disabled="true" data-i18n="article.next">Next article</a>
+      </div>
+    </div>
+
+    <script type="module" src="../../app.mjs"></script>
+  </body>
+</html>

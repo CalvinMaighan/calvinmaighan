@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-accent="beige">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="build product videos with HyperFrames using HTML compositions and deterministic timing so launch clips, PR explainers, and decks stay editable by agents and humans." />
+    <title>Build product videos with HyperFrames · Calvin Maighan</title>
+    <link rel="canonical" href="https://calvinmaighan.com/tips/secret-agent-tips/build-product-videos-with-hyperframes.html" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#E6E2D4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#221D19" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Calvin Maighan" />
+    <meta property="og:title" content="Build product videos with HyperFrames" />
+    <meta property="og:description" content="build product videos with HyperFrames using HTML compositions and deterministic timing so launch clips, PR explainers, and decks stay editable by agents and humans." />
+    <meta property="og:url" content="https://calvinmaighan.com/tips/secret-agent-tips/build-product-videos-with-hyperframes.html" />
+    <meta property="og:image" content="https://calvinmaighan.com/calvinmaighan-article-series-1.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Build product videos with HyperFrames" />
+    <meta name="twitter:description" content="build product videos with HyperFrames using HTML compositions and deterministic timing so launch clips, PR explainers, and decks stay editable by agents and humans." />
+    <meta name="twitter:image" content="https://calvinmaighan.com/calvinmaighan-article-series-1.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Build product videos with HyperFrames",
+      "description": "build product videos with HyperFrames using HTML compositions and deterministic timing so launch clips, PR explainers, and decks stay editable by agents and humans.",
+      "datePublished": "2026-07-22",
+      "dateModified": "2026-07-22",
+      "author": {
+        "@type": "Person",
+        "name": "Calvin Maighan",
+        "url": "https://calvinmaighan.com/"
+      },
+      "image": [
+        "https://calvinmaighan.com/calvinmaighan-article-series-1.png"
+      ],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://calvinmaighan.com/tips/secret-agent-tips/build-product-videos-with-hyperframes.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why not only Remotion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use HyperFrames when you want HTML-first compositions and this skill ecosystem. Port from Remotion only on an explicit ask."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can non-developers edit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With a tight component set and a guide, marketers can change copy and assets. Keep structure with engineering."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long should a launch clip be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Long enough for one promise and one proof. Cut vanity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need custom music?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Resolve licensed or generated audio through media-use and freeze the file."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body class="article-page" data-series-slug="build-product-videos-with-hyperframes">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-sun" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+        </g>
+      </symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+      </symbol>
+      <symbol id="icon-languages" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 8l6 6m-7 0l6-6l2-3M2 5h12M7 2h1m14 20l-5-10l-5 10m2-4h6" />
+      </symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16" />
+      </symbol>
+      <symbol id="icon-x" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
+      </symbol>
+      <symbol id="icon-github" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
+          <path d="M9 18c-4.51 2-5-2-7-2" />
+        </g>
+      </symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+        </g>
+      </symbol>
+    </svg>
+
+    <header class="site-header" id="site-header">
+      <div class="bar">
+        <a class="brand" href="../../index.html" data-i18n="brand">Calvin Maighan</a>
+        <div class="header-actions">
+          <div class="locale-menu" id="locale-menu">
+            <button type="button" class="icon-btn icon-btn-wide" id="locale-toggle" aria-label="Language" aria-haspopup="listbox" aria-expanded="false" aria-controls="locale-popover">
+              <svg class="icon" aria-hidden="true"><use href="#icon-languages"></use></svg>
+              <span class="icon-btn-text" id="locale-label">EN</span>
+            </button>
+            <div class="locale-popover" id="locale-popover" role="listbox" aria-label="Language">
+              <button type="button" class="locale-option" role="option" data-locale="en" aria-selected="true">EN</button>
+              <button type="button" class="locale-option" role="option" data-locale="fr" aria-selected="false">FR</button>
+            </div>
+          </div>
+          <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch to dark theme">
+            <svg class="icon" aria-hidden="true"><use id="theme-icon-use" href="#icon-moon"></use></svg>
+          </button>
+          <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+            <svg class="icon" aria-hidden="true"><use id="menu-icon-use" href="#icon-menu"></use></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="backdrop" id="menu-backdrop"></div>
+    <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
+      <a href="../../index.html#tips" data-i18n="article.back">Back to tips</a>
+      <a href="../../index.html#work" data-i18n="nav.work">Work</a>
+      <a href="../../index.html#contact" data-i18n="nav.contact">Contact</a>
+      <a class="btn btn-primary" href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+    </nav>
+
+    <main id="top">
+      <article class="article">
+        <header class="article-hero">
+          <div class="wrap">
+            <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+              <ol>
+                <li><a href="../../index.html" data-i18n="article.home">Home</a></li>
+                <li aria-current="page">Build product videos with HyperFrames</li>
+              </ol>
+            </nav>
+            <p class="article-kicker">Tip 10 of 14</p>
+            <p class="article-series">14 secret agent tips for product teams</p>
+          </div>
+        </header>
+
+        <div class="wrap article-layout">
+          <h1>Build product videos with HyperFrames</h1>
+          <p class="article-subtitle">HTML compositions agents can revise</p>
+          <div class="article-byline">
+            <img
+              class="article-byline-avatar"
+              src="../../calvinprofile.jpg"
+              alt="Calvin Maighan"
+              width="48"
+              height="48"
+              decoding="async"
+            />
+            <span class="article-byline-name">Calvin Maighan</span>
+            <span class="article-byline-meta">
+              <span>5 min read</span>
+              <span class="sep" aria-hidden="true">·</span>
+              <time datetime="2026-07-22">July 22, 2026</time>
+            </span>
+            <a class="btn btn-primary article-byline-cta" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+          </div>
+          <figure class="article-cover">
+            <img src="../../calvinmaighan-article-series-1.png" alt="Cover art for building product videos with HyperFrames" width="1672" height="941" decoding="async" />
+          </figure>
+          <p class="article-summary">build product videos with HyperFrames when you need motion with a contract: HTML compositions, timing attributes, and renders agents can revise without timeline spaghetti. I use the skill pack for launch clips, PR explainers, slideshow decks, and captioned talking-head packages. Write the beat sheet first. Freeze media assets. Show real product UI when you can capture it.</p>
+          <aside class="article-aside" aria-label="Series">
+            <ol class="article-series-rail">
+            <li>
+              <a
+                class="article-series-card"
+                data-series-slug="how-ai-agents-speed-up-developers"
+                data-series-title="How AI agents speed up developers"
+                data-series-subtitle="Cut dead time between intent and a mergeable change"
+                data-series-tip="0"
+                data-href="/tips/how-ai-agents-speed-up-developers.html"
+                href="/tips/how-ai-agents-speed-up-developers.html"
+                
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">How AI agents speed up developers</span>
+                  <span class="article-series-card-subtitle">Cut dead time between intent and a mergeable change</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="read-dependency-source-code-with-opensrc"
+                data-series-title="Read dependency source code with opensrc"
+                data-series-subtitle="Pull package source into the agent loop"
+                data-series-tip="1"
+                data-href="/tips/secret-agent-tips/read-dependency-source-code-with-opensrc.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 1: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="scrape-websites-for-ai-agent-research"
+                data-series-title="Scrape websites for AI agent research"
+                data-series-subtitle="Turn live pages into research the agent can cite"
+                data-series-tip="2"
+                data-href="/tips/secret-agent-tips/scrape-websites-for-ai-agent-research.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 2: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="cut-ai-agent-tokens-with-caveman"
+                data-series-title="Cut AI agent tokens with caveman"
+                data-series-subtitle="Terse replies without mangling code"
+                data-series-tip="3"
+                data-href="/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 3: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="keep-ai-coding-changes-minimal-with-ponytail"
+                data-series-title="Keep AI coding changes minimal with ponytail"
+                data-series-subtitle="Smallest working diff, no speculative fluff"
+                data-series-tip="4"
+                data-href="/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 4: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="compress-agent-context-before-you-code"
+                data-series-title="Compress agent context before you code"
+                data-series-subtitle="Ranked symbols instead of whole-repo paste"
+                data-series-tip="5"
+                data-href="/tips/secret-agent-tips/compress-agent-context-before-you-code.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 5: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="persist-codebase-knowledge-across-ai-chats"
+                data-series-title="Persist codebase knowledge across AI chats"
+                data-series-subtitle="Memory that survives the next chat"
+                data-series-tip="6"
+                data-href="/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 6: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="research-what-people-said-last-month"
+                data-series-title="Research what people said last month"
+                data-series-subtitle="Real voices from the last thirty days"
+                data-series-tip="7"
+                data-href="/tips/secret-agent-tips/research-what-people-said-last-month.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 7: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="remove-ai-writing-tells-from-prose"
+                data-series-title="Remove AI writing tells from prose"
+                data-series-subtitle="Kill the patterns that scream model-written"
+                data-series-tip="8"
+                data-href="/tips/secret-agent-tips/remove-ai-writing-tells-from-prose.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 8: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="design-landing-pages-without-ai-slop"
+                data-series-title="Design landing pages without AI slop"
+                data-series-subtitle="Brand-first pages that pass the hide-the-nav test"
+                data-series-tip="9"
+                data-href="/tips/secret-agent-tips/design-landing-pages-without-ai-slop.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 9: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked is-current"
+                data-series-slug="build-product-videos-with-hyperframes"
+                data-series-title="Build product videos with HyperFrames"
+                data-series-subtitle="HTML compositions agents can revise"
+                data-series-tip="10"
+                data-href="/tips/secret-agent-tips/build-product-videos-with-hyperframes.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 10: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="expose-product-actions-as-mcp-tools"
+                data-series-title="Expose product actions as MCP tools"
+                data-series-subtitle="Tools with schemas, scopes, and audit trails"
+                data-series-tip="11"
+                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 11: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="catch-ai-code-mistakes-with-lint"
+                data-series-title="Catch AI code mistakes with lint"
+                data-series-subtitle="Lint as a hard gate after every agent edit"
+                data-series-tip="12"
+                data-href="/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 12: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="ship-production-releases-with-agent-checks"
+                data-series-title="Ship production releases with agent checks"
+                data-series-subtitle="Release checks agents cannot skip"
+                data-series-tip="13"
+                data-href="/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 13: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="write-seo-articles-agents-can-follow"
+                data-series-title="Write SEO articles agents can follow"
+                data-series-subtitle="Structure humans and agents can both follow"
+                data-series-tip="14"
+                data-href="/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 14: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            </ol>
+          </aside>
+          <div class="article-body">
+<p>build product videos with HyperFrames when launch week needs motion you can edit without crying. Ad-hoc timeline tools are fine until an agent rewrites scene three and breaks the captions you already approved.</p>
+
+<p>HyperFrames keeps compositions in HTML with timing attributes. The skill pack routes you from the entry skill into core, creative, animation, CLI, or specialized flows like product-launch-video and pr-to-video. For web motion fundamentals see <a href="https://www.w3.org/TR/web-animations-1/" rel="noopener">Web Animations</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations" rel="noopener">MDN CSS animations</a>. When you publish, <a href="https://schema.org/VideoObject" rel="noopener">VideoObject schema</a> helps machines understand the asset.</p>
+
+<h2>Start with story, not scenes</h2>
+
+<p>Write the beat sheet before you open the composition. Agents pad scenes when the story is unclear. One promise and one proof beats a vanity montage.</p>
+
+<p>PR-to-video turns a diff into a changelog story for investors or internal ship notes. Product-launch-video turns a URL or brief into a promo path. Slideshow covers decks with presenter needs. Pick the flow that matches the job.</p>
+
+<h2>Determinism is a feature</h2>
+
+<p>Seek-safe keyframes beat timeline spaghetti when you revise in week three. Lint and preview in the CLI loop before overnight renders. Catch timing errors early.</p>
+
+<p>media-use resolves BGM, voice, and brand assets into frozen local files so renders do not drift. Mystery YouTube rips are how you get a copyright education mid-launch.</p>
+
+<h2>Brand and truth</h2>
+
+<p>Keep brand tokens in the composition. Random neon on a beige product confuses the audience you already paid to acquire. Do not pretend AI b-roll replaces product truth. Show the real UI whenever you can capture it.</p>
+
+<p>Export for the channel. 16:9 for site embeds. Vertical only when distribution demands it. Do not render six ratios &quot;just in case&quot; unless someone owns each upload.</p>
+
+<h2>Handoff package</h2>
+
+<p>Composition repo, render script, and a one-page edit guide. Marketers can change copy and assets inside a tight component set. Structure stays with engineering. That split keeps you from becoming a forever video freelancer for commas.</p>
+
+<h2>A practical shoot list for SaaS</h2>
+
+<p>1. Cold open with the user problem in one sentence on screen. 2. Show the real product solving that problem in under twenty seconds. 3. Name the mechanism, not the buzzword. 4. End with one CTA that matches the page you will embed on.</p>
+
+<p>If your clip needs a second CTA, you probably need a second clip. Agents pad endings with &quot;and also&quot; slides. Cut them.</p>
+
+<h2>Audio and captions</h2>
+
+<p>Resolve voice and music through media-use, freeze the files, and keep a ledger entry. Caption tracks are part of accessibility and distribution, not a nice extra. If you add talking-head overlays, sync them to the transcript instead of guessing.</p>
+
+<p>Loud royalty-free tracks that fight the VO make the product feel cheap. Silence with good foley often reads more premium than a generic drop.</p>
+
+<h2>Failure modes</h2>
+
+<p>Skipping the beat sheet. You get beautiful emptiness.</p>
+
+<p>Letting agents invent UI that does not exist. Viewers notice. Trust drops.</p>
+
+<p>Skipping preview because &quot;render will tell us.&quot; Renders are expensive teachers.</p>
+
+<p>Porting Remotion only when someone asked for a port. Passing mentions are not migration requests.</p>
+
+<p>Rendering six aspect ratios with no owner for upload. Pick the channels you will actually post to.</p>
+
+<h2>Revision loop I trust</h2>
+
+<p>Change copy in the HTML source. Preview. Adjust timing attributes. Preview again. Render only when seek through the cut feels right. Agents that jump straight to final encode waste hours fixing captions that would have been obvious in preview.</p>
+
+<p>Keep a short CHANGELOG in the composition folder: date, what changed, who approved. Video files do not leave good git blame by themselves.</p>
+
+<h2>When not to use HyperFrames</h2>
+
+<p>If the piece is a raw interview that only needs captions, use a captions skill. If the piece is a live product recording with no motion design, edit in your NLE. HyperFrames earns its keep when composition, brand, and agent editability matter together.</p>
+
+<h2>Agent prompts that waste less film</h2>
+
+<p>Bad: &quot;Make a cool launch video for our SaaS.&quot;</p>
+
+<p>Better: &quot;45-second 16:9 launch clip. Promise: extract invoices with page-level evidence. Proof: three UI beats from these PNGs. CTA: book a call. Brand tokens from brand.json. No fake UI.&quot;</p>
+
+<p>Give the agent the beat sheet, the assets, and the forbidden list. Creativity without constraints invents product features you do not ship.</p>
+
+<h2>Embed and measure</h2>
+
+<p>Put the final file on a real page with a clear poster frame. Track plays if you care. A beautiful orphan MP4 in Drive is not marketing. Tie the CTA on the page to the CTA in the last frame so the story does not fork.</p>
+
+<h2>Cost control for agent video work</h2>
+
+<p>Renders burn time. Preview burns minutes. Script mistakes burn both. Freeze assets early. Cap revision rounds in the brief: two preview cycles, then encode. Agents will iterate forever if you let them chase perfect kerning on a 45-second clip.</p>
+
+<p>For client work I price the composition system and the first two videos, not infinite regenerations. The skill pack stays with the repo so the team can reskin later without calling me for every comma.</p>
+
+<h2>Sources</h2>
+
+<ul>
+<li><a href="https://www.w3.org/TR/web-animations-1/" rel="noopener">W3C Web Animations</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations" rel="noopener">MDN using CSS animations</a></li>
+<li><a href="https://schema.org/VideoObject" rel="noopener">Schema.org VideoObject</a></li>
+<li>Related: <a href="../name-ai-agent-skills-after-the-job.html" rel="noopener">Name AI agent skills after the job</a></li>
+<li>Series: <a href="../../index.html#tips" rel="noopener">tips on calvinmaighan.com</a></li>
+</ul>
+
+<section class="article-faq">
+
+<h2>FAQ</h2>
+
+<h3>Why not only Remotion?</h3>
+
+<p>Use HyperFrames when you want HTML-first compositions and this skill ecosystem. Port from Remotion only on an explicit ask.</p>
+
+<h3>Can non-developers edit?</h3>
+
+<p>With a tight component set and a guide, marketers can change copy and assets. Keep structure with engineering.</p>
+
+<h3>How long should a launch clip be?</h3>
+
+<p>Long enough for one promise and one proof. Cut vanity.</p>
+
+<h3>Do I need custom music?</h3>
+
+<p>Resolve licensed or generated audio through media-use and freeze the file.</p>
+
+</section>
+
+            <p class="article-cta-end">If you want a repeatable product video pipeline <a href="../../index.html#contact">Book a call</a>.</p>
+            <p class="article-book-mobile">
+              <a class="btn btn-primary" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+            </p>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p class="foot-statement" data-i18n="footer.statement">Available for hard builds.</p>
+        <p class="foot-meta">
+          <strong>Calvin Maighan</strong>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.role">Senior AI and SaaS Engineer</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.meta">Montreal · remote contracts</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="https://github.com/CalvinMaighan" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="mailto:hello@calvinmaighan.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+        </p>
+      </div>
+    </footer>
+
+    <div class="article-chrome">
+      <div class="read-progress" aria-hidden="true"></div>
+      <div class="article-chrome-inner">
+        <a class="btn btn-primary is-locked" id="article-next" href="./expose-product-actions-as-mcp-tools.html" aria-disabled="true" data-i18n="article.next">Next article</a>
+      </div>
+    </div>
+
+    <script type="module" src="../../app.mjs"></script>
+  </body>
+</html>

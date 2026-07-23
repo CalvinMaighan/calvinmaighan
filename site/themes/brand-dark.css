@@ -27,6 +27,8 @@
   --text: oklch(0.96 0.012 60 / 90%);
   --text-muted: oklch(0.78 0.014 55 / 72%);
   --secondary-text: oklch(0.82 0.03 70 / 78%);
+  --article: var(--text);
+  --reading: var(--base);
 
   --base: oklch(0.172 0.01 67); /* #130F0B Deep shadow */
   --espresso: oklch(0.214 0.01 53); /* #1D1815 Dark espresso */
@@ -104,5 +106,6 @@
 
   color-scheme: dark;
 }
+
 
 

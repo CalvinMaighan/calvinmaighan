@@ -2,6 +2,7 @@ import { catalog, key, set, get, init } from "./vendor/active-state.js";
 import { defineTheme, setMode, hydrateTheme } from "./vendor/active-theme.js";
 import { defineI18n, setLocale, t, hydrateI18n, getLocale } from "./vendor/active-i18n.js";
 import { startAmbient } from "./ambient.mjs";
+import { SERIES_INTRO_SLUG, slugFromHref } from "./tip-series.mjs";
 
 const theme = defineTheme({
   modes: ["light", "dark"],
@@ -22,20 +23,25 @@ const dictionaries = {
     "nav.contact": "Contact",
     "nav.cta": "Book a call",
     "hero.eyebrow": "Senior AI and SaaS engineer",
-    "hero.title": "AI consultant to help move ideas forward.",
-    "hero.title.before": "AI consultant to help move ",
+    "hero.title": "AI consulting to help move ideas forward.",
+    "hero.title.before": "AI consulting to help move ",
     "hero.title.word": "ideas",
     "hero.title.after": " forward.",
     "hero.lede":
       "I help startups, SaaS teams, and agencies design and ship AI systems, document workflows, and complex web platforms. Your team and agents run the system after handoff.",
     "hero.cta": "Discuss your project",
     "hero.secondary": "See selected work",
-    "proof.1.t": "Production AI systems",
-    "proof.1.d": "I turn research concepts into product surfaces you can run.",
-    "proof.2.t": "Complex SaaS platforms",
-    "proof.2.d": "Multi-tenant products with real operational constraints.",
-    "proof.3.t": "Architecture through delivery",
-    "proof.3.d": "I design the architecture and ship the code in one engagement.",
+    "tips.title": "Tricks I use to ship fast and save tokens",
+    "tips.series1.meta": "Series · intro + 14 tips",
+    "tips.series1.title": "How AI agents speed up developers",
+    "tips.series1.cta": "Read More",
+    "article.kicker": "Tip 1 of 14",
+    "article.series": "14 secret agent tips for product teams",
+    "article.home": "Home",
+    "article.next.locked": "Scroll to the end to unlock",
+    "article.next": "Next article",
+    "article.back": "Back to tips",
+    "article.book": "Book a call",
     "work.label": "Selected work",
     "work.title": "Featured build",
     "work.lede":
@@ -164,20 +170,25 @@ const dictionaries = {
     "nav.contact": "Contact",
     "nav.cta": "Réserver un appel",
     "hero.eyebrow": "Ingénieur senior IA et SaaS",
-    "hero.title": "Consultant IA pour aider à faire avancer les idées.",
-    "hero.title.before": "Consultant IA pour aider à faire avancer les ",
+    "hero.title": "Consulting IA pour aider à faire avancer les idées.",
+    "hero.title.before": "Consulting IA pour aider à faire avancer les ",
     "hero.title.word": "idées",
     "hero.title.after": ".",
     "hero.lede":
       "J’aide les startups, les équipes SaaS et les agences à concevoir et livrer des systèmes d’IA, des flux documentaires et des plateformes web complexes. Votre équipe et vos agents font tourner le système après le transfert.",
     "hero.cta": "Discuter de votre projet",
     "hero.secondary": "Voir les travaux",
-    "proof.1.t": "Systèmes d’IA en production",
-    "proof.1.d": "Je transforme des concepts de recherche en surfaces produit que vous pouvez opérer.",
-    "proof.2.t": "Plateformes SaaS complexes",
-    "proof.2.d": "Produits multi-locataires avec de vraies contraintes opérationnelles.",
-    "proof.3.t": "Architecture jusqu’à la livraison",
-    "proof.3.d": "Je conçois l’architecture et livre le code dans le même mandat.",
+    "tips.title": "Astuces pour livrer vite et économiser des tokens",
+    "tips.series1.meta": "Série · intro + 14 astuces",
+    "tips.series1.title": "Comment les agents IA accélèrent les développeurs",
+    "tips.series1.cta": "Lire la suite",
+    "article.kicker": "Astuce 1 sur 14",
+    "article.series": "14 astuces d’agents secrètes pour les équipes produit",
+    "article.home": "Accueil",
+    "article.next.locked": "Défilez jusqu’à la fin pour débloquer",
+    "article.next": "Article suivant",
+    "article.back": "Retour aux astuces",
+    "article.book": "Réserver un appel",
     "work.label": "Travaux sélectionnés",
     "work.title": "Build en vedette",
     "work.lede":
@@ -323,8 +334,9 @@ const INQUIRY = key("INQUIRY", {
 const MENU_OPEN = key("MENU_OPEN", false);
 const POINTER = key("POINTER", { x: 0.68, y: 0.42, active: false });
 const TEMPO = key("TEMPO", 2, { persist: true });
+const SERIES_UNLOCKED = key("SERIES_UNLOCKED", [SERIES_INTRO_SLUG], { persist: true });
 
-init(catalog(INQUIRY, MENU_OPEN, POINTER, TEMPO));
+init(catalog(INQUIRY, MENU_OPEN, POINTER, TEMPO, SERIES_UNLOCKED));
 
 hydrateTheme(theme);
 hydrateI18n();
@@ -535,6 +547,132 @@ function wireAmbient() {
   });
 }
 
+function unlockedSlugs() {
+  const raw = get(SERIES_UNLOCKED);
+  return Array.isArray(raw) ? raw : [SERIES_INTRO_SLUG];
+}
+
+function unlockSeriesSlug(slug) {
+  if (!slug) return;
+  const cur = unlockedSlugs();
+  if (cur.includes(slug)) return;
+  set(SERIES_UNLOCKED, [...cur, slug]);
+}
+
+function paintSeriesRail() {
+  const rail = document.querySelector(".article-series-rail");
+  if (!rail) return;
+
+  const current = document.body.dataset.seriesSlug || "";
+  if (current) unlockSeriesSlug(current);
+
+  const unlocked = new Set(unlockedSlugs());
+  unlocked.add(SERIES_INTRO_SLUG);
+
+  rail.querySelectorAll("[data-series-slug]").forEach((el) => {
+    const slug = el.getAttribute("data-series-slug") || "";
+    const title = el.getAttribute("data-series-title") || "";
+    const subtitle = el.getAttribute("data-series-subtitle") || "";
+    const tipNum = Number(el.getAttribute("data-series-tip") || "0");
+    const open = tipNum === 0 || unlocked.has(slug);
+    const href = el.getAttribute("data-href") || "#";
+    const indexEl = el.querySelector(".article-series-card-index");
+    const titleEl = el.querySelector(".article-series-card-title");
+    const subtitleEl = el.querySelector(".article-series-card-subtitle");
+
+    el.classList.toggle("is-locked", !open);
+    el.classList.toggle("is-current", slug === current);
+
+    if (open) {
+      el.setAttribute("href", href);
+      el.removeAttribute("aria-disabled");
+      if (indexEl) {
+        if (tipNum === 0) {
+          indexEl.hidden = true;
+          indexEl.textContent = "";
+        } else {
+          indexEl.hidden = false;
+          indexEl.textContent = String(tipNum);
+        }
+      }
+      if (titleEl) titleEl.textContent = title;
+      if (subtitleEl) {
+        subtitleEl.textContent = subtitle;
+        subtitleEl.hidden = !subtitle;
+      }
+    } else {
+      el.setAttribute("href", "#");
+      el.setAttribute("aria-disabled", "true");
+      if (indexEl) {
+        indexEl.hidden = true;
+        indexEl.textContent = "";
+      }
+      if (titleEl) titleEl.textContent = `Part ${tipNum}: Keep reading to unlock`;
+      if (subtitleEl) {
+        subtitleEl.textContent = "";
+        subtitleEl.hidden = true;
+      }
+    }
+  });
+}
+
+function wireSeriesUnlockLinks() {
+  document.querySelectorAll("[data-series-unlock]").forEach((el) => {
+    el.addEventListener("click", () => {
+      unlockSeriesSlug(el.getAttribute("data-series-unlock") || "");
+    });
+  });
+
+  document.querySelector(".article-series-rail")?.addEventListener("click", (event) => {
+    const card = event.target.closest("[data-series-slug]");
+    if (!card || !card.classList.contains("is-locked")) return;
+    event.preventDefault();
+  });
+}
+
+function wireArticleNext() {
+  const next = document.getElementById("article-next");
+  if (!next) return;
+
+  // Final series tip / contact CTA: never scroll-lock.
+  if (next.getAttribute("data-i18n") === "article.book" || next.dataset.lock === "false") {
+    next.classList.remove("is-locked");
+    next.removeAttribute("aria-disabled");
+    next.style.transform = "scale(1)";
+    return;
+  }
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const setLocked = (locked) => {
+    next.classList.toggle("is-locked", locked);
+    next.setAttribute("aria-disabled", locked ? "true" : "false");
+  };
+
+  const update = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = max <= 1 ? 1 : Math.min(1, Math.max(0, window.scrollY / max));
+    if (!reduceMotion) {
+      next.style.transform = `scale(${0.2 + progress * 0.8})`;
+    } else {
+      next.style.transform = "scale(1)";
+    }
+    setLocked(progress < 0.99);
+  };
+
+  setLocked(true);
+  next.addEventListener("click", (event) => {
+    if (next.classList.contains("is-locked")) {
+      event.preventDefault();
+      return;
+    }
+    unlockSeriesSlug(slugFromHref(next.getAttribute("href") || ""));
+  });
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+}
+
 applyThemeUi();
 applyI18n();
 wireHeader();
@@ -543,5 +681,10 @@ wireForm();
 wirePointer();
 wireTempo();
 wireAmbient();
+paintSeriesRail();
+wireSeriesUnlockLinks();
+wireArticleNext();
+
+
 
 

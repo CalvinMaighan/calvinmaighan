@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-accent="beige">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="persist codebase knowledge across AI chats with a codebase-memory MCP so agents recall architecture decisions, naming rules, and prior fixes instead of rediscovering your repo every session." />
+    <title>Persist codebase knowledge across AI chats · Calvin Maighan</title>
+    <link rel="canonical" href="https://calvinmaighan.com/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#E6E2D4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#221D19" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Calvin Maighan" />
+    <meta property="og:title" content="Persist codebase knowledge across AI chats" />
+    <meta property="og:description" content="persist codebase knowledge across AI chats with a codebase-memory MCP so agents recall architecture decisions, naming rules, and prior fixes instead of rediscovering your repo every session." />
+    <meta property="og:url" content="https://calvinmaighan.com/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html" />
+    <meta property="og:image" content="https://calvinmaighan.com/calvinmaighan-article-series-1.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Persist codebase knowledge across AI chats" />
+    <meta name="twitter:description" content="persist codebase knowledge across AI chats with a codebase-memory MCP so agents recall architecture decisions, naming rules, and prior fixes instead of rediscovering your repo every session." />
+    <meta name="twitter:image" content="https://calvinmaighan.com/calvinmaighan-article-series-1.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Persist codebase knowledge across AI chats",
+      "description": "persist codebase knowledge across AI chats with a codebase-memory MCP so agents recall architecture decisions, naming rules, and prior fixes instead of rediscovering your repo every session.",
+      "datePublished": "2026-07-22",
+      "dateModified": "2026-07-22",
+      "author": {
+        "@type": "Person",
+        "name": "Calvin Maighan",
+        "url": "https://calvinmaighan.com/"
+      },
+      "image": [
+        "https://calvinmaighan.com/calvinmaighan-article-series-1.png"
+      ],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://calvinmaighan.com/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a codebase-memory MCP server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is an MCP server that stores entities, relations, and observations about your repository so agents can query prior decisions and structure across chats instead of relying on one thread's context window."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is memory different from Cursor rules?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rules are static instructions you maintain by hand. Memory accumulates project facts and decisions over time through graph or search tools. Use both: rules for invariants, memory for living context."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should we store in memory first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Boot order, forbidden patterns, naming conventions, tenancy or auth boundaries, and the last three production incidents with root causes. Skip trivia and transient UI tweaks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can memory go stale and hurt agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Require dates on observations, delete superseded facts, and re-index after large refactors. Stale memory is worse than no memory when it contradicts the code."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body class="article-page" data-series-slug="persist-codebase-knowledge-across-ai-chats">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-sun" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+        </g>
+      </symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+      </symbol>
+      <symbol id="icon-languages" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 8l6 6m-7 0l6-6l2-3M2 5h12M7 2h1m14 20l-5-10l-5 10m2-4h6" />
+      </symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16" />
+      </symbol>
+      <symbol id="icon-x" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
+      </symbol>
+      <symbol id="icon-github" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
+          <path d="M9 18c-4.51 2-5-2-7-2" />
+        </g>
+      </symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+        </g>
+      </symbol>
+    </svg>
+
+    <header class="site-header" id="site-header">
+      <div class="bar">
+        <a class="brand" href="../../index.html" data-i18n="brand">Calvin Maighan</a>
+        <div class="header-actions">
+          <div class="locale-menu" id="locale-menu">
+            <button type="button" class="icon-btn icon-btn-wide" id="locale-toggle" aria-label="Language" aria-haspopup="listbox" aria-expanded="false" aria-controls="locale-popover">
+              <svg class="icon" aria-hidden="true"><use href="#icon-languages"></use></svg>
+              <span class="icon-btn-text" id="locale-label">EN</span>
+            </button>
+            <div class="locale-popover" id="locale-popover" role="listbox" aria-label="Language">
+              <button type="button" class="locale-option" role="option" data-locale="en" aria-selected="true">EN</button>
+              <button type="button" class="locale-option" role="option" data-locale="fr" aria-selected="false">FR</button>
+            </div>
+          </div>
+          <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch to dark theme">
+            <svg class="icon" aria-hidden="true"><use id="theme-icon-use" href="#icon-moon"></use></svg>
+          </button>
+          <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+            <svg class="icon" aria-hidden="true"><use id="menu-icon-use" href="#icon-menu"></use></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="backdrop" id="menu-backdrop"></div>
+    <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
+      <a href="../../index.html#tips" data-i18n="article.back">Back to tips</a>
+      <a href="../../index.html#work" data-i18n="nav.work">Work</a>
+      <a href="../../index.html#contact" data-i18n="nav.contact">Contact</a>
+      <a class="btn btn-primary" href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+    </nav>
+
+    <main id="top">
+      <article class="article">
+        <header class="article-hero">
+          <div class="wrap">
+            <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+              <ol>
+                <li><a href="../../index.html" data-i18n="article.home">Home</a></li>
+                <li aria-current="page">Persist codebase knowledge across AI chats</li>
+              </ol>
+            </nav>
+            <p class="article-kicker">Tip 6 of 14</p>
+            <p class="article-series">14 secret agent tips for product teams</p>
+          </div>
+        </header>
+
+        <div class="wrap article-layout">
+          <h1>Persist codebase knowledge across AI chats</h1>
+          <p class="article-subtitle">Memory that survives the next chat</p>
+          <div class="article-byline">
+            <img
+              class="article-byline-avatar"
+              src="../../calvinprofile.jpg"
+              alt="Calvin Maighan"
+              width="48"
+              height="48"
+              decoding="async"
+            />
+            <span class="article-byline-name">Calvin Maighan</span>
+            <span class="article-byline-meta">
+              <span>10 min read</span>
+              <span class="sep" aria-hidden="true">·</span>
+              <time datetime="2026-07-22">July 22, 2026</time>
+            </span>
+            <a class="btn btn-primary article-byline-cta" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+          </div>
+          <figure class="article-cover">
+            <img src="../../calvinmaighan-article-series-1.png" alt="Calvin Maighan article series cover for secret agent tips on persisting codebase knowledge" width="1672" height="941" decoding="async" />
+          </figure>
+          <p class="article-summary">Persist codebase knowledge across AI chats by attaching a codebase-memory MCP server that stores architecture decisions, naming rules, and prior fixes as queryable entities. New threads start with recall instead of rediscovery. You cut repeated mistakes, keep conventions stable, and give agents a project memory that survives closed tabs.</p>
+          <aside class="article-aside" aria-label="Series">
+            <ol class="article-series-rail">
+            <li>
+              <a
+                class="article-series-card"
+                data-series-slug="how-ai-agents-speed-up-developers"
+                data-series-title="How AI agents speed up developers"
+                data-series-subtitle="Cut dead time between intent and a mergeable change"
+                data-series-tip="0"
+                data-href="/tips/how-ai-agents-speed-up-developers.html"
+                href="/tips/how-ai-agents-speed-up-developers.html"
+                
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">How AI agents speed up developers</span>
+                  <span class="article-series-card-subtitle">Cut dead time between intent and a mergeable change</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="read-dependency-source-code-with-opensrc"
+                data-series-title="Read dependency source code with opensrc"
+                data-series-subtitle="Pull package source into the agent loop"
+                data-series-tip="1"
+                data-href="/tips/secret-agent-tips/read-dependency-source-code-with-opensrc.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 1: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="scrape-websites-for-ai-agent-research"
+                data-series-title="Scrape websites for AI agent research"
+                data-series-subtitle="Turn live pages into research the agent can cite"
+                data-series-tip="2"
+                data-href="/tips/secret-agent-tips/scrape-websites-for-ai-agent-research.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 2: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="cut-ai-agent-tokens-with-caveman"
+                data-series-title="Cut AI agent tokens with caveman"
+                data-series-subtitle="Terse replies without mangling code"
+                data-series-tip="3"
+                data-href="/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 3: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="keep-ai-coding-changes-minimal-with-ponytail"
+                data-series-title="Keep AI coding changes minimal with ponytail"
+                data-series-subtitle="Smallest working diff, no speculative fluff"
+                data-series-tip="4"
+                data-href="/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 4: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="compress-agent-context-before-you-code"
+                data-series-title="Compress agent context before you code"
+                data-series-subtitle="Ranked symbols instead of whole-repo paste"
+                data-series-tip="5"
+                data-href="/tips/secret-agent-tips/compress-agent-context-before-you-code.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 5: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked is-current"
+                data-series-slug="persist-codebase-knowledge-across-ai-chats"
+                data-series-title="Persist codebase knowledge across AI chats"
+                data-series-subtitle="Memory that survives the next chat"
+                data-series-tip="6"
+                data-href="/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 6: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="research-what-people-said-last-month"
+                data-series-title="Research what people said last month"
+                data-series-subtitle="Real voices from the last thirty days"
+                data-series-tip="7"
+                data-href="/tips/secret-agent-tips/research-what-people-said-last-month.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 7: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="remove-ai-writing-tells-from-prose"
+                data-series-title="Remove AI writing tells from prose"
+                data-series-subtitle="Kill the patterns that scream model-written"
+                data-series-tip="8"
+                data-href="/tips/secret-agent-tips/remove-ai-writing-tells-from-prose.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 8: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="design-landing-pages-without-ai-slop"
+                data-series-title="Design landing pages without AI slop"
+                data-series-subtitle="Brand-first pages that pass the hide-the-nav test"
+                data-series-tip="9"
+                data-href="/tips/secret-agent-tips/design-landing-pages-without-ai-slop.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 9: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="build-product-videos-with-hyperframes"
+                data-series-title="Build product videos with HyperFrames"
+                data-series-subtitle="HTML compositions agents can revise"
+                data-series-tip="10"
+                data-href="/tips/secret-agent-tips/build-product-videos-with-hyperframes.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 10: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="expose-product-actions-as-mcp-tools"
+                data-series-title="Expose product actions as MCP tools"
+                data-series-subtitle="Tools with schemas, scopes, and audit trails"
+                data-series-tip="11"
+                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 11: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="catch-ai-code-mistakes-with-lint"
+                data-series-title="Catch AI code mistakes with lint"
+                data-series-subtitle="Lint as a hard gate after every agent edit"
+                data-series-tip="12"
+                data-href="/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 12: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="ship-production-releases-with-agent-checks"
+                data-series-title="Ship production releases with agent checks"
+                data-series-subtitle="Release checks agents cannot skip"
+                data-series-tip="13"
+                data-href="/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 13: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="write-seo-articles-agents-can-follow"
+                data-series-title="Write SEO articles agents can follow"
+                data-series-subtitle="Structure humans and agents can both follow"
+                data-series-tip="14"
+                data-href="/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-index" hidden></span>
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-title">Part 14: Keep reading to unlock</span>
+                  <span class="article-series-card-subtitle" hidden></span>
+                </span>
+              </a>
+            </li>
+            </ol>
+          </aside>
+          <div class="article-body">
+<p>You persist codebase knowledge across AI chats when you stop pretending the context window is a filing cabinet. Chats end. Tabs close. The next agent session forgets the boot order you explained yesterday and invents a second state store beside the one you already run. A memory MCP fixes that class of amnesia. The <a href="https://modelcontextprotocol.io/docs/concepts/architecture" rel="noopener">Model Context Protocol architecture docs</a> describe MCP as a standard way to connect hosts to tools and resources. The <a href="https://modelcontextprotocol.io/" rel="noopener">MCP site</a> is the entry point. The reference <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/memory" rel="noopener">knowledge graph memory server</a> shows the pattern: entities, relations, observations, search across sessions.</p>
+
+<p>Codebase-memory builds on that idea for repositories: index symbols and decisions, then require agents to query before planning. I treat it as mandatory on consulting work where product constraints hide in tribal knowledge. Without memory, every chat is a new hire. With memory, every chat inherits the last hard lesson.</p>
+
+<h2>Why chat history is not enough</h2>
+
+<p>Thread memory dies with the thread. Even long threads rot: early decisions scroll out, summaries drop the sharp edge, and a new teammate opens a fresh agent with zero recall. Paste-based project briefs drift out of date the day after a rename.</p>
+
+<p>Rules files help, and you should keep them. <a href="https://cursor.com/docs/context/rules" rel="noopener">Cursor's rules documentation</a> covers static guidance the product injects into context. Rules are great for invariants: TypeScript only, no new env vars, theme tokens over hardcoded colors. Rules are poor at accumulating incident history, ADR links, and &quot;we tried X in March and rolled it back.&quot; That living layer belongs in memory.</p>
+
+<h2>What MCP memory looks like</h2>
+
+<p>Reference memory servers store:</p>
+
+<ul>
+<li><strong>Entities:</strong> <code>BillingService</code>, <code>TenantGuard</code>, <code>active-theme</code></li>
+<li><strong>Relations:</strong> <code>BillingService</code> depends on <code>TenantGuard</code></li>
+<li><strong>Observations:</strong> &quot;Tenant id must come from session, never from client body&quot; (2026-03-12)</li>
+</ul>
+
+<p>Agents call tools to create, search, and read nodes. On a new task they search first: &quot;tenant isolation&quot;, &quot;theme boot&quot;, &quot;release checklist&quot;. Hits return facts with enough structure to steer the plan before any file opens.</p>
+
+<p>Codebase-oriented servers add indexing: symbol graphs, call edges, hybrid search over code and notes. The exact server can vary. The workflow stays stable: index, recall, act, write back what you learned.</p>
+
+<h2>What to store on day one</h2>
+
+<p>Seed memory with high-leverage facts, not encyclopedia entries.</p>
+
+<p>1. <strong>Boot and runtime order.</strong> On this site: define theme and i18n, init state catalog, hydrate, wire controls, paint DOM. 2. <strong>Hard product constraints.</strong> No new infra unless asked. Prefer existing architecture. Tenant isolation rules for multi-tenant apps. 3. <strong>Naming and package boundaries.</strong> Where vendors live, which APIs are public, which folders agents must not invent alternatives for. 4. <strong>Incidents.</strong> Date, symptom, root cause, fix path, follow-up. 5. <strong>Rejected approaches.</strong> &quot;Do not add Redux; we use active-state.&quot; Rejection memory prevents helpful rewrites. 6. <strong>Release truths.</strong> Required checks, migration safety notes, who approves production.</p>
+
+<p>Skip storing every CSS tweak. Memory should feel like a senior engineer's notebook, not a changelog dump.</p>
+
+<h2>Workflow: recall before plan</h2>
+
+<p>Make this the skill text agents cannot skip:</p>
+
+<p>1. Classify the task: trivial, contextual, or risky. 2. Query memory for the task entities and constraints. 3. Compress live code context (<a href="./compress-agent-context-before-you-code.html" rel="noopener">tip 5</a>). 4. Plan only after recall. 5. After the change, write new observations with dates. 6. Delete or supersede facts the change invalidates.</p>
+
+<p>Trivial typos can skip heavy recall. Contextual and risky work cannot. Production-readiness, auth, billing, and migrations always query memory first.</p>
+
+<h2>Keep the graph honest</h2>
+
+<p>Stale memory is a silent production bug. Treat observations as versioned claims:</p>
+
+<ul>
+<li>Stamp dates on every written fact</li>
+<li>Prefer &quot;superseded by&quot; relations over silent edits when history matters</li>
+<li>Re-index after large moves or package extractions</li>
+<li>Run a monthly memory review the way you review stale feature flags</li>
+<li>Ban secret material: tokens, customer data, private keys never enter memory</li>
+</ul>
+
+<p>When code and memory disagree, believe the code, fix the memory, then continue. Agents should say when memory was empty or irrelevant so humans know the session flew blind.</p>
+
+<h2>Memory versus RAG dumps</h2>
+
+<p>Naive RAG fills the prompt with similar chunks. That helps docs search. It fails when you need a precise invariant: &quot;never take tenant id from the client.&quot; Graph-shaped memory shines for invariants and relations. Hybrid systems use both: vectors for &quot;how do we format invoices?&quot; and graph nodes for &quot;who owns tenant scope?&quot;</p>
+
+<p>Do not replace tests with memory. Memory guides agents. Tests prove code. CI remains the judge.</p>
+
+<h2>Team rituals that make memory useful</h2>
+
+<p><strong>After incidents.</strong> Write the root cause into memory the same day you write the postmortem.</p>
+
+<p><strong>After ADRs.</strong> Store a one-paragraph observation plus the ADR path.</p>
+
+<p><strong>After agent failures.</strong> If an agent reintroduced a banned pattern, add a rejection observation and a rule line.</p>
+
+<p><strong>During onboarding.</strong> New engineers read the memory hits for their first service area. Same graph the agents use.</p>
+
+<p><strong>During consulting handoffs.</strong> I leave clients with a seeded memory and a short skill that mandates recall. The engagement keeps paying after I leave.</p>
+
+<h2>Failure modes</h2>
+
+<p><strong>Memory never queried.</strong> Skill text too soft. Make recall a hard gate for contextual and risky tasks. Log tool calls in review if needed.</p>
+
+<p><strong>Memory becomes a junk drawer.</strong> Add a write policy: only decisions, constraints, incidents, and rejected approaches. No paste of entire files.</p>
+
+<p><strong>Conflicting observations.</strong> Require search before create. Merge duplicates. Keep the newer dated fact and mark the old one superseded.</p>
+
+<p><strong>Over-trust.</strong> Agents cite memory and skip reading code. Pair with compression tools that still open the critical symbols. Memory orients. Code decides.</p>
+
+<h2>How this tip connects</h2>
+
+<p>Compression keeps the active window small. Memory keeps the project story alive outside the window. Ponytail keeps the diff small once the agent knows what already exists. Next, <a href="./research-what-people-said-last-month.html" rel="noopener">research what people said last month</a> feeds product decisions with external signal, which you can also store as dated observations when the research changes a roadmap bet.</p>
+
+<p>Browse the rest of the series from the <a href="../../index.html#tips" rel="noopener">tips index</a>.</p>
+
+<h2>Install outline</h2>
+
+<p>1. Choose an MCP memory server your host supports (reference memory or a codebase indexer). 2. Register it in the IDE or agent host config. 3. Index the primary repo. 4. Seed twenty observations from your harshest lessons. 5. Add a skill that mandates recall for contextual and risky work. 6. Teach the team to write back after merges. 7. Schedule a monthly stale-fact sweep.</p>
+
+<h2>Example recall that saves a week</h2>
+
+<p>Task: &quot;Add a second theme accent.&quot;</p>
+
+<p>Without memory: agent invents a new CSS variable scheme, hardcodes hex in components, skips <code>defineTheme</code> colors map, breaks dark mode.</p>
+
+<p>With memory: observation hits &quot;accents go through active-theme colors map; CSS owns surfaces; no hex in app.mjs.&quot; Agent opens the theme define call, adds the color entry, updates tokens, leaves components on variables.</p>
+
+<p>Same request. Different institutional memory. Different outcome.</p>
+
+<h2>Metrics</h2>
+
+<p>Watch:</p>
+
+<ul>
+<li>repeat of banned patterns in agent PRs (should fall)</li>
+<li>time from task start to first correct plan</li>
+<li>number of &quot;we already decided this&quot; review comments</li>
+<li>memory write rate after merges (too low means the graph is dying)</li>
+</ul>
+
+<p>When banned-pattern repeats fall, memory is working. When review comments still say &quot;we decided this,&quot; agents are not querying or the fact never got written.</p>
+
+<h2>Security and tenancy notes</h2>
+
+<p>Multi-tenant products must store isolation rules as first-class entities. Memory that says &quot;filter by tenant&quot; without saying where the tenant id originates is incomplete. Be explicit. For regulated work, keep memory in approved storage, encrypt at rest if your host requires it, and exclude personal data from observations.</p>
+
+<h2>Preflight note for agents</h2>
+
+<p>Before editing, agents on this portfolio check memory for theme, i18n, and state-bus rules. That preflight is the difference between a clean PR and a parallel store invented at 11pm. Put the same preflight in your skill text with your own sacred cows named.</p>
+
+<h2>What a good observation looks like</h2>
+
+<p>Bad observation: &quot;Auth is important.&quot;</p>
+
+<p>Good observation: &quot;2026-04-03: Session tenant id is authoritative. Reject client-supplied tenantId in GraphQL mutations. See <code>TenantGuard</code> and ADR-014. Rolled back a March attempt that trusted the body field after a support incident.&quot;</p>
+
+<p>Good observations carry a date, an actor rule, a pointer into code or ADR, and a scar. Agents quote scars. They ignore slogans.</p>
+
+<p>Write observations in active voice with a human subject when a decision had an owner: &quot;Platform team banned Redis for session state on 2026-02-11; use Postgres-backed sessions.&quot; Ownership helps the next reader know who to ping when the rule must change.</p>
+
+<h2>Index hygiene for monorepos</h2>
+
+<p>Index package by package when the monorepo is huge. A billing graph that includes the marketing site creates false neighbors. Name projects clearly in the memory host. After a package extraction, delete the old project entry so agents stop navigating ghost paths.</p>
+
+<p>When two packages share types, store a relation: <code>billing-ui</code> imports contracts from <code>billing-api</code>. Agents that only search one side invent duplicate DTOs. The relation is cheaper than another week of type drift.</p>
+
+<h2>Handoff packet I leave clients</h2>
+
+<p>At the end of an engagement I leave:</p>
+
+<p>1. MCP server config snippet 2. Seeded observations file or export 3. Skill text that mandates recall 4. A one-page &quot;how to re-index&quot; note 5. Three example prompts that demonstrate memory hits</p>
+
+<p>Clients keep the graph alive when the packet is boring and short. Fancy dashboards die. A Markdown note in the repo lives.</p>
+
+<h2>Anti-patterns unique to memory</h2>
+
+<ul>
+<li>Storing entire file contents as observations</li>
+<li>Writing future plans as if they already shipped</li>
+<li>Mixing personal preferences (&quot;I like Zod&quot;) with product law (&quot;requests must validate with Zod at the boundary&quot;)</li>
+<li>Letting vendors' marketing copy into the graph without a date and a decision</li>
+<li>Skipping deletes after a rewrite so both old and new truths rank</li>
+</ul>
+
+<p>Treat the graph like a production database. Writes need review. Deletes need courage.</p>
+
+<h2>Weekly memory standup (ten minutes)</h2>
+
+<p>Every Monday, one engineer asks: what did we learn last week that the next agent must not rediscover? They write two observations, delete one stale fact, and paste the links in Slack. Ten minutes beats a quarterly cleanup project that never starts.</p>
+
+<p>If the standup finds zero new facts three weeks in a row, either the team is not shipping or they are not writing. Both are signals for the engineering manager.</p>
+
+<h2>Prompt snippets that force recall</h2>
+
+<ul>
+<li>&quot;Search memory for tenant isolation before proposing an API shape.&quot;</li>
+<li>&quot;List rejected approaches for state management, then reuse the winner.&quot;</li>
+<li>&quot;If memory is empty on billing, say empty and stop; do not invent policy.&quot;</li>
+</ul>
+
+<p>Paste those into the skill. Agents follow imperative recall better than vague &quot;consider prior art&quot; advice.</p>
+
+<h2>Recruiter and contractor onboarding</h2>
+
+<p>Contractors burn billable hours rediscovering constraints that staff engineers already know. On day one, make them run three memory queries for their service area and paste the hits into their kickoff note. That ritual proves the graph works and surfaces gaps while the engagement is young.</p>
+
+<h2>Sources</h2>
+
+<ul>
+<li><a href="https://modelcontextprotocol.io/docs/concepts/architecture" rel="noopener">MCP architecture</a></li>
+<li><a href="https://modelcontextprotocol.io/" rel="noopener">Model Context Protocol</a></li>
+<li><a href="https://github.com/modelcontextprotocol/servers/tree/main/src/memory" rel="noopener">Reference knowledge graph memory server</a></li>
+<li><a href="https://cursor.com/docs/context/rules" rel="noopener">Cursor rules</a></li>
+<li>Related: <a href="./compress-agent-context-before-you-code.html" rel="noopener">Compress agent context before you code</a></li>
+<li>Series cards on <a href="../../index.html#tips" rel="noopener">calvinmaighan.com tips</a></li>
+</ul>
+
+<p> Memory without write-back is a museum. Memory with weekly writes is an operating system for agents.</p>
+
+<section class="article-faq">
+
+<h2>FAQ</h2>
+
+<h3>What is a codebase-memory MCP server?</h3>
+
+<p>It is an MCP server that stores entities, relations, and observations about your repository so agents can query prior decisions and structure across chats instead of relying on one thread's context window.</p>
+
+<h3>How is memory different from Cursor rules?</h3>
+
+<p>Rules are static instructions you maintain by hand. Memory accumulates project facts and decisions over time through graph or search tools. Use both: rules for invariants, memory for living context.</p>
+
+<h3>What should we store in memory first?</h3>
+
+<p>Boot order, forbidden patterns, naming conventions, tenancy or auth boundaries, and the last three production incidents with root causes. Skip trivia and transient UI tweaks.</p>
+
+<h3>Can memory go stale and hurt agents?</h3>
+
+<p>Yes. Require dates on observations, delete superseded facts, and re-index after large refactors. Stale memory is worse than no memory when it contradicts the code.</p>
+
+</section>
+
+            <p class="article-cta-end">Want codebase-memory MCP wired into your team workflow <a href="../../index.html#contact">Book a call</a>.</p>
+            <p class="article-book-mobile">
+              <a class="btn btn-primary" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+            </p>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p class="foot-statement" data-i18n="footer.statement">Available for hard builds.</p>
+        <p class="foot-meta">
+          <strong>Calvin Maighan</strong>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.role">Senior AI and SaaS Engineer</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.meta">Montreal · remote contracts</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="https://github.com/CalvinMaighan" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="mailto:hello@calvinmaighan.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+        </p>
+      </div>
+    </footer>
+
+    <div class="article-chrome">
+      <div class="read-progress" aria-hidden="true"></div>
+      <div class="article-chrome-inner">
+        <a class="btn btn-primary is-locked" id="article-next" href="./research-what-people-said-last-month.html" aria-disabled="true" data-i18n="article.next">Next article</a>
+      </div>
+    </div>
+
+    <script type="module" src="../../app.mjs"></script>
+  </body>
+</html>
