@@ -1,13 +1,13 @@
 ---
-title: "How AI agents speed up developers"
-primaryKeyword: "how AI agents speed up developers"
+title: "14 AI agent skills to speed up developers"
+primaryKeyword: "14 ai agent skills to speed up developers"
 intent: informational
 slug: how-ai-agents-speed-up-developers
-metaDescription: "how AI agents speed up developers when you treat them like junior contractors with sharp jobs, real sources, and release gates instead of magical chat boxes that invent APIs."
+metaDescription: "14 ai agent skills to speed up developers when you treat them like junior contractors with sharp jobs, real sources, and release gates instead of magical chat boxes that invent APIs."
 canonical: https://calvinmaighan.com/tips/how-ai-agents-speed-up-developers.html
 updatedAt: 2026-07-23
 updatedHuman: July 23, 2026
-summary: "how AI agents speed up developers is not about typing faster. It is about cutting the dead time between intent and a mergeable change: research, reading foreign code, drafting, review, and release checks. This piece is the wide view. The next fourteen tips are the concrete skills I use on consulting work so agents ship with you instead of past you."
+summary: "how AI agents can speed up developers is not about typing faster. It is about cutting the dead time between intent and a mergeable change: research, reading foreign code, drafting, review, and release checks. This piece is the wide view. The next fourteen tips are the concrete skills I use on consulting work so agents ship with you instead of past you."
   standalone: false
   intro: true
   kicker: ""
@@ -17,11 +17,9 @@ nextLabel: "Next article"
 nextLocked: true
 ctaAboveFold: "Book a call"
 ctaEnd: "If you want this operating system installed on your team"
-inBodyImageAlt: "Cover for how AI agents speed up developers"
+inBodyImageAlt: "Cover for how AI agents can speed up developers"
 out: site/tips/how-ai-agents-speed-up-developers.html
 ---
-
-how AI agents speed up developers when you stop asking them to "be helpful" and start giving them jobs with evidence, limits, and a definition of done. Speed is not vibes in a sidebar. Speed is fewer days between a ticket and a green PR that a human still trusts.
 
 I work with startups, SaaS teams, and agencies that want AI in the build loop without turning the codebase into a novelty demo. The dream is simple: the agent does the expensive grunt work, you keep judgment, and shipping gets quieter.
 
@@ -62,7 +60,7 @@ None of that is a model problem. It is an operating problem. Fix the operating p
 
 If we work together, I am not selling you a prompt pack. I am installing habits and skills your team can run when I leave: job-named procedures, research that cites, diffs that stay small, and release gates that survive a bad Thursday.
 
-Dream big on outcomes. Stay strict on process. That combination is how AI agents speed up developers without speeding up incidents.
+Dream big on outcomes. Stay strict on process. That combination is how AI agents can speed up developers without speeding up incidents.
 
 Scroll to the end. Unlock the next article. Tip 1 starts with reading dependency source instead of guessing.
 

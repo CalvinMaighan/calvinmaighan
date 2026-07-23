@@ -2,7 +2,7 @@
 export const SERIES = [
   {
     slug: "how-ai-agents-speed-up-developers",
-    title: "How AI agents speed up developers",
+    title: "14 AI agent skills to speed up developers",
     subtitle: "Cut dead time between intent and a mergeable change",
     path: "/tips/how-ai-agents-speed-up-developers.html",
   },

@@ -53,13 +53,13 @@ const legacyIntro = `<!doctype html>
     <meta charset="utf-8" />
     <meta http-equiv="refresh" content="0; url=../how-ai-agents-speed-up-developers.html" />
     <link rel="canonical" href="https://calvinmaighan.com/tips/how-ai-agents-speed-up-developers.html" />
-    <title>Moved · How AI agents speed up developers</title>
+    <title>Moved · 14 AI agent skills to speed up developers</title>
     <meta name="robots" content="noindex" />
   </head>
   <body>
     <p>
       Series starts at
-      <a href="../how-ai-agents-speed-up-developers.html">how AI agents speed up developers</a>.
+      <a href="../how-ai-agents-speed-up-developers.html">how AI agents can speed up developers</a>.
     </p>
   </body>
 </html>
@@ -76,7 +76,7 @@ await writeFile(
       "https://calvinmaighan.com/tips/how-ai-agents-speed-up-developers.html",
       "https://calvinmaighan.com/tips/secret-agent-tips/scrape-websites-for-ai-agent-research.html",
     )
-    .replace("How AI agents speed up developers", "Scrape websites for AI agent research"),
+    .replace("14 AI agent skills to speed up developers", "Scrape websites for AI agent research"),
 );
 
 console.log("sitemap urls", urls.length);

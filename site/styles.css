@@ -1215,10 +1215,10 @@ main {
 }}
 .article-hero {
  padding-top: calc(var(--header-h) + var(--space-xl));
- padding-bottom: var(--space-lg);
+ padding-bottom: 0;
 }
 .article-breadcrumbs {
- margin: 0 0 var(--space-md);
+ margin: 0 0 var(--gap-xl);
  font-size: var(--font-s);
  color: var(--text-muted);
  letter-spacing: 0.2px;
@@ -1362,6 +1362,10 @@ main {
  grid-area: summary;
  max-width: var(--measure);
 }
+.article-summary::first-letter,
+.article-body > p:first-of-type::first-letter {
+ text-transform: uppercase;
+}
 .article-aside {
  grid-area: aside;
  display: none;
@@ -1425,22 +1429,25 @@ main {
 }
 .article-series-card-copy {
  min-width: 0;
+ max-width: 100%;
+ overflow: hidden;
  display: flex;
  flex-direction: column;
- gap: 2px;
+ gap: var(--gap-m);
 }
-.article-series-card-title {
+.article-series-card-title,
+.article-series-card-subtitle {
+ display: block;
  min-width: 0;
+ max-width: 100%;
  overflow: hidden;
  white-space: nowrap;
  text-overflow: ellipsis;
+}
+.article-series-card-title {
  line-height: 1.25;
 }
 .article-series-card-subtitle {
- min-width: 0;
- overflow: hidden;
- white-space: nowrap;
- text-overflow: ellipsis;
  font-size: var(--font-s);
  font-weight: 500;
  line-height: 1.3;
@@ -1478,9 +1485,9 @@ main {
  .article-layout {
   grid-template-columns: minmax(0, var(--measure)) minmax(0, 1fr);
   grid-template-areas:
-      "title aside"
-      "subtitle aside"
-      "byline aside"
+      "title ."
+      "subtitle ."
+      "byline ."
       "cover aside"
       "summary aside"
       "prose aside";
