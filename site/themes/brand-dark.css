@@ -27,6 +27,8 @@
   --text: oklch(0.96 0.012 60 / 90%);
   --text-muted: oklch(0.78 0.014 55 / 72%);
   --secondary-text: oklch(0.82 0.03 70 / 78%);
+  --article: var(--text);
+  --reading: var(--base);
 
   --base: oklch(0.172 0.01 67); /* #130F0B Deep shadow */
   --espresso: oklch(0.214 0.01 53); /* #1D1815 Dark espresso */
@@ -40,7 +42,7 @@
   --secondary: oklch(0.361 0.028 70);
   --secondary-hover: oklch(0.4 0.032 68);
 
-  --accent: oklch(0.78 var(--chroma-accent) var(--hue-accent));
+  --accent: oklch(0.88 var(--chroma-accent) var(--hue-accent));
   --accent-text: oklch(0.16 calc(var(--chroma-base) * 2) var(--hue-accent));
 
   --hero-text: oklch(0.92 var(--chroma-label) var(--hue-accent));
@@ -104,5 +106,6 @@
 
   color-scheme: dark;
 }
+
 
 

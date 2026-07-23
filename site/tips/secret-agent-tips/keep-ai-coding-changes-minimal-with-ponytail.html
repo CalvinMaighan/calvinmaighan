@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-accent="beige">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="keep AI coding changes minimal with ponytail so agents ship the smallest working diff, skip speculative abstractions, and leave reviewable pull requests your team can merge with confidence." />
+    <title>Keep AI coding changes minimal with ponytail · Calvin Maighan</title>
+    <link rel="canonical" href="https://calvinmaighan.com/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#E6E2D4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#221D19" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Calvin Maighan" />
+    <meta property="og:title" content="Keep AI coding changes minimal with ponytail" />
+    <meta property="og:description" content="keep AI coding changes minimal with ponytail so agents ship the smallest working diff, skip speculative abstractions, and leave reviewable pull requests your team can merge with confidence." />
+    <meta property="og:url" content="https://calvinmaighan.com/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html" />
+    <meta property="og:image" content="https://calvinmaighan.com/calvin-article-4.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Keep AI coding changes minimal with ponytail" />
+    <meta name="twitter:description" content="keep AI coding changes minimal with ponytail so agents ship the smallest working diff, skip speculative abstractions, and leave reviewable pull requests your team can merge with confidence." />
+    <meta name="twitter:image" content="https://calvinmaighan.com/calvin-article-4.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Keep AI coding changes minimal with ponytail",
+      "description": "keep AI coding changes minimal with ponytail so agents ship the smallest working diff, skip speculative abstractions, and leave reviewable pull requests your team can merge with confidence.",
+      "datePublished": "2026-07-22",
+      "dateModified": "2026-07-22",
+      "author": {
+        "@type": "Person",
+        "name": "Calvin Maighan",
+        "url": "https://calvinmaighan.com/"
+      },
+      "image": [
+        "https://calvinmaighan.com/calvin-article-4.png"
+      ],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://calvinmaighan.com/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the ponytail skill for AI coding agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ponytail is a coding discipline skill that forces the laziest solution that still works: YAGNI first, reuse existing code, prefer stdlib and native features, then ship the shortest correct diff."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does minimal mean skip tests and error handling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Ponytail never cuts validation at trust boundaries, data-loss protection, security basics, or anything you explicitly requested. Lazy means fewer files and fewer abstractions, not careless code."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know an agent ignored ponytail?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Look for new folders, unused interfaces, config for values that never change, and drive-by refactors outside the ticket. A healthy ponytail PR touches the fewest files that fix the root cause."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I turn ponytail off?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Turn it off when the user asks for the full design, when you are doing greenfield architecture on purpose, or when a measured bottleneck proves the simple path failed."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    <script>
+      (() => {
+        try {
+          const root = document.documentElement;
+          const mode = localStorage.getItem("active-theme:mode");
+          const color = localStorage.getItem("active-theme:color");
+          if (mode === "light" || mode === "dark") root.dataset.theme = mode;
+          if (color) root.dataset.accent = color;
+        } catch (_) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body class="article-page" data-series-slug="keep-ai-coding-changes-minimal-with-ponytail">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-sun" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+        </g>
+      </symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+      </symbol>
+      <symbol id="icon-languages" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 8l6 6m-7 0l6-6l2-3M2 5h12M7 2h1m14 20l-5-10l-5 10m2-4h6" />
+      </symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16" />
+      </symbol>
+      <symbol id="icon-x" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
+      </symbol>
+      <symbol id="icon-github" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 1C5.9225 1 1 5.9225 1 12C1 16.8675 4.14875 20.9787 8.52125 22.4362C9.07125 22.5325 9.2775 22.2025 9.2775 21.9137C9.2775 21.6525 9.26375 20.7862 9.26375 19.865C6.5 20.3737 5.785 19.1912 5.565 18.5725C5.44125 18.2562 4.905 17.28 4.4375 17.0187C4.0525 16.8125 3.5025 16.3037 4.42375 16.29C5.29 16.2762 5.90875 17.0875 6.115 17.4175C7.105 19.0812 8.68625 18.6137 9.31875 18.325C9.415 17.61 9.70375 17.1287 10.02 16.8537C7.5725 16.5787 5.015 15.63 5.015 11.4225C5.015 10.2262 5.44125 9.23625 6.1425 8.46625C6.0325 8.19125 5.6475 7.06375 6.2525 5.55125C6.2525 5.55125 7.17375 5.2625 9.2775 6.67875C10.1575 6.43125 11.0925 6.3075 12.0275 6.3075C12.9625 6.3075 13.8975 6.43125 14.7775 6.67875C16.8813 5.24875 17.8025 5.55125 17.8025 5.55125C18.4075 7.06375 18.0225 8.19125 17.9125 8.46625C18.6138 9.23625 19.04 10.2125 19.04 11.4225C19.04 15.6437 16.4688 16.5787 14.0213 16.8537C14.42 17.1975 14.7638 17.8575 14.7638 18.8887C14.7638 20.36 14.75 21.5425 14.75 21.9137C14.75 22.2025 14.9563 22.5462 15.5063 22.4362C19.8513 20.9787 23 16.8537 23 12C23 5.9225 18.0775 1 12 1Z" />
+      </symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+        </g>
+      </symbol>
+      <symbol id="icon-external" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M15 3h6v6" />
+          <path d="M10 14L21 3" />
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+        </g>
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5" />
+      </symbol>
+    </svg>
+
+    <header class="site-header" id="site-header">
+      <div class="bar">
+        <a class="brand" href="../../index.html" data-i18n="brand">Calvin Maighan</a>
+        <div class="header-actions">
+          <div class="locale-menu" id="locale-menu">
+            <button type="button" class="icon-btn icon-btn-wide" id="locale-toggle" aria-label="Language" aria-haspopup="listbox" aria-expanded="false" aria-controls="locale-popover">
+              <svg class="icon" aria-hidden="true"><use href="#icon-languages"></use></svg>
+              <span class="icon-btn-text" id="locale-label">EN</span>
+            </button>
+            <div class="locale-popover" id="locale-popover" role="listbox" aria-label="Language">
+              <button type="button" class="locale-option" role="option" data-locale="en" aria-selected="true">EN</button>
+              <button type="button" class="locale-option" role="option" data-locale="fr" aria-selected="false">FR</button>
+            </div>
+          </div>
+          <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch to dark theme">
+            <svg class="icon" aria-hidden="true"><use id="theme-icon-use" href="#icon-moon"></use></svg>
+          </button>
+          <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+            <svg class="icon" aria-hidden="true"><use id="menu-icon-use" href="#icon-menu"></use></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="backdrop" id="menu-backdrop"></div>
+    <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
+      <a href="../../index.html#tips" data-i18n="article.back">Back to tips</a>
+      <a href="../../index.html#work" data-i18n="nav.work">Work</a>
+      <a href="../../index.html#contact" data-i18n="nav.contact">Contact</a>
+      <a class="btn btn-primary" href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+    </nav>
+
+    <main id="top">
+      <article class="article">
+        <header class="article-hero">
+          <div class="wrap">
+            <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+              <ol>
+                <li><a href="../../index.html" data-i18n="article.home">Home</a></li>
+                <li aria-current="page">Keep AI coding changes minimal with ponytail</li>
+              </ol>
+            </nav>
+            
+          </div>
+        </header>
+
+        <div class="wrap article-layout">
+          <h1>Keep AI coding changes minimal with ponytail</h1>
+          <p class="article-subtitle">Smallest working diff, no speculative fluff</p>
+          <div class="article-byline">
+            <img
+              class="article-byline-avatar"
+              src="../../calvinprofile.jpg"
+              alt="Calvin Maighan"
+              width="48"
+              height="48"
+              decoding="async"
+            />
+            <span class="article-byline-name">Calvin Maighan</span>
+            <span class="article-byline-meta">
+              <span>10 min read</span>
+              <span class="sep" aria-hidden="true">·</span>
+              <time datetime="2026-07-22">July 22, 2026</time>
+            </span>
+            <a class="btn btn-primary article-byline-cta" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+          </div>
+          <figure class="article-cover">
+            <img src="../../calvin-article-4.png" alt="Cover for skill 4: keep AI coding changes minimal with ponytail" width="1672" height="941" decoding="async" />
+          </figure>
+          <p class="article-summary">Keep AI coding changes minimal with ponytail by forcing every agent edit through a YAGNI ladder: skip work that should not exist, reuse what the repo already has, prefer stdlib and native features, then ship the shortest correct diff. You get smaller pull requests, fewer speculative abstractions, and reviews that finish in one pass.</p>
+          <aside class="article-aside" aria-label="Series">
+            <ol class="article-series-rail">
+            <li>
+              <a
+                class="article-series-card"
+                data-series-slug="how-ai-agents-speed-up-developers"
+                data-series-title="14 AI agent skills to speed up developers"
+                data-series-subtitle="A product-owner map you can hand to engineering"
+                data-series-tip="0"
+                data-href="/tips/how-ai-agents-speed-up-developers.html"
+                href="/tips/how-ai-agents-speed-up-developers.html"
+                
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">14 AI agent skills to speed up developers</span>
+                    <span class="article-series-card-check" aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">A product-owner map you can hand to engineering</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="read-dependency-source-code-with-opensrc"
+                data-series-title="Read dependency source code with opensrc"
+                data-series-subtitle="Pull package source into the agent loop"
+                data-series-tip="1"
+                data-href="/tips/secret-agent-tips/read-dependency-source-code-with-opensrc.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #1: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Pull package source into the agent loop</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="scrape-websites-for-ai-agent-research"
+                data-series-title="Scrape websites for AI agent research"
+                data-series-subtitle="Turn live pages into research the agent can cite"
+                data-series-tip="2"
+                data-href="/tips/secret-agent-tips/scrape-websites-for-ai-agent-research.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #2: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Turn live pages into research the agent can cite</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="cut-ai-agent-tokens-with-caveman"
+                data-series-title="Agent talk less with caveman"
+                data-series-subtitle="Terse replies without mangling code"
+                data-series-tip="3"
+                data-href="/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #3: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Terse replies without mangling code</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked is-current"
+                data-series-slug="keep-ai-coding-changes-minimal-with-ponytail"
+                data-series-title="Keep AI coding changes minimal with ponytail"
+                data-series-subtitle="Smallest working diff, no speculative fluff"
+                data-series-tip="4"
+                data-href="/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #4: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Smallest working diff, no speculative fluff</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="compress-agent-context-before-you-code"
+                data-series-title="Compress agent context before you code"
+                data-series-subtitle="Ranked symbols instead of whole-repo paste"
+                data-series-tip="5"
+                data-href="/tips/secret-agent-tips/compress-agent-context-before-you-code.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #5: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Ranked symbols instead of whole-repo paste</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="persist-codebase-knowledge-across-ai-chats"
+                data-series-title="Persist codebase knowledge across AI chats"
+                data-series-subtitle="Memory that survives the next chat"
+                data-series-tip="6"
+                data-href="/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #6: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Memory that survives the next chat</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="research-what-people-said-last-month"
+                data-series-title="Research what people said last month"
+                data-series-subtitle="Real voices from the last thirty days"
+                data-series-tip="7"
+                data-href="/tips/secret-agent-tips/research-what-people-said-last-month.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #7: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Real voices from the last thirty days</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="remove-ai-writing-tells-from-prose"
+                data-series-title="Remove AI writing tells from prose"
+                data-series-subtitle="Kill the patterns that scream model-written"
+                data-series-tip="8"
+                data-href="/tips/secret-agent-tips/remove-ai-writing-tells-from-prose.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #8: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Kill the patterns that scream model-written</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="design-landing-pages-without-ai-slop"
+                data-series-title="Design landing pages without AI slop"
+                data-series-subtitle="Brand-first pages that pass the hide-the-nav test"
+                data-series-tip="9"
+                data-href="/tips/secret-agent-tips/design-landing-pages-without-ai-slop.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #9: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Brand-first pages that pass the hide-the-nav test</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="build-product-videos-with-hyperframes"
+                data-series-title="Build product videos with HyperFrames"
+                data-series-subtitle="HTML compositions agents can revise"
+                data-series-tip="10"
+                data-href="/tips/secret-agent-tips/build-product-videos-with-hyperframes.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #10: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">HTML compositions agents can revise</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="expose-product-actions-as-mcp-tools"
+                data-series-title="Expose product actions as MCP tools"
+                data-series-subtitle="Tools with schemas, scopes, and audit trails"
+                data-series-tip="11"
+                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #11: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Tools with schemas, scopes, and audit trails</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="catch-ai-code-mistakes-with-lint"
+                data-series-title="Catch AI code mistakes with lint"
+                data-series-subtitle="Lint as a hard gate after every agent edit"
+                data-series-tip="12"
+                data-href="/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #12: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Lint as a hard gate after every agent edit</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="ship-production-releases-with-agent-checks"
+                data-series-title="Ship production releases with agent checks"
+                data-series-subtitle="Release checks agents cannot skip"
+                data-series-tip="13"
+                data-href="/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #13: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Release checks agents cannot skip</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="write-seo-articles-agents-can-follow"
+                data-series-title="Write SEO articles agents can follow"
+                data-series-subtitle="Structure humans and agents can both follow"
+                data-series-tip="14"
+                data-href="/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #14: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Structure humans and agents can both follow</span>
+                </span>
+              </a>
+            </li>
+            </ol>
+          </aside>
+          <div class="article-body">
+<p>You keep AI coding changes minimal with ponytail when you treat every agent session like a senior engineer who has been paged at 3am for one clever abstraction too many. Ponytail is a skill file that encodes that laziness on purpose. Lazy here means efficient. The best code is the code nobody wrote. Agents default the other way: they scaffold folders, invent interfaces with one implementation, and rename half the module while fixing a null check. Your job is to put a hard ladder in front of that impulse before the first file opens.</p>
+
+<p>I use ponytail on consulting builds where clients care about merge speed and blast radius. A five-file fix that solves the ticket beats a forty-file cleanup that invents a plugin system. <a class="article-link is-external" href="https://martinfowler.com/bliki/Yagni.html" rel="noopener" target="_blank"><span class="article-link-text">Martin Fowler's note on YAGNI</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> still names the cost: you pay for design you never use, then you pay again to delete or drag it through later changes. Wikipedia's overview of <a class="article-link is-external" href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it" rel="noopener" target="_blank"><span class="article-link-text">You aren't gonna need it</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> tracks the same Extreme Programming rule. Ponytail turns that rule into agent-readable steps so the model cannot skip them while looking helpful.</p>
+
+<h2>Why agents overbuild by default</h2>
+
+<p>Language models train on public repos full of frameworks, tutorials, and aspirational architecture. When you ask for a date picker, the training prior often prefers a component library. When you ask for caching, the prior prefers a typed cache class with TTL knobs. None of that proves your product needs those pieces today.</p>
+
+<p>Agents also optimize for looking complete. A long diff signals effort. A one-line fix can feel too small to the model, so it pads the change with comments, helpers, and future-proof options. Reviewers pay for that padding in attention. CI pays in flake surface. Future you pays when the unused factory finally conflicts with a real requirement.</p>
+
+<p><a class="article-link is-external" href="https://www.anthropic.com/engineering/building-effective-agents" rel="noopener" target="_blank"><span class="article-link-text">Anthropic's guidance on building effective agents</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> pushes the same simplicity bias at the system level: start with simple composable patterns, add complexity when measurement says you must. Ponytail applies that bias at the pull request level. One skill. One ladder. No essay after the code unless you asked for a report.</p>
+
+<h2>The ponytail ladder</h2>
+
+<p>Stop at the first rung that holds. Run the ladder after you understand the problem, never instead of reading the code.</p>
+
+<h3>Does this need to exist at all?</h3>
+
+<p>Speculative need equals skip. If the ticket is a nice-to-have with no user path, say so in one line and stop. Agents love building dashboards for metrics nobody watches. Ponytail asks the rude question first.</p>
+
+<h3>Does this codebase already solve it?</h3>
+
+<p>Search before you invent. A helper three files over beats a new util package. Re-implementing what already exists is the most common agent slop I see in reviews. Point the agent at the existing pattern with a path. Make reuse the default.</p>
+
+<h3>Does the standard library cover it?</h3>
+
+<p><code>lru_cache</code>, <code>URLSearchParams</code>, <code>Intl.DateTimeFormat</code>, <code>path.basename</code>: boring tools that already shipped. Prefer them over a new dependency. Dependencies are forever in security reviews and lockfile fights.</p>
+
+<h3>Does the native platform cover it?</h3>
+
+<p><code>&lt;input type=&quot;date&quot;&gt;</code> before a date picker library. CSS before a JS animation runtime. A database unique constraint before app-layer dedupe. Native features shrink the surface the agent can break.</p>
+
+<h3>Does an already-installed dependency cover it?</h3>
+
+<p>Use what is in <code>package.json</code> or the lockfile today. Do not add a package for twenty lines of code. Adding deps is a product decision, not an agent reflex.</p>
+
+<h3>Can it be one line?</h3>
+
+<p>If one line is correct on the edge cases that matter, ship the one line. Two stdlib options of equal size: take the one that handles edges. Lazy never means flimsy algorithms.</p>
+
+<h3>Only then write the minimum code that works</h3>
+
+<p>When you must add structure, keep files few, names plain, and abstractions at zero until a second call site appears. Deletion still beats addition when both work.</p>
+
+<h2>Root cause beats symptom patches</h2>
+
+<p>A bug report names a symptom. Ponytail still demands a root-cause read. Grep every caller of the function you plan to touch. One guard in the shared function is smaller than a guard in every caller, and patching only the ticket path leaves sibling callers broken. The lazy fix is the shared fix once you traced the graph.</p>
+
+<p>This is where teams get ponytail wrong. They confuse small diff with touch only the file named in the ticket. Small in the wrong place is a second bug. Read fully, then climb the ladder.</p>
+
+<p><a class="article-link is-external" href="https://www.anthropic.com/engineering/claude-code-best-practices" rel="noopener" target="_blank"><span class="article-link-text">Claude Code best practices from Anthropic</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> stress exploring and planning before heavy edits. Ponytail agrees, then refuses the tour-guide prose after the edit. Code first. At most three short lines on what you skipped and when to add it.</p>
+
+<h2>What ponytail refuses to cut</h2>
+
+<p>Never simplify away:</p>
+
+<ul>
+<li>input validation at trust boundaries</li>
+<li>error handling that prevents data loss</li>
+<li>security measures you already require</li>
+<li>accessibility basics for UI work</li>
+<li>anything the user explicitly requested</li>
+</ul>
+
+<p>If the user insists on the full design, build the full design. Ponytail is a default, not a veto over product intent. Hardware and money paths also keep their calibration knobs; the physical world and finance code need tuning that a one-liner cannot see.</p>
+
+<p>Non-trivial logic should leave one runnable check: a tiny assert demo or one focused test that fails if the branch breaks. No fixture factories. No per-function suite unless you asked for it. Tests follow YAGNI too.</p>
+
+<h2>Review signals that ponytail worked</h2>
+
+<p>Use this checklist on every agent PR:</p>
+
+<p>1. File count matches the blast radius of the bug or feature. 2. No new interface with a single implementation. 3. No config object for a constant that never changes. 4. No drive-by renames outside the change. 5. No new dependency without an explicit ask. 6. Root cause sits in the shared path, not only the ticket path. 7. Description names what was skipped and the trigger to add it later.</p>
+
+<p>When a PR fails two or more of those checks, send it back with the ladder pasted in the review. Agents respond well to concrete rungs. Vague &quot;make it simpler&quot; invites another creative rewrite.</p>
+
+<h2>Pair ponytail with the rest of the series</h2>
+
+<p>Ponytail sits next to token-tight talk and compressed context. Tip 3 on <a class="article-link" href="./cut-ai-agent-tokens-with-caveman.html" rel="noopener"><span class="article-link-text">agent talk less with caveman</span></a> keeps the prompt short. Tip 5 on <a class="article-link" href="./compress-agent-context-before-you-code.html" rel="noopener"><span class="article-link-text">compressing agent context before you code</span></a> keeps the files short. Ponytail keeps the diff short. Together they reduce cost, noise, and merge risk.</p>
+
+<p>On this portfolio I also keep product copy and theme work under the same bias: reuse <code>active-*</code> vendors, paint with theme tokens, avoid new infra unless a client asks. The skill matches how I already ship consulting work. Browse more tips from the <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">tips index</span></a>.</p>
+
+<h2>Team install pattern</h2>
+
+<p>Put ponytail where your agent loads skills. Name the skill after the job: <code>keep-ai-coding-changes-minimal</code> works better than <code>ponytail-vibes</code>. In the skill body, paste the ladder as numbered rules the model cannot summarize away. Add two repo-specific examples: one good one-line fix from your history, one rejected overbuild.</p>
+
+<p>Set intensity:</p>
+
+<ul>
+<li><code>lite</code>: build what was asked, name the lazier alternative in one line</li>
+<li><code>full</code>: enforce the ladder; default for product work</li>
+<li><code>ultra</code>: YAGNI extremist; ship the one-liner and challenge the rest of the ask</li>
+</ul>
+
+<p>Most product teams should live on <code>full</code>. Ultra belongs in spikes and personal scripts. Lite belongs when a junior agent needs room to learn patterns you still want documented.</p>
+
+<p>Wire a PR template checkbox: &quot;Ponytail ladder applied.&quot; Make humans tick it. Agents will start echoing the checkbox language in commit bodies, which helps reviewers scan.</p>
+
+<h2>Failure modes and fixes</h2>
+
+<p><strong>Agent adds a folder of empty scaffolding.</strong> Delete the folder in review. Add a skill line: &quot;Fewest files possible. No scaffolding for later.&quot;</p>
+
+<p><strong>Agent introduces a new state library beside your existing bus.</strong> Point at the existing store with a path. On this site that would be <code>active-state</code> under <code>site/vendor/</code>. Reuse beats rewrite.</p>
+
+<p><strong>Agent improves unrelated formatting.</strong> Ban drive-by format in the skill. Formatting belongs to the formatter on save, not the coding agent mid-ticket.</p>
+
+<p><strong>Agent writes a long justification essay.</strong> Pair with caveman or a hard &quot;code first, three lines max&quot; rule. Explanation the user asked for still ships in full. Unrequested defense of a simplification is complexity smuggled back as prose.</p>
+
+<p><strong>Agent skips reading and patches the symptom.</strong> Require a preflight: list callers, name root file, then edit. Refuse diffs that cannot name the shared function.</p>
+
+<h2>A concrete walkthrough</h2>
+
+<p>Ticket: cache API responses for a settings page.</p>
+
+<p>Lite agent without ponytail: new <code>CacheService</code> class, TTL config, in-memory map, unit tests for eviction, adapter interface, and a README section.</p>
+
+<p>Ponytail agent on <code>full</code>: wrap the fetch in the language's LRU helper or reuse the HTTP cache headers the API already sends. Skipped custom class. Add when a profiler shows LRU falling short.</p>
+
+<p>Ticket: add a date field on a form.</p>
+
+<p>Without ponytail: install a date library, theme the calendar, add localization packs.</p>
+
+<p>With ponytail: native date input, constrain format in validation you already own, ship. Add a picker library when design explicitly requires a custom calendar UI.</p>
+
+<p>Ticket: null crash in billing when <code>plan</code> is missing.</p>
+
+<p>Without ponytail: optional chaining at the screen that crashed.</p>
+
+<p>With ponytail: find every reader of <code>plan</code>, put the guard or default in the shared loader, add one assert for the missing-plan path, leave screens alone.</p>
+
+<p>Those three tickets look small. They save weeks of compound interest in a codebase agents touch daily.</p>
+
+<h2>Metrics that prove the tip</h2>
+
+<p>Track for two sprints:</p>
+
+<ul>
+<li>median files changed per agent PR</li>
+<li>median lines changed</li>
+<li>review rounds until merge</li>
+<li>escaped defects from agent PRs</li>
+<li>new dependencies introduced by agents</li>
+</ul>
+
+<p>You want files and review rounds down without escaped defects up. If defects rise, the team is confusing ponytail with recklessness. Bring validation rules back into the skill text. If files stay high, the skill is not loading or reviewers are waving through scaffolding.</p>
+
+<h2>Ship it this week</h2>
+
+<p>1. Add a ponytail skill named for the job. 2. Paste the seven-rung ladder and two local examples. 3. Set default intensity to <code>full</code>. 4. Add the PR checkbox. 5. Reject one overbuilt agent PR in public on the team channel with the ladder cited. 6. Measure file counts for two weeks.</p>
+
+<p>Minimal diffs are a culture. Skills only encode culture so agents can join it.</p>
+
+<h2>How I brief agents on day one</h2>
+
+<p>I paste three lines into the kickoff prompt on new repos:</p>
+
+<p>1. &quot;Apply ponytail at full intensity for all code edits.&quot; 2. &quot;Name the shared root-cause file before you patch a symptom.&quot; 3. &quot;List every new file and dependency you plan to add; expect pushback.&quot;</p>
+
+<p>Those three lines cut the first-week overbuild tax more than a slide deck. When a junior engineer watches the agent shrink a fifty-file proposal into three files, the culture sticks without a workshop.</p>
+
+<p>On fixed-bid consulting I also write the ladder into the statement of work as a quality bar: &quot;agent-authored PRs must show the ponytail checklist in the description.&quot; Clients then have language to reject bloat without arguing taste.</p>
+
+<h2>Sources</h2>
+
+<ul>
+<li><a class="article-link is-external" href="https://martinfowler.com/bliki/Yagni.html" rel="noopener" target="_blank"><span class="article-link-text">Martin Fowler on YAGNI</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it" rel="noopener" target="_blank"><span class="article-link-text">You aren't gonna need it (Wikipedia)</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://www.anthropic.com/engineering/building-effective-agents" rel="noopener" target="_blank"><span class="article-link-text">Building effective agents (Anthropic)</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://www.anthropic.com/engineering/claude-code-best-practices" rel="noopener" target="_blank"><span class="article-link-text">Claude Code best practices (Anthropic)</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li>Related: <a class="article-link" href="./cut-ai-agent-tokens-with-caveman.html" rel="noopener"><span class="article-link-text">Agent talk less with caveman</span></a></li>
+<li>Series cards on <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">calvinmaighan.com tips</span></a></li>
+</ul>
+
+            <div class="article-cta-end">
+              <p>Want ponytail wired into your team workflow</p>
+              <a class="btn btn-primary" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+            </div>
+
+<section class="article-faq">
+
+<h2>FAQ</h2>
+
+<div class="faq-list">
+
+<details class="faq-item">
+<summary class="faq-question">What is the ponytail skill for AI coding agents?</summary>
+<p class="faq-answer">Ponytail is a coding discipline skill that forces the laziest solution that still works: YAGNI first, reuse existing code, prefer stdlib and native features, then ship the shortest correct diff.</p>
+</details>
+
+<details class="faq-item">
+<summary class="faq-question">Does minimal mean skip tests and error handling?</summary>
+<p class="faq-answer">No. Ponytail never cuts validation at trust boundaries, data-loss protection, security basics, or anything you explicitly requested. Lazy means fewer files and fewer abstractions, not careless code.</p>
+</details>
+
+<details class="faq-item">
+<summary class="faq-question">How do I know an agent ignored ponytail?</summary>
+<p class="faq-answer">Look for new folders, unused interfaces, config for values that never change, and drive-by refactors outside the ticket. A healthy ponytail PR touches the fewest files that fix the root cause.</p>
+</details>
+
+<details class="faq-item">
+<summary class="faq-question">When should I turn ponytail off?</summary>
+<p class="faq-answer">Turn it off when the user asks for the full design, when you are doing greenfield architecture on purpose, or when a measured bottleneck proves the simple path failed.</p>
+</details>
+
+</div>
+
+</section>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p class="foot-statement" data-i18n="footer.statement">Available for hard builds.</p>
+        <p class="foot-meta">
+          <strong>Calvin Maighan</strong>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.role">Senior AI and SaaS Engineer</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.meta">Montreal · remote contracts</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="https://github.com/CalvinMaighan" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="mailto:hello@calvinmaighan.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+        </p>
+      </div>
+    </footer>
+
+    <div class="article-chrome">
+      <div class="read-progress" aria-hidden="true"></div>
+      <div class="article-chrome-inner">
+        <p class="article-chrome-hint" id="article-chrome-hint" data-unlock-part="5" data-locked-text="Keep reading to unlock skill #5">Keep reading to unlock skill #5</p>
+        <a class="btn btn-primary is-locked" id="article-next" href="./compress-agent-context-before-you-code.html" aria-disabled="true" data-i18n="article.next">Next article</a>
+      </div>
+    </div>
+
+    <script type="module" src="../../app.mjs"></script>
+  </body>
+</html>

@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-accent="beige">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="research what people said last month with the last30days skill so product teams pull fresh Reddit, HN, GitHub, and web signal before betting a roadmap on outdated assumptions." />
+    <title>Research what people said last month · Calvin Maighan</title>
+    <link rel="canonical" href="https://calvinmaighan.com/tips/secret-agent-tips/research-what-people-said-last-month.html" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#E6E2D4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#221D19" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Calvin Maighan" />
+    <meta property="og:title" content="Research what people said last month" />
+    <meta property="og:description" content="research what people said last month with the last30days skill so product teams pull fresh Reddit, HN, GitHub, and web signal before betting a roadmap on outdated assumptions." />
+    <meta property="og:url" content="https://calvinmaighan.com/tips/secret-agent-tips/research-what-people-said-last-month.html" />
+    <meta property="og:image" content="https://calvinmaighan.com/calvin-article-7.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Research what people said last month" />
+    <meta name="twitter:description" content="research what people said last month with the last30days skill so product teams pull fresh Reddit, HN, GitHub, and web signal before betting a roadmap on outdated assumptions." />
+    <meta name="twitter:image" content="https://calvinmaighan.com/calvin-article-7.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Research what people said last month",
+      "description": "research what people said last month with the last30days skill so product teams pull fresh Reddit, HN, GitHub, and web signal before betting a roadmap on outdated assumptions.",
+      "datePublished": "2026-07-22",
+      "dateModified": "2026-07-22",
+      "author": {
+        "@type": "Person",
+        "name": "Calvin Maighan",
+        "url": "https://calvinmaighan.com/"
+      },
+      "image": [
+        "https://calvinmaighan.com/calvin-article-7.png"
+      ],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://calvinmaighan.com/tips/secret-agent-tips/research-what-people-said-last-month.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the last30days skill?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "last30days is an agent skill that researches what people actually said about a topic in the last month across sources like Reddit, X, YouTube, Hacker News, GitHub, and the web, then returns citations and engagement context."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does last30days replace customer interviews?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It complements interviews and analytics. Use it for fast market and language signal, then validate with your users through interviews, support logs, and product data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fresh should the window be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Thirty days fits fast-moving AI and SaaS topics. Narrow to a week for breaking incidents. Widen only when the category moves slowly and you still label the date range in the writeup."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do I store after a run?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Store dated findings, quote links, and product implications in your codebase or product memory. Do not store personal data from posts. Keep the decision, not the raw scrape dump."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is social listening the wrong tool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Skip it for private enterprise workflows with no public chatter, for regulated claims that need primary docs, and when you already have enough first-party evidence for the decision."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    <script>
+      (() => {
+        try {
+          const root = document.documentElement;
+          const mode = localStorage.getItem("active-theme:mode");
+          const color = localStorage.getItem("active-theme:color");
+          if (mode === "light" || mode === "dark") root.dataset.theme = mode;
+          if (color) root.dataset.accent = color;
+        } catch (_) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body class="article-page" data-series-slug="research-what-people-said-last-month">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-sun" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+        </g>
+      </symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+      </symbol>
+      <symbol id="icon-languages" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 8l6 6m-7 0l6-6l2-3M2 5h12M7 2h1m14 20l-5-10l-5 10m2-4h6" />
+      </symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16" />
+      </symbol>
+      <symbol id="icon-x" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
+      </symbol>
+      <symbol id="icon-github" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 1C5.9225 1 1 5.9225 1 12C1 16.8675 4.14875 20.9787 8.52125 22.4362C9.07125 22.5325 9.2775 22.2025 9.2775 21.9137C9.2775 21.6525 9.26375 20.7862 9.26375 19.865C6.5 20.3737 5.785 19.1912 5.565 18.5725C5.44125 18.2562 4.905 17.28 4.4375 17.0187C4.0525 16.8125 3.5025 16.3037 4.42375 16.29C5.29 16.2762 5.90875 17.0875 6.115 17.4175C7.105 19.0812 8.68625 18.6137 9.31875 18.325C9.415 17.61 9.70375 17.1287 10.02 16.8537C7.5725 16.5787 5.015 15.63 5.015 11.4225C5.015 10.2262 5.44125 9.23625 6.1425 8.46625C6.0325 8.19125 5.6475 7.06375 6.2525 5.55125C6.2525 5.55125 7.17375 5.2625 9.2775 6.67875C10.1575 6.43125 11.0925 6.3075 12.0275 6.3075C12.9625 6.3075 13.8975 6.43125 14.7775 6.67875C16.8813 5.24875 17.8025 5.55125 17.8025 5.55125C18.4075 7.06375 18.0225 8.19125 17.9125 8.46625C18.6138 9.23625 19.04 10.2125 19.04 11.4225C19.04 15.6437 16.4688 16.5787 14.0213 16.8537C14.42 17.1975 14.7638 17.8575 14.7638 18.8887C14.7638 20.36 14.75 21.5425 14.75 21.9137C14.75 22.2025 14.9563 22.5462 15.5063 22.4362C19.8513 20.9787 23 16.8537 23 12C23 5.9225 18.0775 1 12 1Z" />
+      </symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+        </g>
+      </symbol>
+      <symbol id="icon-external" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M15 3h6v6" />
+          <path d="M10 14L21 3" />
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+        </g>
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5" />
+      </symbol>
+    </svg>
+
+    <header class="site-header" id="site-header">
+      <div class="bar">
+        <a class="brand" href="../../index.html" data-i18n="brand">Calvin Maighan</a>
+        <div class="header-actions">
+          <div class="locale-menu" id="locale-menu">
+            <button type="button" class="icon-btn icon-btn-wide" id="locale-toggle" aria-label="Language" aria-haspopup="listbox" aria-expanded="false" aria-controls="locale-popover">
+              <svg class="icon" aria-hidden="true"><use href="#icon-languages"></use></svg>
+              <span class="icon-btn-text" id="locale-label">EN</span>
+            </button>
+            <div class="locale-popover" id="locale-popover" role="listbox" aria-label="Language">
+              <button type="button" class="locale-option" role="option" data-locale="en" aria-selected="true">EN</button>
+              <button type="button" class="locale-option" role="option" data-locale="fr" aria-selected="false">FR</button>
+            </div>
+          </div>
+          <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch to dark theme">
+            <svg class="icon" aria-hidden="true"><use id="theme-icon-use" href="#icon-moon"></use></svg>
+          </button>
+          <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+            <svg class="icon" aria-hidden="true"><use id="menu-icon-use" href="#icon-menu"></use></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="backdrop" id="menu-backdrop"></div>
+    <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
+      <a href="../../index.html#tips" data-i18n="article.back">Back to tips</a>
+      <a href="../../index.html#work" data-i18n="nav.work">Work</a>
+      <a href="../../index.html#contact" data-i18n="nav.contact">Contact</a>
+      <a class="btn btn-primary" href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+    </nav>
+
+    <main id="top">
+      <article class="article">
+        <header class="article-hero">
+          <div class="wrap">
+            <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+              <ol>
+                <li><a href="../../index.html" data-i18n="article.home">Home</a></li>
+                <li aria-current="page">Research what people said last month</li>
+              </ol>
+            </nav>
+            
+          </div>
+        </header>
+
+        <div class="wrap article-layout">
+          <h1>Research what people said last month</h1>
+          <p class="article-subtitle">Real voices from the last thirty days</p>
+          <div class="article-byline">
+            <img
+              class="article-byline-avatar"
+              src="../../calvinprofile.jpg"
+              alt="Calvin Maighan"
+              width="48"
+              height="48"
+              decoding="async"
+            />
+            <span class="article-byline-name">Calvin Maighan</span>
+            <span class="article-byline-meta">
+              <span>10 min read</span>
+              <span class="sep" aria-hidden="true">·</span>
+              <time datetime="2026-07-22">July 22, 2026</time>
+            </span>
+            <a class="btn btn-primary article-byline-cta" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+          </div>
+          <figure class="article-cover">
+            <img src="../../calvin-article-7.png" alt="Cover for skill 7: research what people said last month" width="1672" height="941" decoding="async" />
+          </figure>
+          <p class="article-summary">Research what people said last month with the last30days skill so your team hears current language, complaints, and workarounds before you lock a roadmap bet. The skill pulls multi-source posts with citations and engagement context instead of a generic model prior from training day. You get faster discovery, clearer copy, and fewer features aimed at problems nobody still has.</p>
+          <aside class="article-aside" aria-label="Series">
+            <ol class="article-series-rail">
+            <li>
+              <a
+                class="article-series-card"
+                data-series-slug="how-ai-agents-speed-up-developers"
+                data-series-title="14 AI agent skills to speed up developers"
+                data-series-subtitle="A product-owner map you can hand to engineering"
+                data-series-tip="0"
+                data-href="/tips/how-ai-agents-speed-up-developers.html"
+                href="/tips/how-ai-agents-speed-up-developers.html"
+                
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">14 AI agent skills to speed up developers</span>
+                    <span class="article-series-card-check" aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">A product-owner map you can hand to engineering</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="read-dependency-source-code-with-opensrc"
+                data-series-title="Read dependency source code with opensrc"
+                data-series-subtitle="Pull package source into the agent loop"
+                data-series-tip="1"
+                data-href="/tips/secret-agent-tips/read-dependency-source-code-with-opensrc.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #1: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Pull package source into the agent loop</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="scrape-websites-for-ai-agent-research"
+                data-series-title="Scrape websites for AI agent research"
+                data-series-subtitle="Turn live pages into research the agent can cite"
+                data-series-tip="2"
+                data-href="/tips/secret-agent-tips/scrape-websites-for-ai-agent-research.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #2: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Turn live pages into research the agent can cite</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="cut-ai-agent-tokens-with-caveman"
+                data-series-title="Agent talk less with caveman"
+                data-series-subtitle="Terse replies without mangling code"
+                data-series-tip="3"
+                data-href="/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #3: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Terse replies without mangling code</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="keep-ai-coding-changes-minimal-with-ponytail"
+                data-series-title="Keep AI coding changes minimal with ponytail"
+                data-series-subtitle="Smallest working diff, no speculative fluff"
+                data-series-tip="4"
+                data-href="/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #4: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Smallest working diff, no speculative fluff</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="compress-agent-context-before-you-code"
+                data-series-title="Compress agent context before you code"
+                data-series-subtitle="Ranked symbols instead of whole-repo paste"
+                data-series-tip="5"
+                data-href="/tips/secret-agent-tips/compress-agent-context-before-you-code.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #5: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Ranked symbols instead of whole-repo paste</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="persist-codebase-knowledge-across-ai-chats"
+                data-series-title="Persist codebase knowledge across AI chats"
+                data-series-subtitle="Memory that survives the next chat"
+                data-series-tip="6"
+                data-href="/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #6: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Memory that survives the next chat</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked is-current"
+                data-series-slug="research-what-people-said-last-month"
+                data-series-title="Research what people said last month"
+                data-series-subtitle="Real voices from the last thirty days"
+                data-series-tip="7"
+                data-href="/tips/secret-agent-tips/research-what-people-said-last-month.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #7: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Real voices from the last thirty days</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="remove-ai-writing-tells-from-prose"
+                data-series-title="Remove AI writing tells from prose"
+                data-series-subtitle="Kill the patterns that scream model-written"
+                data-series-tip="8"
+                data-href="/tips/secret-agent-tips/remove-ai-writing-tells-from-prose.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #8: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Kill the patterns that scream model-written</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="design-landing-pages-without-ai-slop"
+                data-series-title="Design landing pages without AI slop"
+                data-series-subtitle="Brand-first pages that pass the hide-the-nav test"
+                data-series-tip="9"
+                data-href="/tips/secret-agent-tips/design-landing-pages-without-ai-slop.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #9: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Brand-first pages that pass the hide-the-nav test</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="build-product-videos-with-hyperframes"
+                data-series-title="Build product videos with HyperFrames"
+                data-series-subtitle="HTML compositions agents can revise"
+                data-series-tip="10"
+                data-href="/tips/secret-agent-tips/build-product-videos-with-hyperframes.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #10: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">HTML compositions agents can revise</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="expose-product-actions-as-mcp-tools"
+                data-series-title="Expose product actions as MCP tools"
+                data-series-subtitle="Tools with schemas, scopes, and audit trails"
+                data-series-tip="11"
+                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #11: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Tools with schemas, scopes, and audit trails</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="catch-ai-code-mistakes-with-lint"
+                data-series-title="Catch AI code mistakes with lint"
+                data-series-subtitle="Lint as a hard gate after every agent edit"
+                data-series-tip="12"
+                data-href="/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #12: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Lint as a hard gate after every agent edit</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="ship-production-releases-with-agent-checks"
+                data-series-title="Ship production releases with agent checks"
+                data-series-subtitle="Release checks agents cannot skip"
+                data-series-tip="13"
+                data-href="/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #13: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Release checks agents cannot skip</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="write-seo-articles-agents-can-follow"
+                data-series-title="Write SEO articles agents can follow"
+                data-series-subtitle="Structure humans and agents can both follow"
+                data-series-tip="14"
+                data-href="/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #14: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Structure humans and agents can both follow</span>
+                </span>
+              </a>
+            </li>
+            </ol>
+          </aside>
+          <div class="article-body">
+<p>You research what people said last month when you refuse to ship from vibes and stale blog roundups. The <a class="article-link is-external is-github" href="https://github.com/mvanhorn/last30days-skill" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">last30days skill</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> exists for that job: pull what people actually posted across Reddit, X, YouTube, TikTok, Hacker News, GitHub, Polymarket, and the web, then synthesize with citations. Product teams use it as a scout. It does not replace talking to your customers. It tells you which questions deserve those conversations this week.</p>
+
+<p>Nielsen Norman Group still maps <a class="article-link is-external" href="https://www.nngroup.com/articles/which-ux-research-methods/" rel="noopener" target="_blank"><span class="article-link-text">which UX research methods</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> fit which questions. Teresa Torres pushes <a class="article-link is-external" href="https://www.producttalk.org/continuous-interviewing/" rel="noopener" target="_blank"><span class="article-link-text">continuous interviewing</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> as an ongoing habit. Marty Cagan's work on <a class="article-link is-external" href="https://www.svpg.com/evidence/" rel="noopener" target="_blank"><span class="article-link-text">evidence-based product decisions</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> keeps the bar on proof. last30days sits upstream of those habits: a dated, citable scan of public signal so you walk into interviews and experiments with sharper hypotheses.</p>
+
+<h2>Why &quot;last month&quot; matters for agent research</h2>
+
+<p>Models carry training cutoffs and generic advice. A coding agent without a research skill will invent &quot;users want&quot; statements from that prior. Public conversation moves faster than weights update, especially in AI tooling, pricing reactions, and workflow pain.</p>
+
+<p>A thirty-day window forces freshness. You see the complaint that started after a vendor changed packaging. You see the workaround that replaced last quarter's favorite app. You see language people use today, which is gold for onboarding copy and SEO tips later in this series.</p>
+
+<p>Wider windows help for slow categories. Label them. &quot;Last 18 months in payroll ops&quot; is a different claim than &quot;last 30 days in AI code editors.&quot; Agents should state the window in the first paragraph of every research memo.</p>
+
+<h2>What last30days is good for</h2>
+
+<p><strong>Positioning and language.</strong> Which metaphors show up when people describe the job? Which words signal pain?</p>
+
+<p><strong>Competitive reaction.</strong> What did users say the week a rival shipped a feature?</p>
+
+<p><strong>Incident and outage aftermath.</strong> What broke trust, and what restored it?</p>
+
+<p><strong>Hiring and tooling trends.</strong> Which skills and stacks people recommend right now?</p>
+
+<p><strong>Content angles.</strong> Which questions already draw comments, so your article or video has demand?</p>
+
+<p>It is weaker for silent majority behavior inside your product. Pair it with analytics, support tags, sales call notes, and interviews.</p>
+
+<h2>How to brief the skill</h2>
+
+<p>Bad brief: &quot;Research AI agents.&quot;</p>
+
+<p>Good brief: &quot;Research what product engineers said in the last 30 days about flaky AI coding diffs in pull requests. Focus on review pain, trust, and workflow rules. Prefer Reddit, HN, and GitHub discussions with concrete examples.&quot;</p>
+
+<p>Include:</p>
+
+<p>1. Topic and audience 2. Decision the research will inform 3. Sources to prefer or skip 4. Geographic or segment constraints if real 5. Output shape: memo with citations, themes, and open questions</p>
+
+<p>Agents wander when the decision is missing. Tie every run to a choice: ship, cut, price, rewrite, or interview next.</p>
+
+<h2>A repeatable research loop</h2>
+
+<p>1. <strong>State the decision.</strong> One sentence. 2. <strong>Run last30days</strong> with a tight brief. 3. <strong>Cluster themes</strong> with example links, not orphan quotes. 4. <strong>Score confidence.</strong> High when many independent sources agree; low when one viral thread dominates. 5. <strong>Pick next evidence.</strong> Interview script, support query, or prototype test. 6. <strong>Write a dated observation</strong> into product memory (<a class="article-link" href="./persist-codebase-knowledge-across-ai-chats.html" rel="noopener"><span class="article-link-text">tip 6</span></a>). 7. <strong>Act or schedule a re-run</strong> when the bet is time-sensitive.</p>
+
+<p>Skip step 6 and the insight dies in a Slack thread. Skip step 5 and you confuse social heat with product truth.</p>
+
+<h2>Reading social signal without fooling yourself</h2>
+
+<p><strong>Engagement is not prevalence.</strong> A loud thread can be a niche. Note sample size and platform bias.</p>
+
+<p><strong>Builders over-index on builder forums.</strong> Reddit and HN skew technical. Your buyers might live in LinkedIn comments, vertical Discords, or private Slack groups you cannot scrape. Say what you could not see.</p>
+
+<p><strong>Vendors seed narratives.</strong> Weight first-person workflow posts over polished launch threads.</p>
+
+<p><strong>Safety and privacy.</strong> Do not scrape behind logins you lack rights to. Do not store personal data from posts in your company memory. Keep the theme and the public URL.</p>
+
+<p><strong>Primary docs still win for facts.</strong> Social listening finds sentiment and language. Specs, statutes, and benchmarks still need primary sources.</p>
+
+<h2>Outputs your team can use Monday</h2>
+
+<p>Demand a memo with four sections:</p>
+
+<p>1. <strong>Decision under review</strong> 2. <strong>Themes</strong> (3 to 7) with two citations each 3. <strong>Language bank</strong> (phrases to steal for UI and docs) 4. <strong>Next evidence</strong> (who to interview, what to measure)</p>
+
+<p>Optional appendix: raw links. Keep the main memo short enough a PM reads it before standup.</p>
+
+<p>For content teams, add a fifth section: article or video angles ranked by demonstrated demand. Tip 8 on <a class="article-link" href="./remove-ai-writing-tells-from-prose.html" rel="noopener"><span class="article-link-text">removing AI writing tells from prose</span></a> then keeps the draft human once the angle is chosen.</p>
+
+<h2>Product examples</h2>
+
+<p><strong>Example A: AI code review feature.</strong> last30days surfaces repeated anger about agents rewriting unrelated files. You ship a &quot;touch only listed paths&quot; guard and a PR checklist. Social signal named the pain; your users confirm it in five interviews.</p>
+
+<p><strong>Example B: Pricing page rewrite.</strong> Research shows buyers compare you to a rival on &quot;setup time,&quot; not on model brands. You lead with time-to-first-value. Copy changes in a week because the language bank was specific.</p>
+
+<p><strong>Example C: Kill a roadmap item.</strong> Heat around a feature is nostalgia from power users who churned. Support volume for that feature is near zero. You cut the bet and say why, with dates.</p>
+
+<h2>Agent install notes</h2>
+
+<p>Install the skill where your coding or research agent loads skills. Keep API keys for optional sources in your secret store, not in the repo. Run a doctor or health check when sources fail so the agent admits gaps instead of hallucinating quotes.</p>
+
+<p>Name the skill after the job if you wrap it: <code>research-what-people-said-last-month</code> beats a cute internal codename when humans scan the skill list under pressure.</p>
+
+<p>Require citations. If the agent cannot link a claim, the claim does not enter the memo. Invented URLs are a hard fail in review.</p>
+
+<h2>Pair with your internal evidence</h2>
+
+<p>Social listening is one input in an evidence stack:</p>
+
+<ul>
+<li>last30days for public language and timely themes</li>
+<li>support and sales notes for your customers</li>
+<li>product analytics for behavior</li>
+<li>interviews for jobs-to-be-done depth</li>
+<li>experiments for causal proof</li>
+</ul>
+
+<p>When social and first-party evidence disagree, first-party wins for your roadmap. Social still helps you understand the market you do not yet serve.</p>
+
+<h2>Cadence suggestions</h2>
+
+<ul>
+<li><strong>Weekly:</strong> one run tied to the riskiest open decision</li>
+<li><strong>Per launch:</strong> pre-launch scan and day-3 reaction scan</li>
+<li><strong>Per incident:</strong> 72-hour reputation and workaround scan</li>
+<li><strong>Per hiring push:</strong> tooling and skill language scan for role posts</li>
+</ul>
+
+<p>Cadence without decisions becomes magazine reading. Protect the team's time.</p>
+
+<h2>Anti-patterns</h2>
+
+<ul>
+<li>Running a vague topic with no decision attached</li>
+<li>Treating a single viral post as a segment</li>
+<li>Pasting quotes into marketing without checking context</li>
+<li>Letting the agent invent sources when APIs fail</li>
+<li>Skipping the write-back to memory</li>
+<li>Using social sentiment to override regulated or safety requirements</li>
+</ul>
+
+<h2>Ship checklist</h2>
+
+<p>1. Install last30days and verify source health. 2. Write a one-page brief template with a Decision line. 3. Run one real decision this week end to end. 4. Store themes as dated memory observations. 5. Schedule the next evidence step on the calendar. 6. Re-run only when the decision is still open or the market moved.</p>
+
+<p>Research is a verb. last30days makes the verb cheap enough that teams actually do it before they build.</p>
+
+<h2>Consulting use on this portfolio</h2>
+
+<p>On fractional AI and SaaS engagements I run last30days before rewriting positioning or agent workflows. Clients see citations, not my gut. We store the dated memo in their memory MCP so the next agent session inherits the market note. That loop turns public chatter into a durable product asset instead of a slide that dies after the meeting.</p>
+
+<h2>Building a language bank that ships</h2>
+
+<p>The language bank is the most stolen section of the memo. Pull exact phrases people use for the job, the pain, and the workaround. Do not polish them into brand voice yet. Put the raw phrases next to your current UI copy. The gaps are your rewrite list.</p>
+
+<p>Example: if practitioners say &quot;the agent rewrote my PR&quot; and your marketing says &quot;autonomous software engineering,&quot; you have a trust problem, not a feature gap. Change the headline to match the fear you can resolve. Then prove the guardrails in the product.</p>
+
+<p>I keep language banks in the same repo as the product glossary. Agents that draft UI strings must open the bank first. That is how research reaches the pixels.</p>
+
+<h2>Query design that avoids echo chambers</h2>
+
+<p>Run at least two query families per decision:</p>
+
+<p>1. <strong>Problem-shaped:</strong> &quot;AI coding PR too many files&quot;, &quot;agent broke CI&quot;, &quot;reviewer rejects AI diffs&quot; 2. <strong>Solution-shaped:</strong> &quot;minimal AI commits&quot;, &quot;YAGNI coding agents&quot;, &quot;small PR agent workflow&quot;</p>
+
+<p>If both families surface the same theme, confidence rises. If only solution-shaped queries light up, you may be sampling advocates. If only problem-shaped queries light up, you may have demand without a known category name.</p>
+
+<p>Log the queries in the memo. Future you will thank present you when a stakeholder asks how you sampled.</p>
+
+<h2>When the sample is thin</h2>
+
+<p>Say it. &quot;Twelve substantive posts in thirty days, mostly hobbyists&quot; is a valid finding. Thin samples still inform: they may tell you the category is quiet, private, or poorly named. Do not pad with model priors to look complete. Completeness theater is how roadmaps grow features nobody asked for.</p>
+
+<p>If the category is private enterprise, switch methods: win/loss interviews, support tag mining, and design partners. last30days still helps for adjacent public tooling pain that your buyers also feel.</p>
+
+<h2>Turning research into ticket titles</h2>
+
+<p>End every memo with three ticket-shaped lines. Not epics. Tickets: &quot;Add path allowlist to agent PRs&quot;, &quot;Rewrite pricing hero around setup time&quot;, &quot;Kill unused export wizard.&quot; Product managers can schedule tickets. They cannot schedule vibes.</p>
+
+<p>I score each ticket with confidence from the sample. High confidence tickets enter the next sprint discussion. Low confidence tickets become interview questions. That mapping is the whole point of the skill.</p>
+
+<h2>Share-out format for Slack</h2>
+
+<p>Post a 8-line summary: decision, top theme, two links, language phrase, next evidence, owner, date. Attach the full memo. Busy founders read eight lines. Researchers still get the appendix.</p>
+
+<h2>Competitive launch week playbook</h2>
+
+<p>When a rival launches, run last30days within 48 hours with queries for the feature name, the pain it claims to solve, and the complaint language. Store the memo with the launch date in the title. Product and marketing then share one evidence pack instead of three conflicting Slack theories.</p>
+
+<h2>Sources</h2>
+
+<ul>
+<li><a class="article-link is-external is-github" href="https://github.com/mvanhorn/last30days-skill" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">last30days skill on GitHub</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://www.nngroup.com/articles/which-ux-research-methods/" rel="noopener" target="_blank"><span class="article-link-text">Which UX research methods (Nielsen Norman Group)</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://www.producttalk.org/continuous-interviewing/" rel="noopener" target="_blank"><span class="article-link-text">Continuous interviewing (Product Talk)</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://www.svpg.com/evidence/" rel="noopener" target="_blank"><span class="article-link-text">Evidence-based product decisions (SVPG)</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li>Related: <a class="article-link" href="./persist-codebase-knowledge-across-ai-chats.html" rel="noopener"><span class="article-link-text">Persist codebase knowledge across AI chats</span></a></li>
+<li>Series cards on <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">calvinmaighan.com tips</span></a></li>
+</ul>
+
+<p> Fresh signal beats polished guessing when the market moves every sprint. Record the window dates in every memo so next quarter knows what aged out.</p>
+
+            <div class="article-cta-end">
+              <p>Want last30days wired into your team workflow</p>
+              <a class="btn btn-primary" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+            </div>
+
+<section class="article-faq">
+
+<h2>FAQ</h2>
+
+<div class="faq-list">
+
+<details class="faq-item">
+<summary class="faq-question">What is the last30days skill?</summary>
+<p class="faq-answer">last30days is an agent skill that researches what people actually said about a topic in the last month across sources like Reddit, X, YouTube, Hacker News, GitHub, and the web, then returns citations and engagement context.</p>
+</details>
+
+<details class="faq-item">
+<summary class="faq-question">Does last30days replace customer interviews?</summary>
+<p class="faq-answer">No. It complements interviews and analytics. Use it for fast market and language signal, then validate with your users through interviews, support logs, and product data.</p>
+</details>
+
+<details class="faq-item">
+<summary class="faq-question">How fresh should the window be?</summary>
+<p class="faq-answer">Thirty days fits fast-moving AI and SaaS topics. Narrow to a week for breaking incidents. Widen only when the category moves slowly and you still label the date range in the writeup.</p>
+</details>
+
+<details class="faq-item">
+<summary class="faq-question">What do I store after a run?</summary>
+<p class="faq-answer">Store dated findings, quote links, and product implications in your codebase or product memory. Do not store personal data from posts. Keep the decision, not the raw scrape dump.</p>
+</details>
+
+<details class="faq-item">
+<summary class="faq-question">When is social listening the wrong tool?</summary>
+<p class="faq-answer">Skip it for private enterprise workflows with no public chatter, for regulated claims that need primary docs, and when you already have enough first-party evidence for the decision.</p>
+</details>
+
+</div>
+
+</section>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p class="foot-statement" data-i18n="footer.statement">Available for hard builds.</p>
+        <p class="foot-meta">
+          <strong>Calvin Maighan</strong>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.role">Senior AI and SaaS Engineer</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.meta">Montreal · remote contracts</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="https://github.com/CalvinMaighan" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="mailto:hello@calvinmaighan.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+        </p>
+      </div>
+    </footer>
+
+    <div class="article-chrome">
+      <div class="read-progress" aria-hidden="true"></div>
+      <div class="article-chrome-inner">
+        <p class="article-chrome-hint" id="article-chrome-hint" data-unlock-part="8" data-locked-text="Keep reading to unlock skill #8">Keep reading to unlock skill #8</p>
+        <a class="btn btn-primary is-locked" id="article-next" href="./remove-ai-writing-tells-from-prose.html" aria-disabled="true" data-i18n="article.next">Next article</a>
+      </div>
+    </div>
+
+    <script type="module" src="../../app.mjs"></script>
+  </body>
+</html>

@@ -37,7 +37,7 @@ const svg = `<?xml version="1.0" encoding="UTF-8"?>
   <text x="80" y="120" font-family="Archivo Black" font-size="42" letter-spacing="1" fill="${COLORS.text}">CALVIN MAIGHAN</text>
   <rect x="80" y="148" width="104" height="4" rx="1" fill="${COLORS.cta}"/>
 
-  <text x="80" y="280" font-family="Archivo Black" font-size="72" fill="${COLORS.text}">AI consultant to help move</text>
+  <text x="80" y="280" font-family="Archivo Black" font-size="72" fill="${COLORS.text}">AI consulting to help move</text>
   <text x="80" y="368" font-family="Archivo Black" font-size="72">
     <tspan fill="${COLORS.cta}">ideas</tspan><tspan fill="${COLORS.text}"> forward.</tspan>
   </text>

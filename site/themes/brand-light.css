@@ -27,6 +27,8 @@
   --text: oklch(0.2 var(--chroma-text) var(--hue) / 88%);
   --text-muted: oklch(0.42 var(--chroma-text) var(--hue) / 80%);
   --secondary-text: oklch(0.34 var(--chroma-secondary) var(--hue-secondary));
+  --article: #232323;
+  --reading: var(--button);
 
   /* Ink band; --l-0 stays for borders */
   --base: oklch(0.2 var(--chroma) var(--hue-lower));
@@ -103,3 +105,4 @@
 
   color-scheme: light;
 }
+

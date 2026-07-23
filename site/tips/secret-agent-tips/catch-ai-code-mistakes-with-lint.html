@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-accent="beige">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="catch AI code mistakes with lint by running ESLint after every agent edit, fixing new warnings first, and feeding structured rule errors back so the model repairs empty catches, floating promises, and async map bugs before review." />
+    <title>Catch AI code mistakes with lint · Calvin Maighan</title>
+    <link rel="canonical" href="https://calvinmaighan.com/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#E6E2D4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#221D19" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Calvin Maighan" />
+    <meta property="og:title" content="Catch AI code mistakes with lint" />
+    <meta property="og:description" content="catch AI code mistakes with lint by running ESLint after every agent edit, fixing new warnings first, and feeding structured rule errors back so the model repairs empty catches, floating promises, and async map bugs before review." />
+    <meta property="og:url" content="https://calvinmaighan.com/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html" />
+    <meta property="og:image" content="https://calvinmaighan.com/calvin-article-2.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Catch AI code mistakes with lint" />
+    <meta name="twitter:description" content="catch AI code mistakes with lint by running ESLint after every agent edit, fixing new warnings first, and feeding structured rule errors back so the model repairs empty catches, floating promises, and async map bugs before review." />
+    <meta name="twitter:image" content="https://calvinmaighan.com/calvin-article-2.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Catch AI code mistakes with lint",
+      "description": "catch AI code mistakes with lint by running ESLint after every agent edit, fixing new warnings first, and feeding structured rule errors back so the model repairs empty catches, floating promises, and async map bugs before review.",
+      "datePublished": "2026-07-22",
+      "dateModified": "2026-07-22",
+      "author": {
+        "@type": "Person",
+        "name": "Calvin Maighan",
+        "url": "https://calvinmaighan.com/"
+      },
+      "image": [
+        "https://calvinmaighan.com/calvin-article-2.png"
+      ],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://calvinmaighan.com/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Should agents treat lint warnings as errors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes for new work. Warnings pile up when agents can ignore them. Promote rules that catch empty catch blocks, floating promises, and auth gaps to error in the agent path, then keep CI on the same config."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does TypeScript replace ESLint for AI patches?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. TypeScript catches type and import mistakes when the project compiles as a unit. ESLint catches patterns that stay type-valid and still break production, such as swallowed errors and async array callbacks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you stop agents from silencing rules?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ban broad eslint-disable comments in the agent skill. Require a one-line reason for any disable, and fail CI when a disable appears without an allowlist ticket."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should the agent fix first after a lint run?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Everything introduced in the current session. Compare against a baseline snapshot so the agent clears new noise before it spends tokens on old debt."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    <script>
+      (() => {
+        try {
+          const root = document.documentElement;
+          const mode = localStorage.getItem("active-theme:mode");
+          const color = localStorage.getItem("active-theme:color");
+          if (mode === "light" || mode === "dark") root.dataset.theme = mode;
+          if (color) root.dataset.accent = color;
+        } catch (_) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body class="article-page" data-series-slug="catch-ai-code-mistakes-with-lint">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-sun" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+        </g>
+      </symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+      </symbol>
+      <symbol id="icon-languages" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 8l6 6m-7 0l6-6l2-3M2 5h12M7 2h1m14 20l-5-10l-5 10m2-4h6" />
+      </symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16" />
+      </symbol>
+      <symbol id="icon-x" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
+      </symbol>
+      <symbol id="icon-github" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 1C5.9225 1 1 5.9225 1 12C1 16.8675 4.14875 20.9787 8.52125 22.4362C9.07125 22.5325 9.2775 22.2025 9.2775 21.9137C9.2775 21.6525 9.26375 20.7862 9.26375 19.865C6.5 20.3737 5.785 19.1912 5.565 18.5725C5.44125 18.2562 4.905 17.28 4.4375 17.0187C4.0525 16.8125 3.5025 16.3037 4.42375 16.29C5.29 16.2762 5.90875 17.0875 6.115 17.4175C7.105 19.0812 8.68625 18.6137 9.31875 18.325C9.415 17.61 9.70375 17.1287 10.02 16.8537C7.5725 16.5787 5.015 15.63 5.015 11.4225C5.015 10.2262 5.44125 9.23625 6.1425 8.46625C6.0325 8.19125 5.6475 7.06375 6.2525 5.55125C6.2525 5.55125 7.17375 5.2625 9.2775 6.67875C10.1575 6.43125 11.0925 6.3075 12.0275 6.3075C12.9625 6.3075 13.8975 6.43125 14.7775 6.67875C16.8813 5.24875 17.8025 5.55125 17.8025 5.55125C18.4075 7.06375 18.0225 8.19125 17.9125 8.46625C18.6138 9.23625 19.04 10.2125 19.04 11.4225C19.04 15.6437 16.4688 16.5787 14.0213 16.8537C14.42 17.1975 14.7638 17.8575 14.7638 18.8887C14.7638 20.36 14.75 21.5425 14.75 21.9137C14.75 22.2025 14.9563 22.5462 15.5063 22.4362C19.8513 20.9787 23 16.8537 23 12C23 5.9225 18.0775 1 12 1Z" />
+      </symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+        </g>
+      </symbol>
+      <symbol id="icon-external" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M15 3h6v6" />
+          <path d="M10 14L21 3" />
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+        </g>
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5" />
+      </symbol>
+    </svg>
+
+    <header class="site-header" id="site-header">
+      <div class="bar">
+        <a class="brand" href="../../index.html" data-i18n="brand">Calvin Maighan</a>
+        <div class="header-actions">
+          <div class="locale-menu" id="locale-menu">
+            <button type="button" class="icon-btn icon-btn-wide" id="locale-toggle" aria-label="Language" aria-haspopup="listbox" aria-expanded="false" aria-controls="locale-popover">
+              <svg class="icon" aria-hidden="true"><use href="#icon-languages"></use></svg>
+              <span class="icon-btn-text" id="locale-label">EN</span>
+            </button>
+            <div class="locale-popover" id="locale-popover" role="listbox" aria-label="Language">
+              <button type="button" class="locale-option" role="option" data-locale="en" aria-selected="true">EN</button>
+              <button type="button" class="locale-option" role="option" data-locale="fr" aria-selected="false">FR</button>
+            </div>
+          </div>
+          <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch to dark theme">
+            <svg class="icon" aria-hidden="true"><use id="theme-icon-use" href="#icon-moon"></use></svg>
+          </button>
+          <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+            <svg class="icon" aria-hidden="true"><use id="menu-icon-use" href="#icon-menu"></use></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="backdrop" id="menu-backdrop"></div>
+    <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
+      <a href="../../index.html#tips" data-i18n="article.back">Back to tips</a>
+      <a href="../../index.html#work" data-i18n="nav.work">Work</a>
+      <a href="../../index.html#contact" data-i18n="nav.contact">Contact</a>
+      <a class="btn btn-primary" href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+    </nav>
+
+    <main id="top">
+      <article class="article">
+        <header class="article-hero">
+          <div class="wrap">
+            <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+              <ol>
+                <li><a href="../../index.html" data-i18n="article.home">Home</a></li>
+                <li aria-current="page">Catch AI code mistakes with lint</li>
+              </ol>
+            </nav>
+            
+          </div>
+        </header>
+
+        <div class="wrap article-layout">
+          <h1>Catch AI code mistakes with lint</h1>
+          <p class="article-subtitle">Lint as a hard gate after every agent edit</p>
+          <div class="article-byline">
+            <img
+              class="article-byline-avatar"
+              src="../../calvinprofile.jpg"
+              alt="Calvin Maighan"
+              width="48"
+              height="48"
+              decoding="async"
+            />
+            <span class="article-byline-name">Calvin Maighan</span>
+            <span class="article-byline-meta">
+              <span>10 min read</span>
+              <span class="sep" aria-hidden="true">·</span>
+              <time datetime="2026-07-22">July 22, 2026</time>
+            </span>
+            <a class="btn btn-primary article-byline-cta" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+          </div>
+          <figure class="article-cover">
+            <img src="../../calvin-article-2.png" alt="Cover for tip 12: catch AI code mistakes with lint" width="1672" height="941" decoding="async" />
+          </figure>
+          <p class="article-summary">Catch AI code mistakes with lint by treating ESLint as a hard gate after every agent edit. Run the same command your CI runs, fix new warnings first, then chip away at old debt. Agents repeat empty catch blocks, floating promises, and async map callbacks; lint surfaces those patterns before review. Wire lint into the agent stop path so the model sees structured errors and repairs them in the same turn.</p>
+          <aside class="article-aside" aria-label="Series">
+            <ol class="article-series-rail">
+            <li>
+              <a
+                class="article-series-card"
+                data-series-slug="how-ai-agents-speed-up-developers"
+                data-series-title="14 AI agent skills to speed up developers"
+                data-series-subtitle="A product-owner map you can hand to engineering"
+                data-series-tip="0"
+                data-href="/tips/how-ai-agents-speed-up-developers.html"
+                href="/tips/how-ai-agents-speed-up-developers.html"
+                
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">14 AI agent skills to speed up developers</span>
+                    <span class="article-series-card-check" aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">A product-owner map you can hand to engineering</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="read-dependency-source-code-with-opensrc"
+                data-series-title="Read dependency source code with opensrc"
+                data-series-subtitle="Pull package source into the agent loop"
+                data-series-tip="1"
+                data-href="/tips/secret-agent-tips/read-dependency-source-code-with-opensrc.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #1: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Pull package source into the agent loop</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="scrape-websites-for-ai-agent-research"
+                data-series-title="Scrape websites for AI agent research"
+                data-series-subtitle="Turn live pages into research the agent can cite"
+                data-series-tip="2"
+                data-href="/tips/secret-agent-tips/scrape-websites-for-ai-agent-research.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #2: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Turn live pages into research the agent can cite</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="cut-ai-agent-tokens-with-caveman"
+                data-series-title="Agent talk less with caveman"
+                data-series-subtitle="Terse replies without mangling code"
+                data-series-tip="3"
+                data-href="/tips/secret-agent-tips/cut-ai-agent-tokens-with-caveman.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #3: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Terse replies without mangling code</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="keep-ai-coding-changes-minimal-with-ponytail"
+                data-series-title="Keep AI coding changes minimal with ponytail"
+                data-series-subtitle="Smallest working diff, no speculative fluff"
+                data-series-tip="4"
+                data-href="/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #4: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Smallest working diff, no speculative fluff</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="compress-agent-context-before-you-code"
+                data-series-title="Compress agent context before you code"
+                data-series-subtitle="Ranked symbols instead of whole-repo paste"
+                data-series-tip="5"
+                data-href="/tips/secret-agent-tips/compress-agent-context-before-you-code.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #5: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Ranked symbols instead of whole-repo paste</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="persist-codebase-knowledge-across-ai-chats"
+                data-series-title="Persist codebase knowledge across AI chats"
+                data-series-subtitle="Memory that survives the next chat"
+                data-series-tip="6"
+                data-href="/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #6: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Memory that survives the next chat</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="research-what-people-said-last-month"
+                data-series-title="Research what people said last month"
+                data-series-subtitle="Real voices from the last thirty days"
+                data-series-tip="7"
+                data-href="/tips/secret-agent-tips/research-what-people-said-last-month.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #7: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Real voices from the last thirty days</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="remove-ai-writing-tells-from-prose"
+                data-series-title="Remove AI writing tells from prose"
+                data-series-subtitle="Kill the patterns that scream model-written"
+                data-series-tip="8"
+                data-href="/tips/secret-agent-tips/remove-ai-writing-tells-from-prose.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #8: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Kill the patterns that scream model-written</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="design-landing-pages-without-ai-slop"
+                data-series-title="Design landing pages without AI slop"
+                data-series-subtitle="Brand-first pages that pass the hide-the-nav test"
+                data-series-tip="9"
+                data-href="/tips/secret-agent-tips/design-landing-pages-without-ai-slop.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #9: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Brand-first pages that pass the hide-the-nav test</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="build-product-videos-with-hyperframes"
+                data-series-title="Build product videos with HyperFrames"
+                data-series-subtitle="HTML compositions agents can revise"
+                data-series-tip="10"
+                data-href="/tips/secret-agent-tips/build-product-videos-with-hyperframes.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #10: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">HTML compositions agents can revise</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="expose-product-actions-as-mcp-tools"
+                data-series-title="Expose product actions as MCP tools"
+                data-series-subtitle="Tools with schemas, scopes, and audit trails"
+                data-series-tip="11"
+                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #11: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Tools with schemas, scopes, and audit trails</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked is-current"
+                data-series-slug="catch-ai-code-mistakes-with-lint"
+                data-series-title="Catch AI code mistakes with lint"
+                data-series-subtitle="Lint as a hard gate after every agent edit"
+                data-series-tip="12"
+                data-href="/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #12: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Lint as a hard gate after every agent edit</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="ship-production-releases-with-agent-checks"
+                data-series-title="Ship production releases with agent checks"
+                data-series-subtitle="Release checks agents cannot skip"
+                data-series-tip="13"
+                data-href="/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #13: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Release checks agents cannot skip</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="write-seo-articles-agents-can-follow"
+                data-series-title="Write SEO articles agents can follow"
+                data-series-subtitle="Structure humans and agents can both follow"
+                data-series-tip="14"
+                data-href="/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #14: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Structure humans and agents can both follow</span>
+                </span>
+              </a>
+            </li>
+            </ol>
+          </aside>
+          <div class="article-body">
+<p>Catch AI code mistakes with lint before a human opens the pull request. Agents write fast TypeScript that compiles and still fails in production because empty catch blocks, floating promises, and async callbacks in <code>map</code> look fine to a model trained on incomplete examples. Lint is the cheap sensor that turns those repeats into machine-readable feedback the agent can fix in the same turn.</p>
+
+<p>On consulting builds I treat lint as part of the agent contract, the same way tests and typecheck gate a release. The skill name on my teams is literal: <code>/lint</code>. After edits, the agent runs the repo lint command, owns new warnings first, then removes a fixed slice of older debt. That loop beats asking the model to “make sure the code is clean.”</p>
+
+<h2>Why AI patches need a lint loop</h2>
+
+<p>Large language models overfit to local correctness. A function can typecheck, pass a unit test with mocks, and still swallow errors. Practitioners who mine AI pull requests keep finding the same shapes: silent catch blocks, missing await, auth middleware skipped on a new route, and hallucinated imports that never resolve at install time. Writers who built plugins for those patterns document the list in public posts such as <a class="article-link is-external" href="https://dev.to/pertrai1/i-analyzed-500-ai-coding-mistakes-and-built-an-eslint-plugin-to-catch-them-jme" rel="noopener" target="_blank"><span class="article-link-text">Pertrai’s analysis of AI coding mistakes on DEV</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> and the <a class="article-link is-external is-github" href="https://github.com/YashJadhav21/eslint-plugin-ai-guard" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">eslint-plugin-ai-guard</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> rule set.</p>
+
+<p>ESLint remains the shared language for that feedback. The <a class="article-link is-external" href="https://eslint.org/docs/latest/use/getting-started" rel="noopener" target="_blank"><span class="article-link-text">official getting started guide</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> still describes the job: parse the tree, run rules, emit diagnostics. Agents read those diagnostics better than vague review comments because the message names the file, line, rule id, and fix hint.</p>
+
+<p>Medium essay <a class="article-link is-external" href="https://medium.com/@albro/eslint-as-ai-guardrails-the-rules-that-make-ai-code-readable-8899c71d3446" rel="noopener" target="_blank"><span class="article-link-text">ESLint as AI Guardrails</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> makes the same point from the readability side: caps on parameters, function length, and magic numbers keep agent output from sprawling into unreviewable blobs. You do not need every community plugin on day one. You need a gate the agent cannot skip.</p>
+
+<h2>Build the /lint skill around CI truth</h2>
+
+<p>Agents invent lint commands when the skill stays fuzzy. Lock the command to the same script CI runs. On Bun or npm repos that means <code>bun run lint</code> or <code>npm run lint</code>, never a one-off <code>npx eslint src/foo.ts</code> that ignores project config.</p>
+
+<h3>Snapshot new versus old debt</h3>
+
+<p>Pre-existing warnings drown agents. Snapshot the warning set at session start, then mark anything new as blocking. The agent clears its own mess before it chips away at the backlog. That split keeps a long-lived codebase from forcing a 400-warning fix into every feature branch.</p>
+
+<h3>Order of attack</h3>
+
+<p>Teach a triage order in the skill file:</p>
+
+<ul>
+<li>Fix every new warning from this session.</li>
+<li>Fix a small quota of old warnings when the branch stays clean.</li>
+<li>Re-run lint until the edited files are quiet.</li>
+<li>Refuse to open a PR while new lint fails.</li>
+</ul>
+
+<p>For styled-component or design-system repos, put rename chains in the skill so the agent finishes importers in the same change. Partial renames fail typecheck and burn a second agent turn.</p>
+
+<h2>Rules that pay rent on AI code</h2>
+
+<p>Start with stock ESLint and typescript-eslint, then add rules that match failure modes you already saw in production. Empty catch blocks and floating promises belong near the top. Async callbacks inside <code>array.map</code> belong next. Auth and unsafe deserialize rules belong on API surfaces.</p>
+
+<p>Community plugins such as <a class="article-link is-external is-github" href="https://github.com/pertrai1/eslint-plugin-llm-core" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">eslint-plugin-llm-core</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> push educational messages that tell the model what to do next. Use them when the default rule text stays too abstract for reliable self-repair. Keep the rule set small enough that humans still understand every failure.</p>
+
+<h3>Errors beat warnings in the agent path</h3>
+
+<p>Warnings invite <code>eslint-disable</code>. For agent workflows, set the critical rules to error. Ban file-wide disables. If a disable must land, require a ticket id in the comment and a CODEOWNERS review on the config file that allows it.</p>
+
+<h3>Pair lint with the typechecker</h3>
+
+<p>Lint without <code>tsc --noEmit</code> misses signature drift across files. Typecheck without lint misses swallowed errors. Run both. The TypeScript handbook on <a class="article-link is-external" href="https://www.typescriptlang.org/docs/handbook/compiler-options.html" rel="noopener" target="_blank"><span class="article-link-text">compiler options</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> is still the map for strictness knobs; turn on the options your team can keep green, then leave them on for agents.</p>
+
+<h2>Wire lint into the agent stop path</h2>
+
+<p>Manual “please lint” prompts fail under deadline pressure. Hook the stop of an agent turn so a clean exit requires a clean lint for touched files. Cursor and similar tools support stop hooks; use them. When the hook sees novel warnings, auto-submit a follow-up lint turn with loop limit one so the agent repairs without an infinite loop.</p>
+
+<p>Skip hooks only with an explicit, short-lived flag for docs-only edits. Log every skip. Product teams that ship agent velocity without a stop gate accumulate silent debt that shows up as weekend incidents.</p>
+
+<h2>Make lint output agent-readable</h2>
+
+<p>Prefer stylish or JSON formatters agents parse without scraping ANSI noise. Include rule ids. Point the skill at a short mapping table: rule id to preferred fix pattern. Example: <code>no-floating-promises</code> maps to await, return, or void with a comment. The agent spends fewer tokens guessing.</p>
+
+<p>Keep custom plugins in-repo when your product has house rules, the same way this site vendors small libraries under <code>site/vendor/</code>. House rules beat generic blog advice because they encode incidents you already paid for.</p>
+
+<h2>A concrete agent turn that uses lint</h2>
+
+<p>Picture a mid-size Next.js app. The agent adds a billing webhook handler. It compiles. The handler wraps Stripe errors in an empty catch because the model saw that pattern in training noise. Without lint, the PR looks calm. With <code>no-empty-catch</code> as an error, the stop hook fails, the agent gets the rule id, and the second turn logs the error and rethrows or maps it to a typed failure.</p>
+
+<p>That same turn often introduces <code>items.map(async (item) =&gt; ...)</code>. The array of promises never settles the way the author expects. A dedicated rule names the mistake. The agent rewrites to <code>Promise.all</code> or a plain loop. Reviewers stop spending their first ten minutes on AI folklore bugs.</p>
+
+<h3>Baseline files keep sessions honest</h3>
+
+<p>Store a JSON baseline of warning fingerprints at session start. Diff the current ESLint JSON output against that baseline. Novel fingerprints block. Known fingerprints stay optional debt. When sessionStart misses, seed the baseline on first lint so yesterday’s debt does not masquerade as today’s regression.</p>
+
+<p>Publish the baseline path in the skill so every agent reads the same file. Teams that let each agent invent a baseline end up arguing about ghosts.</p>
+
+<h2>Custom rules for product houses</h2>
+
+<p>Generic plugins catch generic AI mistakes. Product houses also need rules that encode local scars: no direct database access from route handlers, no raw SQL string concatenation, no client import of server secrets, no unlisted styled export names. Put those rules in an in-repo ESLint plugin. Point the skill at the allowlist file.</p>
+
+<p>When an agent proposes a new styled primitive, the rule fails until the name lands on the allowlist. That friction is cheaper than a design-system fork that appears every sprint. The same pattern works for GraphQL operation naming, migration file headers, and feature-flag keys.</p>
+
+<h3>Keep the feedback educational</h3>
+
+<p>Rule messages should tell the agent the fix shape. “Unexpected empty catch” wastes a turn. “Empty catch swallows webhook failures; log with request id and rethrow or map to AppError” lands on the first retry. Plugin authors who study LLM mistakes write messages for models on purpose; copy that habit for house rules.</p>
+
+<h2>CI, local, and agent must agree</h2>
+
+<p>Drift kills trust. If CI uses flat config and the agent runs legacy config, humans chase green on one side and red on the other. Pin the ESLint major, commit the config, and invoke the package script only. Cache strategy belongs in CI docs; the skill only needs the command name and the failure policy.</p>
+
+<p>For monorepos, name the package filter in the skill. Agents that lint the wrong package report false greens. Include a one-line example: <code>bun run lint --filter=@app/web</code> or the workspace equivalent.</p>
+
+<h2>Metrics that prove the loop works</h2>
+
+<p>Track three numbers for a month: novel lint failures per agent session, median minutes from failure to green, and count of <code>eslint-disable</code> comments merged. If disables rise while failures fall, the team is silencing the sensor. If minutes stay high, the rule messages need clearer fix hints.</p>
+
+<p>Share those numbers in standup. Lint becomes a product reliability practice instead of a style argument. That framing helps when a stakeholder asks why the agent “wastes time” running ESLint after every edit.</p>
+
+<h2>Security-adjacent rules deserve priority</h2>
+
+<p>AI patches love placeholder secrets, permissive CORS, and disabled TLS verification copied from tutorials. Prioritize rules that flag hardcoded keys, <code>eval</code>, unsafe deserialize, and missing auth middleware on new routes. Pair them with secret scanning in CI. Lint will not replace a security review, yet it removes the obvious class before a human opens the diff.</p>
+
+<p>When a rule fires on a generated example key, the agent must replace it with an env read and a local sample in <code>.env.example</code>. The skill should say that in one sentence so the model does not “fix” the warning by deleting the line that needed a secret.</p>
+
+<h2>Hand the skill to the next engineer</h2>
+
+<p>A lint skill dies when only you know the baseline path. Put the command, the baseline file, the triage order, and the disable policy in AGENTS.md. Walk one new engineer through a failing turn. When they can green the stop hook without you, the practice stuck.</p>
+
+<p>Record one incident lint prevented. A swallowed webhook error or a floating promise in billing makes the skill real in planning meetings. Abstract quality talk loses to a dated story with a pull request link.</p>
+
+<h2>Ship the baseline with the repo</h2>
+
+<p>Commit a sample baseline or a script that seeds one. Agents on fresh clones should not invent a private cache path. Document how to refresh the baseline after a mass cleanup so the next week does not treat old debt as new again.</p>
+
+<h2>Review still matters</h2>
+
+<p>Lint will not catch a wrong product decision. It catches the mechanical class of AI mistakes that waste reviewer attention. Humans keep ownership of architecture, data model, and security threat models. Agents own the cleanup loop that makes human review worth the calendar time.</p>
+
+<p>If you want help installing this loop on a SaaS codebase, use the contact form on <a class="article-link" href="../../index.html#contact" rel="noopener"><span class="article-link-text">calvinmaighan.com</span></a>. Related series tips cover <a class="article-link" href="./keep-ai-coding-changes-minimal-with-ponytail.html" rel="noopener"><span class="article-link-text">minimal diffs with ponytail</span></a> and <a class="article-link" href="./expose-product-actions-as-mcp-tools.html" rel="noopener"><span class="article-link-text">exposing product actions as MCP tools</span></a>. Next tip covers <a class="article-link" href="./ship-production-releases-with-agent-checks.html" rel="noopener"><span class="article-link-text">shipping production releases with agent checks</span></a>.</p>
+
+<h2>Teach the agent your house dialect</h2>
+
+<p>Every codebase invents slang: <code>AppError</code>, <code>tenantId</code>, <code>assertFound</code>. Put a short glossary in the lint skill or AGENTS.md so rule messages and fixes use those names. Agents that invent parallel error types create twin stacks that look fine until an ops dashboard splits them.</p>
+
+<p>When a new rule lands, attach one failing fixture in the plugin tests. Agents learn faster from a red fixture than from a paragraph of policy. Keep the fixture tiny: twenty lines, one clear violation, one preferred fix in a comment.</p>
+
+<h2>When lint should fail the whole session</h2>
+
+<p>If the agent introduces more than a set number of novel warnings, stop the feature work and force a lint-only turn. I use a threshold of five new errors on medium PRs. Crossing it means the model drifted. Drift compounds when you keep prompting for features on top of a dirty tree.</p>
+
+            <div class="article-cta-end">
+              <p>Need a lint-and-agent gate on a production TypeScript app</p>
+              <a class="btn btn-primary" href="../../index.html#contact" data-i18n="article.book">Book a call</a>
+            </div>
+
+<section class="article-faq">
+
+<h2>FAQ</h2>
+
+<div class="faq-list">
+
+<details class="faq-item">
+<summary class="faq-question">Should agents treat lint warnings as errors?</summary>
+<p class="faq-answer">Yes for new work. Warnings pile up when agents can ignore them. Promote rules that catch empty catch blocks, floating promises, and auth gaps to error in the agent path, then keep CI on the same config.</p>
+</details>
+
+<details class="faq-item">
+<summary class="faq-question">Does TypeScript replace ESLint for AI patches?</summary>
+<p class="faq-answer">No. TypeScript catches type and import mistakes when the project compiles as a unit. ESLint catches patterns that stay type-valid and still break production, such as swallowed errors and async array callbacks.</p>
+</details>
+
+<details class="faq-item">
+<summary class="faq-question">How do you stop agents from silencing rules?</summary>
+<p class="faq-answer">Ban broad eslint-disable comments in the agent skill. Require a one-line reason for any disable, and fail CI when a disable appears without an allowlist ticket.</p>
+</details>
+
+<details class="faq-item">
+<summary class="faq-question">What should the agent fix first after a lint run?</summary>
+<p class="faq-answer">Everything introduced in the current session. Compare against a baseline snapshot so the agent clears new noise before it spends tokens on old debt.</p>
+</details>
+
+</div>
+
+</section>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p class="foot-statement" data-i18n="footer.statement">Available for hard builds.</p>
+        <p class="foot-meta">
+          <strong>Calvin Maighan</strong>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.role">Senior AI and SaaS Engineer</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="footer.meta">Montreal · remote contracts</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="https://github.com/CalvinMaighan" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="mailto:hello@calvinmaighan.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+        </p>
+      </div>
+    </footer>
+
+    <div class="article-chrome">
+      <div class="read-progress" aria-hidden="true"></div>
+      <div class="article-chrome-inner">
+        <p class="article-chrome-hint" id="article-chrome-hint" data-unlock-part="13" data-locked-text="Keep reading to unlock skill #13">Keep reading to unlock skill #13</p>
+        <a class="btn btn-primary is-locked" id="article-next" href="./ship-production-releases-with-agent-checks.html" aria-disabled="true" data-i18n="article.next">Next article</a>
+      </div>
+    </div>
+
+    <script type="module" src="../../app.mjs"></script>
+  </body>
+</html>
