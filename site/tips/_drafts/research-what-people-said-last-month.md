@@ -5,8 +5,8 @@ intent: howto
 slug: research-what-people-said-last-month
 metaDescription: "research what people said last month with the last30days skill so product teams pull fresh Reddit, HN, GitHub, and web signal before betting a roadmap on outdated assumptions."
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/research-what-people-said-last-month.html
-inBodyImage: "../../calvin-article-2.png"
-ogImage: "https://calvinmaighan.com/calvin-article-2.png"
+inBodyImage: "../../calvin-article-7.png"
+ogImage: "https://calvinmaighan.com/calvin-article-7.png"
 updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "Research what people said last month with the last30days skill so your team hears current language, complaints, and workarounds before you lock a roadmap bet. The skill pulls multi-source posts with citations and engagement context instead of a generic model prior from training day. You get faster discovery, clearer copy, and fewer features aimed at problems nobody still has."
@@ -18,7 +18,7 @@ nextLabel: "Next article"
 nextLocked: "true"
 ctaAboveFold: "Book a call"
 ctaEnd: "Want last30days wired into your team workflow"
-inBodyImageAlt: "Calvin Maighan article series cover for secret agent tips on researching what people said last month"
+inBodyImageAlt: "Cover for skill 7: research what people said last month"
 out: site/tips/secret-agent-tips/research-what-people-said-last-month.html
 ---
 

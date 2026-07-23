@@ -5,8 +5,8 @@ intent: howto
 slug: keep-ai-coding-changes-minimal-with-ponytail
 metaDescription: "keep AI coding changes minimal with ponytail so agents ship the smallest working diff, skip speculative abstractions, and leave reviewable pull requests your team can merge with confidence."
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html
-inBodyImage: "../../calvin-article-2.png"
-ogImage: "https://calvinmaighan.com/calvin-article-2.png"
+inBodyImage: "../../calvin-article-4.png"
+ogImage: "https://calvinmaighan.com/calvin-article-4.png"
 updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "Keep AI coding changes minimal with ponytail by forcing every agent edit through a YAGNI ladder: skip work that should not exist, reuse what the repo already has, prefer stdlib and native features, then ship the shortest correct diff. You get smaller pull requests, fewer speculative abstractions, and reviews that finish in one pass."
@@ -18,7 +18,7 @@ nextLabel: "Next article"
 nextLocked: "true"
 ctaAboveFold: "Book a call"
 ctaEnd: "Want ponytail wired into your team workflow"
-inBodyImageAlt: "Calvin Maighan article series cover for secret agent tips on minimal AI coding changes"
+inBodyImageAlt: "Cover for skill 4: keep AI coding changes minimal with ponytail"
 out: site/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html
 ---
 

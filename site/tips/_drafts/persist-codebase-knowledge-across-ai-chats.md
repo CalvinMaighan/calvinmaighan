@@ -5,8 +5,8 @@ intent: howto
 slug: persist-codebase-knowledge-across-ai-chats
 metaDescription: "persist codebase knowledge across AI chats with a codebase-memory MCP so agents recall architecture decisions, naming rules, and prior fixes instead of rediscovering your repo every session."
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html
-inBodyImage: "../../calvin-article-2.png"
-ogImage: "https://calvinmaighan.com/calvin-article-2.png"
+inBodyImage: "../../calvin-article-6.png"
+ogImage: "https://calvinmaighan.com/calvin-article-6.png"
 updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "Persist codebase knowledge across AI chats by attaching a codebase-memory MCP server that stores architecture decisions, naming rules, and prior fixes as queryable entities. New threads start with recall instead of rediscovery. You cut repeated mistakes, keep conventions stable, and give agents a project memory that survives closed tabs."
@@ -18,7 +18,7 @@ nextLabel: "Next article"
 nextLocked: "true"
 ctaAboveFold: "Book a call"
 ctaEnd: "Want codebase-memory MCP wired into your team workflow"
-inBodyImageAlt: "Calvin Maighan article series cover for secret agent tips on persisting codebase knowledge"
+inBodyImageAlt: "Cover for skill 6: persist codebase knowledge across AI chats"
 out: site/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html
 ---
 

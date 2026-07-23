@@ -5,8 +5,8 @@ intent: howto
 slug: compress-agent-context-before-you-code
 metaDescription: "compress agent context before you code with lean-ctx so agents read ranked symbols, skip raw dumps, and spend tokens on the change instead of pasting entire repositories into the prompt."
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/compress-agent-context-before-you-code.html
-inBodyImage: "../../calvin-article-2.png"
-ogImage: "https://calvinmaighan.com/calvin-article-2.png"
+inBodyImage: "../../calvin-article-5.png"
+ogImage: "https://calvinmaighan.com/calvin-article-5.png"
 updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "Compress agent context before you code by routing reads, searches, and shell output through a context-engineering layer such as lean-ctx. Agents then start from ranked symbols and task-relevant slices instead of pasting whole directories into the window. You spend tokens on the change, cut retries, and keep long sessions usable."
@@ -18,7 +18,7 @@ nextLabel: "Next article"
 nextLocked: "true"
 ctaAboveFold: "Book a call"
 ctaEnd: "Want lean-ctx wired into your team workflow"
-inBodyImageAlt: "Calvin Maighan article series cover for secret agent tips on compressing agent context"
+inBodyImageAlt: "Cover for skill 5: compress agent context before you code"
 out: site/tips/secret-agent-tips/compress-agent-context-before-you-code.html
 ---
 
