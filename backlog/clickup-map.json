@@ -1,0 +1,16 @@
+{
+  "TASK-1": {
+    "clickupId": "86bb346mp",
+    "url": "https://app.clickup.com/t/86bb346mp",
+    "title": "ClickUp sync smoke test",
+    "status": "In Progress",
+    "updatedAt": "2026-07-24T18:02:09.714Z"
+  },
+  "TASK-2": {
+    "clickupId": "86bb348t3",
+    "url": "https://app.clickup.com/t/86bb348t3",
+    "title": "Run BMAD planning for tip series",
+    "status": "In Progress",
+    "updatedAt": "2026-07-24T18:02:08.547Z"
+  }
+}

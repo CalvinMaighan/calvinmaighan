@@ -2,3 +2,16 @@ AGENTS.md
 node_modules/
 
 .DS_Store
+.env
+.firecrawl/
+.opensrc-cache/
+backlog/webhook-seen/
+backlog/webhook-jobs.jsonl
+
+# Machine-local Cursor MCP paths / skill symlinks for ClickUp SDK agents
+.cursor/mcp.json
+.cursor/skills/
+
+# Per-task ClickUp agent worktrees (see scripts/lib/git-worktree.mjs)
+.worktrees/
+
