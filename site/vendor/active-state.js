@@ -52,6 +52,7 @@ function createEventBus(options = {}) {
   const observables = /* @__PURE__ */ new Map();
   options.init?.(observables);
   return {
+    observables,
     getSource(id) {
       const source = observables.get(id);
       if (!source) {
@@ -124,18 +125,37 @@ function resetOptions() {
 
 // src/core/persist.ts
 var STORAGE_PREFIX = "active-state:";
+var storagePrefix = STORAGE_PREFIX;
 var persistIds = /* @__PURE__ */ new Set();
 var sharedIds = /* @__PURE__ */ new Set();
 var suppressPersistWrite = false;
+function getStoragePrefix() {
+  return storagePrefix;
+}
+function setStoragePrefix(prefix) {
+  storagePrefix = prefix;
+}
 function markPersisted(id) {
   persistIds.add(id);
 }
 function markShared(id) {
   sharedIds.add(id);
 }
+function markPersistedIds(ids) {
+  for (const id of ids) persistIds.add(id);
+}
+function shareAllPersisted() {
+  for (const id of persistIds) sharedIds.add(id);
+}
 function clearPersistedIds() {
   persistIds.clear();
   sharedIds.clear();
+}
+function resetPersistRuntime() {
+  clearPersistedIds();
+  storagePrefix = STORAGE_PREFIX;
+  suppressPersistWrite = false;
+  stopStorageSync();
 }
 function isPersisted(id) {
   return persistIds.has(id);
@@ -147,18 +167,23 @@ function persistedIds() {
   return [...persistIds];
 }
 function storageKey(id) {
-  return STORAGE_PREFIX + id;
+  return getStoragePrefix() + id;
 }
 function canUseStorage() {
   return typeof globalThis.localStorage !== "undefined";
 }
 function readPersisted(id) {
   if (!canUseStorage()) return void 0;
+  const sk = storageKey(id);
   try {
-    const raw = globalThis.localStorage.getItem(storageKey(id));
+    const raw = globalThis.localStorage.getItem(sk);
     if (raw == null) return void 0;
     return JSON.parse(raw);
   } catch {
+    try {
+      globalThis.localStorage.removeItem(sk);
+    } catch {
+    }
     return void 0;
   }
 }
@@ -204,8 +229,9 @@ function applyStoragePayload(key2, newValue, storageArea) {
   if (storageArea != null && typeof globalThis.localStorage !== "undefined" && storageArea !== globalThis.localStorage) {
     return;
   }
-  if (!key2 || !key2.startsWith(STORAGE_PREFIX) || newValue == null) return;
-  const id = key2.slice(STORAGE_PREFIX.length);
+  const prefix = getStoragePrefix();
+  if (!key2 || !key2.startsWith(prefix) || newValue == null) return;
+  const id = key2.slice(prefix.length);
   if (!isShared(id)) return;
   try {
     const parsed = JSON.parse(newValue);
@@ -252,6 +278,15 @@ function init(initialState, options = {}) {
   const enableSsr = options.ssr ?? false;
   setEnforceKeys(!allowAny);
   setSsr(enableSsr);
+  if (options.storagePrefix != null) {
+    setStoragePrefix(options.storagePrefix);
+  }
+  if (options.persistIds?.length) {
+    markPersistedIds(options.persistIds);
+  }
+  if (options.sharePersisted) {
+    shareAllPersisted();
+  }
   setServerSnapshot(initialState);
   if (!allowAny) {
     for (const key2 of Object.keys(initialState)) {
@@ -271,14 +306,6 @@ function init(initialState, options = {}) {
   startStorageSync((id, value) => {
     bus.update(id, value);
   });
-  if (enableSsr && typeof globalThis.window !== "undefined") {
-    queueMicrotask(() => {
-      for (const id of persistedIds()) {
-        const stored = readPersisted(id);
-        if (stored !== void 0) bus.update(id, stored);
-      }
-    });
-  }
 }
 
 // src/core/uuid.ts
@@ -376,7 +403,6 @@ function clearPersisted(key2) {
   removePersisted(ids);
 }
 function reset() {
-  stopStorageSync();
   try {
     const bus = getStateInstance();
     for (const key2 of bus.keys()) {
@@ -384,6 +410,7 @@ function reset() {
     }
   } catch {
   }
+  resetPersistRuntime();
   resetStateInstance();
   resetOptions();
   clearRegistry();
@@ -400,12 +427,15 @@ export {
   getServerSnapshot,
   getSsr,
   getStateInstance,
+  getStoragePrefix,
   hydratePersisted,
   init,
   isPersisted,
   isShared,
   isUppercaseId,
   key,
+  markPersisted,
+  markPersistedIds,
   persistedIds,
   readPersisted,
   registeredState,

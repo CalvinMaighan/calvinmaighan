@@ -18,7 +18,7 @@ author: "Calvin Maighan"
 ogImage: "https://calvinmaighan.com/calvin-article-2.png"
 inBodyImage: "../../calvin-article-2.png"
 inBodyImageAlt: "Brand series image introducing a Firecrawl workflow for agent web research on product teams"
-internalLinks: ["./read-dependency-source-code-with-opensrc.html","./cut-ai-agent-tokens-with-caveman.html","../name-ai-agent-skills-after-the-job.html","../../index.html#contact"]
+internalLinks: ["./read-dependency-source-code-with-opensrc.html","./cut-ai-agent-tokens-with-caveman.html","../name-ai-agent-skills-after-the-job.html","../../contact.html"]
 externalSources: ["https://docs.firecrawl.dev/","https://docs.firecrawl.dev/features/agent","https://docs.firecrawl.dev/developer-guides/usage-guides/choosing-the-data-extractor","https://github.com/firecrawl/firecrawl","https://www.firecrawl.dev/agent"]
 faq:
   - q: "Should every research question use Firecrawl Agent?"
@@ -110,7 +110,7 @@ Open source context lives on [github.com/firecrawl/firecrawl](https://github.com
 
 ## Where consultants earn their keep
 
-Most teams stall on prompt fluff: “research the web thoroughly.” That instruction burns credits and returns essays. The install that works is boring. Job name. Allowed domains. Tool chooser. Schema. Disk artifacts. Citation gate. If you want that kit dropped into Cursor or Claude Code for your product org, [book a call](../../index.html#contact).
+Most teams stall on prompt fluff: “research the web thoroughly.” That instruction burns credits and returns essays. The install that works is boring. Job name. Allowed domains. Tool chooser. Schema. Disk artifacts. Citation gate. If you want that kit dropped into Cursor or Claude Code for your product org, [book a call](../../contact.html).
 
 Web pages move. Your agent stack should move with them, on purpose, with receipts.
 

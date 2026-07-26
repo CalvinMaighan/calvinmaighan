@@ -148,13 +148,47 @@
           d="M5 12h14m-7-7l7 7l-7 7"
         />
       </symbol>
+      <symbol id="icon-layers" viewBox="0 0 24 24">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83zM2 12l8.58 3.91a2 2 0 0 0 1.66 0L22 12M2 17l8.58 3.91a2 2 0 0 0 1.66 0L22 17"
+        />
+      </symbol>
+      <symbol id="icon-sparkles" viewBox="0 0 24 24">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3zM5 3v4M19 17v4M3 5h4M17 19h4"
+        />
+      </symbol>
+      <symbol id="icon-scan-text" viewBox="0 0 24 24">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M3 7V5a2 2 0 0 1 2-2h2m10 0h2a2 2 0 0 1 2 2v2m0 10v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8h8M7 12h10M7 16h6"
+        />
+      </symbol>
+      <symbol id="icon-activity" viewBox="0 0 24 24">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"
+        />
+      </symbol>
     </svg>
-
-    <canvas
-      class="hero-ambient"
-      id="hero-ambient"
-      aria-hidden="true"
-    ></canvas>
 
     <header class="site-header" id="site-header">
       <div class="bar">
@@ -201,17 +235,20 @@
 
     <div class="backdrop" id="menu-backdrop"></div>
     <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
-      <a href="#work" data-i18n="nav.work">Work</a>
       <a href="#services" data-i18n="nav.services">Services</a>
-      <a href="#process" data-i18n="nav.process">Process</a>
       <a href="#writing" data-i18n="nav.writing">Libraries</a>
-      <a href="#contact" data-i18n="nav.contact">Contact</a>
-      <a class="btn btn-primary" href="#contact" data-i18n="nav.cta">Book a call</a>
+      <a href="./contact.html" data-i18n="nav.contact">Contact</a>
+      <a class="btn btn-primary" href="./contact.html" data-i18n="nav.cta">Book a call</a>
     </nav>
 
     <main id="top">
       <div class="fold">
         <section class="hero band-base">
+          <canvas
+            class="hero-ambient"
+            id="hero-ambient"
+            aria-hidden="true"
+          ></canvas>
           <div class="wrap hero-content">
             <div class="hero-copy">
               <h1>
@@ -226,11 +263,8 @@
                 system after handoff.
               </p>
               <div class="cta-row">
-                <a class="btn btn-primary" href="#contact" data-i18n="hero.cta"
+                <a class="btn btn-primary" href="./contact.html" data-i18n="hero.cta"
                   >Discuss your project</a
-                >
-                <a class="btn btn-secondary" href="#work" data-i18n="hero.secondary"
-                  >See selected work</a
                 >
               </div>
             </div>
@@ -293,276 +327,167 @@
         </section>
       </div>
 
-      <section id="work" class="band-base pad-tall">
+      <section id="services" class="band-cool" aria-labelledby="bundle-title">
         <div class="wrap">
           <div class="section-head">
-            <h2 data-i18n="work.title">Featured build</h2>
-            <p data-i18n="work.lede">
-              I focus on builds where architecture and code quality decide if you can
-              ship.
+            <h2 id="bundle-title" data-i18n="bundle.title">
+              Choose the right level of involvement
+            </h2>
+            <p data-i18n="bundle.lede">
+              Choose strategic guidance, focused implementation, or embedded development
+              based on what your project needs. Every engagement is designed so your team
+              and agents can run the system after handoff.
             </p>
           </div>
 
-          <article class="split-row">
-            <div class="split-copy case-body">
-              <p class="meta-line">Document intelligence</p>
-              <h3 data-i18n="work.deedee.title">
-                Deedee: document intelligence with evidence attached
-              </h3>
-              <p data-i18n="work.deedee.body">
-                Deedee turns PDFs, spreadsheets, invoices, and contracts into structured,
-                verifiable data. Every answer stays linked to the source page, cell, or
-                clause.
+          <div class="bundle-grid">
+            <article class="bundle-card">
+              <h3 data-i18n="bundle.advisory.t">Advisory</h3>
+              <p data-i18n="bundle.advisory.d">
+                Strategic guidance for AI architecture, product planning, technical
+                decisions, and implementation reviews.
               </p>
-              <div class="contrib">
-                <article>
-                  <h4 data-i18n="work.cat.product">Product</h4>
-                  <ul>
-                    <li data-i18n="work.deedee.product.1">SaaS application</li>
-                    <li data-i18n="work.deedee.product.2">User workflows</li>
-                    <li data-i18n="work.deedee.product.3">Billing and authentication</li>
-                  </ul>
-                </article>
-                <article>
-                  <h4 data-i18n="work.cat.ai">AI systems</h4>
-                  <ul>
-                    <li data-i18n="work.deedee.ai.1">OCR and extraction</li>
-                    <li data-i18n="work.deedee.ai.2">Evidence graph</li>
-                    <li data-i18n="work.deedee.ai.3">Agent workflows</li>
-                  </ul>
-                </article>
-                <article>
-                  <h4 data-i18n="work.cat.infra">Infrastructure</h4>
-                  <ul>
-                    <li data-i18n="work.deedee.infra.1">Multi-tenant runtime</li>
-                    <li data-i18n="work.deedee.infra.2">Queues and realtime state</li>
-                    <li data-i18n="work.deedee.infra.3">Observability</li>
-                  </ul>
-                </article>
-              </div>
-              <div class="case-actions">
-                <a class="btn btn-primary" href="#contact" data-i18n="work.deedee.cta"
-                  >Discuss a similar build</a
-                >
-              </div>
-            </div>
-            <div class="split-proof">
-              <figure class="proof-figure">
-                <blockquote>
-                  Answers stay attached to the source page, table cell, or clause they came
-                  from.
-                </blockquote>
-                <figcaption>Deedee · evidence-linked extraction</figcaption>
-              </figure>
-            </div>
-          </article>
+            </article>
+            <article class="bundle-card is-recommended" aria-labelledby="bundle-builder-title">
+              <p class="bundle-rec" data-i18n="bundle.recommended">Recommended</p>
+              <h3 id="bundle-builder-title" data-i18n="bundle.builder.t">Builder Bundle</h3>
+              <p data-i18n="bundle.builder.d">
+                End-to-end ownership of a defined initiative, from planning and
+                architecture through implementation and handoff.
+              </p>
+            </article>
+            <article class="bundle-card">
+              <h3 data-i18n="bundle.embedded.t">Development</h3>
+              <p data-i18n="bundle.embedded.d">
+                Senior engineering capacity working directly with your team to own complex
+                features, integrations, AI systems, and web platforms.
+              </p>
+            </article>
+          </div>
 
-          <div class="capability-list">
-            <article class="capability">
-              <h4 data-i18n="work.cap1.title">SaaS platform rescue</h4>
-              <p data-i18n="work.cap1.body">
-                I stabilize incomplete Next.js and TypeScript apps, simplify the
-                architecture, and ship the first production release.
-              </p>
-            </article>
-            <article class="capability">
-              <h4 data-i18n="work.cap2.title">Agency white-label builds</h4>
-              <p data-i18n="work.cap2.body">
-                I provide architecture and implementation for agencies shipping ambitious
-                products on short deadlines.
-              </p>
-            </article>
+          <div class="cta-row bundle-cta">
+            <a class="btn btn-primary" href="./contact.html" data-i18n="hero.cta"
+              >Discuss your project</a
+            >
           </div>
         </div>
       </section>
 
-      <section id="services" class="band-cool">
+      <section class="stack band-ink" id="expertise" aria-labelledby="stack-title">
         <div class="wrap">
           <div class="section-head">
-            <h2 data-i18n="ways.title">How we work</h2>
-            <p data-i18n="ways.lede">
-              Pick the engagement that matches your stage: a plan, a shipped milestone, or
-              ongoing senior ownership.
-            </p>
-          </div>
-
-          <div class="ways-layout">
-            <article class="way-feature">
-              <h3 data-i18n="ways.2.t">Implementation sprint</h3>
-              <p class="pitch" data-i18n="ways.2.pitch">
-                You need a hard product milestone shipped.
-              </p>
-              <ul>
-                <li data-i18n="ways.2.i1">Defined production scope</li>
-                <li data-i18n="ways.2.i2">Architecture and implementation</li>
-                <li data-i18n="ways.2.i3">Integration and testing</li>
-                <li data-i18n="ways.2.i4">Deployment and handoff</li>
-              </ul>
-              <p class="duration" data-i18n="ways.2.d">Typical duration: 2–6 weeks</p>
-            </article>
-
-            <div class="way-stack">
-              <article class="way-compact">
-                <h3 data-i18n="ways.1.t">Architecture sprint</h3>
-                <p class="pitch" data-i18n="ways.1.pitch">
-                  You need clarity before you commit to a full build.
-                </p>
-                <p class="duration" data-i18n="ways.1.d">Typical duration: 1–2 weeks</p>
-              </article>
-              <article class="way-compact">
-                <h3 data-i18n="ways.3.t">Fractional senior engineering</h3>
-                <p class="pitch" data-i18n="ways.3.pitch">
-                  You need ongoing technical leadership and hands-on delivery.
-                </p>
-                <p class="duration" data-i18n="ways.3.d">Typical duration: monthly engagement</p>
-              </article>
-            </div>
-          </div>
-
-          <div class="cap-secondary">
-            <h3 data-i18n="ways.caps">Also available</h3>
-            <div class="cap-links">
-              <span data-i18n="ways.c1">AI product development</span>
-              <span data-i18n="ways.c2">SaaS architecture</span>
-              <span data-i18n="ways.c3">Product rescue</span>
-              <span data-i18n="ways.c4">Agency subcontracting</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="expertise band-base pad-tight" id="expertise">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 data-i18n="expertise.title">What I build with</h2>
+            <h2 id="stack-title" data-i18n="expertise.title">What I build with</h2>
             <p data-i18n="expertise.lede">
               Application architecture, AI systems, document intelligence, and production
               operations.
             </p>
           </div>
-          <div class="expertise-grid">
-            <div class="expertise-col expertise-col-lead">
-              <h3 data-i18n="expertise.1.t">Application architecture</h3>
-              <ul>
-                <li>Next.js</li>
-                <li>TypeScript</li>
+
+          <div class="stack-meta">
+            <span data-i18n="expertise.meta">4 domains · 24 capabilities</span>
+            <span class="stack-legend">
+              <span class="stack-legend-dot" aria-hidden="true"></span>
+              <span data-i18n="expertise.legend">Core specialty</span>
+            </span>
+          </div>
+
+          <div class="stack-board">
+            <article class="stack-card">
+              <div class="stack-card-head">
+                <span class="stack-ico" aria-hidden="true">
+                  <svg class="icon"><use href="#icon-layers"></use></svg>
+                </span>
+                <h3 data-i18n="expertise.1.t">Application architecture</h3>
+              </div>
+              <p class="stack-card-note" data-i18n="expertise.1.d">
+                Typed product surfaces, APIs, and multi-tenant foundations.
+              </p>
+              <ul class="stack-chips">
+                <li class="is-core">Next.js</li>
+                <li class="is-core">TypeScript</li>
                 <li>React</li>
                 <li>GraphQL</li>
                 <li>API design</li>
                 <li>Multi-tenant SaaS</li>
               </ul>
-              <h3 data-i18n="expertise.4.t">Production systems</h3>
-              <ul>
-                <li>PostgreSQL</li>
-                <li>Authentication and SSO</li>
-                <li>Billing</li>
-                <li>Background jobs</li>
-                <li>Real-time systems</li>
-                <li>Observability</li>
-              </ul>
-            </div>
-            <div class="expertise-col">
-              <h3 data-i18n="expertise.2.t">AI systems</h3>
-              <ul>
+            </article>
+
+            <article class="stack-card">
+              <div class="stack-card-head">
+                <span class="stack-ico" aria-hidden="true">
+                  <svg class="icon"><use href="#icon-sparkles"></use></svg>
+                </span>
+                <h3 data-i18n="expertise.2.t">AI systems</h3>
+              </div>
+              <p class="stack-card-note" data-i18n="expertise.2.d">
+                Agents, retrieval, and evaluation wired into real products.
+              </p>
+              <ul class="stack-chips">
                 <li>LLM integrations</li>
-                <li>AI agents</li>
-                <li>Retrieval and RAG</li>
+                <li class="is-core">AI agents</li>
+                <li class="is-core">Retrieval and RAG</li>
                 <li>Evaluation</li>
                 <li>Model routing</li>
                 <li>Cost and latency</li>
               </ul>
-              <h3 data-i18n="expertise.3.t">Document intelligence</h3>
-              <ul>
+            </article>
+
+            <article class="stack-card">
+              <div class="stack-card-head">
+                <span class="stack-ico" aria-hidden="true">
+                  <svg class="icon"><use href="#icon-scan-text"></use></svg>
+                </span>
+                <h3 data-i18n="expertise.3.t">Document intelligence</h3>
+              </div>
+              <p class="stack-card-note" data-i18n="expertise.3.d">
+                PDFs and spreadsheets turned into verified structured data.
+              </p>
+              <ul class="stack-chips">
                 <li>OCR</li>
-                <li>Structured extraction</li>
-                <li>Evidence linking</li>
+                <li class="is-core">Structured extraction</li>
+                <li class="is-core">Evidence linking</li>
                 <li>PDF and spreadsheet workflows</li>
                 <li>Long-running processing</li>
                 <li>Human verification</li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+            </article>
 
-      <section id="process" class="band-base pad-tight">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 data-i18n="process.title">From ambiguity to ownership</h2>
-            <p data-i18n="process.lede">
-              Four steps that keep decisions visible and delivery honest.
-            </p>
-          </div>
-          <div class="process-track">
-            <article class="process-step">
-              <h3 data-i18n="process.1.t">Understand</h3>
-              <p data-i18n="process.1.d">
-                Define the business outcome, users, constraints, and failure modes.
+            <article class="stack-card">
+              <div class="stack-card-head">
+                <span class="stack-ico" aria-hidden="true">
+                  <svg class="icon"><use href="#icon-activity"></use></svg>
+                </span>
+                <h3 data-i18n="expertise.4.t">Production systems</h3>
+              </div>
+              <p class="stack-card-note" data-i18n="expertise.4.d">
+                Auth, billing, jobs, and observability that hold under load.
               </p>
-            </article>
-            <article class="process-step">
-              <h3 data-i18n="process.2.t">Design</h3>
-              <p data-i18n="process.2.d">
-                Choose the architecture, interfaces, trade-offs, and implementation
-                sequence.
-              </p>
-            </article>
-            <article class="process-step">
-              <h3 data-i18n="process.3.t">Build</h3>
-              <p data-i18n="process.3.d">
-                Ship thin production-ready slices with visible progress.
-              </p>
-            </article>
-            <article class="process-step">
-              <h3 data-i18n="process.4.t">Stabilize</h3>
-              <p data-i18n="process.4.d">
-                Test, observe, document, and prepare the system for continued ownership.
-              </p>
+              <ul class="stack-chips">
+                <li class="is-core">PostgreSQL</li>
+                <li>Authentication and SSO</li>
+                <li>Billing</li>
+                <li>Background jobs</li>
+                <li>Real-time systems</li>
+                <li class="is-core">Observability</li>
+              </ul>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="writing" class="band-raise">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 data-i18n="writing.title">Open-source libraries</h2>
-            <p data-i18n="writing.lede">Packages for client UI state, theme, and locale.</p>
-          </div>
-
-          <p class="writing-soon" data-i18n="writing.soon">
-            Technical writing notes coming soon.
-          </p>
-
-          <div class="writing-block">
-            <h3 data-i18n="writing.oss">Open-source work</h3>
-            <div class="oss">
-              <a href="https://github.com/CalvinMaighan/active-state" rel="noopener">
-                <strong>active-state</strong>
-                <span data-i18n="writing.oss1"
-                  >Tiny keyed pub/sub store for shared client UI state.</span
-                >
-              </a>
-              <a href="https://github.com/CalvinMaighan/active-theme" rel="noopener">
-                <strong>active-theme</strong>
-                <span data-i18n="writing.oss2"
-                  >Mode and color tokens applied cleanly to :root.</span
-                >
-              </a>
-              <a href="https://github.com/CalvinMaighan/active-i18n" rel="noopener">
-                <strong>active-i18n</strong>
-                <span data-i18n="writing.oss3"
-                  >Typed dictionaries with locale persistence.</span
-                >
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" class="band-base pad-tight">
+      <div class="band-tail">
+      <section id="about" class="pad-tight">
         <div class="wrap about-grid">
-          <div class="portrait" aria-hidden="true">CM</div>
+          <div class="portrait">
+            <img
+              src="./calvinprofile.jpg"
+              alt="Calvin Maighan"
+              width="192"
+              height="192"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
           <div class="about-copy">
             <h2 data-i18n="about.title">Senior engineer with hands-on delivery</h2>
             <p data-i18n="about.body">
@@ -575,88 +500,180 @@
         </div>
       </section>
 
-      <section id="contact" class="band-base pad-tall">
+      <section id="writing" class="oss-section" aria-labelledby="oss-title">
         <div class="wrap">
-          <div class="letter-close">
-            <p data-i18n="letter.close">
-              Write me when the build is hard and the timeline is real.
-            </p>
-          </div>
-          <div class="contact-panel">
-            <div class="contact-copy">
-              <h2 data-i18n="contact.title">Need a hard technical build?</h2>
-              <p data-i18n="contact.lede">
-                Tell me the product or system problem. I take contract and fractional work
-                with startups, SaaS teams, and agencies.
+          <article class="oss-doc">
+            <header class="oss-doc-head">
+              <h2 id="oss-title" data-i18n="writing.title">Calvin Maighan</h2>
+              <p class="oss-doc-role" data-i18n="writing.role">
+                10+ years of building ambitious products
               </p>
+              <p class="oss-doc-lede" data-i18n="writing.lede">
+                Open-source client libs for shared UI state, theme, i18n.
+              </p>
+            </header>
+
+            <h3 data-i18n="writing.libs">Libraries</h3>
+            <div class="oss-table-wrap">
+              <table class="oss-table">
+                <thead>
+                  <tr>
+                    <th scope="col" data-i18n="writing.col.package">Package</th>
+                    <th scope="col" data-i18n="writing.col.does">What it does</th>
+                    <th scope="col" data-i18n="writing.col.repo">Repo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <a
+                        class="oss-pkg"
+                        href="https://github.com/CalvinMaighan/active-state"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        >active-state</a
+                      >
+                    </td>
+                    <td data-i18n="writing.oss1">
+                      Tiny keyed pub/sub store — React, DOM bindings, persist / shared /
+                      SSR
+                    </td>
+                    <td>
+                      <a
+                        class="oss-repo"
+                        href="https://github.com/CalvinMaighan/active-state"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <svg class="icon" aria-hidden="true">
+                          <use href="#icon-github"></use>
+                        </svg>
+                        <span>CalvinMaighan/active-state</span>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        class="oss-pkg"
+                        href="https://github.com/CalvinMaighan/active-theme"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        >active-theme</a
+                      >
+                    </td>
+                    <td data-i18n="writing.oss2">
+                      Mode + color on :root — persist by default, /lite, /state +
+                      &lt;ActiveTheme /&gt;
+                    </td>
+                    <td>
+                      <a
+                        class="oss-repo"
+                        href="https://github.com/CalvinMaighan/active-theme"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <svg class="icon" aria-hidden="true">
+                          <use href="#icon-github"></use>
+                        </svg>
+                        <span>CalvinMaighan/active-theme</span>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        class="oss-pkg"
+                        href="https://github.com/CalvinMaighan/active-i18n"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        >active-i18n</a
+                      >
+                    </td>
+                    <td data-i18n="writing.oss3">
+                      Typed dictionaries + useText() / t() — persist by default, /lite,
+                      /state + &lt;ActiveI18n /&gt;
+                    </td>
+                    <td>
+                      <a
+                        class="oss-repo"
+                        href="https://github.com/CalvinMaighan/active-i18n"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <svg class="icon" aria-hidden="true">
+                          <use href="#icon-github"></use>
+                        </svg>
+                        <span>CalvinMaighan/active-i18n</span>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
-            <form id="inquiry" novalidate>
-              <div class="form-row">
-                <label>
-                  <span data-i18n="form.name">Name</span>
-                  <input name="name" autocomplete="name" required />
-                </label>
-                <label>
-                  <span data-i18n="form.email">Email</span>
-                  <input name="email" type="email" autocomplete="email" required />
-                </label>
-              </div>
-              <label>
-                <span data-i18n="form.company">Company</span>
-                <input name="company" autocomplete="organization" />
-              </label>
-              <label>
-                <span data-i18n="form.project">Project summary</span>
-                <textarea name="project" required></textarea>
-              </label>
-              <div class="form-row">
-                <label>
-                  <span data-i18n="form.budget">Budget range</span>
-                  <select name="budget">
-                    <option value="under-10k">Under $10,000</option>
-                    <option value="10-25k">$10,000–$25,000</option>
-                    <option value="25-50k" selected>$25,000–$50,000</option>
-                    <option value="50k-plus">$50,000+</option>
-                    <option value="unsure">Not sure yet</option>
-                  </select>
-                </label>
-                <label>
-                  <span data-i18n="form.timeline">Target timeline</span>
-                  <select name="timeline">
-                    <option value="immediately">Immediately</option>
-                    <option value="one-month" selected>Within one month</option>
-                    <option value="three-months">Within three months</option>
-                    <option value="exploring">Exploring options</option>
-                  </select>
-                </label>
-              </div>
-              <button class="btn btn-primary" type="submit" data-i18n="form.submit">
-                Discuss the project
-              </button>
-              <p class="form-note" data-i18n="form.note">
-                You get a direct reply. No automated sales sequence.
-              </p>
-              <p class="form-note" id="form-status" hidden></p>
-            </form>
-          </div>
+            <h3 data-i18n="writing.together">Together</h3>
+            <pre class="oss-code" tabindex="0"><code><span class="tok-kw">import</span> { ActiveState, useActiveState } <span class="tok-kw">from</span> <span class="tok-str">"active-state/react"</span>;
+<span class="tok-kw">import</span> { ActiveTheme } <span class="tok-kw">from</span> <span class="tok-str">"active-theme/state"</span>;
+<span class="tok-kw">import</span> { ActiveI18n } <span class="tok-kw">from</span> <span class="tok-str">"active-i18n/state"</span>;
+<span class="tok-kw">import</span> { useText } <span class="tok-kw">from</span> <span class="tok-str">"active-i18n/react"</span>;
+
+&lt;&gt;
+  &lt;<span class="tok-tag">ActiveState</span> init={state} ssr /&gt;
+  &lt;<span class="tok-tag">ActiveTheme</span> init={theme} /&gt;
+  &lt;<span class="tok-tag">ActiveI18n</span> init={i18n} /&gt;
+  {children}
+&lt;/&gt;
+
+<span class="tok-kw">const</span> [layout, setLayout] = <span class="tok-fn">useActiveState</span>(LAYOUT);
+<span class="tok-kw">const</span> [mode, setMode] = <span class="tok-fn">useActiveState</span>(THEME);
+<span class="tok-kw">const</span> { t, setLocale } = <span class="tok-fn">useText</span>();</code></pre>
+            <p class="oss-doc-foot" data-i18n="writing.foot">
+              One bus for prefs. Theme paints data-theme / CSS vars. useText() gives t
+              under &lt;ActiveI18n /&gt;; setLocale writes the bus.
+            </p>
+          </article>
         </div>
       </section>
+
+      </div>
     </main>
 
     <div class="read-progress" aria-hidden="true"></div>
 
     <footer class="site-footer">
       <div class="wrap">
-        <p class="foot-statement" data-i18n="footer.statement">Available for hard builds.</p>
+        <p class="foot-statement" data-i18n="footer.statement">Let's Connect.</p>
         <p class="foot-meta">
           <strong>Calvin Maighan</strong>
           <span class="sep" aria-hidden="true">·</span>
           <span data-i18n="footer.role">Senior AI and SaaS Engineer</span>
           <span class="sep" aria-hidden="true">·</span>
-          <span data-i18n="footer.meta">Montreal · remote contracts</span>
+          <span class="foot-place">
+            <!-- Iconify flag:ca-4x3 -->
+            <svg
+              class="icon foot-canada"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 480"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path fill="#fff" d="M150.1 0h339.7v480H150z" />
+              <path
+                fill="#d52b1e"
+                d="M-19.7 0h169.8v480H-19.7zm509.5 0h169.8v480H489.9zM201 232l-13.3 4.4l61.4 54c4.7 13.7-1.6 17.8-5.6 25l66.6-8.4l-1.6 67l13.9-.3l-3.1-66.6l66.7 8c-4.1-8.7-7.8-13.3-4-27.2l61.3-51l-10.7-4c-8.8-6.8 3.8-32.6 5.6-48.9c0 0-35.7 12.3-38 5.8l-9.2-17.5l-32.6 35.8c-3.5.9-5-.5-5.9-3.5l15-74.8l-23.8 13.4q-3.2 1.3-5.2-2.2l-23-46l-23.6 47.8q-2.8 2.5-5 .7L264 130.8l13.7 74.1c-1.1 3-3.7 3.8-6.7 2.2l-31.2-35.3c-4 6.5-6.8 17.1-12.2 19.5s-23.5-4.5-35.6-7c4.2 14.8 17 39.6 9 47.7"
+              />
+            </svg>
+            <span data-i18n="footer.city">Montreal</span>
+          </span>
           <span class="sep" aria-hidden="true">·</span>
-          <a class="foot-ico" href="https://github.com/CalvinMaighan" rel="noopener"
+          <span data-i18n="footer.remote">remote contracts</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <a
+            class="foot-ico"
+            href="https://github.com/CalvinMaighan"
+            rel="noopener noreferrer"
+            target="_blank"
             ><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg
             >GitHub</a
           >
@@ -666,7 +683,7 @@
             >Email</a
           >
           <span class="sep" aria-hidden="true">·</span>
-          <a href="#contact" data-i18n="nav.cta">Book a call</a>
+          <a href="./contact.html" data-i18n="nav.cta">Book a call</a>
         </p>
       </div>
     </footer>
@@ -674,6 +691,7 @@
     <script type="module" src="./app.mjs"></script>
   </body>
 </html>
+
 
 
 

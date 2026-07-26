@@ -18,7 +18,7 @@ author: "Calvin Maighan"
 ogImage: "https://calvinmaighan.com/calvin-article-1.png"
 inBodyImage: "../../calvin-article-1.png"
 inBodyImageAlt: "Cover for skill 1: read dependency source code with opensrc"
-internalLinks: ["../name-ai-agent-skills-after-the-job.html","./scrape-websites-for-ai-agent-research.html","../../index.html#contact","../../index.html#tips"]
+internalLinks: ["../name-ai-agent-skills-after-the-job.html","./scrape-websites-for-ai-agent-research.html","../../contact.html","../../index.html#tips"]
 externalSources: ["https://github.com/vercel-labs/opensrc/","https://github.com/vercel-labs/opensrc/blob/main/packages/opensrc/README.md","https://opensrc.sh","https://www.npmjs.com/package/opensrc","https://cursor.com/docs/skills"]
 faq:
   - q: "Does opensrc match my lockfile version?"
@@ -111,7 +111,7 @@ Cache growth is real. Teach opensrc list and opensrc clean as hygiene, the same 
 
 Source reading covers libraries you already depend on. Web research covers pages outside the repo. Tip 2 shows how to [scrape websites for AI agent research](./scrape-websites-for-ai-agent-research.html) when the answer lives on a docs site, changelog, or competitor page. Keep both skills. Different jobs.
 
-If you want a consultant to wire opensrc into your Cursor or Claude Code kit with job-named skills and review checklists, [book a call](../../index.html#contact). More practitioner notes live under [tips](../../index.html#tips).
+If you want a consultant to wire opensrc into your Cursor or Claude Code kit with job-named skills and review checklists, [book a call](../../contact.html). More practitioner notes live under [tips](../../index.html#tips).
 
 ## Ship the habit this week
 

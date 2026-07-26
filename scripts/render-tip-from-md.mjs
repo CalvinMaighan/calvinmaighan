@@ -217,7 +217,7 @@ function pageHtml({ data, bodyHtml, faq, readMinutes }) {
   const summary = data.summary;
   const kicker = data.kicker || "";
   const series = data.series || "";
-  const nextHref = data.nextHref || `${toRoot}/index.html#contact`;
+  const nextHref = data.nextHref || `${toRoot}/contact.html`;
   const nextLabel = data.nextLabel || "Book a call";
   const isBookCta = /^book a call$/i.test(nextLabel.trim());
   // Scroll-lock next-article CTAs; never lock a Book a call CTA.
@@ -435,8 +435,8 @@ ${JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2)
     <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
       <a href="${toRoot}/index.html#tips" data-i18n="article.back">Back to tips</a>
       <a href="${toRoot}/index.html#work" data-i18n="nav.work">Work</a>
-      <a href="${toRoot}/index.html#contact" data-i18n="nav.contact">Contact</a>
-      <a class="btn btn-primary" href="${toRoot}/index.html#contact" data-i18n="nav.cta">Book a call</a>
+      <a href="${toRoot}/contact.html" data-i18n="nav.contact">Contact</a>
+      <a class="btn btn-primary" href="${toRoot}/contact.html" data-i18n="nav.cta">Book a call</a>
     </nav>
 
     <main id="top">
@@ -471,7 +471,7 @@ ${JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2)
               <span class="sep" aria-hidden="true">·</span>
               <time datetime="${escapeHtml(updated)}">${escapeHtml(updatedHuman)}</time>
             </span>
-            <a class="btn btn-primary article-byline-cta" href="${toRoot}/index.html#contact" data-i18n="article.book">${escapeHtml(ctaFold)}</a>
+            <a class="btn btn-primary article-byline-cta" href="${toRoot}/contact.html" data-i18n="article.book">${escapeHtml(ctaFold)}</a>
           </div>
           <figure class="article-cover">
             <img src="${escapeHtml(data.inBodyImage || `${toRoot}/calvin-article-2.png`)}" alt="${escapeHtml(imgAlt)}" width="1672" height="941" decoding="async" />
@@ -487,7 +487,7 @@ ${bodyMain}
 
             <div class="article-cta-end">
               <p>${inline(ctaEnd)}</p>
-              <a class="btn btn-primary" href="${toRoot}/index.html#contact" data-i18n="article.book">Book a call</a>
+              <a class="btn btn-primary" href="${toRoot}/contact.html" data-i18n="article.book">Book a call</a>
             </div>
 
 ${faqHtml}
@@ -510,7 +510,7 @@ ${faqHtml}
           <span class="sep" aria-hidden="true">·</span>
           <a class="foot-ico" href="mailto:hello@calvinmaighan.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email</a>
           <span class="sep" aria-hidden="true">·</span>
-          <a href="${toRoot}/index.html#contact" data-i18n="nav.cta">Book a call</a>
+          <a href="${toRoot}/contact.html" data-i18n="nav.cta">Book a call</a>
         </p>
       </div>
     </footer>
@@ -582,7 +582,7 @@ for (const file of files) {
     data.nextHref =
       data.standalone === "true"
         ? "./secret-agent-tips/read-dependency-source-code-with-opensrc.html"
-        : "../../index.html#contact";
+        : "../../contact.html";
   }
   if (!data.nextLabel) {
     data.nextLabel =

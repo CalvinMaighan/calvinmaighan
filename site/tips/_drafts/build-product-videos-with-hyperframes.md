@@ -5,8 +5,8 @@ intent: howto
 slug: build-product-videos-with-hyperframes
 metaDescription: "build product videos with HyperFrames using HTML compositions and deterministic timing so launch clips, PR explainers, and decks stay editable by agents and humans."
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/build-product-videos-with-hyperframes.html
-inBodyImage: "../../calvin-article-2.png"
-ogImage: "https://calvinmaighan.com/calvin-article-2.png"
+inBodyImage: "../../calvin-article-10.png"
+ogImage: "https://calvinmaighan.com/calvin-article-10.png"
 updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "build product videos with HyperFrames when you need motion with a contract: HTML compositions, timing attributes, and renders agents can revise without timeline spaghetti. I use the skill pack for launch clips, PR explainers, slideshow decks, and captioned talking-head packages. Write the beat sheet first. Freeze media assets. Show real product UI when you can capture it."
@@ -128,3 +128,4 @@ Long enough for one promise and one proof. Cut vanity.
 ### Do I need custom music?
 
 Resolve licensed or generated audio through media-use and freeze the file.
+

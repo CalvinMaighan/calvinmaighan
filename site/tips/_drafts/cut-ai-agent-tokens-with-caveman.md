@@ -18,7 +18,7 @@ author: "Calvin Maighan"
 ogImage: "https://calvinmaighan.com/calvin-article-3.png"
 inBodyImage: "../../calvin-article-3.png"
 inBodyImageAlt: "Cover for skill 3: agent talk less with caveman"
-internalLinks: ["./scrape-websites-for-ai-agent-research.html","./read-dependency-source-code-with-opensrc.html","../name-ai-agent-skills-after-the-job.html","../../index.html#contact"]
+internalLinks: ["./scrape-websites-for-ai-agent-research.html","./read-dependency-source-code-with-opensrc.html","../name-ai-agent-skills-after-the-job.html","../../contact.html"]
 externalSources: ["https://github.com/JuliusBrussee/caveman","https://github.com/JuliusBrussee/caveman/blob/HEAD/skills/caveman/SKILL.md","https://blog.jetbrains.com/ai/2026/07/speak-to-ai-agents-like-cavemen-tosave-tokens/","https://cursor.com/docs/skills"]
 faq:
   - q: "Will caveman break code in diffs?"
@@ -112,7 +112,7 @@ Terse answers can sound more certain than the evidence supports. Require citatio
 
 Token thrift without change thrift still produces giant diffs. The next tip, [keep AI coding changes minimal with ponytail](./keep-ai-coding-changes-minimal-with-ponytail.html), attacks over-building. Caveman cleans the talk. Ponytail cleans the patch. Together they keep agent sessions cheap and reviewable.
 
-If you want a calibrated install across Cursor, Claude Code, and your internal agents, [book a call](../../index.html#contact). I help product teams set intensity defaults, measurement, and the clarity exits so compression never becomes a liability.
+If you want a calibrated install across Cursor, Claude Code, and your internal agents, [book a call](../../contact.html). I help product teams set intensity defaults, measurement, and the clarity exits so compression never becomes a liability.
 
 ## The short operating rule
 

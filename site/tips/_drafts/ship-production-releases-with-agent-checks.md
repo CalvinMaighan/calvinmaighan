@@ -5,8 +5,8 @@ intent: howto
 slug: ship-production-releases-with-agent-checks
 metaDescription: "ship production releases with agent checks using a fixed /prod skill: sync main, bump the version, run typecheck and build, commit only intended files, push, and open a PR humans merge while GitHub environment rules still gate deploy."
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html
-inBodyImage: "../../calvin-article-2.png"
-ogImage: "https://calvinmaighan.com/calvin-article-2.png"
+inBodyImage: "../../calvin-article-13.png"
+ogImage: "https://calvinmaighan.com/calvin-article-13.png"
 updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "Ship production releases with agent checks by giving the agent a fixed validate-then-publish script: sync main, pick a safe branch, bump the release, run typecheck and build, commit only intended files, push, and open a PR for human merge. Agents must never merge to production. Protection rules, reviewers, and environment secrets stay in GitHub."
@@ -139,7 +139,7 @@ If the release hides behind a feature flag, the PR must name the flag key and th
 
 ## Consulting angle
 
-I install `/prod` skills when agencies and startups already generate code with agents but still fear Friday deploys. The skill encodes the house process so a junior engineer and an agent share the same checklist. If your team needs that install on a Next.js or TypeScript monorepo, use [the contact form](../../index.html#contact). Pair it with [context compression](./compress-agent-context-before-you-code.html) so the agent sees the release docs without flooding the window. Next tip covers [writing SEO articles agents can follow](./write-seo-articles-agents-can-follow.html).
+I install `/prod` skills when agencies and startups already generate code with agents but still fear Friday deploys. The skill encodes the house process so a junior engineer and an agent share the same checklist. If your team needs that install on a Next.js or TypeScript monorepo, use [the contact form](../../contact.html). Pair it with [context compression](./compress-agent-context-before-you-code.html) so the agent sees the release docs without flooding the window. Next tip covers [writing SEO articles agents can follow](./write-seo-articles-agents-can-follow.html).
 
 
 ## Document the freeze windows
@@ -169,3 +169,4 @@ No. Use required reviewers, deployment branches, and environment secrets as GitH
 ### When should the agent bump the version?
 
 After a successful fetch of origin/main and before the production build, using the repo’s version script. Include package and lockfile changes in the same PR so the release number matches the build log.
+

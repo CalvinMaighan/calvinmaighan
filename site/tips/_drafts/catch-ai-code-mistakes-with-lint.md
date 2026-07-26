@@ -5,8 +5,8 @@ intent: howto
 slug: catch-ai-code-mistakes-with-lint
 metaDescription: "catch AI code mistakes with lint by running ESLint after every agent edit, fixing new warnings first, and feeding structured rule errors back so the model repairs empty catches, floating promises, and async map bugs before review."
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html
-inBodyImage: "../../calvin-article-2.png"
-ogImage: "https://calvinmaighan.com/calvin-article-2.png"
+inBodyImage: "../../calvin-article-12.png"
+ogImage: "https://calvinmaighan.com/calvin-article-12.png"
 updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "Catch AI code mistakes with lint by treating ESLint as a hard gate after every agent edit. Run the same command your CI runs, fix new warnings first, then chip away at old debt. Agents repeat empty catch blocks, floating promises, and async map callbacks; lint surfaces those patterns before review. Wire lint into the agent stop path so the model sees structured errors and repairs them in the same turn."
@@ -133,7 +133,7 @@ Commit a sample baseline or a script that seeds one. Agents on fresh clones shou
 
 Lint will not catch a wrong product decision. It catches the mechanical class of AI mistakes that waste reviewer attention. Humans keep ownership of architecture, data model, and security threat models. Agents own the cleanup loop that makes human review worth the calendar time.
 
-If you want help installing this loop on a SaaS codebase, use the contact form on [calvinmaighan.com](../../index.html#contact). Related series tips cover [minimal diffs with ponytail](./keep-ai-coding-changes-minimal-with-ponytail.html) and [exposing product actions as MCP tools](./expose-product-actions-as-mcp-tools.html). Next tip covers [shipping production releases with agent checks](./ship-production-releases-with-agent-checks.html).
+If you want help installing this loop on a SaaS codebase, use the contact form on [calvinmaighan.com](../../contact.html). Related series tips cover [minimal diffs with ponytail](./keep-ai-coding-changes-minimal-with-ponytail.html) and [exposing product actions as MCP tools](./expose-product-actions-as-mcp-tools.html). Next tip covers [shipping production releases with agent checks](./ship-production-releases-with-agent-checks.html).
 
 
 ## Teach the agent your house dialect
@@ -163,3 +163,4 @@ Ban broad eslint-disable comments in the agent skill. Require a one-line reason 
 ### What should the agent fix first after a lint run?
 
 Everything introduced in the current session. Compare against a baseline snapshot so the agent clears new noise before it spends tokens on old debt.
+

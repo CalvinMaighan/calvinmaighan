@@ -11,7 +11,7 @@ summary: "Write SEO articles agents can follow by locking a longtail keyword, on
 standalone: false
 kicker: ""
 series: ""
-nextHref: "../../index.html#contact"
+nextHref: "../../contact.html"
 nextLabel: "Book a call"
 nextLocked: "false"
 ctaAboveFold: "Book a call"
@@ -105,7 +105,7 @@ Teams that only automate coding still lose days to blog and docs debt. Teams tha
 
 ## Series chrome and internal links
 
-Standalone articles skip series kickers. Series tips show Tip N of 14 and a next tip control. Internal links should point to related tips and to [contact](../../index.html#contact) or [tips](../../index.html#tips) on the home page. This finale links back because content SEO sits in the same agent operating system as code gates.
+Standalone articles skip series kickers. Series tips show Tip N of 14 and a next tip control. Internal links should point to related tips and to [contact](../../contact.html) or [tips](../../index.html#tips) on the home page. This finale links back because content SEO sits in the same agent operating system as code gates.
 
 ## Quality bar for consulting sites
 
@@ -137,7 +137,7 @@ Agents love decorative screenshots and attributed quotes that never happened. Th
 
 The skill ends with a strict checklist the agent must tick: keyword researched, intent stated, SERP skim noted, meta valid, summary under 150 words, first sentence keyed, slug aligned, heading hierarchy clean, length met, citations real, internal links present, images set, JSON-LD valid, FAQ honest, CTAs placed, date and byline visible, stop-slop done, portable MD written, site page shipped, sitemap updated. Unticked items mean the article is unfinished.
 
-If you want this /article skill installed beside your coding skills so your team ships indexable tips without inventing process each time, [book a call](../../index.html#contact).
+If you want this /article skill installed beside your coding skills so your team ships indexable tips without inventing process each time, [book a call](../../contact.html).
 
 
 ## Keep a swipe file of good openings

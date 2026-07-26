@@ -5,8 +5,8 @@ intent: howto
 slug: expose-product-actions-as-mcp-tools
 metaDescription: "expose product actions as MCP tools so agents can do real jobs in your product with schemas, scopes, and audit trails instead of chatting next to a dead UI."
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html
-inBodyImage: "../../calvin-article-2.png"
-ogImage: "https://calvinmaighan.com/calvin-article-2.png"
+inBodyImage: "../../calvin-article-11.png"
+ogImage: "https://calvinmaighan.com/calvin-article-11.png"
 updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "expose product actions as MCP tools when a chat wrapper that cannot act has become your roadmap. On Deedee I design a capability registry: named tools, schemas, scopes, and audit metadata. MCP is the transport. Start with read tools. Add writes only with confirmations and least privilege. Name capabilities like jobs, the same way you name skills."
@@ -135,3 +135,4 @@ Require explicit confirmation, narrow scopes, and audit logs. Start read-only wh
 ### Can I wrap existing REST?
 
 Yes. Still present job-shaped names and stable schemas.
+

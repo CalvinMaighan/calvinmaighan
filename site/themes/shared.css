@@ -5,7 +5,8 @@
  */
 :root {
   --accent: oklch(0.42 calc(var(--chroma-base) * 8) var(--hue-accent));
-  --accent-text: oklch(0.98 calc(var(--chroma-base) * 1.2) var(--hue-accent));
+  /* Accent-as-text; brand files refine per mode (same role as --cta-text). */
+  --accent-text: oklch(0.42 calc(var(--chroma-base) * 10) var(--hue-accent));
 
   --font-display: "Archivo Black", "Arial Black", system-ui, sans-serif;
   --font-body: "DM Sans", system-ui, sans-serif;
@@ -85,3 +86,4 @@
   --pad: var(--gap-l);
   --header-h: 64px;
 }
+

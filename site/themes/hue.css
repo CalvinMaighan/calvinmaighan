@@ -3,7 +3,7 @@
  * active-theme sets --hue and --chroma-base on :root at runtime.
  */
 :root {
-  --hue: 85;
+  --hue: 65;
   --hue-lower: calc(var(--hue) - 5);
   --hue-low: calc(var(--hue) - 2);
   --hue-high: calc(var(--hue) + 3);
@@ -14,3 +14,4 @@
 
   --chroma-base: 0.014;
 }
+
