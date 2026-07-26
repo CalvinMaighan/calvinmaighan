@@ -3,6 +3,8 @@
  * Compose: hue → shared → brand-light → semantic → brand-dark
  *
  * Runtime: active-theme writes --hue / --chroma-base + data-theme on <html>.
+ * Pages ship `bundle.css` (concat of this cascade) via HTML <link> for fewer
+ * render-blocking round trips. After editing sources, regenerate bundle.css.
  */
 @import "./hue.css";
 @import "./shared.css";

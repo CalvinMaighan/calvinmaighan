@@ -1,5 +1,6 @@
 /*
  * Compatibility entry — theme system lives in ./themes (Deedee-style).
- * styles.css keeps `@import "./tokens.css"`.
+ * Pages load theme CSS via parallel <link>s in HTML; this file remains for
+ * tooling / older entrypoints that still import tokens.css.
  */
 @import "./themes/index.css";

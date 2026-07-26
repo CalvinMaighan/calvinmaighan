@@ -2,14 +2,15 @@
  * Coalesce-inspired ambient field for the hero.
  * Attracts / spirals toward POINTER from active-state.
  * Palette: black · beige · green (mode-tuned).
+ *
+ * Perf: pause offscreen, skip when tab hidden, cheap glow (no canvas
+ * filters), fewer particles on narrow / low-DPR viewports.
  */
 
 const { PI, cos, sin, abs, atan2, random, min, max } = Math;
 const HALF_PI = 0.5 * PI;
 
-const PARTICLE_COUNT = 300;
 const PROP_COUNT = 9; // x y vx vy life ttl speed size kind
-const PROPS_LENGTH = PARTICLE_COUNT * PROP_COUNT;
 
 const KIND_BLACK = 0;
 const KIND_BEIGE = 1;
@@ -42,6 +43,15 @@ const fadeInOut = (t, m) => {
 };
 const angleTo = (x1, y1, x2, y2) => atan2(y2 - y1, x2 - x1);
 const hypot = (dx, dy) => Math.hypot(dx, dy);
+
+function particleBudget() {
+  const narrow = window.matchMedia("(max-width: 720px)").matches;
+  const coarse = window.matchMedia("(pointer: coarse)").matches;
+  const dpr = min(window.devicePixelRatio || 1, 2);
+  if (narrow || coarse) return 72;
+  if (dpr > 1.5) return 140;
+  return 180;
+}
 
 function pickKind(dark) {
   const r = random();
@@ -86,18 +96,19 @@ export function startAmbient({ canvas, getPointer, getTempo, getDark }) {
   const header = document.getElementById("site-header");
   if (!hero) return () => {};
 
-  const off = document.createElement("canvas");
-  const ctxOff = off.getContext("2d", { alpha: true });
-  const ctxOn = canvas.getContext("2d", { alpha: true });
-  if (!ctxOff || !ctxOn) return () => {};
+  const ctxOn = canvas.getContext("2d", { alpha: true, desynchronized: true });
+  if (!ctxOn) return () => {};
 
-  const props = new Float32Array(PROPS_LENGTH);
+  let count = particleBudget();
+  let props = new Float32Array(count * PROP_COUNT);
   let w = 0;
   let h = 0;
   let headerH = 0;
   let dpr = 1;
   let raf = 0;
   let running = true;
+  let visible = true;
+  let pageVisible = !document.hidden;
   let wasDark = getDark();
 
   let ax = 0;
@@ -118,7 +129,7 @@ export function startAmbient({ canvas, getPointer, getTempo, getDark }) {
 
   function resize() {
     headerH = header?.offsetHeight || 64;
-    dpr = min(window.devicePixelRatio || 1, 2);
+    dpr = min(window.devicePixelRatio || 1, 1.5);
     /* Canvas lives inside .hero — size to hero box only */
     w = max(1, Math.floor(hero.clientWidth || window.innerWidth));
     h = max(1, Math.floor(hero.clientHeight || hero.offsetHeight || 1));
@@ -129,11 +140,15 @@ export function startAmbient({ canvas, getPointer, getTempo, getDark }) {
     canvas.height = ph;
     canvas.style.width = `${w}px`;
     canvas.style.height = `${h}px`;
-    off.width = pw;
-    off.height = ph;
 
     ctxOn.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctxOff.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const next = particleBudget();
+    if (next !== count) {
+      count = next;
+      props = new Float32Array(count * PROP_COUNT);
+      initAll(wasDark);
+    }
 
     targetAx = ax = w * REST_NX;
     targetAy = ay = restY();
@@ -160,7 +175,7 @@ export function startAmbient({ canvas, getPointer, getTempo, getDark }) {
   }
 
   function initAll(dark) {
-    for (let i = 0; i < PROPS_LENGTH; i += PROP_COUNT) initParticle(i, dark);
+    for (let i = 0; i < props.length; i += PROP_COUNT) initParticle(i, dark);
   }
 
   function drawParticle(x, y, theta, life, ttl, size, kind, dark) {
@@ -169,20 +184,20 @@ export function startAmbient({ canvas, getPointer, getTempo, getDark }) {
     const yRel = y - size * 0.5;
     const color = strokeFor(kind, alpha, dark);
 
-    ctxOff.save();
-    ctxOff.lineCap = "round";
-    ctxOff.lineWidth = dark ? 1 : kind === KIND_GREEN ? 1.35 : 1.15;
-    ctxOff.strokeStyle = color;
-    ctxOff.translate(x, y);
-    ctxOff.rotate(theta);
-    ctxOff.translate(-x, -y);
+    ctxOn.save();
+    ctxOn.lineCap = "round";
+    ctxOn.lineWidth = dark ? 1 : kind === KIND_GREEN ? 1.35 : 1.15;
+    ctxOn.strokeStyle = color;
+    ctxOn.translate(x, y);
+    ctxOn.rotate(theta);
+    ctxOn.translate(-x, -y);
     // Soft filled beige chips so the field reads less green-on-neutral
     if (!dark && kind === KIND_BEIGE) {
-      ctxOff.fillStyle = strokeFor(kind, alpha * 0.55, dark);
-      ctxOff.fillRect(xRel, yRel, size, size);
+      ctxOn.fillStyle = strokeFor(kind, alpha * 0.55, dark);
+      ctxOn.fillRect(xRel, yRel, size, size);
     }
-    ctxOff.strokeRect(xRel, yRel, size, size);
-    ctxOff.restore();
+    ctxOn.strokeRect(xRel, yRel, size, size);
+    ctxOn.restore();
   }
 
   function updateParticle(i, dark) {
@@ -232,53 +247,6 @@ export function startAmbient({ canvas, getPointer, getTempo, getDark }) {
     if (life > ttl) initParticle(i, dark);
   }
 
-  function renderGlow(dark) {
-    if (dark) {
-      // Soft bloom only — avoid bright additive green wash
-      ctxOn.save();
-      ctxOn.filter = "blur(8px)";
-      ctxOn.globalCompositeOperation = "source-over";
-      ctxOn.globalAlpha = 0.35;
-      ctxOn.drawImage(off, 0, 0, w, h);
-      ctxOn.restore();
-
-      ctxOn.save();
-      ctxOn.filter = "blur(2px)";
-      ctxOn.globalCompositeOperation = "lighter";
-      ctxOn.globalAlpha = 0.45;
-      ctxOn.drawImage(off, 0, 0, w, h);
-      ctxOn.restore();
-
-      ctxOn.save();
-      ctxOn.globalCompositeOperation = "source-over";
-      ctxOn.globalAlpha = 0.95;
-      ctxOn.drawImage(off, 0, 0, w, h);
-      ctxOn.restore();
-      return;
-    }
-
-    // Light: soft ink bloom (no additive wash that muddies beige)
-    ctxOn.save();
-    ctxOn.filter = "blur(6px)";
-    ctxOn.globalCompositeOperation = "source-over";
-    ctxOn.globalAlpha = 0.28;
-    ctxOn.drawImage(off, 0, 0, w, h);
-    ctxOn.restore();
-
-    ctxOn.save();
-    ctxOn.filter = "blur(2px)";
-    ctxOn.globalCompositeOperation = "source-over";
-    ctxOn.globalAlpha = 0.45;
-    ctxOn.drawImage(off, 0, 0, w, h);
-    ctxOn.restore();
-
-    ctxOn.save();
-    ctxOn.globalCompositeOperation = "source-over";
-    ctxOn.globalAlpha = 1;
-    ctxOn.drawImage(off, 0, 0, w, h);
-    ctxOn.restore();
-  }
-
   function syncPointer() {
     const p = getPointer();
     if (p?.active) {
@@ -294,33 +262,37 @@ export function startAmbient({ canvas, getPointer, getTempo, getDark }) {
     ay = lerp(ay, targetAy, ease);
   }
 
+  function schedule() {
+    if (!running || raf) return;
+    if (!visible || !pageVisible) return;
+    raf = requestAnimationFrame(frame);
+  }
+
   function frame() {
-    if (!running) return;
+    raf = 0;
+    if (!running || !visible || !pageVisible) return;
 
     const dark = getDark();
     if (dark !== wasDark) {
       wasDark = dark;
       initAll(dark);
-      ctxOn.clearRect(0, 0, w, h);
     }
 
     syncRate();
     syncPointer();
-    ctxOff.clearRect(0, 0, w, h);
     ctxOn.clearRect(0, 0, w, h);
 
-    for (let i = 0; i < PROPS_LENGTH; i += PROP_COUNT) {
+    for (let i = 0; i < props.length; i += PROP_COUNT) {
       updateParticle(i, dark);
     }
 
-    renderGlow(dark);
-    raf = requestAnimationFrame(frame);
+    schedule();
   }
 
   resize();
   initAll(wasDark);
   ctxOn.clearRect(0, 0, w, h);
-  raf = requestAnimationFrame(frame);
+  schedule();
 
   const ro = new ResizeObserver(() => {
     resize();
@@ -329,12 +301,36 @@ export function startAmbient({ canvas, getPointer, getTempo, getDark }) {
   if (header) ro.observe(header);
   window.addEventListener("resize", resize);
 
+  const io = new IntersectionObserver(
+    ([entry]) => {
+      visible = Boolean(entry?.isIntersecting);
+      if (visible) schedule();
+      else if (raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
+    },
+    { threshold: 0.05 },
+  );
+  io.observe(hero);
+
+  const onVisibility = () => {
+    pageVisible = !document.hidden;
+    if (pageVisible) schedule();
+    else if (raf) {
+      cancelAnimationFrame(raf);
+      raf = 0;
+    }
+  };
+  document.addEventListener("visibilitychange", onVisibility);
+
   return () => {
     running = false;
     cancelAnimationFrame(raf);
+    raf = 0;
     ro.disconnect();
+    io.disconnect();
     window.removeEventListener("resize", resize);
+    document.removeEventListener("visibilitychange", onVisibility);
   };
 }
-
-

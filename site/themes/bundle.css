@@ -1,0 +1,364 @@
+/* Auto-bundled theme cascade: hue → shared → brand-light → semantic → brand-dark */
+/* Regenerate after editing theme sources: cat hue shared brand-light semantic brand-dark > bundle.css */
+
+/* ===== hue.css ===== */
+/*
+ * Brand hue primitives — mirrored from Deedee client/themes/theme/hue.ts
+ * active-theme sets --hue and --chroma-base on :root at runtime.
+ */
+:root {
+  --hue: 65;
+  --hue-lower: calc(var(--hue) - 5);
+  --hue-low: calc(var(--hue) - 2);
+  --hue-high: calc(var(--hue) + 3);
+  --hue-higher: calc(var(--hue) + 6);
+  --hue-accent: calc(var(--hue) - 3);
+  --hue-secondary: calc(var(--hue) - 6);
+  --hue-cta-end: calc(var(--hue) - 33);
+
+  --chroma-base: 0.014;
+}
+
+
+/* ===== shared.css ===== */
+/*
+ * Mode-agnostic type, space, radius, motion — Deedee sharedThemeTokens shape.
+ * Accent defaults; brand files refine per mode.
+ * Units: px only (see calvinmaighan/no-rem-em).
+ */
+:root {
+  --accent: oklch(0.42 calc(var(--chroma-base) * 8) var(--hue-accent));
+  /* Accent-as-text; brand files refine per mode (same role as --cta-text). */
+  --accent-text: oklch(0.42 calc(var(--chroma-base) * 10) var(--hue-accent));
+
+  --font-display: "Archivo Black", "Arial Black", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-mono: var(--mono);
+  /* Google: Source Serif 4 (successor to Source Serif Pro); system serifs after */
+  --serif: "Source Serif 4", "Source Serif Pro", Georgia, Cambria, "Times New Roman",
+    Times, serif;
+
+  /* Spacing — padding / margin / gap */
+  --gap-xs: 2px;
+  --gap-s: 6px;
+  --gap-m: 12px;
+  --gap-l: 20px;
+  --gap-xl: 32px;
+
+  /* Padding scale */
+  --pad-s: 8px;
+  --pad-m: 16px;
+  --pad-l: 24px;
+
+  /* Type scale */
+  --font-s: 14px;
+  --font-m: 16px;
+  --font-l: 20px;
+  --font-xl: 24px;
+  --font-h3: 32px;
+  --font-h2: 40px;
+  --font-h1: 48px;
+  --font-h0: 76px;
+
+  /* Radius */
+  --radius-s: 6px;
+  --radius-m: 12px;
+  --radius-l: 20px;
+  --radius-xl: 32px;
+  --radius-xxl: 48px;
+
+  /* Legacy space aliases (px). Prefer --gap-* in new code. */
+  --space-3xs: 4px;
+  --space-2xs: 8px;
+  --space-xs: var(--gap-m);
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: var(--gap-xl);
+  --space-xl: 48px;
+  --space-2xl: 72px;
+  --space-3xl: 112px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-short: 180ms;
+  --dur-mid: 280ms;
+
+  /* Shared control hover — filter only, no fill swap */
+  --hover: saturate(1.15) brightness(1.08);
+
+  /* Legacy radius aliases */
+  --radius-input: var(--radius-m);
+  --radius-panel: var(--radius-xl);
+  --radius-btn: var(--radius-xl);
+
+  /*
+   * Breakpoints (mobile-first ranges):
+   *   mobile  … 0 – --mobile
+   *   tablet  … --mobile – --tablet
+   *   desktop … --tablet – --desktop (and up)
+   * @media cannot read custom props — keep query literals in sync with these.
+   */
+  --mobile: 720px;
+  --tablet: 1020px;
+  --desktop: 1320px;
+
+  --max: 1200px;
+  --measure: 720px;
+  --pad: var(--gap-l);
+  --header-h: 64px;
+}
+
+
+/* ===== brand-light.css ===== */
+/*
+ * Light brand — Deedee surface ladder:
+ *   --base         lowest (section below hero)
+ *   --background   canvas
+ *   --muted        header / answers / how-we-work
+ *   --card         raised cards
+ *   --button       controls on muted sections
+ */
+:root,
+:root[data-theme="light"] {
+  --chroma: var(--chroma-base);
+  --chroma-muted: calc(var(--chroma-base) * 0.889);
+  --chroma-card: calc(var(--chroma-base) * 0.778);
+  --chroma-button: calc(var(--chroma-base) * 0.667);
+  --chroma-border: calc(var(--chroma-base) * 1.222);
+  --chroma-text: calc(var(--chroma-base) * 2.222);
+  --chroma-secondary: calc(var(--chroma-base) * 4.444);
+  --chroma-accent: calc(var(--chroma-base) * 11.111);
+  --chroma-label: calc(var(--chroma-base) * 6.389);
+
+  --l-0: 0.86;
+  --l-1: 0.88;
+  --l-2: 0.92;
+  --l-3: 0.97;
+  --l-5: 0.99;
+
+  --text: oklch(0.2 var(--chroma-text) var(--hue) / 88%);
+  /* Darker muted/secondary so body copy clears WCAG on --muted / --background. */
+  --text-muted: oklch(0.32 var(--chroma-text) var(--hue) / 92%);
+  --secondary-text: oklch(0.28 var(--chroma-secondary) var(--hue-secondary));
+  --article: #232323;
+  --reading: var(--button);
+
+  /* Ink band; --l-0 stays for borders */
+  --base: oklch(0.2 var(--chroma) var(--hue-lower));
+  --background: oklch(var(--l-1) 0.02 var(--hue-lower));
+  --muted: oklch(var(--l-2) 0.022 var(--hue-low));
+  --card: oklch(var(--l-3) var(--chroma-card) var(--hue));
+  --button: oklch(var(--l-5) var(--chroma-button) var(--hue-high));
+  --button-hover: oklch(1 var(--chroma-button) var(--hue-high));
+
+  --secondary: oklch(0.909 0.043 73);
+  --secondary-hover: oklch(0.87 0.055 70);
+
+  /* Soft peach-beige — warm badge / accent fill (not the muddy olive L=0.42) */
+  --accent: oklch(0.86 0.055 62);
+  /* Accent-as-text: same chroma as --cta (0.2); L mid so it stays on-gamut. */
+  --accent-text: oklch(0.42 0.2 48);
+
+  /* Dark ink on green fill — mid-green on --cta fails contrast. */
+  --cta-text: oklch(0.22 0.08 145);
+
+  --hero-text: oklch(0.48 var(--chroma-label) var(--hue-accent));
+  --text-gradient: linear-gradient(
+    118deg,
+    var(--cta) 8%,
+    color-mix(in oklch, var(--cta) 45%, var(--text)) 48%,
+    var(--text) 92%
+  );
+
+  --canvas: linear-gradient(180deg, var(--card) 0%, var(--secondary) 200%);
+  --muted-gradient: linear-gradient(-180deg, var(--muted) 0%, var(--background) 150%);
+  --card-gradient: linear-gradient(-180deg, var(--card) 0%, var(--muted) 150%);
+  --card-gradient-soft: linear-gradient(
+    -180deg,
+    color-mix(in oklch, var(--card) 88%, transparent) 0%,
+    color-mix(in oklch, var(--muted) 88%, transparent) 150%
+  );
+  --button-gradient: linear-gradient(0deg, var(--card) 0%, var(--button) 150%);
+
+  --light: oklch(0.9 var(--chroma-muted) var(--hue) / 85%);
+  --lighter: oklch(0.9 var(--chroma-muted) var(--hue) / 90%);
+  --lightest: oklch(0.9 var(--chroma-muted) var(--hue) / 95%);
+  --dark: oklch(0.1 var(--chroma-muted) var(--hue) / 4%);
+  --darker: oklch(0.1 var(--chroma-muted) var(--hue) / 8%);
+  --darkest: oklch(0.1 var(--chroma-muted) var(--hue) / 16%);
+
+  --shadow: inset 0 2px 3px 0 var(--lightest), 0 2px 3px -1px var(--darker),
+    0 4px 5px -1px var(--dark), inset 0 -2px 4px -2px var(--background);
+  --shadow-ghost: 0 2px 3px -1px var(--darker), 0 4px 5px -1px var(--dark);
+  --shadow-card: inset 0 2px 3px 0 var(--lightest), 0 4px 8px -2px var(--darker),
+    0 8px 16px -4px var(--darkest), inset 0 -2px 4px -2px var(--background);
+  --shadow-button: inset 0 1px 2px -1px var(--lighter), 0 4px 6px -2px var(--darker),
+    0 4px 8px -2px var(--dark), inset 0 -2px 4px -2px var(--background);
+  --shadow-hover: inset 0 1px 3px -1px var(--lightest), 0 6px 6px -3px var(--darkest),
+    0 6px 12px -3px var(--dark), inset 0 -2px 4px -2px var(--background);
+  --shadow-cutout: inset 0 -1px 1px -1px var(--muted), inset 0 1px 2px -1px var(--darker),
+    inset -1px -3px 6px -1px var(--background);
+  --shadow-cutout-muted: inset 0 -1px 1px -1px color-mix(in oklch, var(--muted) 55%, transparent),
+    inset 0 1px 1px -1px color-mix(in oklch, var(--darker) 40%, transparent),
+    inset -1px -2px 3px -1px color-mix(in oklch, var(--background) 65%, transparent);
+  --shadow-cutout-card: inset 0 -1px 1px -1px var(--card), inset 0 1px 2px -1px var(--darker),
+    inset -1px -3px 6px -1px var(--muted);
+
+  --button-shadow: var(--shadow-button);
+
+  /* Top inset like --shadow-button; short neutral drop; longer green glow */
+  --cta-shadow:
+    inset 0 1px 2px -1px var(--lighter),
+    0 2px 4px -1px var(--darker),
+    0 6px 14px -2px color-mix(in oklch, var(--cta) 42%, transparent);
+  --cta-shadow-hover:
+    inset 0 1px 3px -1px var(--lightest),
+    0 3px 5px -1px var(--darkest),
+    0 8px 18px -2px color-mix(in oklch, var(--cta) 52%, transparent);
+
+  /* Dark hairline + alpha (not --l-0 — that leftover is ~0.86 and looks muddy) */
+  --border: oklch(0.2 var(--chroma-border) var(--hue) / 0.14);
+  --border-hover: oklch(0.2 var(--chroma-border) var(--hue) / 0.24);
+  --border-muted: color-mix(in oklch, var(--border) 65%, transparent);
+
+  color-scheme: light;
+}
+
+
+
+
+/* ===== semantic.css ===== */
+/*
+ * Fixed semantic colors — unchanged when brand hue / mode shifts.
+ * Green CTA fill; status tokens only if UI needs them later.
+ */
+:root {
+  --cta: oklch(74% 0.2 145);
+  --cta-border: oklch(62% 0.18 145 / 0.15);
+  /* Mode files refine lightness; hue stays with --cta (145). */
+  --cta-text: oklch(0.42 0.11 145);
+  /* Accent-as-text fallback; brand-light / brand-dark override. */
+  --accent-text: oklch(0.42 0.2 48);
+}
+
+
+/* ===== brand-dark.css ===== */
+/*
+ * Dark brand — warm espresso ladder (not cool slate invert).
+ * Surfaces (deep → bright):
+ *   Deep shadow #130F0B · Dark espresso #1D1815 · Main #221D19
+ *   Warm brown #27211D · Soft highlight #2F2824 · Brightest #453B36
+ * CTA green + secondary beige match light (semantic / light values).
+ */
+:root[data-theme="dark"] {
+  --chroma: 0.011;
+  --chroma-muted: 0.012;
+  --chroma-card: 0.013;
+  --chroma-button: 0.016;
+  --chroma-border: 0.016;
+  --chroma-text: 0.012;
+  --chroma-secondary: 0.043;
+  --chroma-accent: calc(var(--chroma-base) * 8.333);
+  --chroma-label: calc(var(--chroma-base) * 2.222);
+
+  /* Ladder L matches espresso table */
+  --l-0: 0.172; /* Deep shadow */
+  --l-espresso: 0.214; /* Dark espresso */
+  --l-1: 0.235; /* Main background */
+  --l-2: 0.253; /* Warm brown */
+  --l-3: 0.283; /* Soft highlight */
+  --l-5: 0.361; /* Brightest reflection */
+
+  --text: oklch(0.96 0.012 60 / 90%);
+  --text-muted: oklch(0.78 0.014 55 / 72%);
+  --secondary-text: oklch(0.82 0.03 70 / 78%);
+  --article: var(--text);
+  --reading: var(--base);
+
+  --base: oklch(0.172 0.01 67); /* #130F0B Deep shadow */
+  --espresso: oklch(0.214 0.01 53); /* #1D1815 Dark espresso */
+  --background: oklch(0.235 0.011 61); /* #221D19 Main background */
+  --muted: oklch(0.253 0.012 56); /* #27211D Warm brown */
+  --card: oklch(0.283 0.013 52); /* #2F2824 Soft highlight */
+  --button: oklch(0.361 0.016 48); /* #453B36 Brightest reflection */
+  --button-hover: oklch(0.4 0.018 48);
+
+  /* Warm beige at ~button lift (not light cream) */
+  --secondary: oklch(0.361 0.028 70);
+  --secondary-hover: oklch(0.4 0.032 68);
+
+  --accent: oklch(0.88 var(--chroma-accent) var(--hue-accent));
+  /* Same yellow as --accent — readable accent-as-text on dark surfaces. */
+  --accent-text: oklch(0.88 var(--chroma-accent) var(--hue-accent));
+
+  /* Same hue as --cta (145); light tint on the green fill */
+  --cta-text: oklch(0.96 0.05 145);
+
+  --hero-text: oklch(0.92 var(--chroma-label) var(--hue-accent));
+  --text-gradient: linear-gradient(
+    118deg,
+    var(--cta) 8%,
+    color-mix(in oklch, var(--cta) 45%, var(--text)) 48%,
+    var(--text) 92%
+  );
+
+  --canvas: linear-gradient(180deg, var(--background) 0%, var(--card) 200%);
+  --muted-gradient: linear-gradient(180deg, var(--muted) 0%, var(--background) 180%);
+  --card-gradient: linear-gradient(180deg, var(--card) 0%, var(--muted) 180%);
+  --card-gradient-soft: linear-gradient(
+    180deg,
+    color-mix(in oklch, var(--card) 88%, transparent) 0%,
+    color-mix(in oklch, var(--muted) 88%, transparent) 180%
+  );
+  --button-gradient: linear-gradient(0deg, var(--card) 0%, var(--button) 150%);
+
+  --light: oklch(0.361 0.016 48 / 18%);
+  --lighter: oklch(0.361 0.016 48 / 28%);
+  --lightest: oklch(0.4 0.018 48 / 38%);
+  --dark: oklch(0.172 0.01 67 / 35%);
+  --darker: oklch(0.172 0.01 67 / 50%);
+  --darkest: oklch(0.172 0.01 67 / 65%);
+
+  --shadow: inset 0 1px 2px -1px var(--light), 0 1px 2px -1px var(--darker),
+    0 2px 4px -1px var(--dark);
+  --shadow-ghost: 0 1px 2px -1px var(--darker), 0 2px 4px -1px var(--dark);
+  --shadow-card: inset 0 1px 2px -1px var(--light), 0 4px 10px -2px var(--darker),
+    0 10px 20px -4px var(--darkest);
+  --shadow-button: inset 0 1px 2px -1px var(--lighter), 0 4px 6px -1px var(--darker),
+    0 4px 8px -1px var(--dark);
+  --shadow-hover: inset 0 1px 3px -1px var(--lightest), 0 6px 6px -1px var(--darker),
+    0 6px 12px -1px var(--dark);
+  --shadow-cutout: inset -1px -1px 4px -2px var(--button), inset 0 1px 8px -1px var(--darkest),
+    inset 0 -1px 1px 1px var(--light);
+  --shadow-cutout-muted: inset -1px -1px 2px -2px color-mix(in oklch, var(--button) 50%, transparent),
+    inset 0 1px 4px -1px color-mix(in oklch, var(--darkest) 45%, transparent),
+    inset 0 -1px 1px 0 color-mix(in oklch, var(--light) 55%, transparent);
+  --shadow-cutout-card: inset -1px -1px 4px -2px var(--card), inset 0 1px 8px -1px var(--darkest),
+    inset 0 -1px 1px 1px var(--light);
+
+  --button-shadow: var(--shadow-hover);
+
+  --border: oklch(0.361 0.016 48 / 0.4);
+  --border-hover: oklch(0.4 0.018 48 / 0.55);
+  --border-muted: color-mix(in oklch, var(--border) 65%, transparent);
+
+  /* CTA: inherit semantic.css (same green as light) — no dark override */
+
+  --cta-shadow:
+    inset 0 1px 2px -1px var(--lighter),
+    0 2px 4px -1px var(--darker),
+    0 6px 14px -2px color-mix(in oklch, var(--cta) 42%, transparent);
+  --cta-shadow-hover:
+    inset 0 1px 3px -1px var(--lightest),
+    0 3px 5px -1px var(--darkest),
+    0 8px 18px -2px color-mix(in oklch, var(--cta) 52%, transparent);
+
+  color-scheme: dark;
+}
+
+
+
+
+
