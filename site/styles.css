@@ -641,21 +641,52 @@ main {
 .tips-grid {
  display: grid;
  gap: var(--space-lg);
- max-width: 416px;
+ max-width: 720px;
 }
 .tips-card {
- display: flex;
- flex-direction: column;
+ display: grid;
+ grid-template-columns: minmax(12ch, 1fr) auto;
+ column-gap: var(--space-lg);
+ row-gap: var(--space-sm);
+ align-items: start;
  overflow: hidden;
+ padding: var(--space-md);
  border: 1px solid color-mix(in oklch, var(--border) 55%, transparent);
  border-radius: var(--radius-xl);
  background: var(--muted);
  box-shadow: var(--shadow-button);
  color: var(--text);
 }
+.tips-card-copy {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ justify-content: flex-start;
+ align-self: stretch;
+ gap: var(--space-xs);
+ min-width: 0;
+ text-align: start;
+}
+.tips-card-desc {
+ margin: 0;
+ font-size: var(--font-l);
+ line-height: 1.45;
+ color: var(--secondary-text);
+ max-width: 36ch;
+}
+.tips-card-aside {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-end;
+ gap: var(--space-sm);
+ width: min(280px, 46vw);
+}
 .tips-card-media {
  display: block;
+ width: 100%;
  line-height: 0;
+ overflow: hidden;
+ border-radius: var(--radius-m);
 }
 .tips-card-media img {
  width: 100%;
@@ -663,30 +694,28 @@ main {
  aspect-ratio: 1672 / 941;
  object-fit: cover;
 }
-.tips-card-body {
- display: flex;
- flex-direction: column;
- gap: var(--space-xs);
- padding: var(--space-md);
- flex: 1;
-}
 .tips-card-meta {
  margin: 0;
+ margin-top: auto;
  font-size: var(--font-s);
  color: var(--text-muted);
  letter-spacing: 0.3px;
 }
-.tips-card-body h3 {
+.tips-card-copy h3 {
  margin: 0;
  font-family: var(--font-display);
  font-size: clamp(var(--font-l), 2.4vw, 27.2px);
  font-weight: 400;
  letter-spacing: -0.3px;
  line-height: 1.2;
+ overflow-wrap: normal;
+ text-wrap: balance;
 }
 .tips-card-cta {
- align-self: flex-end;
- margin-top: var(--space-sm);
+ width: 50%;
+ box-sizing: border-box;
+ justify-content: center;
+ padding-inline: var(--gap-s);
  background: var(--accent);
  border-color: var(--accent);
  /* Dark ink on peach fill — --accent-text is accent-as-text, not on-fill. */
@@ -696,11 +725,6 @@ main {
 .tips-card-cta:hover {
  box-shadow: var(--shadow-hover);
 }
-@media (min-width: 720px) {
- .tips-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  max-width: none;
-}}
 .bundle-grid {
  display: grid;
  gap: var(--space-md);
@@ -1057,7 +1081,7 @@ main {
 }
 .oss-code .tok-tag,
 .oss-code .tok-fn {
- color: var(--accent-text);
+ color: var(--accent);
 }
 .oss-doc-foot {
  margin: 0;
@@ -1143,9 +1167,13 @@ main {
 }
 @media (min-width: 720px) {
  .about-grid {
-  grid-template-columns: 192px minmax(0, 1fr);
-  gap: var(--space-2xl);
-}}
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--gap-xl);
+ }
+ .portrait {
+  margin-left: var(--gap-xl);
+ }
+}
 .contact-page {
  background: var(--muted-gradient);
 }
