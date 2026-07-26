@@ -31,6 +31,7 @@ const dictionaries = {
     "tips.title": "Tricks I use to ship fast and save tokens",
     "tips.series1.meta": "Series · intro + 14 tips",
     "tips.series1.title": "14 AI agent skills to speed up developers",
+    "tips.series1.desc": "A product-owner map you can hand to engineering",
     "tips.series1.cta": "Read More",
     "article.kicker": "",
     "article.series": "",
@@ -84,7 +85,7 @@ const dictionaries = {
     "writing.foot":
       "One bus for prefs. Theme paints data-theme / CSS vars. useText() gives t under <ActiveI18n />; setLocale writes the bus.",
     "about.label": "About",
-    "about.title": "Senior engineer with hands-on delivery",
+    "about.title": "Senior engineer with production experience",
     "about.body":
       "Calvin is a senior product engineer. He works across frontend architecture, backend systems, AI integrations, document processing, authentication, billing, and infrastructure. He focuses on products where technical decisions decide whether you can ship.",
     "contact.label": "Contact",
@@ -131,6 +132,8 @@ const dictionaries = {
     "tips.title": "Astuces pour livrer vite et économiser des tokens",
     "tips.series1.meta": "Série · intro + 14 astuces",
     "tips.series1.title": "14 compétences d’agents IA pour accélérer les développeurs",
+    "tips.series1.desc":
+      "Une carte product-owner à transmettre à l’ingénierie",
     "tips.series1.cta": "Lire la suite",
     "article.kicker": "",
     "article.series": "",
@@ -185,7 +188,7 @@ const dictionaries = {
     "writing.foot":
       "Un bus pour les préférences. Le thème peint data-theme / les CSS vars. useText() donne t sous <ActiveI18n /> ; setLocale écrit le bus.",
     "about.label": "À propos",
-    "about.title": "Ingénieur senior avec livraison concrète",
+    "about.title": "Ingénieur senior avec expérience en production",
     "about.body":
       "Calvin est un ingénieur produit senior. Il travaille sur l’architecture frontend, les systèmes backend, les intégrations IA, le traitement documentaire, l’authentification, la facturation et l’infrastructure. Il se concentre sur les produits où les décisions techniques décident si vous pouvez livrer.",
     "contact.label": "Contact",
@@ -590,9 +593,3 @@ wireAmbient();
 paintSeriesRail();
 wireSeriesUnlockLinks();
 wireArticleNext();
-
-
-
-
-
-

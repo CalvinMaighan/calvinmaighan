@@ -1,700 +1,672 @@
+index.html [700L]
 <!doctype html>
 <html lang="en" data-theme="light" data-accent="beige">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Calvin Maighan: senior AI and SaaS engineer for difficult product builds. Contract and fractional engagements."
+ <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+   name="description"
+   content="Calvin Maighan: senior AI and SaaS engineer for difficult product builds. Contract and fractional engagements."
+  />
+  <title>Calvin Maighan: AI consulting to help move ideas forward.</title>
+  <link rel="canonical" href="https://calvinmaighan.com/" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#E6E2D4" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#221D19" media="(prefers-color-scheme: dark)" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Calvin Maighan" />
+  <meta property="og:locale" content="en_CA" />
+  <meta property="og:title" content="Calvin Maighan: AI consulting to help move ideas forward." />
+  <meta
+   property="og:description"
+   content="Calvin Maighan: senior AI and SaaS engineer for difficult product builds. Contract and fractional engagements."
+  />
+  <meta property="og:url" content="https://calvinmaighan.com/" />
+  <meta property="og:image" content="https://calvinmaighan.com/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Calvin Maighan — AI consulting to help move ideas forward." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Calvin Maighan: AI consulting to help move ideas forward." />
+  <meta
+   name="twitter:description"
+   content="Calvin Maighan: senior AI and SaaS engineer for difficult product builds. Contract and fractional engagements."
+  />
+  <meta name="twitter:image" content="https://calvinmaighan.com/og.png" />
+  <script type="application/ld+json">
+   {
+    "@context": "https://schema.org",
+    "@graph": [
+     {
+      "@type": "WebSite",
+      "@id": "https://calvinmaighan.com/#website",
+      "name": "Calvin Maighan",
+      "url": "https://calvinmaighan.com/",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://calvinmaighan.com/#person" }
+     },
+     {
+      "@type": "WebPage",
+      "@id": "https://calvinmaighan.com/#webpage",
+      "url": "https://calvinmaighan.com/",
+      "name": "Calvin Maighan: AI consulting to help move ideas forward.",
+      "description": "Calvin Maighan: senior AI and SaaS engineer for difficult product builds. Contract and fractional engagements.",
+      "isPartOf": { "@id": "https://calvinmaighan.com/#website" },
+      "about": { "@id": "https://calvinmaighan.com/#person" },
+      "inLanguage": "en"
+     },
+     {
+      "@type": "Person",
+      "@id": "https://calvinmaighan.com/#person",
+      "name": "Calvin Maighan",
+      "url": "https://calvinmaighan.com/",
+      "email": "hello@calvinmaighan.com",
+      "image": "https://calvinmaighan.com/logo.png",
+      "jobTitle": "Senior AI and SaaS Engineer",
+      "homeLocation": {
+       "@type": "Place",
+       "name": "Montreal"
+      },
+      "sameAs": ["https://github.com/CalvinMaighan"],
+      "knowsAbout": [
+       "AI systems",
+       "SaaS architecture",
+       "Next.js",
+       "TypeScript",
+       "Document intelligence"
+      ]
+     },
+     {
+      "@type": "ProfessionalService",
+      "@id": "https://calvinmaighan.com/#service",
+      "name": "Calvin Maighan",
+      "url": "https://calvinmaighan.com/",
+      "image": ["https://calvinmaighan.com/logo.png", "https://calvinmaighan.com/og.png"],
+      "logo": "https://calvinmaighan.com/logo.png",
+      "description": "Contract and fractional AI and SaaS engineering for startups, SaaS teams, and agencies.",
+      "areaServed": "Remote",
+      "availableLanguage": ["en", "fr"],
+      "founder": { "@id": "https://calvinmaighan.com/#person" },
+      "sameAs": ["https://github.com/CalvinMaighan"]
+}
+    ]
+}
+  </script>
+  <script>
+   (() => {
+    try {
+     const root = document.documentElement;
+     const mode = localStorage.getItem("active-theme:mode");
+     const color = localStorage.getItem("active-theme:color");
+     if (mode === "light" || mode === "dark") root.dataset.theme = mode;
+     if (color) root.dataset.accent = color;
+    } catch (_) {}
+   })();
+  </script>
+  <link rel="stylesheet" href="./styles.css" />
+ </head>
+ <body>
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
+   <symbol id="icon-sun" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+     <circle cx="12" cy="12" r="4" />
+     <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+    </g>
+   </symbol>
+   <symbol id="icon-moon" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+   </symbol>
+   <symbol id="icon-languages" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 8l6 6m-7 0l6-6l2-3M2 5h12M7 2h1m14 20l-5-10l-5 10m2-4h6" />
+   </symbol>
+   <symbol id="icon-menu" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16" />
+   </symbol>
+   <symbol id="icon-x" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
+   </symbol>
+   <symbol id="icon-github" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 1C5.9225 1 1 5.9225 1 12C1 16.8675 4.14875 20.9787 8.52125 22.4362C9.07125 22.5325 9.2775 22.2025 9.2775 21.9137C9.2775 21.6525 9.26375 20.7862 9.26375 19.865C6.5 20.3737 5.785 19.1912 5.565 18.5725C5.44125 18.2562 4.905 17.28 4.4375 17.0187C4.0525 16.8125 3.5025 16.3037 4.42375 16.29C5.29 16.2762 5.90875 17.0875 6.115 17.4175C7.105 19.0812 8.68625 18.6137 9.31875 18.325C9.415 17.61 9.70375 17.1287 10.02 16.8537C7.5725 16.5787 5.015 15.63 5.015 11.4225C5.015 10.2262 5.44125 9.23625 6.1425 8.46625C6.0325 8.19125 5.6475 7.06375 6.2525 5.55125C6.2525 5.55125 7.17375 5.2625 9.2775 6.67875C10.1575 6.43125 11.0925 6.3075 12.0275 6.3075C12.9625 6.3075 13.8975 6.43125 14.7775 6.67875C16.8813 5.24875 17.8025 5.55125 17.8025 5.55125C18.4075 7.06375 18.0225 8.19125 17.9125 8.46625C18.6138 9.23625 19.04 10.2125 19.04 11.4225C19.04 15.6437 16.4688 16.5787 14.0213 16.8537C14.42 17.1975 14.7638 17.8575 14.7638 18.8887C14.7638 20.36 14.75 21.5425 14.75 21.9137C14.75 22.2025 14.9563 22.5462 15.5063 22.4362C19.8513 20.9787 23 16.8537 23 12C23 5.9225 18.0775 1 12 1Z" />
+   </symbol>
+   <symbol id="icon-mail" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+     <path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+     <rect width="20" height="16" x="2" y="4" rx="2" />
+    </g>
+   </symbol>
+   <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+    <path
+     fill="none"
+     stroke="currentColor"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     stroke-width="2"
+     d="M5 12h14m-7-7l7 7l-7 7"
     />
-    <title>Calvin Maighan: AI consulting to help move ideas forward.</title>
-    <link rel="canonical" href="https://calvinmaighan.com/" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#E6E2D4" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#221D19" media="(prefers-color-scheme: dark)" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Calvin Maighan" />
-    <meta property="og:locale" content="en_CA" />
-    <meta property="og:title" content="Calvin Maighan: AI consulting to help move ideas forward." />
-    <meta
-      property="og:description"
-      content="Calvin Maighan: senior AI and SaaS engineer for difficult product builds. Contract and fractional engagements."
+   </symbol>
+   <symbol id="icon-layers" viewBox="0 0 24 24">
+    <path
+     fill="none"
+     stroke="currentColor"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     stroke-width="2"
+     d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83zM2 12l8.58 3.91a2 2 0 0 0 1.66 0L22 12M2 17l8.58 3.91a2 2 0 0 0 1.66 0L22 17"
     />
-    <meta property="og:url" content="https://calvinmaighan.com/" />
-    <meta property="og:image" content="https://calvinmaighan.com/og.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Calvin Maighan — AI consulting to help move ideas forward." />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Calvin Maighan: AI consulting to help move ideas forward." />
-    <meta
-      name="twitter:description"
-      content="Calvin Maighan: senior AI and SaaS engineer for difficult product builds. Contract and fractional engagements."
+   </symbol>
+   <symbol id="icon-sparkles" viewBox="0 0 24 24">
+    <path
+     fill="none"
+     stroke="currentColor"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     stroke-width="2"
+     d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3zM5 3v4M19 17v4M3 5h4M17 19h4"
     />
-    <meta name="twitter:image" content="https://calvinmaighan.com/og.png" />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "WebSite",
-            "@id": "https://calvinmaighan.com/#website",
-            "name": "Calvin Maighan",
-            "url": "https://calvinmaighan.com/",
-            "inLanguage": "en",
-            "publisher": { "@id": "https://calvinmaighan.com/#person" }
-          },
-          {
-            "@type": "WebPage",
-            "@id": "https://calvinmaighan.com/#webpage",
-            "url": "https://calvinmaighan.com/",
-            "name": "Calvin Maighan: AI consulting to help move ideas forward.",
-            "description": "Calvin Maighan: senior AI and SaaS engineer for difficult product builds. Contract and fractional engagements.",
-            "isPartOf": { "@id": "https://calvinmaighan.com/#website" },
-            "about": { "@id": "https://calvinmaighan.com/#person" },
-            "inLanguage": "en"
-          },
-          {
-            "@type": "Person",
-            "@id": "https://calvinmaighan.com/#person",
-            "name": "Calvin Maighan",
-            "url": "https://calvinmaighan.com/",
-            "email": "hello@calvinmaighan.com",
-            "image": "https://calvinmaighan.com/logo.png",
-            "jobTitle": "Senior AI and SaaS Engineer",
-            "homeLocation": {
-              "@type": "Place",
-              "name": "Montreal"
-            },
-            "sameAs": ["https://github.com/CalvinMaighan"],
-            "knowsAbout": [
-              "AI systems",
-              "SaaS architecture",
-              "Next.js",
-              "TypeScript",
-              "Document intelligence"
-            ]
-          },
-          {
-            "@type": "ProfessionalService",
-            "@id": "https://calvinmaighan.com/#service",
-            "name": "Calvin Maighan",
-            "url": "https://calvinmaighan.com/",
-            "image": ["https://calvinmaighan.com/logo.png", "https://calvinmaighan.com/og.png"],
-            "logo": "https://calvinmaighan.com/logo.png",
-            "description": "Contract and fractional AI and SaaS engineering for startups, SaaS teams, and agencies.",
-            "areaServed": "Remote",
-            "availableLanguage": ["en", "fr"],
-            "founder": { "@id": "https://calvinmaighan.com/#person" },
-            "sameAs": ["https://github.com/CalvinMaighan"]
-          }
-        ]
-      }
-    </script>
-    <script>
-      (() => {
-        try {
-          const root = document.documentElement;
-          const mode = localStorage.getItem("active-theme:mode");
-          const color = localStorage.getItem("active-theme:color");
-          if (mode === "light" || mode === "dark") root.dataset.theme = mode;
-          if (color) root.dataset.accent = color;
-        } catch (_) {}
-      })();
-    </script>
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <!-- Lucide icons from Iconify icon-sets (inline for reliable <use>) -->
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
-      <symbol id="icon-sun" viewBox="0 0 24 24">
-        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-        </g>
-      </symbol>
-      <symbol id="icon-moon" viewBox="0 0 24 24">
-        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
-      </symbol>
-      <symbol id="icon-languages" viewBox="0 0 24 24">
-        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 8l6 6m-7 0l6-6l2-3M2 5h12M7 2h1m14 20l-5-10l-5 10m2-4h6" />
-      </symbol>
-      <symbol id="icon-menu" viewBox="0 0 24 24">
-        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16" />
-      </symbol>
-      <symbol id="icon-x" viewBox="0 0 24 24">
-        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
-      </symbol>
-      <symbol id="icon-github" viewBox="0 0 24 24">
-        <path fill="currentColor" d="M12 1C5.9225 1 1 5.9225 1 12C1 16.8675 4.14875 20.9787 8.52125 22.4362C9.07125 22.5325 9.2775 22.2025 9.2775 21.9137C9.2775 21.6525 9.26375 20.7862 9.26375 19.865C6.5 20.3737 5.785 19.1912 5.565 18.5725C5.44125 18.2562 4.905 17.28 4.4375 17.0187C4.0525 16.8125 3.5025 16.3037 4.42375 16.29C5.29 16.2762 5.90875 17.0875 6.115 17.4175C7.105 19.0812 8.68625 18.6137 9.31875 18.325C9.415 17.61 9.70375 17.1287 10.02 16.8537C7.5725 16.5787 5.015 15.63 5.015 11.4225C5.015 10.2262 5.44125 9.23625 6.1425 8.46625C6.0325 8.19125 5.6475 7.06375 6.2525 5.55125C6.2525 5.55125 7.17375 5.2625 9.2775 6.67875C10.1575 6.43125 11.0925 6.3075 12.0275 6.3075C12.9625 6.3075 13.8975 6.43125 14.7775 6.67875C16.8813 5.24875 17.8025 5.55125 17.8025 5.55125C18.4075 7.06375 18.0225 8.19125 17.9125 8.46625C18.6138 9.23625 19.04 10.2125 19.04 11.4225C19.04 15.6437 16.4688 16.5787 14.0213 16.8537C14.42 17.1975 14.7638 17.8575 14.7638 18.8887C14.7638 20.36 14.75 21.5425 14.75 21.9137C14.75 22.2025 14.9563 22.5462 15.5063 22.4362C19.8513 20.9787 23 16.8537 23 12C23 5.9225 18.0775 1 12 1Z" />
-      </symbol>
-      <symbol id="icon-mail" viewBox="0 0 24 24">
-        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-          <path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-          <rect width="20" height="16" x="2" y="4" rx="2" />
-        </g>
-      </symbol>
-      <symbol id="icon-arrow-right" viewBox="0 0 24 24">
-        <path
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M5 12h14m-7-7l7 7l-7 7"
-        />
-      </symbol>
-      <symbol id="icon-layers" viewBox="0 0 24 24">
-        <path
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83zM2 12l8.58 3.91a2 2 0 0 0 1.66 0L22 12M2 17l8.58 3.91a2 2 0 0 0 1.66 0L22 17"
-        />
-      </symbol>
-      <symbol id="icon-sparkles" viewBox="0 0 24 24">
-        <path
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3zM5 3v4M19 17v4M3 5h4M17 19h4"
-        />
-      </symbol>
-      <symbol id="icon-scan-text" viewBox="0 0 24 24">
-        <path
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M3 7V5a2 2 0 0 1 2-2h2m10 0h2a2 2 0 0 1 2 2v2m0 10v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8h8M7 12h10M7 16h6"
-        />
-      </symbol>
-      <symbol id="icon-activity" viewBox="0 0 24 24">
-        <path
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"
-        />
-      </symbol>
-    </svg>
-
-    <header class="site-header" id="site-header">
-      <div class="bar">
-        <a class="brand" href="#top" data-i18n="brand">Calvin Maighan</a>
-        <div class="header-actions">
-          <div class="locale-menu" id="locale-menu">
-            <button
-              type="button"
-              class="icon-btn icon-btn-wide"
-              id="locale-toggle"
-              aria-label="Language"
-              aria-haspopup="listbox"
-              aria-expanded="false"
-              aria-controls="locale-popover"
-            >
-              <svg class="icon" aria-hidden="true"><use href="#icon-languages"></use></svg>
-              <span class="icon-btn-text" id="locale-label">EN</span>
-            </button>
-            <div class="locale-popover" id="locale-popover" role="listbox" aria-label="Language">
-              <button type="button" class="locale-option" role="option" data-locale="en" aria-selected="true">
-                EN
-              </button>
-              <button type="button" class="locale-option" role="option" data-locale="fr" aria-selected="false">
-                FR
-              </button>
-            </div>
-          </div>
-          <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch to dark theme">
-            <svg class="icon" aria-hidden="true"><use id="theme-icon-use" href="#icon-moon"></use></svg>
-          </button>
-          <button
-            type="button"
-            class="menu-toggle"
-            id="menu-toggle"
-            aria-expanded="false"
-            aria-controls="nav-drawer"
-            aria-label="Open menu"
-          >
-            <svg class="icon" aria-hidden="true"><use id="menu-icon-use" href="#icon-menu"></use></svg>
-          </button>
-        </div>
+   </symbol>
+   <symbol id="icon-scan-text" viewBox="0 0 24 24">
+    <path
+     fill="none"
+     stroke="currentColor"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     stroke-width="2"
+     d="M3 7V5a2 2 0 0 1 2-2h2m10 0h2a2 2 0 0 1 2 2v2m0 10v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8h8M7 12h10M7 16h6"
+    />
+   </symbol>
+   <symbol id="icon-activity" viewBox="0 0 24 24">
+    <path
+     fill="none"
+     stroke="currentColor"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     stroke-width="2"
+     d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"
+    />
+   </symbol>
+  </svg>
+  <header class="site-header" id="site-header">
+   <div class="bar">
+    <a class="brand" href="#top" data-i18n="brand">Calvin Maighan</a>
+    <div class="header-actions">
+     <div class="locale-menu" id="locale-menu">
+      <button
+       type="button"
+       class="icon-btn icon-btn-wide"
+       id="locale-toggle"
+       aria-label="Language"
+       aria-haspopup="listbox"
+       aria-expanded="false"
+       aria-controls="locale-popover"
+      >
+       <svg class="icon" aria-hidden="true"><use href="#icon-languages"></use></svg>
+       <span class="icon-btn-text" id="locale-label">EN</span>
+      </button>
+      <div class="locale-popover" id="locale-popover" role="listbox" aria-label="Language">
+       <button type="button" class="locale-option" role="option" data-locale="en" aria-selected="true">
+        EN
+       </button>
+       <button type="button" class="locale-option" role="option" data-locale="fr" aria-selected="false">
+        FR
+       </button>
       </div>
-    </header>
-
-    <div class="backdrop" id="menu-backdrop"></div>
-    <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
-      <a href="#services" data-i18n="nav.services">Services</a>
-      <a href="#writing" data-i18n="nav.writing">Libraries</a>
-      <a href="./contact.html" data-i18n="nav.contact">Contact</a>
-      <a class="btn btn-primary" href="./contact.html" data-i18n="nav.cta">Book a call</a>
-    </nav>
-
-    <main id="top">
-      <div class="fold">
-        <section class="hero band-base">
-          <canvas
-            class="hero-ambient"
-            id="hero-ambient"
-            aria-hidden="true"
-          ></canvas>
-          <div class="wrap hero-content">
-            <div class="hero-copy">
-              <h1>
-                <span data-i18n="hero.title.before">AI consulting to help move </span
-                ><span class="hero-word" data-i18n="hero.title.word">ideas</span
-                ><span data-i18n="hero.title.after"> forward.</span>
-              </h1>
-              <span class="hero-rule" aria-hidden="true"></span>
-              <p class="lede" data-i18n="hero.lede">
-                I help startups, SaaS teams, and agencies design and ship AI systems,
-                document workflows, and complex web platforms. Your team and agents run the
-                system after handoff.
-              </p>
-              <div class="cta-row">
-                <a class="btn btn-primary" href="./contact.html" data-i18n="hero.cta"
-                  >Discuss your project</a
-                >
-              </div>
-            </div>
-          </div>
-          <label class="hero-tempo">
-            <span class="hero-tempo-label">Speed</span>
-            <input
-              id="tempo"
-              type="range"
-              min="0.25"
-              max="4"
-              step="0.05"
-              value="2"
-              aria-label="Animation speed"
-            />
-            <span class="hero-tempo-value" id="tempo-value">2.00</span>
-          </label>
-        </section>
-
-        <section id="tips" class="tips band-ink pad-tall" aria-label="Tips">
-          <div class="wrap">
-            <div class="section-head tips-head">
-              <h2 data-i18n="tips.title">Tricks I use to ship fast and save tokens</h2>
-            </div>
-            <div class="tips-grid">
-              <article class="tips-card">
-                <a
-                  class="tips-card-media"
-                  href="./tips/how-ai-agents-speed-up-developers.html"
-                  data-series-unlock="how-ai-agents-speed-up-developers"
-                >
-                  <img
-                    src="./calvinmaighan-article-series-1.png"
-                    alt="Cover for how AI agents can speed up developers"
-                    width="1672"
-                    height="941"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </a>
-                <div class="tips-card-body">
-                  <p class="tips-card-meta" data-i18n="tips.series1.meta">
-                    Series · intro + 14 tips
-                  </p>
-                  <h3 data-i18n="tips.series1.title">
-                    14 AI agent skills to speed up developers
-                  </h3>
-                  <a
-                    class="btn btn-primary tips-card-cta"
-                    href="./tips/how-ai-agents-speed-up-developers.html"
-                    data-series-unlock="how-ai-agents-speed-up-developers"
-                  >
-                    <span data-i18n="tips.series1.cta">Read More</span>
-                    <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
-                  </a>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
+     </div>
+     <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch to dark theme">
+      <svg class="icon" aria-hidden="true"><use id="theme-icon-use" href="#icon-moon"></use></svg>
+     </button>
+     <button
+      type="button"
+      class="menu-toggle"
+      id="menu-toggle"
+      aria-expanded="false"
+      aria-controls="nav-drawer"
+      aria-label="Open menu"
+     >
+      <svg class="icon" aria-hidden="true"><use id="menu-icon-use" href="#icon-menu"></use></svg>
+     </button>
+    </div>
+   </div>
+  </header>
+  <div class="backdrop" id="menu-backdrop"></div>
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
+   <a href="#services" data-i18n="nav.services">Services</a>
+   <a href="#writing" data-i18n="nav.writing">Libraries</a>
+   <a href="./contact.html" data-i18n="nav.contact">Contact</a>
+   <a class="btn btn-primary" href="./contact.html" data-i18n="nav.cta">Book a call</a>
+  </nav>
+  <main id="top">
+   <div class="fold">
+    <section class="hero band-base">
+     <canvas
+      class="hero-ambient"
+      id="hero-ambient"
+      aria-hidden="true"
+     ></canvas>
+     <div class="wrap hero-content">
+      <div class="hero-copy">
+       <h1>
+        <span data-i18n="hero.title.before">AI consulting to help move </span
+        ><span class="hero-word" data-i18n="hero.title.word">ideas</span
+        ><span data-i18n="hero.title.after"> forward.</span>
+       </h1>
+       <span class="hero-rule" aria-hidden="true"></span>
+       <p class="lede" data-i18n="hero.lede">
+        I help startups, SaaS teams, and agencies design and ship AI systems,
+        document workflows, and complex web platforms. Your team and agents run the
+        system after handoff.
+       </p>
+       <div class="cta-row">
+        <a class="btn btn-primary" href="./contact.html" data-i18n="hero.cta"
+         >Discuss your project</a
+        >
+       </div>
       </div>
-
-      <section id="services" class="band-cool" aria-labelledby="bundle-title">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 id="bundle-title" data-i18n="bundle.title">
-              Choose the right level of involvement
-            </h2>
-            <p data-i18n="bundle.lede">
-              Choose strategic guidance, focused implementation, or embedded development
-              based on what your project needs. Every engagement is designed so your team
-              and agents can run the system after handoff.
-            </p>
-          </div>
-
-          <div class="bundle-grid">
-            <article class="bundle-card">
-              <h3 data-i18n="bundle.advisory.t">Advisory</h3>
-              <p data-i18n="bundle.advisory.d">
-                Strategic guidance for AI architecture, product planning, technical
-                decisions, and implementation reviews.
-              </p>
-            </article>
-            <article class="bundle-card is-recommended" aria-labelledby="bundle-builder-title">
-              <p class="bundle-rec" data-i18n="bundle.recommended">Recommended</p>
-              <h3 id="bundle-builder-title" data-i18n="bundle.builder.t">Builder Bundle</h3>
-              <p data-i18n="bundle.builder.d">
-                End-to-end ownership of a defined initiative, from planning and
-                architecture through implementation and handoff.
-              </p>
-            </article>
-            <article class="bundle-card">
-              <h3 data-i18n="bundle.embedded.t">Development</h3>
-              <p data-i18n="bundle.embedded.d">
-                Senior engineering capacity working directly with your team to own complex
-                features, integrations, AI systems, and web platforms.
-              </p>
-            </article>
-          </div>
-
-          <div class="cta-row bundle-cta">
-            <a class="btn btn-primary" href="./contact.html" data-i18n="hero.cta"
-              >Discuss your project</a
-            >
-          </div>
+     </div>
+     <label class="hero-tempo">
+      <span class="hero-tempo-label">Speed</span>
+      <input
+       id="tempo"
+       type="range"
+       min="0.25"
+       max="4"
+       step="0.05"
+       value="2"
+       aria-label="Animation speed"
+      />
+      <span class="hero-tempo-value" id="tempo-value">2.00</span>
+     </label>
+    </section>
+    <section id="tips" class="tips band-ink pad-tall" aria-label="Tips">
+     <div class="wrap">
+      <div class="section-head tips-head">
+       <h2 data-i18n="tips.title">Tricks I use to ship fast and save tokens</h2>
+      </div>
+      <div class="tips-grid">
+       <article class="tips-card">
+        <div class="tips-card-copy">
+         <h3 data-i18n="tips.series1.title">
+          14 AI agent skills to speed up developers
+         </h3>
+         <p class="tips-card-desc" data-i18n="tips.series1.desc">
+          A product-owner map you can hand to engineering
+         </p>
+         <p class="tips-card-meta" data-i18n="tips.series1.meta">
+          Series · intro + 14 tips
+         </p>
         </div>
-      </section>
-
-      <section class="stack band-ink" id="expertise" aria-labelledby="stack-title">
-        <div class="wrap">
-          <div class="section-head">
-            <h2 id="stack-title" data-i18n="expertise.title">What I build with</h2>
-            <p data-i18n="expertise.lede">
-              Application architecture, AI systems, document intelligence, and production
-              operations.
-            </p>
-          </div>
-
-          <div class="stack-meta">
-            <span data-i18n="expertise.meta">4 domains · 24 capabilities</span>
-            <span class="stack-legend">
-              <span class="stack-legend-dot" aria-hidden="true"></span>
-              <span data-i18n="expertise.legend">Core specialty</span>
-            </span>
-          </div>
-
-          <div class="stack-board">
-            <article class="stack-card">
-              <div class="stack-card-head">
-                <span class="stack-ico" aria-hidden="true">
-                  <svg class="icon"><use href="#icon-layers"></use></svg>
-                </span>
-                <h3 data-i18n="expertise.1.t">Application architecture</h3>
-              </div>
-              <p class="stack-card-note" data-i18n="expertise.1.d">
-                Typed product surfaces, APIs, and multi-tenant foundations.
-              </p>
-              <ul class="stack-chips">
-                <li class="is-core">Next.js</li>
-                <li class="is-core">TypeScript</li>
-                <li>React</li>
-                <li>GraphQL</li>
-                <li>API design</li>
-                <li>Multi-tenant SaaS</li>
-              </ul>
-            </article>
-
-            <article class="stack-card">
-              <div class="stack-card-head">
-                <span class="stack-ico" aria-hidden="true">
-                  <svg class="icon"><use href="#icon-sparkles"></use></svg>
-                </span>
-                <h3 data-i18n="expertise.2.t">AI systems</h3>
-              </div>
-              <p class="stack-card-note" data-i18n="expertise.2.d">
-                Agents, retrieval, and evaluation wired into real products.
-              </p>
-              <ul class="stack-chips">
-                <li>LLM integrations</li>
-                <li class="is-core">AI agents</li>
-                <li class="is-core">Retrieval and RAG</li>
-                <li>Evaluation</li>
-                <li>Model routing</li>
-                <li>Cost and latency</li>
-              </ul>
-            </article>
-
-            <article class="stack-card">
-              <div class="stack-card-head">
-                <span class="stack-ico" aria-hidden="true">
-                  <svg class="icon"><use href="#icon-scan-text"></use></svg>
-                </span>
-                <h3 data-i18n="expertise.3.t">Document intelligence</h3>
-              </div>
-              <p class="stack-card-note" data-i18n="expertise.3.d">
-                PDFs and spreadsheets turned into verified structured data.
-              </p>
-              <ul class="stack-chips">
-                <li>OCR</li>
-                <li class="is-core">Structured extraction</li>
-                <li class="is-core">Evidence linking</li>
-                <li>PDF and spreadsheet workflows</li>
-                <li>Long-running processing</li>
-                <li>Human verification</li>
-              </ul>
-            </article>
-
-            <article class="stack-card">
-              <div class="stack-card-head">
-                <span class="stack-ico" aria-hidden="true">
-                  <svg class="icon"><use href="#icon-activity"></use></svg>
-                </span>
-                <h3 data-i18n="expertise.4.t">Production systems</h3>
-              </div>
-              <p class="stack-card-note" data-i18n="expertise.4.d">
-                Auth, billing, jobs, and observability that hold under load.
-              </p>
-              <ul class="stack-chips">
-                <li class="is-core">PostgreSQL</li>
-                <li>Authentication and SSO</li>
-                <li>Billing</li>
-                <li>Background jobs</li>
-                <li>Real-time systems</li>
-                <li class="is-core">Observability</li>
-              </ul>
-            </article>
-          </div>
+        <div class="tips-card-aside">
+         <a
+          class="tips-card-media"
+          href="./tips/how-ai-agents-speed-up-developers.html"
+          data-series-unlock="how-ai-agents-speed-up-developers"
+         >
+          <img
+           src="./calvinmaighan-article-series-1.png"
+           alt="Cover for how AI agents can speed up developers"
+           width="1672"
+           height="941"
+           loading="lazy"
+           decoding="async"
+          />
+         </a>
+         <a
+          class="btn btn-primary tips-card-cta"
+          href="./tips/how-ai-agents-speed-up-developers.html"
+          data-series-unlock="how-ai-agents-speed-up-developers"
+         >
+          <span data-i18n="tips.series1.cta">Read More</span>
+          <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+         </a>
         </div>
-      </section>
-
-      <div class="band-tail">
-      <section id="about" class="pad-tight">
-        <div class="wrap about-grid">
-          <div class="portrait">
-            <img
-              src="./calvinprofile.jpg"
-              alt="Calvin Maighan"
-              width="192"
-              height="192"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <div class="about-copy">
-            <h2 data-i18n="about.title">Senior engineer with hands-on delivery</h2>
-            <p data-i18n="about.body">
-              Calvin is a senior product engineer. He works across frontend architecture,
-              backend systems, AI integrations, document processing, authentication,
-              billing, and infrastructure. He focuses on products where technical
-              decisions decide whether you can ship.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="writing" class="oss-section" aria-labelledby="oss-title">
-        <div class="wrap">
-          <article class="oss-doc">
-            <header class="oss-doc-head">
-              <h2 id="oss-title" data-i18n="writing.title">Calvin Maighan</h2>
-              <p class="oss-doc-role" data-i18n="writing.role">
-                10+ years of building ambitious products
-              </p>
-              <p class="oss-doc-lede" data-i18n="writing.lede">
-                Open-source client libs for shared UI state, theme, i18n.
-              </p>
-            </header>
-
-            <h3 data-i18n="writing.libs">Libraries</h3>
-            <div class="oss-table-wrap">
-              <table class="oss-table">
-                <thead>
-                  <tr>
-                    <th scope="col" data-i18n="writing.col.package">Package</th>
-                    <th scope="col" data-i18n="writing.col.does">What it does</th>
-                    <th scope="col" data-i18n="writing.col.repo">Repo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <a
-                        class="oss-pkg"
-                        href="https://github.com/CalvinMaighan/active-state"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        >active-state</a
-                      >
-                    </td>
-                    <td data-i18n="writing.oss1">
-                      Tiny keyed pub/sub store — React, DOM bindings, persist / shared /
-                      SSR
-                    </td>
-                    <td>
-                      <a
-                        class="oss-repo"
-                        href="https://github.com/CalvinMaighan/active-state"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        <svg class="icon" aria-hidden="true">
-                          <use href="#icon-github"></use>
-                        </svg>
-                        <span>CalvinMaighan/active-state</span>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        class="oss-pkg"
-                        href="https://github.com/CalvinMaighan/active-theme"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        >active-theme</a
-                      >
-                    </td>
-                    <td data-i18n="writing.oss2">
-                      Mode + color on :root — persist by default, /lite, /state +
-                      &lt;ActiveTheme /&gt;
-                    </td>
-                    <td>
-                      <a
-                        class="oss-repo"
-                        href="https://github.com/CalvinMaighan/active-theme"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        <svg class="icon" aria-hidden="true">
-                          <use href="#icon-github"></use>
-                        </svg>
-                        <span>CalvinMaighan/active-theme</span>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        class="oss-pkg"
-                        href="https://github.com/CalvinMaighan/active-i18n"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        >active-i18n</a
-                      >
-                    </td>
-                    <td data-i18n="writing.oss3">
-                      Typed dictionaries + useText() / t() — persist by default, /lite,
-                      /state + &lt;ActiveI18n /&gt;
-                    </td>
-                    <td>
-                      <a
-                        class="oss-repo"
-                        href="https://github.com/CalvinMaighan/active-i18n"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        <svg class="icon" aria-hidden="true">
-                          <use href="#icon-github"></use>
-                        </svg>
-                        <span>CalvinMaighan/active-i18n</span>
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <h3 data-i18n="writing.together">Together</h3>
-            <pre class="oss-code" tabindex="0"><code><span class="tok-kw">import</span> { ActiveState, useActiveState } <span class="tok-kw">from</span> <span class="tok-str">"active-state/react"</span>;
+       </article>
+      </div>
+     </div>
+    </section>
+   </div>
+   <section id="services" class="band-cool" aria-labelledby="bundle-title">
+    <div class="wrap">
+     <div class="section-head">
+      <h2 id="bundle-title" data-i18n="bundle.title">
+       Choose the right level of involvement
+      </h2>
+      <p data-i18n="bundle.lede">
+       Choose strategic guidance, focused implementation, or embedded development
+       based on what your project needs. Every engagement is designed so your team
+       and agents can run the system after handoff.
+      </p>
+     </div>
+     <div class="bundle-grid">
+      <article class="bundle-card">
+       <h3 data-i18n="bundle.advisory.t">Advisory</h3>
+       <p data-i18n="bundle.advisory.d">
+        Strategic guidance for AI architecture, product planning, technical
+        decisions, and implementation reviews.
+       </p>
+      </article>
+      <article class="bundle-card is-recommended" aria-labelledby="bundle-builder-title">
+       <p class="bundle-rec" data-i18n="bundle.recommended">Recommended</p>
+       <h3 id="bundle-builder-title" data-i18n="bundle.builder.t">Builder Bundle</h3>
+       <p data-i18n="bundle.builder.d">
+        End-to-end ownership of a defined initiative, from planning and
+        architecture through implementation and handoff.
+       </p>
+      </article>
+      <article class="bundle-card">
+       <h3 data-i18n="bundle.embedded.t">Development</h3>
+       <p data-i18n="bundle.embedded.d">
+        Senior engineering capacity working directly with your team to own complex
+        features, integrations, AI systems, and web platforms.
+       </p>
+      </article>
+     </div>
+     <div class="cta-row bundle-cta">
+      <a class="btn btn-primary" href="./contact.html" data-i18n="hero.cta"
+       >Discuss your project</a
+      >
+     </div>
+    </div>
+   </section>
+   <section class="stack band-ink" id="expertise" aria-labelledby="stack-title">
+    <div class="wrap">
+     <div class="section-head">
+      <h2 id="stack-title" data-i18n="expertise.title">What I build with</h2>
+      <p data-i18n="expertise.lede">
+       Application architecture, AI systems, document intelligence, and production
+       operations.
+      </p>
+     </div>
+     <div class="stack-meta">
+      <span data-i18n="expertise.meta">4 domains · 24 capabilities</span>
+      <span class="stack-legend">
+       <span class="stack-legend-dot" aria-hidden="true"></span>
+       <span data-i18n="expertise.legend">Core specialty</span>
+      </span>
+     </div>
+     <div class="stack-board">
+      <article class="stack-card">
+       <div class="stack-card-head">
+        <span class="stack-ico" aria-hidden="true">
+         <svg class="icon"><use href="#icon-layers"></use></svg>
+        </span>
+        <h3 data-i18n="expertise.1.t">Application architecture</h3>
+       </div>
+       <p class="stack-card-note" data-i18n="expertise.1.d">
+        Typed product surfaces, APIs, and multi-tenant foundations.
+       </p>
+       <ul class="stack-chips">
+        <li class="is-core">Next.js</li>
+        <li class="is-core">TypeScript</li>
+        <li>React</li>
+        <li>GraphQL</li>
+        <li>API design</li>
+        <li>Multi-tenant SaaS</li>
+       </ul>
+      </article>
+      <article class="stack-card">
+       <div class="stack-card-head">
+        <span class="stack-ico" aria-hidden="true">
+         <svg class="icon"><use href="#icon-sparkles"></use></svg>
+        </span>
+        <h3 data-i18n="expertise.2.t">AI systems</h3>
+       </div>
+       <p class="stack-card-note" data-i18n="expertise.2.d">
+        Agents, retrieval, and evaluation wired into real products.
+       </p>
+       <ul class="stack-chips">
+        <li>LLM integrations</li>
+        <li class="is-core">AI agents</li>
+        <li class="is-core">Retrieval and RAG</li>
+        <li>Evaluation</li>
+        <li>Model routing</li>
+        <li>Cost and latency</li>
+       </ul>
+      </article>
+      <article class="stack-card">
+       <div class="stack-card-head">
+        <span class="stack-ico" aria-hidden="true">
+         <svg class="icon"><use href="#icon-scan-text"></use></svg>
+        </span>
+        <h3 data-i18n="expertise.3.t">Document intelligence</h3>
+       </div>
+       <p class="stack-card-note" data-i18n="expertise.3.d">
+        PDFs and spreadsheets turned into verified structured data.
+       </p>
+       <ul class="stack-chips">
+        <li>OCR</li>
+        <li class="is-core">Structured extraction</li>
+        <li class="is-core">Evidence linking</li>
+        <li>PDF and spreadsheet workflows</li>
+        <li>Long-running processing</li>
+        <li>Human verification</li>
+       </ul>
+      </article>
+      <article class="stack-card">
+       <div class="stack-card-head">
+        <span class="stack-ico" aria-hidden="true">
+         <svg class="icon"><use href="#icon-activity"></use></svg>
+        </span>
+        <h3 data-i18n="expertise.4.t">Production systems</h3>
+       </div>
+       <p class="stack-card-note" data-i18n="expertise.4.d">
+        Auth, billing, jobs, and observability that hold under load.
+       </p>
+       <ul class="stack-chips">
+        <li class="is-core">PostgreSQL</li>
+        <li>Authentication and SSO</li>
+        <li>Billing</li>
+        <li>Background jobs</li>
+        <li>Real-time systems</li>
+        <li class="is-core">Observability</li>
+       </ul>
+      </article>
+     </div>
+    </div>
+   </section>
+   <div class="band-tail">
+   <section id="about" class="pad-tight">
+    <div class="wrap about-grid">
+     <div class="portrait">
+      <img
+       src="./calvinprofile.jpg"
+       alt="Calvin Maighan"
+       width="192"
+       height="192"
+       loading="lazy"
+       decoding="async"
+      />
+     </div>
+     <div class="about-copy">
+      <h2 data-i18n="about.title">Senior engineer with production experience</h2>
+      <p data-i18n="about.body">
+       Calvin is a senior product engineer. He works across frontend architecture,
+       backend systems, AI integrations, document processing, authentication,
+       billing, and infrastructure. He focuses on products where technical
+       decisions decide whether you can ship.
+      </p>
+     </div>
+    </div>
+   </section>
+   <section id="writing" class="oss-section" aria-labelledby="oss-title">
+    <div class="wrap">
+     <article class="oss-doc">
+      <header class="oss-doc-head">
+       <h2 id="oss-title" data-i18n="writing.title">Calvin Maighan</h2>
+       <p class="oss-doc-role" data-i18n="writing.role">
+        10+ years of building ambitious products
+       </p>
+       <p class="oss-doc-lede" data-i18n="writing.lede">
+        Open-source client libs for shared UI state, theme, i18n.
+       </p>
+      </header>
+      <h3 data-i18n="writing.libs">Libraries</h3>
+      <div class="oss-table-wrap">
+       <table class="oss-table">
+        <thead>
+         <tr>
+          <th scope="col" data-i18n="writing.col.package">Package</th>
+          <th scope="col" data-i18n="writing.col.does">What it does</th>
+          <th scope="col" data-i18n="writing.col.repo">Repo</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+          <td>
+           <a
+            class="oss-pkg"
+            href="https://github.com/CalvinMaighan/active-state"
+            rel="noopener noreferrer"
+            target="_blank"
+            >active-state</a
+           >
+          </td>
+          <td data-i18n="writing.oss1">
+           Tiny keyed pub/sub store — React, DOM bindings, persist / shared /
+           SSR
+          </td>
+          <td>
+           <a
+            class="oss-repo"
+            href="https://github.com/CalvinMaighan/active-state"
+            rel="noopener noreferrer"
+            target="_blank"
+           >
+            <svg class="icon" aria-hidden="true">
+             <use href="#icon-github"></use>
+            </svg>
+            <span>CalvinMaighan/active-state</span>
+           </a>
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <a
+            class="oss-pkg"
+            href="https://github.com/CalvinMaighan/active-theme"
+            rel="noopener noreferrer"
+            target="_blank"
+            >active-theme</a
+           >
+          </td>
+          <td data-i18n="writing.oss2">
+           Mode + color on :root — persist by default, /lite, /state +
+           &lt;ActiveTheme /&gt;
+          </td>
+          <td>
+           <a
+            class="oss-repo"
+            href="https://github.com/CalvinMaighan/active-theme"
+            rel="noopener noreferrer"
+            target="_blank"
+           >
+            <svg class="icon" aria-hidden="true">
+             <use href="#icon-github"></use>
+            </svg>
+            <span>CalvinMaighan/active-theme</span>
+           </a>
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <a
+            class="oss-pkg"
+            href="https://github.com/CalvinMaighan/active-i18n"
+            rel="noopener noreferrer"
+            target="_blank"
+            >active-i18n</a
+           >
+          </td>
+          <td data-i18n="writing.oss3">
+           Typed dictionaries + useText() / t() — persist by default, /lite,
+           /state + &lt;ActiveI18n /&gt;
+          </td>
+          <td>
+           <a
+            class="oss-repo"
+            href="https://github.com/CalvinMaighan/active-i18n"
+            rel="noopener noreferrer"
+            target="_blank"
+           >
+            <svg class="icon" aria-hidden="true">
+             <use href="#icon-github"></use>
+            </svg>
+            <span>CalvinMaighan/active-i18n</span>
+           </a>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+      <h3 data-i18n="writing.together">Together</h3>
+      <pre class="oss-code" tabindex="0"><code><span class="tok-kw">import</span> { ActiveState, useActiveState } <span class="tok-kw">from</span> <span class="tok-str">"active-state/react"</span>;
 <span class="tok-kw">import</span> { ActiveTheme } <span class="tok-kw">from</span> <span class="tok-str">"active-theme/state"</span>;
 <span class="tok-kw">import</span> { ActiveI18n } <span class="tok-kw">from</span> <span class="tok-str">"active-i18n/state"</span>;
 <span class="tok-kw">import</span> { useText } <span class="tok-kw">from</span> <span class="tok-str">"active-i18n/react"</span>;
-
 &lt;&gt;
-  &lt;<span class="tok-tag">ActiveState</span> init={state} ssr /&gt;
-  &lt;<span class="tok-tag">ActiveTheme</span> init={theme} /&gt;
-  &lt;<span class="tok-tag">ActiveI18n</span> init={i18n} /&gt;
-  {children}
+ &lt;<span class="tok-tag">ActiveState</span> init={state} ssr /&gt;
+ &lt;<span class="tok-tag">ActiveTheme</span> init={theme} /&gt;
+ &lt;<span class="tok-tag">ActiveI18n</span> init={i18n} /&gt;
+ {children}
 &lt;/&gt;
-
 <span class="tok-kw">const</span> [layout, setLayout] = <span class="tok-fn">useActiveState</span>(LAYOUT);
 <span class="tok-kw">const</span> [mode, setMode] = <span class="tok-fn">useActiveState</span>(THEME);
 <span class="tok-kw">const</span> { t, setLocale } = <span class="tok-fn">useText</span>();</code></pre>
-            <p class="oss-doc-foot" data-i18n="writing.foot">
-              One bus for prefs. Theme paints data-theme / CSS vars. useText() gives t
-              under &lt;ActiveI18n /&gt;; setLocale writes the bus.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      </div>
-    </main>
-
-    <div class="read-progress" aria-hidden="true"></div>
-
-    <footer class="site-footer">
-      <div class="wrap">
-        <p class="foot-statement" data-i18n="footer.statement">Let's Connect.</p>
-        <p class="foot-meta">
-          <strong>Calvin Maighan</strong>
-          <span class="sep" aria-hidden="true">·</span>
-          <span data-i18n="footer.role">Senior AI and SaaS Engineer</span>
-          <span class="sep" aria-hidden="true">·</span>
-          <span class="foot-place">
-            <!-- Iconify flag:ca-4x3 -->
-            <svg
-              class="icon foot-canada"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 640 480"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path fill="#fff" d="M150.1 0h339.7v480H150z" />
-              <path
-                fill="#d52b1e"
-                d="M-19.7 0h169.8v480H-19.7zm509.5 0h169.8v480H489.9zM201 232l-13.3 4.4l61.4 54c4.7 13.7-1.6 17.8-5.6 25l66.6-8.4l-1.6 67l13.9-.3l-3.1-66.6l66.7 8c-4.1-8.7-7.8-13.3-4-27.2l61.3-51l-10.7-4c-8.8-6.8 3.8-32.6 5.6-48.9c0 0-35.7 12.3-38 5.8l-9.2-17.5l-32.6 35.8c-3.5.9-5-.5-5.9-3.5l15-74.8l-23.8 13.4q-3.2 1.3-5.2-2.2l-23-46l-23.6 47.8q-2.8 2.5-5 .7L264 130.8l13.7 74.1c-1.1 3-3.7 3.8-6.7 2.2l-31.2-35.3c-4 6.5-6.8 17.1-12.2 19.5s-23.5-4.5-35.6-7c4.2 14.8 17 39.6 9 47.7"
-              />
-            </svg>
-            <span data-i18n="footer.city">Montreal</span>
-          </span>
-          <span class="sep" aria-hidden="true">·</span>
-          <span data-i18n="footer.remote">remote contracts</span>
-          <span class="sep" aria-hidden="true">·</span>
-          <a
-            class="foot-ico"
-            href="https://github.com/CalvinMaighan"
-            rel="noopener noreferrer"
-            target="_blank"
-            ><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg
-            >GitHub</a
-          >
-          <span class="sep" aria-hidden="true">·</span>
-          <a class="foot-ico" href="mailto:hello@calvinmaighan.com"
-            ><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg
-            >Email</a
-          >
-          <span class="sep" aria-hidden="true">·</span>
-          <a href="./contact.html" data-i18n="nav.cta">Book a call</a>
-        </p>
-      </div>
-    </footer>
-
-    <script type="module" src="./app.mjs"></script>
-  </body>
+      <p class="oss-doc-foot" data-i18n="writing.foot">
+       One bus for prefs. Theme paints data-theme / CSS vars. useText() gives t
+       under &lt;ActiveI18n /&gt;; setLocale writes the bus.
+      </p>
+     </article>
+     <div class="cta-row bundle-cta">
+      <a class="btn btn-primary" href="./contact.html" data-i18n="hero.cta"
+       >Discuss your project</a
+      >
+     </div>
+    </div>
+   </section>
+   </div>
+  </main>
+  <div class="read-progress" aria-hidden="true"></div>
+  <footer class="site-footer">
+   <div class="wrap">
+    <p class="foot-statement" data-i18n="footer.statement">Let's Connect.</p>
+    <p class="foot-meta">
+     <strong>Calvin Maighan</strong>
+     <span class="sep" aria-hidden="true">·</span>
+     <span data-i18n="footer.role">Senior AI and SaaS Engineer</span>
+     <span class="sep" aria-hidden="true">·</span>
+     <span class="foot-place">
+      <svg
+       class="icon foot-canada"
+       xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 640 480"
+       aria-hidden="true"
+       focusable="false"
+      >
+       <path fill="#fff" d="M150.1 0h339.7v480H150z" />
+       <path
+        fill="#d52b1e"
+        d="M-19.7 0h169.8v480H-19.7zm509.5 0h169.8v480H489.9zM201 232l-13.3 4.4l61.4 54c4.7 13.7-1.6 17.8-5.6 25l66.6-8.4l-1.6 67l13.9-.3l-3.1-66.6l66.7 8c-4.1-8.7-7.8-13.3-4-27.2l61.3-51l-10.7-4c-8.8-6.8 3.8-32.6 5.6-48.9c0 0-35.7 12.3-38 5.8l-9.2-17.5l-32.6 35.8c-3.5.9-5-.5-5.9-3.5l15-74.8l-23.8 13.4q-3.2 1.3-5.2-2.2l-23-46l-23.6 47.8q-2.8 2.5-5 .7L264 130.8l13.7 74.1c-1.1 3-3.7 3.8-6.7 2.2l-31.2-35.3c-4 6.5-6.8 17.1-12.2 19.5s-23.5-4.5-35.6-7c4.2 14.8 17 39.6 9 47.7"
+       />
+      </svg>
+      <span data-i18n="footer.city">Montreal</span>
+     </span>
+     <span class="sep" aria-hidden="true">·</span>
+     <span data-i18n="footer.remote">remote contracts</span>
+     <span class="sep" aria-hidden="true">·</span>
+     <a
+      class="foot-ico"
+      href="https://github.com/CalvinMaighan"
+      rel="noopener noreferrer"
+      target="_blank"
+      ><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg
+      >GitHub</a
+     >
+    </p>
+   </div>
+  </footer>
+  <script type="module" src="./app.mjs"></script>
+ </body>
 </html>
-
-
-
-
-
-
-
