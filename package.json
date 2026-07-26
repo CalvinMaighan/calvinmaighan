@@ -5,9 +5,23 @@
   "scripts": {
     "dev": "bun site/serve.ts",
     "dev:kill": "lsof -ti tcp:5173 | xargs kill -9 2>/dev/null || true",
+    "env": "bun scripts/pull-env.mjs",
     "og": "bun scripts/render-og.ts",
     "tips:build": "bun scripts/build-tip-articles.mjs",
-    "lint:styles": "eslint -c eslint.config.mjs \"site/**/*.css\""
+    "lint:styles": "eslint -c eslint.config.mjs \"site/**/*.css\"",
+    "clickup:sync": "bun scripts/backlog-clickup-sync.mjs",
+    "clickup:pull": "bun scripts/backlog-clickup-sync.mjs --pull",
+    "clickup:todo": "bun scripts/clickup-todo.mjs",
+    "clickup:prune": "bun scripts/clickup-prune.mjs",
+    "backlog": "backlog browser",
+    "backlog:ready": "bun scripts/backlog-ready.mjs",
+    "clickup:webhook": "bun scripts/clickup-webhook-server.mjs",
+    "clickup:webhook:tunnel": "bun scripts/ngrok-clickup-webhook.mjs",
+    "clickup:webhook:register": "bun scripts/clickup-webhook-register.mjs",
+    "clickup:webhook:sync-surface": "bun scripts/sync-cursor-agent-surface.mjs"
+  },
+  "dependencies": {
+    "@cursor/sdk": "^1.0.24"
   },
   "devDependencies": {
     "@eslint/css": "^1.4.0",
@@ -15,4 +29,3 @@
     "eslint": "^10.7.0"
   }
 }
-
