@@ -15,7 +15,7 @@ const chain = [
   ["expose-product-actions-as-mcp-tools.md", "./catch-ai-code-mistakes-with-lint.html", "Next article"],
   ["catch-ai-code-mistakes-with-lint.md", "./ship-production-releases-with-agent-checks.html", "Next article"],
   ["ship-production-releases-with-agent-checks.md", "./write-seo-articles-agents-can-follow.html", "Next article"],
-  ["write-seo-articles-agents-can-follow.md", "../../index.html#contact", "Book a call"],
+  ["write-seo-articles-agents-can-follow.md", "../../contact.html", "Book a call"],
 ];
 
 function upsert(fm, key, value) {

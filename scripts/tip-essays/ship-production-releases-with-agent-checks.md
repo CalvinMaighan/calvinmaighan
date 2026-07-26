@@ -137,7 +137,7 @@ If the release hides behind a feature flag, the PR must name the flag key and th
 
 ## Consulting angle
 
-I install `/prod` skills when agencies and startups already generate code with agents but still fear Friday deploys. The skill encodes the house process so a junior engineer and an agent share the same checklist. If your team needs that install on a Next.js or TypeScript monorepo, use [the contact form](../../index.html#contact). Pair it with [context compression](./compress-agent-context-before-you-code.html) so the agent sees the release docs without flooding the window. Next tip covers [writing SEO articles agents can follow](./write-seo-articles-agents-can-follow.html).
+I install `/prod` skills when agencies and startups already generate code with agents but still fear Friday deploys. The skill encodes the house process so a junior engineer and an agent share the same checklist. If your team needs that install on a Next.js or TypeScript monorepo, use [the contact form](../../contact.html). Pair it with [context compression](./compress-agent-context-before-you-code.html) so the agent sees the release docs without flooding the window. Next tip covers [writing SEO articles agents can follow](./write-seo-articles-agents-can-follow.html).
 
 
 ## Document the freeze windows

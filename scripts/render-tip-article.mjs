@@ -139,7 +139,7 @@ function mdToHtml(md) {
 }
 
 const tipNum = fm.tipNumber || "?";
-const nextHref = fm.nextHref || "../../index.html#contact";
+const nextHref = fm.nextHref || "../../contact.html";
 const nextLabel = fm.nextLabel || "Next tip";
 const slug = fm.slug;
 const title = fm.title;
@@ -328,8 +328,8 @@ ${JSON.stringify(jsonLd, null, 2)}
     <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
       <a href="../../index.html#tips" data-i18n="article.back">Back to tips</a>
       <a href="../../index.html#work" data-i18n="nav.work">Work</a>
-      <a href="../../index.html#contact" data-i18n="nav.contact">Contact</a>
-      <a class="btn btn-primary" href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+      <a href="../../contact.html" data-i18n="nav.contact">Contact</a>
+      <a class="btn btn-primary" href="../../contact.html" data-i18n="nav.cta">Book a call</a>
     </nav>
 
     <main id="top">
@@ -353,12 +353,12 @@ ${JSON.stringify(jsonLd, null, 2)}
           ${bodyWithFigure.replace(
             /(<p class="article-summary">[\s\S]*?<\/p>)/,
             `$1
-          <p class="article-cta-fold"><a class="btn btn-primary" href="../../index.html#contact">Book a call</a></p>
+          <p class="article-cta-fold"><a class="btn btn-primary" href="../../contact.html">Book a call</a></p>
           <p class="article-meta-line"><span>By Calvin Maighan</span> · <time datetime="2026-07-22">Updated July 22, 2026</time></p>`
           )}
           <p class="article-cta-end">
             Want this workflow wired into your team?
-            <a href="../../index.html#contact">Book a call</a>
+            <a href="../../contact.html">Book a call</a>
             ·
             <a href="${esc(nextHref)}">${esc(nextLabel)}</a>
           </p>
@@ -386,7 +386,7 @@ ${JSON.stringify(jsonLd, null, 2)}
             >Email</a
           >
           <span class="sep" aria-hidden="true">·</span>
-          <a href="../../index.html#contact" data-i18n="nav.cta">Book a call</a>
+          <a href="../../contact.html" data-i18n="nav.cta">Book a call</a>
         </p>
       </div>
     </footer>

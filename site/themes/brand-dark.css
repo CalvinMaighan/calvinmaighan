@@ -43,7 +43,11 @@
   --secondary-hover: oklch(0.4 0.032 68);
 
   --accent: oklch(0.88 var(--chroma-accent) var(--hue-accent));
-  --accent-text: oklch(0.16 calc(var(--chroma-base) * 2) var(--hue-accent));
+  /* Same yellow as --accent — readable accent-as-text on dark surfaces. */
+  --accent-text: oklch(0.88 var(--chroma-accent) var(--hue-accent));
+
+  /* Same hue as --cta (145); light tint on the green fill */
+  --cta-text: oklch(0.96 0.05 145);
 
   --hero-text: oklch(0.92 var(--chroma-label) var(--hue-accent));
   --text-gradient: linear-gradient(
@@ -106,6 +110,7 @@
 
   color-scheme: dark;
 }
+
 
 
 

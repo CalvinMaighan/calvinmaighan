@@ -131,7 +131,7 @@ Commit a sample baseline or a script that seeds one. Agents on fresh clones shou
 
 Lint will not catch a wrong product decision. It catches the mechanical class of AI mistakes that waste reviewer attention. Humans keep ownership of architecture, data model, and security threat models. Agents own the cleanup loop that makes human review worth the calendar time.
 
-If you want help installing this loop on a SaaS codebase, use the contact form on [calvinmaighan.com](../../index.html#contact). Related series tips cover [minimal diffs with ponytail](./keep-ai-coding-changes-minimal-with-ponytail.html) and [exposing product actions as MCP tools](./expose-product-actions-as-mcp-tools.html). Next tip covers [shipping production releases with agent checks](./ship-production-releases-with-agent-checks.html).
+If you want help installing this loop on a SaaS codebase, use the contact form on [calvinmaighan.com](../../contact.html). Related series tips cover [minimal diffs with ponytail](./keep-ai-coding-changes-minimal-with-ponytail.html) and [exposing product actions as MCP tools](./expose-product-actions-as-mcp-tools.html). Next tip covers [shipping production releases with agent checks](./ship-production-releases-with-agent-checks.html).
 
 
 ## Teach the agent your house dialect

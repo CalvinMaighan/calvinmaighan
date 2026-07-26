@@ -5,15 +5,15 @@ intent: howto
 slug: write-seo-articles-agents-can-follow
 metaDescription: "write SEO articles agents can follow with a locked longtail keyword, answer-first summary, honest Article and FAQ JSON-LD, real citations, CTAs, and a stop-slop pass so the /article skill ships indexable tips without improvised SEO."
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html
-inBodyImage: "../../calvin-article-2.png"
-ogImage: "https://calvinmaighan.com/calvin-article-2.png"
+inBodyImage: "../../calvin-article-14.png"
+ogImage: "https://calvinmaighan.com/calvin-article-14.png"
 updatedAt: 2026-07-22
 updatedHuman: July 22, 2026
 summary: "Write SEO articles agents can follow by locking a longtail keyword, one intent, a summary that answers first, honest Article and FAQ JSON-LD, real citations, and a stop-slop pass before publish. The /article skill turns content SEO into a checklist an agent executes the same way /lint and /prod gate code."
 standalone: false
 kicker: ""
 series: ""
-nextHref: "../../index.html#contact"
+nextHref: "../../contact.html"
 nextLabel: "Book a call"
 nextLocked: "false"
 ctaAboveFold: "Book a call"
@@ -107,7 +107,7 @@ Teams that only automate coding still lose days to blog and docs debt. Teams tha
 
 ## Series chrome and internal links
 
-Standalone articles skip series kickers. Series tips show Tip N of 14 and a next tip control. Internal links should point to related tips and to [contact](../../index.html#contact) or [tips](../../index.html#tips) on the home page. This finale links back because content SEO sits in the same agent operating system as code gates.
+Standalone articles skip series kickers. Series tips show Tip N of 14 and a next tip control. Internal links should point to related tips and to [contact](../../contact.html) or [tips](../../index.html#tips) on the home page. This finale links back because content SEO sits in the same agent operating system as code gates.
 
 ## Quality bar for consulting sites
 
@@ -139,7 +139,7 @@ Agents love decorative screenshots and attributed quotes that never happened. Th
 
 The skill ends with a strict checklist the agent must tick: keyword researched, intent stated, SERP skim noted, meta valid, summary under 150 words, first sentence keyed, slug aligned, heading hierarchy clean, length met, citations real, internal links present, images set, JSON-LD valid, FAQ honest, CTAs placed, date and byline visible, stop-slop done, portable MD written, site page shipped, sitemap updated. Unticked items mean the article is unfinished.
 
-If you want this /article skill installed beside your coding skills so your team ships indexable tips without inventing process each time, [book a call](../../index.html#contact).
+If you want this /article skill installed beside your coding skills so your team ships indexable tips without inventing process each time, [book a call](../../contact.html).
 
 
 ## Keep a swipe file of good openings
@@ -173,3 +173,4 @@ Hard rules in a skill file: keyword length, meta that starts with the keyword, s
 ### Should AI content chase rankings alone?
 
 No. Google’s people-first guidance still applies. Write for the reader who lands from search or a share, then add technical SEO so crawlers and assistants can parse the page.
+

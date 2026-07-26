@@ -41,8 +41,13 @@
   --secondary: oklch(0.909 0.043 73);
   --secondary-hover: oklch(0.87 0.055 70);
 
-  --accent: oklch(0.42 var(--chroma-accent) var(--hue-accent));
-  --accent-text: oklch(0.98 calc(var(--chroma-base) * 1.2) var(--hue-accent));
+  /* Soft peach-beige — warm badge / accent fill (not the muddy olive L=0.42) */
+  --accent: oklch(0.86 0.055 62);
+  /* Accent-as-text: same chroma as --cta (0.2); L mid so it stays on-gamut. */
+  --accent-text: oklch(0.42 0.2 48);
+
+  /* Same hue as --cta (145). Keep chroma modest — high C at low L clips to black. */
+  --cta-text: oklch(0.42 0.11 145);
 
   --hero-text: oklch(0.48 var(--chroma-label) var(--hue-accent));
   --text-gradient: linear-gradient(
@@ -105,4 +110,5 @@
 
   color-scheme: light;
 }
+
 
