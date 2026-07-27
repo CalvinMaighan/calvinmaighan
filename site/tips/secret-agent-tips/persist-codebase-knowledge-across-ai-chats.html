@@ -31,8 +31,8 @@
       "@type": "Article",
       "headline": "Persist codebase knowledge across AI chats",
       "description": "persist codebase knowledge across AI chats with a codebase-memory MCP so agents recall architecture decisions, naming rules, and prior fixes instead of rediscovering your repo every session.",
-      "datePublished": "2026-07-22",
-      "dateModified": "2026-07-22",
+      "datePublished": "2026-07-26",
+      "dateModified": "2026-07-26",
       "author": {
         "@type": "Person",
         "name": "Calvin Maighan",
@@ -54,7 +54,7 @@
           "name": "What is a codebase-memory MCP server?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It is an MCP server that stores entities, relations, and observations about your repository so agents can query prior decisions and structure across chats instead of relying on one thread's context window."
+            "text": "An MCP server that stores entities, relations, and observations about your repository so agents query prior decisions across chats instead of relying on one thread's window."
           }
         },
         {
@@ -62,15 +62,15 @@
           "name": "How is memory different from Cursor rules?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Rules are static instructions you maintain by hand. Memory accumulates project facts and decisions over time through graph or search tools. Use both: rules for invariants, memory for living context."
+            "text": "Rules are static instructions you maintain by hand. Memory accumulates project facts over time through graph or search tools. Keep rules for invariants and memory for living context."
           }
         },
         {
           "@type": "Question",
-          "name": "What should we store in memory first?",
+          "name": "What should we store first?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Boot order, forbidden patterns, naming conventions, tenancy or auth boundaries, and the last three production incidents with root causes. Skip trivia and transient UI tweaks."
+            "text": "Boot order, forbidden patterns, naming conventions, tenancy and auth boundaries, and the last three production incidents with root causes."
           }
         },
         {
@@ -78,7 +78,15 @@
           "name": "Can memory go stale and hurt agents?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Require dates on observations, delete superseded facts, and re-index after large refactors. Stale memory is worse than no memory when it contradicts the code."
+            "text": "Yes. Require dates, supersede old facts, and re-index after large refactors. Stale memory beats no memory only until it contradicts the code."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I install it on day one?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Register the MCP server in your IDE config, index the primary repo, seed twenty observations, and add a skill that mandates recall for contextual and risky work."
           }
         }
       ]
@@ -208,16 +216,16 @@
             />
             <span class="article-byline-name">Calvin Maighan</span>
             <span class="article-byline-meta">
-              <span>10 min read</span>
+              <span>6 min read</span>
               <span class="sep" aria-hidden="true">·</span>
-              <time datetime="2026-07-22">July 22, 2026</time>
+              <time datetime="2026-07-26">July 26, 2026</time>
             </span>
             <a class="btn btn-primary article-byline-cta" href="../../contact.html" data-i18n="article.book">Book a call</a>
           </div>
           <figure class="article-cover">
-            <img alt="Cover for skill 6: persist codebase knowledge across AI chats" decoding="async" src="../../img/calvin-article-6-1200.webp" srcset="../../img/calvin-article-6-664.webp 664w, ../../img/calvin-article-6-996.webp 996w, ../../img/calvin-article-6-1200.webp 1200w" sizes="(max-width: 720px) 100vw, min(720px, 100%)" width="1200" height="675">
+            <img src="../../img/calvin-article-6-1200.webp" srcset="../../img/calvin-article-6-664.webp 664w, ../../img/calvin-article-6-996.webp 996w, ../../img/calvin-article-6-1200.webp 1200w" sizes="(max-width: 720px) 100vw, min(720px, 100%)" alt="Cover for tip 6: persist codebase knowledge across AI chats" width="1200" height="675" decoding="async" />
           </figure>
-          <p class="article-summary">Persist codebase knowledge across AI chats by attaching a codebase-memory MCP server that stores architecture decisions, naming rules, and prior fixes as queryable entities. New threads start with recall instead of rediscovery. You cut repeated mistakes, keep conventions stable, and give agents a project memory that survives closed tabs.</p>
+          <p class="article-summary">Persist codebase knowledge across AI chats by attaching a codebase-memory MCP server that stores architecture decisions, naming rules, and prior fixes as queryable entities. New threads start with recall instead of rediscovery. You cut repeated mistakes, keep conventions stable, and give agents a project memory that survives a closed tab.</p>
           <aside class="article-aside" aria-label="Series">
             <ol class="article-series-rail">
             <li>
@@ -465,39 +473,17 @@
             <li>
               <a
                 class="article-series-card is-locked"
-                data-series-slug="expose-product-actions-as-mcp-tools"
-                data-series-title="Expose product actions as MCP tools"
-                data-series-subtitle="Tools with schemas, scopes, and audit trails"
-                data-series-tip="11"
-                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
-                href="#"
-                aria-disabled="true"
-              >
-                <span class="article-series-card-copy">
-                  <span class="article-series-card-head">
-                    <span class="article-series-card-title">Skill #11: Keep reading to unlock</span>
-                    <span class="article-series-card-check" hidden aria-hidden="true">
-                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
-                    </span>
-                  </span>
-                  <span class="article-series-card-subtitle">Tools with schemas, scopes, and audit trails</span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="article-series-card is-locked"
                 data-series-slug="catch-ai-code-mistakes-with-lint"
                 data-series-title="Catch AI code mistakes with lint"
                 data-series-subtitle="Lint as a hard gate after every agent edit"
-                data-series-tip="12"
+                data-series-tip="11"
                 data-href="/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html"
                 href="#"
                 aria-disabled="true"
               >
                 <span class="article-series-card-copy">
                   <span class="article-series-card-head">
-                    <span class="article-series-card-title">Skill #12: Keep reading to unlock</span>
+                    <span class="article-series-card-title">Skill #11: Keep reading to unlock</span>
                     <span class="article-series-card-check" hidden aria-hidden="true">
                       <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
                     </span>
@@ -512,14 +498,14 @@
                 data-series-slug="ship-production-releases-with-agent-checks"
                 data-series-title="Ship production releases with agent checks"
                 data-series-subtitle="Release checks agents cannot skip"
-                data-series-tip="13"
+                data-series-tip="12"
                 data-href="/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html"
                 href="#"
                 aria-disabled="true"
               >
                 <span class="article-series-card-copy">
                   <span class="article-series-card-head">
-                    <span class="article-series-card-title">Skill #13: Keep reading to unlock</span>
+                    <span class="article-series-card-title">Skill #12: Keep reading to unlock</span>
                     <span class="article-series-card-check" hidden aria-hidden="true">
                       <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
                     </span>
@@ -531,11 +517,33 @@
             <li>
               <a
                 class="article-series-card is-locked"
-                data-series-slug="write-seo-articles-agents-can-follow"
-                data-series-title="Write SEO articles agents can follow"
-                data-series-subtitle="Structure humans and agents can both follow"
+                data-series-slug="find-dead-code-with-fallow"
+                data-series-title="Find dead code with fallow"
+                data-series-subtitle="Unused code agents can delete with evidence"
+                data-series-tip="13"
+                data-href="/tips/secret-agent-tips/find-dead-code-with-fallow.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #13: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Unused code agents can delete with evidence</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="expose-product-actions-as-mcp-tools"
+                data-series-title="Expose product actions as MCP tools"
+                data-series-subtitle="Tools with schemas, scopes, and audit trails"
                 data-series-tip="14"
-                data-href="/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html"
+                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
                 href="#"
                 aria-disabled="true"
               >
@@ -546,191 +554,82 @@
                       <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
                     </span>
                   </span>
-                  <span class="article-series-card-subtitle">Structure humans and agents can both follow</span>
+                  <span class="article-series-card-subtitle">Tools with schemas, scopes, and audit trails</span>
                 </span>
               </a>
             </li>
             </ol>
           </aside>
           <div class="article-body">
-<p>You persist codebase knowledge across AI chats when you stop pretending the context window is a filing cabinet. Chats end. Tabs close. The next agent session forgets the boot order you explained yesterday and invents a second state store beside the one you already run. A memory MCP fixes that class of amnesia. The <a class="article-link is-external" href="https://modelcontextprotocol.io/docs/concepts/architecture" rel="noopener" target="_blank"><span class="article-link-text">Model Context Protocol architecture docs</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> describe MCP as a standard way to connect hosts to tools and resources. The <a class="article-link is-external" href="https://modelcontextprotocol.io/" rel="noopener" target="_blank"><span class="article-link-text">MCP site</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> is the entry point. The reference <a class="article-link is-external is-github" href="https://github.com/modelcontextprotocol/servers/tree/main/src/memory" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">knowledge graph memory server</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> shows the pattern: entities, relations, observations, search across sessions.</p>
+<p>Persist codebase knowledge across AI chats or repeat the same argument every Monday. Your senior engineer spent forty minutes on Thursday explaining the boot order, the state bus, and why the team rejected a second store. Friday's agent session opens a blank window and proposes exactly that second store. Nobody wrote the lesson anywhere a machine can read.</p>
 
-<p>Codebase-memory builds on that idea for repositories: index symbols and decisions, then require agents to query before planning. I treat it as mandatory on consulting work where product constraints hide in tribal knowledge. Without memory, every chat is a new hire. With memory, every chat inherits the last hard lesson.</p>
+<p>A codebase-memory MCP server fixes that class of amnesia. The <a class="article-link is-external" href="https://modelcontextprotocol.io/docs/concepts/architecture" rel="noopener" target="_blank"><span class="article-link-text">MCP architecture docs</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> describe a standard way to connect hosts to tools and resources, and the reference <a class="article-link is-external is-github" href="https://github.com/modelcontextprotocol/servers/tree/main/src/memory" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">knowledge graph memory server</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> shows the shape: entities, relations, observations, search across sessions. Codebase-memory applies that to a repository by indexing symbols alongside decisions.</p>
 
-<h2>Why chat history is not enough</h2>
+<p>I treat it as mandatory on consulting work, because product constraints hide in tribal knowledge. Without memory, every chat is a new hire. With memory, every chat inherits the last hard lesson.</p>
 
-<p>Thread memory dies with the thread. Even long threads rot: early decisions scroll out, summaries drop the sharp edge, and a new teammate opens a fresh agent with zero recall. Paste-based project briefs drift out of date the day after a rename.</p>
+<h2>Why chat history falls short</h2>
 
-<p>Rules files help, and you should keep them. <a class="article-link is-external" href="https://cursor.com/docs/context/rules" rel="noopener" target="_blank"><span class="article-link-text">Cursor's rules documentation</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> covers static guidance the product injects into context. Rules are great for invariants: TypeScript only, no new env vars, theme tokens over hardcoded colors. Rules are poor at accumulating incident history, ADR links, and &quot;we tried X in March and rolled it back.&quot; That living layer belongs in memory.</p>
+<p>Thread memory dies with the thread. Long threads rot on their own: early decisions scroll out of the window, summaries file down the sharp edges, and the next teammate opens a fresh agent with zero recall. Pasted project briefs go stale the day after a rename.</p>
 
-<h2>What MCP memory looks like</h2>
+<p>Rules files help, and you should keep them. <a class="article-link is-external" href="https://cursor.com/docs/context/rules" rel="noopener" target="_blank"><span class="article-link-text">Cursor's rules documentation</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> covers the static guidance a product injects into context, which suits invariants: TypeScript only, no new environment variables, theme tokens over hardcoded colors. Rules handle poorly the accumulating history, the ADR links, and the &quot;we tried this in March and rolled it back.&quot; That living layer belongs in memory.</p>
 
-<p>Reference memory servers store:</p>
+<h2>What memory stores</h2>
 
 <ul>
-<li><strong>Entities:</strong> <code>BillingService</code>, <code>TenantGuard</code>, <code>active-theme</code></li>
-<li><strong>Relations:</strong> <code>BillingService</code> depends on <code>TenantGuard</code></li>
-<li><strong>Observations:</strong> &quot;Tenant id must come from session, never from client body&quot; (2026-03-12)</li>
+<li><strong>Entities</strong> such as <code>BillingService</code>, <code>TenantGuard</code>, <code>active-theme</code></li>
+<li><strong>Relations</strong> such as <code>BillingService</code> depends on <code>TenantGuard</code></li>
+<li><strong>Observations</strong> such as &quot;Tenant id comes from the session, never the client body&quot; with a date</li>
 </ul>
 
-<p>Agents call tools to create, search, and read nodes. On a new task they search first: &quot;tenant isolation&quot;, &quot;theme boot&quot;, &quot;release checklist&quot;. Hits return facts with enough structure to steer the plan before any file opens.</p>
+<p>Agents call tools to create, search, and read nodes. On a new task they search first for &quot;tenant isolation&quot; or &quot;theme boot&quot; or &quot;release checklist&quot;, and the hits steer the plan before any file opens. Codebase-oriented servers add symbol graphs, call edges, and hybrid search over code and notes. Servers differ. The workflow holds: index, recall, act, write back.</p>
 
-<p>Codebase-oriented servers add indexing: symbol graphs, call edges, hybrid search over code and notes. The exact server can vary. The workflow stays stable: index, recall, act, write back what you learned.</p>
+<h2>Seed twenty facts, not an encyclopedia</h2>
 
-<h2>What to store on day one</h2>
+<p>1. <strong>Boot and runtime order.</strong> On this site: define theme and i18n, init the state catalog, hydrate, wire controls, paint the DOM. 2. <strong>Hard product constraints.</strong> No new infrastructure unless asked. Prefer existing architecture. Tenant isolation rules on multi-tenant apps. 3. <strong>Naming and package boundaries.</strong> Where vendored libraries live, which APIs are public, which folders agents must leave alone. 4. <strong>Incidents.</strong> Date, symptom, root cause, fix, follow-up. 5. <strong>Rejected approaches.</strong> &quot;Do not add Redux, we use active-state.&quot; Rejection memory stops helpful rewrites. 6. <strong>Release truths.</strong> Required checks, migration safety notes, who approves production.</p>
 
-<p>Seed memory with high-leverage facts, not encyclopedia entries.</p>
+<p>Skip the CSS tweaks. Memory should read like a senior engineer's notebook.</p>
 
-<p>1. <strong>Boot and runtime order.</strong> On this site: define theme and i18n, init state catalog, hydrate, wire controls, paint DOM. 2. <strong>Hard product constraints.</strong> No new infra unless asked. Prefer existing architecture. Tenant isolation rules for multi-tenant apps. 3. <strong>Naming and package boundaries.</strong> Where vendors live, which APIs are public, which folders agents must not invent alternatives for. 4. <strong>Incidents.</strong> Date, symptom, root cause, fix path, follow-up. 5. <strong>Rejected approaches.</strong> &quot;Do not add Redux; we use active-state.&quot; Rejection memory prevents helpful rewrites. 6. <strong>Release truths.</strong> Required checks, migration safety notes, who approves production.</p>
+<h2>Recall before plan</h2>
 
-<p>Skip storing every CSS tweak. Memory should feel like a senior engineer's notebook, not a changelog dump.</p>
+<p>Put this sequence in the skill body where agents cannot route around it:</p>
 
-<h2>Workflow: recall before plan</h2>
+<p>1. Classify the task as trivial, contextual, or risky. 2. Query memory for the entities and constraints involved. 3. Compress the live code context per <a class="article-link" href="./compress-agent-context-before-you-code.html" rel="noopener"><span class="article-link-text">tip 5</span></a>. 4. Plan after recall, never before. 5. Write new observations with dates once the change lands. 6. Supersede the facts the change invalidated.</p>
 
-<p>Make this the skill text agents cannot skip:</p>
-
-<p>1. Classify the task: trivial, contextual, or risky. 2. Query memory for the task entities and constraints. 3. Compress live code context (<a class="article-link" href="./compress-agent-context-before-you-code.html" rel="noopener"><span class="article-link-text">tip 5</span></a>). 4. Plan only after recall. 5. After the change, write new observations with dates. 6. Delete or supersede facts the change invalidates.</p>
-
-<p>Trivial typos can skip heavy recall. Contextual and risky work cannot. Production-readiness, auth, billing, and migrations always query memory first.</p>
+<p>A typo fix can skip heavy recall. Anything touching auth, billing, migrations, or production readiness queries memory first.</p>
 
 <h2>Keep the graph honest</h2>
 
-<p>Stale memory is a silent production bug. Treat observations as versioned claims:</p>
+<p>Stale memory is a silent production bug. Stamp a date on every written fact. Prefer a &quot;superseded by&quot; relation over a silent edit when the history matters. Re-index after large moves or package extractions. Review memory monthly, the same way you review stale feature flags. Never let tokens, customer data, or private keys enter the graph.</p>
 
-<ul>
-<li>Stamp dates on every written fact</li>
-<li>Prefer &quot;superseded by&quot; relations over silent edits when history matters</li>
-<li>Re-index after large moves or package extractions</li>
-<li>Run a monthly memory review the way you review stale feature flags</li>
-<li>Ban secret material: tokens, customer data, private keys never enter memory</li>
-</ul>
-
-<p>When code and memory disagree, believe the code, fix the memory, then continue. Agents should say when memory was empty or irrelevant so humans know the session flew blind.</p>
-
-<h2>Memory versus RAG dumps</h2>
-
-<p>Naive RAG fills the prompt with similar chunks. That helps docs search. It fails when you need a precise invariant: &quot;never take tenant id from the client.&quot; Graph-shaped memory shines for invariants and relations. Hybrid systems use both: vectors for &quot;how do we format invoices?&quot; and graph nodes for &quot;who owns tenant scope?&quot;</p>
-
-<p>Do not replace tests with memory. Memory guides agents. Tests prove code. CI remains the judge.</p>
-
-<h2>Team rituals that make memory useful</h2>
-
-<p><strong>After incidents.</strong> Write the root cause into memory the same day you write the postmortem.</p>
-
-<p><strong>After ADRs.</strong> Store a one-paragraph observation plus the ADR path.</p>
-
-<p><strong>After agent failures.</strong> If an agent reintroduced a banned pattern, add a rejection observation and a rule line.</p>
-
-<p><strong>During onboarding.</strong> New engineers read the memory hits for their first service area. Same graph the agents use.</p>
-
-<p><strong>During consulting handoffs.</strong> I leave clients with a seeded memory and a short skill that mandates recall. The engagement keeps paying after I leave.</p>
-
-<h2>Failure modes</h2>
-
-<p><strong>Memory never queried.</strong> Skill text too soft. Make recall a hard gate for contextual and risky tasks. Log tool calls in review if needed.</p>
-
-<p><strong>Memory becomes a junk drawer.</strong> Add a write policy: only decisions, constraints, incidents, and rejected approaches. No paste of entire files.</p>
-
-<p><strong>Conflicting observations.</strong> Require search before create. Merge duplicates. Keep the newer dated fact and mark the old one superseded.</p>
-
-<p><strong>Over-trust.</strong> Agents cite memory and skip reading code. Pair with compression tools that still open the critical symbols. Memory orients. Code decides.</p>
-
-<h2>How this tip connects</h2>
-
-<p>Compression keeps the active window small. Memory keeps the project story alive outside the window. Ponytail keeps the diff small once the agent knows what already exists. Next, <a class="article-link" href="./research-what-people-said-last-month.html" rel="noopener"><span class="article-link-text">research what people said last month</span></a> feeds product decisions with external signal, which you can also store as dated observations when the research changes a roadmap bet.</p>
-
-<p>Browse the rest of the series from the <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">tips index</span></a>.</p>
-
-<h2>Install outline</h2>
-
-<p>1. Choose an MCP memory server your host supports (reference memory or a codebase indexer). 2. Register it in the IDE or agent host config. 3. Index the primary repo. 4. Seed twenty observations from your harshest lessons. 5. Add a skill that mandates recall for contextual and risky work. 6. Teach the team to write back after merges. 7. Schedule a monthly stale-fact sweep.</p>
-
-<h2>Example recall that saves a week</h2>
-
-<p>Task: &quot;Add a second theme accent.&quot;</p>
-
-<p>Without memory: agent invents a new CSS variable scheme, hardcodes hex in components, skips <code>defineTheme</code> colors map, breaks dark mode.</p>
-
-<p>With memory: observation hits &quot;accents go through active-theme colors map; CSS owns surfaces; no hex in app.mjs.&quot; Agent opens the theme define call, adds the color entry, updates tokens, leaves components on variables.</p>
-
-<p>Same request. Different institutional memory. Different outcome.</p>
-
-<h2>Metrics</h2>
-
-<p>Watch:</p>
-
-<ul>
-<li>repeat of banned patterns in agent PRs (should fall)</li>
-<li>time from task start to first correct plan</li>
-<li>number of &quot;we already decided this&quot; review comments</li>
-<li>memory write rate after merges (too low means the graph is dying)</li>
-</ul>
-
-<p>When banned-pattern repeats fall, memory is working. When review comments still say &quot;we decided this,&quot; agents are not querying or the fact never got written.</p>
-
-<h2>Security and tenancy notes</h2>
-
-<p>Multi-tenant products must store isolation rules as first-class entities. Memory that says &quot;filter by tenant&quot; without saying where the tenant id originates is incomplete. Be explicit. For regulated work, keep memory in approved storage, encrypt at rest if your host requires it, and exclude personal data from observations.</p>
-
-<h2>Preflight note for agents</h2>
-
-<p>Before editing, agents on this portfolio check memory for theme, i18n, and state-bus rules. That preflight is the difference between a clean PR and a parallel store invented at 11pm. Put the same preflight in your skill text with your own sacred cows named.</p>
+<p>When code and memory disagree, believe the code, fix the memory, then continue. Agents should also say out loud when memory came back empty, so humans know the session flew blind.</p>
 
 <h2>What a good observation looks like</h2>
 
-<p>Bad observation: &quot;Auth is important.&quot;</p>
+<p>A weak one reads &quot;Auth is important.&quot;</p>
 
-<p>Good observation: &quot;2026-04-03: Session tenant id is authoritative. Reject client-supplied tenantId in GraphQL mutations. See <code>TenantGuard</code> and ADR-014. Rolled back a March attempt that trusted the body field after a support incident.&quot;</p>
+<p>A strong one reads: &quot;2026-04-03: Session tenant id is authoritative. Reject client-supplied <code>tenantId</code> in GraphQL mutations. See <code>TenantGuard</code> and ADR-014. A March attempt trusted the body field and caused a support incident.&quot;</p>
 
-<p>Good observations carry a date, an actor rule, a pointer into code or ADR, and a scar. Agents quote scars. They ignore slogans.</p>
+<p>Good observations carry a date, an actor rule, a pointer into code, and a scar. Agents follow scars and ignore slogans.</p>
 
-<p>Write observations in active voice with a human subject when a decision had an owner: &quot;Platform team banned Redis for session state on 2026-02-11; use Postgres-backed sessions.&quot; Ownership helps the next reader know who to ping when the rule must change.</p>
+<h2>One request, two outcomes</h2>
 
-<h2>Index hygiene for monorepos</h2>
+<p>&quot;Add a second theme accent.&quot; Without memory the agent invents a new CSS variable scheme, hardcodes hex values in components, skips the <code>defineTheme</code> colors map, and breaks dark mode. With memory the search returns &quot;accents go through the active-theme colors map, CSS owns surfaces, no hex in <code>app.mjs</code>&quot;, so the agent adds the color entry, updates tokens, and leaves components on variables.</p>
 
-<p>Index package by package when the monorepo is huge. A billing graph that includes the marketing site creates false neighbors. Name projects clearly in the memory host. After a package extraction, delete the old project entry so agents stop navigating ghost paths.</p>
+<p>Same request, same repository, and one of the two costs you a week.</p>
 
-<p>When two packages share types, store a relation: <code>billing-ui</code> imports contracts from <code>billing-api</code>. Agents that only search one side invent duplicate DTOs. The relation is cheaper than another week of type drift.</p>
+<h2>Rituals that keep it alive</h2>
 
-<h2>Handoff packet I leave clients</h2>
+<p>Write the root cause into memory the same day you write the postmortem. Store a one-paragraph observation with every ADR you merge. When an agent reintroduces a banned pattern, add a rejection observation and a rule line together. Point new engineers at the memory hits for their first service area, since they benefit from the same graph the agents use.</p>
 
-<p>At the end of an engagement I leave:</p>
+<p>On consulting handoffs I leave a seeded memory and a short skill that mandates recall, which keeps paying after the engagement ends.</p>
 
-<p>1. MCP server config snippet 2. Seeded observations file or export 3. Skill text that mandates recall 4. A one-page &quot;how to re-index&quot; note 5. Three example prompts that demonstrate memory hits</p>
+<h2>Ship the habit this week</h2>
 
-<p>Clients keep the graph alive when the packet is boring and short. Fancy dashboards die. A Markdown note in the repo lives.</p>
+<p>Register a memory MCP server, index the primary repo, and seed twenty observations from your harshest lessons. Add the recall step to one skill and watch the next contextual task.</p>
 
-<h2>Anti-patterns unique to memory</h2>
+<p>Compression keeps the active window small. Memory keeps the project story alive outside it. Tip 7 covers the outside signal, where you <a class="article-link" href="./research-what-people-said-last-month.html" rel="noopener"><span class="article-link-text">research what people said last month</span></a> and store the findings as dated observations when they change a roadmap bet.</p>
 
-<ul>
-<li>Storing entire file contents as observations</li>
-<li>Writing future plans as if they already shipped</li>
-<li>Mixing personal preferences (&quot;I like Zod&quot;) with product law (&quot;requests must validate with Zod at the boundary&quot;)</li>
-<li>Letting vendors' marketing copy into the graph without a date and a decision</li>
-<li>Skipping deletes after a rewrite so both old and new truths rank</li>
-</ul>
-
-<p>Treat the graph like a production database. Writes need review. Deletes need courage.</p>
-
-<h2>Weekly memory standup (ten minutes)</h2>
-
-<p>Every Monday, one engineer asks: what did we learn last week that the next agent must not rediscover? They write two observations, delete one stale fact, and paste the links in Slack. Ten minutes beats a quarterly cleanup project that never starts.</p>
-
-<p>If the standup finds zero new facts three weeks in a row, either the team is not shipping or they are not writing. Both are signals for the engineering manager.</p>
-
-<h2>Prompt snippets that force recall</h2>
-
-<ul>
-<li>&quot;Search memory for tenant isolation before proposing an API shape.&quot;</li>
-<li>&quot;List rejected approaches for state management, then reuse the winner.&quot;</li>
-<li>&quot;If memory is empty on billing, say empty and stop; do not invent policy.&quot;</li>
-</ul>
-
-<p>Paste those into the skill. Agents follow imperative recall better than vague &quot;consider prior art&quot; advice.</p>
-
-<h2>Recruiter and contractor onboarding</h2>
-
-<p>Contractors burn billable hours rediscovering constraints that staff engineers already know. On day one, make them run three memory queries for their service area and paste the hits into their kickoff note. That ritual proves the graph works and surfaces gaps while the engagement is young.</p>
+<p>If you want this wired into your team workflow, <a class="article-link" href="../../contact.html" rel="noopener"><span class="article-link-text">book a call</span></a>. More notes live in the <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">tips index</span></a>.</p>
 
 <h2>Sources</h2>
 
@@ -739,11 +638,7 @@
 <li><a class="article-link is-external" href="https://modelcontextprotocol.io/" rel="noopener" target="_blank"><span class="article-link-text">Model Context Protocol</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
 <li><a class="article-link is-external is-github" href="https://github.com/modelcontextprotocol/servers/tree/main/src/memory" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">Reference knowledge graph memory server</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
 <li><a class="article-link is-external" href="https://cursor.com/docs/context/rules" rel="noopener" target="_blank"><span class="article-link-text">Cursor rules</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
-<li>Related: <a class="article-link" href="./compress-agent-context-before-you-code.html" rel="noopener"><span class="article-link-text">Compress agent context before you code</span></a></li>
-<li>Series cards on <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">calvinmaighan.com tips</span></a></li>
 </ul>
-
-<p> Memory without write-back is a museum. Memory with weekly writes is an operating system for agents.</p>
 
             <div class="article-cta-end">
               <p>Want codebase-memory MCP wired into your team workflow</p>
@@ -758,22 +653,27 @@
 
 <details class="faq-item">
 <summary class="faq-question">What is a codebase-memory MCP server?</summary>
-<p class="faq-answer">It is an MCP server that stores entities, relations, and observations about your repository so agents can query prior decisions and structure across chats instead of relying on one thread's context window.</p>
+<p class="faq-answer">An MCP server that stores entities, relations, and observations about your repository so agents query prior decisions across chats instead of relying on one thread's window.</p>
 </details>
 
 <details class="faq-item">
 <summary class="faq-question">How is memory different from Cursor rules?</summary>
-<p class="faq-answer">Rules are static instructions you maintain by hand. Memory accumulates project facts and decisions over time through graph or search tools. Use both: rules for invariants, memory for living context.</p>
+<p class="faq-answer">Rules are static instructions you maintain by hand. Memory accumulates project facts over time through graph or search tools. Keep rules for invariants and memory for living context.</p>
 </details>
 
 <details class="faq-item">
-<summary class="faq-question">What should we store in memory first?</summary>
-<p class="faq-answer">Boot order, forbidden patterns, naming conventions, tenancy or auth boundaries, and the last three production incidents with root causes. Skip trivia and transient UI tweaks.</p>
+<summary class="faq-question">What should we store first?</summary>
+<p class="faq-answer">Boot order, forbidden patterns, naming conventions, tenancy and auth boundaries, and the last three production incidents with root causes.</p>
 </details>
 
 <details class="faq-item">
 <summary class="faq-question">Can memory go stale and hurt agents?</summary>
-<p class="faq-answer">Yes. Require dates on observations, delete superseded facts, and re-index after large refactors. Stale memory is worse than no memory when it contradicts the code.</p>
+<p class="faq-answer">Yes. Require dates, supersede old facts, and re-index after large refactors. Stale memory beats no memory only until it contradicts the code.</p>
+</details>
+
+<details class="faq-item">
+<summary class="faq-question">How do I install it on day one?</summary>
+<p class="faq-answer">Register the MCP server in your IDE config, index the primary repo, seed twenty observations, and add a skill that mandates recall for contextual and risky work.</p>
 </details>
 
 </div>
@@ -786,15 +686,39 @@
 
     <footer class="site-footer">
       <div class="wrap">
-        <p class="foot-statement" data-i18n="footer.statement">Available for hard builds.</p>
+        <p class="foot-statement" data-i18n="footer.statement">Let's Connect.</p>
         <p class="foot-meta">
           <strong>Calvin Maighan</strong>
           <span class="sep" aria-hidden="true">·</span>
           <span data-i18n="footer.role">Senior AI and SaaS Engineer</span>
           <span class="sep" aria-hidden="true">·</span>
-          <span data-i18n="footer.meta">Montreal · remote contracts</span>
+          <span class="foot-place">
+            <svg
+              class="icon foot-canada"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 480"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path fill="#fff" d="M150.1 0h339.7v480H150z" />
+              <path
+                fill="#d52b1e"
+                d="M-19.7 0h169.8v480H-19.7zm509.5 0h169.8v480H489.9zM201 232l-13.3 4.4l61.4 54c4.7 13.7-1.6 17.8-5.6 25l66.6-8.4l-1.6 67l13.9-.3l-3.1-66.6l66.7 8c-4.1-8.7-7.8-13.3-4-27.2l61.3-51l-10.7-4c-8.8-6.8 3.8-32.6 5.6-48.9c0 0-35.7 12.3-38 5.8l-9.2-17.5l-32.6 35.8c-3.5.9-5-.5-5.9-3.5l15-74.8l-23.8 13.4q-3.2 1.3-5.2-2.2l-23-46l-23.6 47.8q-2.8 2.5-5 .7L264 130.8l13.7 74.1c-1.1 3-3.7 3.8-6.7 2.2l-31.2-35.3c-4 6.5-6.8 17.1-12.2 19.5s-23.5-4.5-35.6-7c4.2 14.8 17 39.6 9 47.7"
+              />
+            </svg>
+            <span data-i18n="footer.city">Montreal</span>
+          </span>
           <span class="sep" aria-hidden="true">·</span>
-          <a class="foot-ico" href="https://github.com/CalvinMaighan" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub</a>
+          <span data-i18n="footer.remote">remote contracts</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <a
+            class="foot-ico"
+            href="https://github.com/CalvinMaighan"
+            rel="noopener noreferrer"
+            target="_blank"
+            ><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg
+            >GitHub</a
+          >
         </p>
       </div>
     </footer>

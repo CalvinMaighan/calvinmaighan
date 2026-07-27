@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="remove AI writing tells from prose with a stop-slop pass so public writing sounds like a person with judgment, not a model performing intelligence." />
-    <title>Remove AI writing tells from prose · Calvin Maighan</title>
-    <link rel="canonical" href="https://calvinmaighan.com/tips/secret-agent-tips/remove-ai-writing-tells-from-prose.html" />
+    <meta name="description" content="find dead code with fallow so agents get deterministic unused-file and unused-export reports before they delete, with typed JSON output, dry-run fixes, and a health score you can gate in CI." />
+    <title>Find dead code with fallow · Calvin Maighan</title>
+    <link rel="canonical" href="https://calvinmaighan.com/tips/secret-agent-tips/find-dead-code-with-fallow.html" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -15,22 +15,22 @@
     <meta name="theme-color" content="#221D19" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Calvin Maighan" />
-    <meta property="og:title" content="Remove AI writing tells from prose" />
-    <meta property="og:description" content="remove AI writing tells from prose with a stop-slop pass so public writing sounds like a person with judgment, not a model performing intelligence." />
-    <meta property="og:url" content="https://calvinmaighan.com/tips/secret-agent-tips/remove-ai-writing-tells-from-prose.html" />
-    <meta property="og:image" content="https://calvinmaighan.com/calvin-article-8.png" />
+    <meta property="og:title" content="Find dead code with fallow" />
+    <meta property="og:description" content="find dead code with fallow so agents get deterministic unused-file and unused-export reports before they delete, with typed JSON output, dry-run fixes, and a health score you can gate in CI." />
+    <meta property="og:url" content="https://calvinmaighan.com/tips/secret-agent-tips/find-dead-code-with-fallow.html" />
+    <meta property="og:image" content="https://calvinmaighan.com/calvin-article-13.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Remove AI writing tells from prose" />
-    <meta name="twitter:description" content="remove AI writing tells from prose with a stop-slop pass so public writing sounds like a person with judgment, not a model performing intelligence." />
-    <meta name="twitter:image" content="https://calvinmaighan.com/calvin-article-8.png" />
+    <meta name="twitter:title" content="Find dead code with fallow" />
+    <meta name="twitter:description" content="find dead code with fallow so agents get deterministic unused-file and unused-export reports before they delete, with typed JSON output, dry-run fixes, and a health score you can gate in CI." />
+    <meta name="twitter:image" content="https://calvinmaighan.com/calvin-article-13.png" />
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Article",
-      "headline": "Remove AI writing tells from prose",
-      "description": "remove AI writing tells from prose with a stop-slop pass so public writing sounds like a person with judgment, not a model performing intelligence.",
+      "headline": "Find dead code with fallow",
+      "description": "find dead code with fallow so agents get deterministic unused-file and unused-export reports before they delete, with typed JSON output, dry-run fixes, and a health score you can gate in CI.",
       "datePublished": "2026-07-26",
       "dateModified": "2026-07-26",
       "author": {
@@ -39,11 +39,11 @@
         "url": "https://calvinmaighan.com/"
       },
       "image": [
-        "https://calvinmaighan.com/calvin-article-8.png"
+        "https://calvinmaighan.com/calvin-article-13.png"
       ],
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://calvinmaighan.com/tips/secret-agent-tips/remove-ai-writing-tells-from-prose.html"
+        "@id": "https://calvinmaighan.com/tips/secret-agent-tips/find-dead-code-with-fallow.html"
       }
     },
     {
@@ -51,42 +51,34 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Will stop-slop make copy boring?",
+          "name": "Does fallow replace ESLint?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It removes manufactured drama, not detail. Specific stories, numbers, and opinions all survive the pass and carry more weight once the filler leaves."
+            "text": "No. Lint catches local mistakes in code you keep, and fallow finds code you should remove. Run both, in that order."
           }
         },
         {
           "@type": "Question",
-          "name": "Should I run it on code comments?",
+          "name": "Will fallow delete files without asking?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Only where comments run as prose. Terse technical comments already do their job, and expanding them wastes the reader's time."
+            "text": "Only when you run fallow fix without the dry-run flag. Keep dry-run as the default in the skill, and require human confirmation for anything touching a public surface."
           }
         },
         {
           "@type": "Question",
-          "name": "What about brand style guides?",
+          "name": "What about JavaScript without TypeScript?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Run stop-slop first, then apply brand constraints. Voice rules land better on clean sentences than on padded ones."
+            "text": "Fallow covers both. Point it at the app your agents edit most often."
           }
         },
         {
           "@type": "Question",
-          "name": "How often do agents reintroduce slop?",
+          "name": "How do I keep noise down on a legacy repo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Every draft. Model updates shift which tells appear, so keep the pass on the checklist rather than in your memory."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I automate it in CI?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You can fail a docs pull request on banned phrases, which catches laziness. A human ear still catches emptiness written in fresh words."
+            "text": "Keep agents on the changed-since lane for daily work, and schedule full fallow dead-code passes as separate cleanup tickets."
           }
         }
       ]
@@ -115,7 +107,7 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" /></noscript>
     <link rel="stylesheet" href="../../site.css" />
   </head>
-  <body class="article-page" data-series-slug="remove-ai-writing-tells-from-prose">
+  <body class="article-page" data-series-slug="find-dead-code-with-fallow">
     <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
       <symbol id="icon-sun" viewBox="0 0 24 24">
         <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -195,7 +187,7 @@
             <nav class="article-breadcrumbs" aria-label="Breadcrumb">
               <ol>
                 <li><a href="../../index.html" data-i18n="article.home">Home</a></li>
-                <li aria-current="page">Remove AI writing tells from prose</li>
+                <li aria-current="page">Find dead code with fallow</li>
               </ol>
             </nav>
             
@@ -203,8 +195,8 @@
         </header>
 
         <div class="wrap article-layout">
-          <h1>Remove AI writing tells from prose</h1>
-          <p class="article-subtitle">Kill the patterns that scream model-written</p>
+          <h1>Find dead code with fallow</h1>
+          <p class="article-subtitle">Unused code agents can delete with evidence</p>
           <div class="article-byline">
             <img
               class="article-byline-avatar"
@@ -223,9 +215,9 @@
             <a class="btn btn-primary article-byline-cta" href="../../contact.html" data-i18n="article.book">Book a call</a>
           </div>
           <figure class="article-cover">
-            <img src="../../img/calvin-article-8-1200.webp" srcset="../../img/calvin-article-8-664.webp 664w, ../../img/calvin-article-8-996.webp 996w, ../../img/calvin-article-8-1200.webp 1200w" sizes="(max-width: 720px) 100vw, min(720px, 100%)" alt="Cover for tip 8: remove AI writing tells from prose" width="1200" height="675" decoding="async" />
+            <img src="../../img/calvin-article-13-1200.webp" srcset="../../img/calvin-article-13-664.webp 664w, ../../img/calvin-article-13-996.webp 996w, ../../img/calvin-article-13-1200.webp 1200w" sizes="(max-width: 720px) 100vw, min(720px, 100%)" alt="Cover for tip 13: find dead code with fallow" width="1200" height="675" decoding="async" />
           </figure>
-          <p class="article-summary">Remove AI writing tells from prose before you publish anything that left an agent chat. A stop-slop pass cuts filler, false agency, binary contrasts, adverb stacks, and em dash crutches. I run it on articles, proposals, and UI microcopy. Read the draft aloud, and when you hear a keynote, cut until you hear a colleague. Readers who cannot name the patterns still feel them, and trust outlasts clever cadence.</p>
+          <p class="article-summary">Find dead code with fallow when agent refactors leave unused files, orphan exports, and circular dependencies nobody owns. Fallow runs deterministic static analysis over TypeScript and JavaScript: dead code, duplication, a health score, and typed JSON agents can parse. Audit the pull request diff, preview deletes with a dry run, then remove only what the evidence and a human both support.</p>
           <aside class="article-aside" aria-label="Series">
             <ol class="article-series-rail">
             <li>
@@ -406,7 +398,7 @@
             </li>
             <li>
               <a
-                class="article-series-card is-locked is-current"
+                class="article-series-card is-locked"
                 data-series-slug="remove-ai-writing-tells-from-prose"
                 data-series-title="Remove AI writing tells from prose"
                 data-series-subtitle="Kill the patterns that scream model-written"
@@ -516,7 +508,7 @@
             </li>
             <li>
               <a
-                class="article-series-card is-locked"
+                class="article-series-card is-locked is-current"
                 data-series-slug="find-dead-code-with-fallow"
                 data-series-title="Find dead code with fallow"
                 data-series-subtitle="Unused code agents can delete with evidence"
@@ -561,90 +553,88 @@
             </ol>
           </aside>
           <div class="article-body">
-<p>Remove AI writing tells from prose before your buyer decides a machine wrote your pitch. Your reader may never name the pattern. They still slow down at the third &quot;not just X, but Y&quot;, the adverb stack, the paragraph that ends on a line built for screenshots. Something feels rented, and the trust you were building leaks out.</p>
+<p>Find dead code with fallow before your agent proposes a cleanup from vibes. Agents add files faster than any team deletes them. Three months into AI-assisted shipping you have orphaned exports, tests importing modules nobody ships, and a circular dependency that slows every build. Ask an agent to tidy that and it deletes whatever looks lonely, which is how a dynamic import disappears from production.</p>
 
-<p>stop-slop is the skill I run on that cleanup, with credit to the craft notes around <a class="article-link is-external" href="https://hvpandya.com" rel="noopener" target="_blank"><span class="article-link-text">Hardik Pandya's writing</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a>. Pair it with <a class="article-link is-external" href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener" target="_blank"><span class="article-link-text">Google's helpful content guidance</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> and honest <a class="article-link is-external" href="https://schema.org/Article" rel="noopener" target="_blank"><span class="article-link-text">Article schema</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> on public pages. Ranking without trust lasts one visit.</p>
+<p>I place this skill after lint and the release gates on purpose. Lint checks the patch you just wrote. The release skill gates what ships. Fallow answers a different question: what should leave the tree so the next agent starts from less noise.</p>
 
-<h2>What the pass cuts</h2>
+<h2>What fallow gives you</h2>
 
-<p>Throat-clearing openers. Emphasis crutches. Adverb stacks. Binary &quot;not X, but Y&quot; templates. False agency, where a solution emerges and a complaint becomes a fix without a human doing either. Quotable fluff carved for a LinkedIn screenshot. Em dashes sprinkled like perfume.</p>
+<p><a class="article-link is-external" href="https://www.npmjs.com/package/fallow" rel="noopener" target="_blank"><span class="article-link-text">Fallow</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> is codebase intelligence for TypeScript and JavaScript. The static analyzer finds unused code, circular dependencies, duplication, complexity hotspots, and design-system drift. No model runs inside the analyzer, so results stay deterministic, and the output arrives as typed JSON with traceable explanations. The <a class="article-link is-external" href="https://docs.fallow.tools" rel="noopener" target="_blank"><span class="article-link-text">docs</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> and the <a class="article-link is-external is-github" href="https://github.com/fallow-rs/fallow" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">GitHub repo</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> cover the full contract.</p>
 
-<p>It keeps active voice, specific nouns, uneven rhythm, exact technical terms, and your actual point.</p>
+<p>Install it in the app your agents touch most:</p>
 
-<h2>Where I run it</h2>
+<p><code>bun add -d fallow</code></p>
 
-<p>Every public article. Proposal narratives. UI microcopy that came out of an agent. Incident email when an agent drafted the first pass. Private scratch notes get left alone, because the skill is a publishing gate rather than a personality eraser.</p>
+<p>or <code>npm install --save-dev fallow</code>. That also ships the <code>fallow-lsp</code> and <code>fallow-mcp</code> launchers so editors and agents resolve the project-local binary rather than whatever sits on <code>PATH</code>.</p>
 
-<p>On this portfolio the <code>/article</code> skill blocks &quot;done&quot; until the pass runs. That rule exists because I published sentences that sounded smarter than they were and cringed at them a month later.</p>
+<h2>Commands to lock in the skill</h2>
 
-<h2>Patterns worth killing on sight</h2>
+<ul>
+<li><code>npx fallow</code> for the full pipeline of dead code, duplication, and health</li>
+<li><code>npx fallow audit</code> to gate what the pull request changed, with a pass, warn, or fail verdict</li>
+<li><code>npx fallow dead-code</code> for cleanup-focused findings</li>
+<li><code>npx fallow health --score</code> for a score from 0 to 100 with a letter grade</li>
+<li><code>npx fallow fix --dry-run</code> to preview automatic cleanup</li>
+<li><code>npx fallow --format json --quiet</code> for one typed document on stdout</li>
+</ul>
 
-<p>&quot;In today's fast-paced world.&quot; Delete it and start with the fact.</p>
+<p>Teach the exit codes too. Code 1 means findings, code 0 means clean or an audit pass, code 2 means a validation error. Agents that treat every non-zero exit as a broken tool will abandon the skill on its first useful run.</p>
 
-<p>&quot;It is important to note that.&quot; Delete it. If it mattered, you would already be saying it.</p>
+<h2>Why agents need the evidence</h2>
 
-<p>&quot;Not only X, but also Y.&quot; State Y, and add X when it earns the space.</p>
+<p>Lonely and unused are different states. Dynamic imports, framework plugins, and design-system re-exports all look dead to a casual grep, and a confident model will delete them. Fallow's graph and framework plugins cut those false positives, and the JSON carries an <code>actions[]</code> array with an <code>auto_fixable</code> flag so the agent knows which findings it may hand to <code>fallow fix</code> and which need a person.</p>
 
-<p>&quot;The landscape is evolving.&quot; Name the change with a date, a product, or a number.</p>
+<h2>Wire the habit</h2>
 
-<p>&quot;Let's dive in.&quot; The reader is already in. Write the next useful sentence.</p>
+<p>Name the skill after the job, <code>find-dead-code</code> rather than <code>fallow-helpers</code>. Trigger it when the agent finishes a multi-file refactor, before a large pull request, or during a scoped cleanup week. The method:</p>
 
-<p>&quot;At the end of the day.&quot; End the paragraph instead.</p>
+<p>1. Run <code>fallow audit</code> on the branch against main. 2. Read the JSON findings when the verdict fails. 3. Preview with <code>fallow fix --dry-run</code>, then apply only the auto-fixable deletes the skill allows. 4. Re-run typecheck and lint on the touched paths. 5. Cite finding ids in the pull request so reviewers see the evidence.</p>
 
-<p>Empty sentences cost more on a consulting site than anywhere else, because your prose is the sample of your thinking.</p>
+<p>Keep one stop rule in bold in the skill body: no deleting public package exports, GraphQL schema roots, or CSS tokens without a human. A false positive costs more than a quiet unused helper.</p>
 
-<h2>The ten-minute pass</h2>
+<h2>Start small on a dirty repo</h2>
 
-<p>1. Search for &quot;not&quot; contrasts and rewrite each as the positive claim. 2. Search for em dashes and replace them with periods or commas. 3. Cut the first sentence of any section that only announces the section. 4. Replace three adjectives with one concrete noun each. 5. Read the summary aloud, and rewrite anything you would not say to a peer over coffee.</p>
+<p>A first run on a large product reports hundreds of unused exports, and nobody should hand that backlog to an agent in one pull request. Script three lanes instead:</p>
 
-<p>Keep that list in the skill and in the docs pull request template. Agents forget between drafts. Checklists do not.</p>
+<ul>
+<li><code>fallow:dead-code</code> for the full report</li>
+<li><code>fallow:changed</code> with <code>--changed-since main</code> for day-to-day agent work</li>
+<li><code>fallow:fix-dry</code> for preview deletes</li>
+</ul>
 
-<h2>Two rewrites from real drafts</h2>
+<p>Agents live on the changed lane. Humans schedule the full passes as their own tickets. That split matches how I coach teams already drowning in lint debt.</p>
 
-<p>Before: &quot;In this comprehensive guide, we will explore how modern teams can leverage AI agents to unlock unprecedented productivity across the entire software development lifecycle.&quot;</p>
+<h2>Where it sits next to lint</h2>
 
-<p>After: &quot;This guide shows how I wire agent skills so a SaaS team ships smaller pull requests with fewer invented APIs.&quot;</p>
-
-<p>Before: &quot;The platform seamlessly empowers stakeholders to collaborate in real time while maintaining robust security postures.&quot;</p>
-
-<p>After: &quot;Admins invite teammates. Roles gate billing. Sessions expire after seven days.&quot;</p>
-
-<p>The rewrites read smaller in a pitch deck and survive a technical buyer. On a consulting site that trade pays.</p>
-
-<h2>Where it meets SEO</h2>
-
-<p>Helpful content guidance and stop-slop pull in the same direction. Answer the query, show real experience, and drop the filler that exists to hit a word count. A dense 900-word answer that solves the job beats a 2,400-word tour of synonyms.</p>
-
-<p>Structured data will not rescue soggy prose. <a class="article-link is-external" href="https://schema.org/Article" rel="noopener" target="_blank"><span class="article-link-text">Article</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> markup on empty cadence still reads empty to a human. Clean the words first, then mark them up honestly.</p>
+<p>Lint asks whether this file is wrong. Fallow asks whether this file should exist. Both belong in the agent stop path, with lint on every edit and fallow after a change that removed call sites or finished a rename. Running fallow on a typo fix wastes tokens. Never running it grows zombies.</p>
 
 <h2>Failure modes</h2>
 
-<p>Sanding away voice until the page reads like beige cardboard. Specific stories should survive the pass, and only the fake drama should die.</p>
+<p>Agents delete tests that only the CI matrix imports, so put those entry patterns in the fallow config or the skill stop list.</p>
 
-<p>Running it over terse code comments and producing essays in the margins. Leave technical comments tight.</p>
+<p>Agents read a warn verdict as green. When your policy blocks merge on new unused exports, write that in the skill.</p>
 
-<p>Skipping it because the model got better. The tells shift with each model generation. The pass stays.</p>
-
-<p>Treating it as optional on short posts. Short posts get shared faster, so short slop travels further.</p>
+<p>Agents paste the whole JSON document into chat. Require a summary instead: counts by category, the top five paths, and the proposed deletes, with the full report kept as a CI artifact.</p>
 
 <h2>Ship the habit this week</h2>
 
-<p>Take the last thing an agent drafted for you, run the five-step pass, and read both versions aloud to one colleague. Add the checks to your docs pull request template so the next draft starts closer.</p>
+<p>Install fallow on one TypeScript app and add the three scripts. Run <code>fallow audit</code> on an open pull request, delete one auto-fixable unused file after a dry run, and paste the finding id into the description. After three clean wins, add the audit to the agent stop path for multi-file refactors.</p>
 
-<p>Tip 7 gives you the angle and the language bank from <a class="article-link" href="./research-what-people-said-last-month.html" rel="noopener"><span class="article-link-text">what people said last month</span></a>. This pass keeps the draft from sounding like every other article on that angle. Tip 9 carries the same discipline into layout, where you <a class="article-link" href="./design-landing-pages-without-ai-slop.html" rel="noopener"><span class="article-link-text">design landing pages without AI slop</span></a>.</p>
+<p>Tip 12 got the release out the door with <a class="article-link" href="./ship-production-releases-with-agent-checks.html" rel="noopener"><span class="article-link-text">agent checks</span></a>. Tip 14 closes the series inside your product, where you <a class="article-link" href="./expose-product-actions-as-mcp-tools.html" rel="noopener"><span class="article-link-text">expose product actions as MCP tools</span></a> with scopes and audit trails.</p>
 
-<p>If you want cleaner public writing in your agent workflow, <a class="article-link" href="../../contact.html" rel="noopener"><span class="article-link-text">book a call</span></a>. More notes live in the <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">tips index</span></a>.</p>
+<p>If you want this wired into Cursor or Claude Code with job-named skills and a changed-since gate, <a class="article-link" href="../../contact.html" rel="noopener"><span class="article-link-text">book a call</span></a>. More notes live in the <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">tips index</span></a>.</p>
 
 <h2>Sources</h2>
 
 <ul>
-<li><a class="article-link is-external" href="https://hvpandya.com" rel="noopener" target="_blank"><span class="article-link-text">Hardik Pandya</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
-<li><a class="article-link is-external" href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener" target="_blank"><span class="article-link-text">Google helpful content guidance</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
-<li><a class="article-link is-external" href="https://schema.org/Article" rel="noopener" target="_blank"><span class="article-link-text">Schema.org Article</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://www.npmjs.com/package/fallow" rel="noopener" target="_blank"><span class="article-link-text">fallow on npm</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://docs.fallow.tools" rel="noopener" target="_blank"><span class="article-link-text">fallow documentation</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external is-github" href="https://github.com/fallow-rs/fallow" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">fallow on GitHub</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://cursor.com/docs/skills" rel="noopener" target="_blank"><span class="article-link-text">Cursor Agent Skills</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
 </ul>
 
             <div class="article-cta-end">
-              <p>If you want cleaner public writing in your agent workflow</p>
+              <p>Want fallow wired into your agent cleanup loop</p>
               <a class="btn btn-primary" href="../../contact.html" data-i18n="article.book">Book a call</a>
             </div>
 
@@ -655,28 +645,23 @@
 <div class="faq-list">
 
 <details class="faq-item">
-<summary class="faq-question">Will stop-slop make copy boring?</summary>
-<p class="faq-answer">It removes manufactured drama, not detail. Specific stories, numbers, and opinions all survive the pass and carry more weight once the filler leaves.</p>
+<summary class="faq-question">Does fallow replace ESLint?</summary>
+<p class="faq-answer">No. Lint catches local mistakes in code you keep, and fallow finds code you should remove. Run both, in that order.</p>
 </details>
 
 <details class="faq-item">
-<summary class="faq-question">Should I run it on code comments?</summary>
-<p class="faq-answer">Only where comments run as prose. Terse technical comments already do their job, and expanding them wastes the reader's time.</p>
+<summary class="faq-question">Will fallow delete files without asking?</summary>
+<p class="faq-answer">Only when you run <code>fallow fix</code> without the dry-run flag. Keep dry-run as the default in the skill, and require human confirmation for anything touching a public surface.</p>
 </details>
 
 <details class="faq-item">
-<summary class="faq-question">What about brand style guides?</summary>
-<p class="faq-answer">Run stop-slop first, then apply brand constraints. Voice rules land better on clean sentences than on padded ones.</p>
+<summary class="faq-question">What about JavaScript without TypeScript?</summary>
+<p class="faq-answer">Fallow covers both. Point it at the app your agents edit most often.</p>
 </details>
 
 <details class="faq-item">
-<summary class="faq-question">How often do agents reintroduce slop?</summary>
-<p class="faq-answer">Every draft. Model updates shift which tells appear, so keep the pass on the checklist rather than in your memory.</p>
-</details>
-
-<details class="faq-item">
-<summary class="faq-question">Can I automate it in CI?</summary>
-<p class="faq-answer">You can fail a docs pull request on banned phrases, which catches laziness. A human ear still catches emptiness written in fresh words.</p>
+<summary class="faq-question">How do I keep noise down on a legacy repo?</summary>
+<p class="faq-answer">Keep agents on the changed-since lane for daily work, and schedule full <code>fallow dead-code</code> passes as separate cleanup tickets.</p>
 </details>
 
 </div>
@@ -729,8 +714,8 @@
     <div class="article-chrome">
       <div class="read-progress" aria-hidden="true"></div>
       <div class="article-chrome-inner">
-        <p class="article-chrome-hint" id="article-chrome-hint" data-unlock-part="9" data-locked-text="Keep reading to unlock skill #9">Keep reading to unlock skill #9</p>
-        <a class="btn btn-primary is-locked" id="article-next" href="./design-landing-pages-without-ai-slop.html" aria-disabled="true" data-i18n="article.next">Next article</a>
+        <p class="article-chrome-hint" id="article-chrome-hint" data-unlock-part="14" data-locked-text="Keep reading to unlock skill #14">Keep reading to unlock skill #14</p>
+        <a class="btn btn-primary is-locked" id="article-next" href="./expose-product-actions-as-mcp-tools.html" aria-disabled="true" data-i18n="article.next">Next article</a>
       </div>
     </div>
 

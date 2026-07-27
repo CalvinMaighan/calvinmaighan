@@ -11,6 +11,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://calvinmaighan.com/tips/secret-agent-tips/find-dead-code-with-fallow.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://calvinmaighan.com/tips/secret-agent-tips/remove-ai-writing-tells-from-prose.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -22,11 +27,6 @@
   </url>
   <url>
     <loc>https://calvinmaighan.com/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://calvinmaighan.com/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

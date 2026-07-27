@@ -23,6 +23,7 @@ const seen = new Set(urls);
 for (const file of drafts) {
   // Redirect stubs stay as HTML for old links; keep them out of the sitemap.
   if (file === "name-ai-agent-skills-after-the-job.md") continue;
+  if (file === "write-seo-articles-agents-can-follow.md") continue;
   const raw = await Bun.file(join(DRAFTS, file)).text();
   const m = raw.match(/^canonical:\s*(.+)$/m);
   if (!m) continue;
@@ -77,6 +78,28 @@ await writeFile(
       "https://calvinmaighan.com/tips/secret-agent-tips/scrape-websites-for-ai-agent-research.html",
     )
     .replace("14 AI agent skills to speed up developers", "Scrape websites for AI agent research"),
+);
+
+const legacyWriteSeo = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="0; url=../how-ai-agents-speed-up-developers.html" />
+    <link rel="canonical" href="https://calvinmaighan.com/tips/how-ai-agents-speed-up-developers.html" />
+    <title>Moved · 14 AI agent skills to speed up developers</title>
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <p>
+      Series map lives at
+      <a href="../how-ai-agents-speed-up-developers.html">14 AI agent skills to speed up developers</a>.
+    </p>
+  </body>
+</html>
+`;
+await writeFile(
+  join(ROOT, "site/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html"),
+  legacyWriteSeo,
 );
 
 console.log("sitemap urls", urls.length);

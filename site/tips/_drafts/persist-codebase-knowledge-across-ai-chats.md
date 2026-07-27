@@ -7,9 +7,9 @@ metaDescription: "persist codebase knowledge across AI chats with a codebase-mem
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html
 inBodyImage: "../../calvin-article-6.png"
 ogImage: "https://calvinmaighan.com/calvin-article-6.png"
-updatedAt: 2026-07-22
-updatedHuman: July 22, 2026
-summary: "Persist codebase knowledge across AI chats by attaching a codebase-memory MCP server that stores architecture decisions, naming rules, and prior fixes as queryable entities. New threads start with recall instead of rediscovery. You cut repeated mistakes, keep conventions stable, and give agents a project memory that survives closed tabs."
+updatedAt: 2026-07-26
+updatedHuman: July 26, 2026
+summary: "Persist codebase knowledge across AI chats by attaching a codebase-memory MCP server that stores architecture decisions, naming rules, and prior fixes as queryable entities. New threads start with recall instead of rediscovery. You cut repeated mistakes, keep conventions stable, and give agents a project memory that survives a closed tab."
 standalone: false
 kicker: ""
 series: ""
@@ -18,198 +18,87 @@ nextLabel: "Next article"
 nextLocked: "true"
 ctaAboveFold: "Book a call"
 ctaEnd: "Want codebase-memory MCP wired into your team workflow"
-inBodyImageAlt: "Cover for skill 6: persist codebase knowledge across AI chats"
+inBodyImageAlt: "Cover for tip 6: persist codebase knowledge across AI chats"
 out: site/tips/secret-agent-tips/persist-codebase-knowledge-across-ai-chats.html
 ---
 
-You persist codebase knowledge across AI chats when you stop pretending the context window is a filing cabinet. Chats end. Tabs close. The next agent session forgets the boot order you explained yesterday and invents a second state store beside the one you already run. A memory MCP fixes that class of amnesia. The [Model Context Protocol architecture docs](https://modelcontextprotocol.io/docs/concepts/architecture) describe MCP as a standard way to connect hosts to tools and resources. The [MCP site](https://modelcontextprotocol.io/) is the entry point. The reference [knowledge graph memory server](https://github.com/modelcontextprotocol/servers/tree/main/src/memory) shows the pattern: entities, relations, observations, search across sessions.
+Persist codebase knowledge across AI chats or repeat the same argument every Monday. Your senior engineer spent forty minutes on Thursday explaining the boot order, the state bus, and why the team rejected a second store. Friday's agent session opens a blank window and proposes exactly that second store. Nobody wrote the lesson anywhere a machine can read.
 
-Codebase-memory builds on that idea for repositories: index symbols and decisions, then require agents to query before planning. I treat it as mandatory on consulting work where product constraints hide in tribal knowledge. Without memory, every chat is a new hire. With memory, every chat inherits the last hard lesson.
+A codebase-memory MCP server fixes that class of amnesia. The [MCP architecture docs](https://modelcontextprotocol.io/docs/concepts/architecture) describe a standard way to connect hosts to tools and resources, and the reference [knowledge graph memory server](https://github.com/modelcontextprotocol/servers/tree/main/src/memory) shows the shape: entities, relations, observations, search across sessions. Codebase-memory applies that to a repository by indexing symbols alongside decisions.
 
-## Why chat history is not enough
+I treat it as mandatory on consulting work, because product constraints hide in tribal knowledge. Without memory, every chat is a new hire. With memory, every chat inherits the last hard lesson.
 
-Thread memory dies with the thread. Even long threads rot: early decisions scroll out, summaries drop the sharp edge, and a new teammate opens a fresh agent with zero recall. Paste-based project briefs drift out of date the day after a rename.
+## Why chat history falls short
 
-Rules files help, and you should keep them. [Cursor's rules documentation](https://cursor.com/docs/context/rules) covers static guidance the product injects into context. Rules are great for invariants: TypeScript only, no new env vars, theme tokens over hardcoded colors. Rules are poor at accumulating incident history, ADR links, and "we tried X in March and rolled it back." That living layer belongs in memory.
+Thread memory dies with the thread. Long threads rot on their own: early decisions scroll out of the window, summaries file down the sharp edges, and the next teammate opens a fresh agent with zero recall. Pasted project briefs go stale the day after a rename.
 
-## What MCP memory looks like
+Rules files help, and you should keep them. [Cursor's rules documentation](https://cursor.com/docs/context/rules) covers the static guidance a product injects into context, which suits invariants: TypeScript only, no new environment variables, theme tokens over hardcoded colors. Rules handle poorly the accumulating history, the ADR links, and the "we tried this in March and rolled it back." That living layer belongs in memory.
 
-Reference memory servers store:
+## What memory stores
 
-- **Entities:** `BillingService`, `TenantGuard`, `active-theme`
-- **Relations:** `BillingService` depends on `TenantGuard`
-- **Observations:** "Tenant id must come from session, never from client body" (2026-03-12)
+- **Entities** such as `BillingService`, `TenantGuard`, `active-theme`
+- **Relations** such as `BillingService` depends on `TenantGuard`
+- **Observations** such as "Tenant id comes from the session, never the client body" with a date
 
-Agents call tools to create, search, and read nodes. On a new task they search first: "tenant isolation", "theme boot", "release checklist". Hits return facts with enough structure to steer the plan before any file opens.
+Agents call tools to create, search, and read nodes. On a new task they search first for "tenant isolation" or "theme boot" or "release checklist", and the hits steer the plan before any file opens. Codebase-oriented servers add symbol graphs, call edges, and hybrid search over code and notes. Servers differ. The workflow holds: index, recall, act, write back.
 
-Codebase-oriented servers add indexing: symbol graphs, call edges, hybrid search over code and notes. The exact server can vary. The workflow stays stable: index, recall, act, write back what you learned.
+## Seed twenty facts, not an encyclopedia
 
-## What to store on day one
-
-Seed memory with high-leverage facts, not encyclopedia entries.
-
-1. **Boot and runtime order.** On this site: define theme and i18n, init state catalog, hydrate, wire controls, paint DOM.
-2. **Hard product constraints.** No new infra unless asked. Prefer existing architecture. Tenant isolation rules for multi-tenant apps.
-3. **Naming and package boundaries.** Where vendors live, which APIs are public, which folders agents must not invent alternatives for.
-4. **Incidents.** Date, symptom, root cause, fix path, follow-up.
-5. **Rejected approaches.** "Do not add Redux; we use active-state." Rejection memory prevents helpful rewrites.
+1. **Boot and runtime order.** On this site: define theme and i18n, init the state catalog, hydrate, wire controls, paint the DOM.
+2. **Hard product constraints.** No new infrastructure unless asked. Prefer existing architecture. Tenant isolation rules on multi-tenant apps.
+3. **Naming and package boundaries.** Where vendored libraries live, which APIs are public, which folders agents must leave alone.
+4. **Incidents.** Date, symptom, root cause, fix, follow-up.
+5. **Rejected approaches.** "Do not add Redux, we use active-state." Rejection memory stops helpful rewrites.
 6. **Release truths.** Required checks, migration safety notes, who approves production.
 
-Skip storing every CSS tweak. Memory should feel like a senior engineer's notebook, not a changelog dump.
+Skip the CSS tweaks. Memory should read like a senior engineer's notebook.
 
-## Workflow: recall before plan
+## Recall before plan
 
-Make this the skill text agents cannot skip:
+Put this sequence in the skill body where agents cannot route around it:
 
-1. Classify the task: trivial, contextual, or risky.
-2. Query memory for the task entities and constraints.
-3. Compress live code context ([tip 5](./compress-agent-context-before-you-code.html)).
-4. Plan only after recall.
-5. After the change, write new observations with dates.
-6. Delete or supersede facts the change invalidates.
+1. Classify the task as trivial, contextual, or risky.
+2. Query memory for the entities and constraints involved.
+3. Compress the live code context per [tip 5](./compress-agent-context-before-you-code.html).
+4. Plan after recall, never before.
+5. Write new observations with dates once the change lands.
+6. Supersede the facts the change invalidated.
 
-Trivial typos can skip heavy recall. Contextual and risky work cannot. Production-readiness, auth, billing, and migrations always query memory first.
+A typo fix can skip heavy recall. Anything touching auth, billing, migrations, or production readiness queries memory first.
 
 ## Keep the graph honest
 
-Stale memory is a silent production bug. Treat observations as versioned claims:
+Stale memory is a silent production bug. Stamp a date on every written fact. Prefer a "superseded by" relation over a silent edit when the history matters. Re-index after large moves or package extractions. Review memory monthly, the same way you review stale feature flags. Never let tokens, customer data, or private keys enter the graph.
 
-- Stamp dates on every written fact
-- Prefer "superseded by" relations over silent edits when history matters
-- Re-index after large moves or package extractions
-- Run a monthly memory review the way you review stale feature flags
-- Ban secret material: tokens, customer data, private keys never enter memory
-
-When code and memory disagree, believe the code, fix the memory, then continue. Agents should say when memory was empty or irrelevant so humans know the session flew blind.
-
-## Memory versus RAG dumps
-
-Naive RAG fills the prompt with similar chunks. That helps docs search. It fails when you need a precise invariant: "never take tenant id from the client." Graph-shaped memory shines for invariants and relations. Hybrid systems use both: vectors for "how do we format invoices?" and graph nodes for "who owns tenant scope?"
-
-Do not replace tests with memory. Memory guides agents. Tests prove code. CI remains the judge.
-
-## Team rituals that make memory useful
-
-**After incidents.** Write the root cause into memory the same day you write the postmortem.
-
-**After ADRs.** Store a one-paragraph observation plus the ADR path.
-
-**After agent failures.** If an agent reintroduced a banned pattern, add a rejection observation and a rule line.
-
-**During onboarding.** New engineers read the memory hits for their first service area. Same graph the agents use.
-
-**During consulting handoffs.** I leave clients with a seeded memory and a short skill that mandates recall. The engagement keeps paying after I leave.
-
-## Failure modes
-
-**Memory never queried.** Skill text too soft. Make recall a hard gate for contextual and risky tasks. Log tool calls in review if needed.
-
-**Memory becomes a junk drawer.** Add a write policy: only decisions, constraints, incidents, and rejected approaches. No paste of entire files.
-
-**Conflicting observations.** Require search before create. Merge duplicates. Keep the newer dated fact and mark the old one superseded.
-
-**Over-trust.** Agents cite memory and skip reading code. Pair with compression tools that still open the critical symbols. Memory orients. Code decides.
-
-## How this tip connects
-
-Compression keeps the active window small. Memory keeps the project story alive outside the window. Ponytail keeps the diff small once the agent knows what already exists. Next, [research what people said last month](./research-what-people-said-last-month.html) feeds product decisions with external signal, which you can also store as dated observations when the research changes a roadmap bet.
-
-Browse the rest of the series from the [tips index](../../index.html#tips).
-
-## Install outline
-
-1. Choose an MCP memory server your host supports (reference memory or a codebase indexer).
-2. Register it in the IDE or agent host config.
-3. Index the primary repo.
-4. Seed twenty observations from your harshest lessons.
-5. Add a skill that mandates recall for contextual and risky work.
-6. Teach the team to write back after merges.
-7. Schedule a monthly stale-fact sweep.
-
-## Example recall that saves a week
-
-Task: "Add a second theme accent."
-
-Without memory: agent invents a new CSS variable scheme, hardcodes hex in components, skips `defineTheme` colors map, breaks dark mode.
-
-With memory: observation hits "accents go through active-theme colors map; CSS owns surfaces; no hex in app.mjs." Agent opens the theme define call, adds the color entry, updates tokens, leaves components on variables.
-
-Same request. Different institutional memory. Different outcome.
-
-## Metrics
-
-Watch:
-
-- repeat of banned patterns in agent PRs (should fall)
-- time from task start to first correct plan
-- number of "we already decided this" review comments
-- memory write rate after merges (too low means the graph is dying)
-
-When banned-pattern repeats fall, memory is working. When review comments still say "we decided this," agents are not querying or the fact never got written.
-
-## Security and tenancy notes
-
-Multi-tenant products must store isolation rules as first-class entities. Memory that says "filter by tenant" without saying where the tenant id originates is incomplete. Be explicit. For regulated work, keep memory in approved storage, encrypt at rest if your host requires it, and exclude personal data from observations.
-
-## Preflight note for agents
-
-Before editing, agents on this portfolio check memory for theme, i18n, and state-bus rules. That preflight is the difference between a clean PR and a parallel store invented at 11pm. Put the same preflight in your skill text with your own sacred cows named.
+When code and memory disagree, believe the code, fix the memory, then continue. Agents should also say out loud when memory came back empty, so humans know the session flew blind.
 
 ## What a good observation looks like
 
-Bad observation: "Auth is important."
+A weak one reads "Auth is important."
 
-Good observation: "2026-04-03: Session tenant id is authoritative. Reject client-supplied tenantId in GraphQL mutations. See `TenantGuard` and ADR-014. Rolled back a March attempt that trusted the body field after a support incident."
+A strong one reads: "2026-04-03: Session tenant id is authoritative. Reject client-supplied `tenantId` in GraphQL mutations. See `TenantGuard` and ADR-014. A March attempt trusted the body field and caused a support incident."
 
-Good observations carry a date, an actor rule, a pointer into code or ADR, and a scar. Agents quote scars. They ignore slogans.
+Good observations carry a date, an actor rule, a pointer into code, and a scar. Agents follow scars and ignore slogans.
 
-Write observations in active voice with a human subject when a decision had an owner: "Platform team banned Redis for session state on 2026-02-11; use Postgres-backed sessions." Ownership helps the next reader know who to ping when the rule must change.
+## One request, two outcomes
 
-## Index hygiene for monorepos
+"Add a second theme accent." Without memory the agent invents a new CSS variable scheme, hardcodes hex values in components, skips the `defineTheme` colors map, and breaks dark mode. With memory the search returns "accents go through the active-theme colors map, CSS owns surfaces, no hex in `app.mjs`", so the agent adds the color entry, updates tokens, and leaves components on variables.
 
-Index package by package when the monorepo is huge. A billing graph that includes the marketing site creates false neighbors. Name projects clearly in the memory host. After a package extraction, delete the old project entry so agents stop navigating ghost paths.
+Same request, same repository, and one of the two costs you a week.
 
-When two packages share types, store a relation: `billing-ui` imports contracts from `billing-api`. Agents that only search one side invent duplicate DTOs. The relation is cheaper than another week of type drift.
+## Rituals that keep it alive
 
-## Handoff packet I leave clients
+Write the root cause into memory the same day you write the postmortem. Store a one-paragraph observation with every ADR you merge. When an agent reintroduces a banned pattern, add a rejection observation and a rule line together. Point new engineers at the memory hits for their first service area, since they benefit from the same graph the agents use.
 
-At the end of an engagement I leave:
+On consulting handoffs I leave a seeded memory and a short skill that mandates recall, which keeps paying after the engagement ends.
 
-1. MCP server config snippet
-2. Seeded observations file or export
-3. Skill text that mandates recall
-4. A one-page "how to re-index" note
-5. Three example prompts that demonstrate memory hits
+## Ship the habit this week
 
-Clients keep the graph alive when the packet is boring and short. Fancy dashboards die. A Markdown note in the repo lives.
+Register a memory MCP server, index the primary repo, and seed twenty observations from your harshest lessons. Add the recall step to one skill and watch the next contextual task.
 
-## Anti-patterns unique to memory
+Compression keeps the active window small. Memory keeps the project story alive outside it. Tip 7 covers the outside signal, where you [research what people said last month](./research-what-people-said-last-month.html) and store the findings as dated observations when they change a roadmap bet.
 
-- Storing entire file contents as observations
-- Writing future plans as if they already shipped
-- Mixing personal preferences ("I like Zod") with product law ("requests must validate with Zod at the boundary")
-- Letting vendors' marketing copy into the graph without a date and a decision
-- Skipping deletes after a rewrite so both old and new truths rank
-
-Treat the graph like a production database. Writes need review. Deletes need courage.
-
-## Weekly memory standup (ten minutes)
-
-Every Monday, one engineer asks: what did we learn last week that the next agent must not rediscover? They write two observations, delete one stale fact, and paste the links in Slack. Ten minutes beats a quarterly cleanup project that never starts.
-
-If the standup finds zero new facts three weeks in a row, either the team is not shipping or they are not writing. Both are signals for the engineering manager.
-
-## Prompt snippets that force recall
-
-- "Search memory for tenant isolation before proposing an API shape."
-- "List rejected approaches for state management, then reuse the winner."
-- "If memory is empty on billing, say empty and stop; do not invent policy."
-
-Paste those into the skill. Agents follow imperative recall better than vague "consider prior art" advice.
-
-## Recruiter and contractor onboarding
-
-Contractors burn billable hours rediscovering constraints that staff engineers already know. On day one, make them run three memory queries for their service area and paste the hits into their kickoff note. That ritual proves the graph works and surfaces gaps while the engagement is young.
+If you want this wired into your team workflow, [book a call](../../contact.html). More notes live in the [tips index](../../index.html#tips).
 
 ## Sources
 
@@ -217,24 +106,25 @@ Contractors burn billable hours rediscovering constraints that staff engineers a
 - [Model Context Protocol](https://modelcontextprotocol.io/)
 - [Reference knowledge graph memory server](https://github.com/modelcontextprotocol/servers/tree/main/src/memory)
 - [Cursor rules](https://cursor.com/docs/context/rules)
-- Related: [Compress agent context before you code](./compress-agent-context-before-you-code.html)
-- Series cards on [calvinmaighan.com tips](../../index.html#tips)
- Memory without write-back is a museum. Memory with weekly writes is an operating system for agents.
 
 ## FAQ
 
 ### What is a codebase-memory MCP server?
 
-It is an MCP server that stores entities, relations, and observations about your repository so agents can query prior decisions and structure across chats instead of relying on one thread's context window.
+An MCP server that stores entities, relations, and observations about your repository so agents query prior decisions across chats instead of relying on one thread's window.
 
 ### How is memory different from Cursor rules?
 
-Rules are static instructions you maintain by hand. Memory accumulates project facts and decisions over time through graph or search tools. Use both: rules for invariants, memory for living context.
+Rules are static instructions you maintain by hand. Memory accumulates project facts over time through graph or search tools. Keep rules for invariants and memory for living context.
 
-### What should we store in memory first?
+### What should we store first?
 
-Boot order, forbidden patterns, naming conventions, tenancy or auth boundaries, and the last three production incidents with root causes. Skip trivia and transient UI tweaks.
+Boot order, forbidden patterns, naming conventions, tenancy and auth boundaries, and the last three production incidents with root causes.
 
 ### Can memory go stale and hurt agents?
 
-Yes. Require dates on observations, delete superseded facts, and re-index after large refactors. Stale memory is worse than no memory when it contradicts the code.
+Yes. Require dates, supersede old facts, and re-index after large refactors. Stale memory beats no memory only until it contradicts the code.
+
+### How do I install it on day one?
+
+Register the MCP server in your IDE config, index the primary repo, seed twenty observations, and add a skill that mandates recall for contextual and risky work.

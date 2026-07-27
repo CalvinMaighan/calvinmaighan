@@ -31,8 +31,8 @@
       "@type": "Article",
       "headline": "Compress agent context before you code",
       "description": "compress agent context before you code with lean-ctx so agents read ranked symbols, skip raw dumps, and spend tokens on the change instead of pasting entire repositories into the prompt.",
-      "datePublished": "2026-07-22",
-      "dateModified": "2026-07-22",
+      "datePublished": "2026-07-26",
+      "dateModified": "2026-07-26",
       "author": {
         "@type": "Person",
         "name": "Calvin Maighan",
@@ -54,7 +54,7 @@
           "name": "What does lean-ctx do for coding agents?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "lean-ctx compresses file reads, search results, and shell output so agents get ranked symbols and task-relevant slices instead of full file dumps that burn the context window."
+            "text": "It compresses file reads, search results, and shell output so agents get ranked symbols and task-relevant slices instead of full dumps that burn the window."
           }
         },
         {
@@ -62,7 +62,7 @@
           "name": "Is context compression the same as summarization?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Related but different. Summarization rewrites history. lean-ctx focuses on how tools return code and command output: modes, caching, and ranked compose so the model sees structure without noise."
+            "text": "Related, and different. Summarization rewrites history. lean-ctx changes how tools return code and command output through modes, caching, and ranked compose."
           }
         },
         {
@@ -70,7 +70,7 @@
           "name": "When should I still read a full file?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Read full or anchored mode when you will edit that file, when a bug depends on exact formatting, or when compression hid a symbol you still need. Prefer compose first, then expand."
+            "text": "Read full or anchored when you will edit that file, when the bug depends on exact formatting, or when compression hid a symbol you need. Compose first, then expand."
           }
         },
         {
@@ -78,7 +78,15 @@
           "name": "Does compression hurt accuracy?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Bad compression does. Good compression removes repetition and off-task files while keeping the symbols on the critical path. Measure with escaped defects and retry rate, not vibes."
+            "text": "Bad compression does. Good compression drops repetition and off-task files while keeping the critical path intact. Measure with escaped defects and retry rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Our framework already summarizes. Why add lean-ctx?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Chat summaries and structured code reads solve different problems. Keep compressed tool output for live code and summaries for long thread history."
           }
         }
       ]
@@ -208,16 +216,16 @@
             />
             <span class="article-byline-name">Calvin Maighan</span>
             <span class="article-byline-meta">
-              <span>10 min read</span>
+              <span>5 min read</span>
               <span class="sep" aria-hidden="true">·</span>
-              <time datetime="2026-07-22">July 22, 2026</time>
+              <time datetime="2026-07-26">July 26, 2026</time>
             </span>
             <a class="btn btn-primary article-byline-cta" href="../../contact.html" data-i18n="article.book">Book a call</a>
           </div>
           <figure class="article-cover">
-            <img alt="Cover for skill 5: compress agent context before you code" decoding="async" src="../../img/calvin-article-5-1200.webp" srcset="../../img/calvin-article-5-664.webp 664w, ../../img/calvin-article-5-996.webp 996w, ../../img/calvin-article-5-1200.webp 1200w" sizes="(max-width: 720px) 100vw, min(720px, 100%)" width="1200" height="675">
+            <img src="../../img/calvin-article-5-1200.webp" srcset="../../img/calvin-article-5-664.webp 664w, ../../img/calvin-article-5-996.webp 996w, ../../img/calvin-article-5-1200.webp 1200w" sizes="(max-width: 720px) 100vw, min(720px, 100%)" alt="Cover for tip 5: compress agent context before you code" width="1200" height="675" decoding="async" />
           </figure>
-          <p class="article-summary">Compress agent context before you code by routing reads, searches, and shell output through a context-engineering layer such as lean-ctx. Agents then start from ranked symbols and task-relevant slices instead of pasting whole directories into the window. You spend tokens on the change, cut retries, and keep long sessions usable.</p>
+          <p class="article-summary">Compress agent context before you code by routing reads, searches, and shell output through a context-engineering layer such as lean-ctx. Agents then start from ranked symbols and task-relevant slices instead of pasting whole directories into the window. You spend tokens on the change, cut retries, and keep long sessions usable past the first hour.</p>
           <aside class="article-aside" aria-label="Series">
             <ol class="article-series-rail">
             <li>
@@ -465,39 +473,17 @@
             <li>
               <a
                 class="article-series-card is-locked"
-                data-series-slug="expose-product-actions-as-mcp-tools"
-                data-series-title="Expose product actions as MCP tools"
-                data-series-subtitle="Tools with schemas, scopes, and audit trails"
-                data-series-tip="11"
-                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
-                href="#"
-                aria-disabled="true"
-              >
-                <span class="article-series-card-copy">
-                  <span class="article-series-card-head">
-                    <span class="article-series-card-title">Skill #11: Keep reading to unlock</span>
-                    <span class="article-series-card-check" hidden aria-hidden="true">
-                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
-                    </span>
-                  </span>
-                  <span class="article-series-card-subtitle">Tools with schemas, scopes, and audit trails</span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="article-series-card is-locked"
                 data-series-slug="catch-ai-code-mistakes-with-lint"
                 data-series-title="Catch AI code mistakes with lint"
                 data-series-subtitle="Lint as a hard gate after every agent edit"
-                data-series-tip="12"
+                data-series-tip="11"
                 data-href="/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html"
                 href="#"
                 aria-disabled="true"
               >
                 <span class="article-series-card-copy">
                   <span class="article-series-card-head">
-                    <span class="article-series-card-title">Skill #12: Keep reading to unlock</span>
+                    <span class="article-series-card-title">Skill #11: Keep reading to unlock</span>
                     <span class="article-series-card-check" hidden aria-hidden="true">
                       <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
                     </span>
@@ -512,14 +498,14 @@
                 data-series-slug="ship-production-releases-with-agent-checks"
                 data-series-title="Ship production releases with agent checks"
                 data-series-subtitle="Release checks agents cannot skip"
-                data-series-tip="13"
+                data-series-tip="12"
                 data-href="/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html"
                 href="#"
                 aria-disabled="true"
               >
                 <span class="article-series-card-copy">
                   <span class="article-series-card-head">
-                    <span class="article-series-card-title">Skill #13: Keep reading to unlock</span>
+                    <span class="article-series-card-title">Skill #12: Keep reading to unlock</span>
                     <span class="article-series-card-check" hidden aria-hidden="true">
                       <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
                     </span>
@@ -531,11 +517,33 @@
             <li>
               <a
                 class="article-series-card is-locked"
-                data-series-slug="write-seo-articles-agents-can-follow"
-                data-series-title="Write SEO articles agents can follow"
-                data-series-subtitle="Structure humans and agents can both follow"
+                data-series-slug="find-dead-code-with-fallow"
+                data-series-title="Find dead code with fallow"
+                data-series-subtitle="Unused code agents can delete with evidence"
+                data-series-tip="13"
+                data-href="/tips/secret-agent-tips/find-dead-code-with-fallow.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #13: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Unused code agents can delete with evidence</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="expose-product-actions-as-mcp-tools"
+                data-series-title="Expose product actions as MCP tools"
+                data-series-subtitle="Tools with schemas, scopes, and audit trails"
                 data-series-tip="14"
-                data-href="/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html"
+                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
                 href="#"
                 aria-disabled="true"
               >
@@ -546,186 +554,84 @@
                       <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
                     </span>
                   </span>
-                  <span class="article-series-card-subtitle">Structure humans and agents can both follow</span>
+                  <span class="article-series-card-subtitle">Tools with schemas, scopes, and audit trails</span>
                 </span>
               </a>
             </li>
             </ol>
           </aside>
           <div class="article-body">
-<p>You compress agent context before you code when you treat the context window as a scarce instrument panel, not a junk drawer. lean-ctx is the skill and toolset I use for that discipline: compose to orient, search with intent, read with a mode that matches the job, expand only what the edit needs. The <a class="article-link is-external" href="https://leanctx.com/docs" rel="noopener" target="_blank"><span class="article-link-text">lean-ctx documentation</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> and the <a class="article-link is-external is-github" href="https://github.com/yvgude/lean-ctx" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">open-source lean-ctx project</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> describe the same idea in tool form. You do not win by feeding the model more files. You win by feeding the right symbols in a shape the model can use.</p>
+<p>Compress agent context before you code, or watch a competent model answer from the loudest file it happened to open. Your engineer asks about a login bug. The agent globs half the repo, reads five files end to end, pastes a test log, and then invents an API that never existed. Each step looked thorough. Together they buried the one function that mattered.</p>
 
-<p>LangChain's team frames this as context engineering: fill the window with the right information at each step. Their <a class="article-link is-external" href="https://www.langchain.com/blog/context-engineering-for-agents" rel="noopener" target="_blank"><span class="article-link-text">context engineering for agents</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> post groups tactics into write, select, compress, and isolate. Their <a class="article-link is-external" href="https://docs.langchain.com/oss/python/langchain/context-engineering" rel="noopener" target="_blank"><span class="article-link-text">LangChain context engineering docs</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> push the same point for production agents. lean-ctx is how I apply select and compress inside an IDE coding loop without standing up a custom framework.</p>
-
-<h2>The failure mode: dump, then hope</h2>
-
-<p>Default agent behavior on a vague task looks like this:</p>
-
-<p>1. Glob half the repo 2. Read five large files end to end 3. Paste a noisy test log 4. Ask the model to figure it out 5. Retry when the model invents an API that never existed</p>
-
-<p>Each step looks thorough. Together they bury the one function that matters under thousands of tokens of neighbors, comments, and generated noise. The model then answers from the loudest nearby pattern, not from the call path you care about.</p>
-
-<p>Compression flips the order. Orient with a ranked compose. Open only the symbols that ranked. Expand a slice when an edit needs exact text. Keep shell output in patterns that strip banners and repeat rows. The agent still sees truth. It sees less of the wrong truth.</p>
+<p>lean-ctx is the toolset I use for that discipline: orient with a ranked compose, search with intent, read in a mode that matches the job, expand only what the edit needs. The <a class="article-link is-external" href="https://leanctx.com/docs" rel="noopener" target="_blank"><span class="article-link-text">lean-ctx docs</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> and the <a class="article-link is-external is-github" href="https://github.com/yvgude/lean-ctx" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">open-source project</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> describe the same idea in tool form. LangChain calls the broader practice context engineering and groups the tactics into write, select, compress, and isolate in their <a class="article-link is-external" href="https://www.langchain.com/blog/context-engineering-for-agents" rel="noopener" target="_blank"><span class="article-link-text">post on the topic</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a>. This tip is how I apply select and compress inside a normal IDE loop without standing up a framework.</p>
 
 <h2>Compose first</h2>
 
-<p><code>ctx_compose</code> (or your stack's equivalent) should be the first tool on any &quot;how does this work&quot; or multi-file task. One compose call returns ranked files with relevant symbol source inline. That replaces the antipattern chain of search, then read, then symbol lookup.</p>
+<p><code>ctx_compose</code> belongs first on any &quot;how does this work&quot; or multi-file task. One call returns ranked files with the relevant symbol source inline, which replaces the search, then read, then symbol lookup chain that agents fall into by default.</p>
 
-<p>Prompt the agent with the task in plain English: &quot;auth refresh failure on mobile&quot; beats &quot;look around the auth folder.&quot; Compose ranks by lexical and semantic signal plus structure. You get a map with code attached. From there, edit with confidence or expand one file in anchored mode.</p>
+<p>Give it the task in plain English. &quot;Auth refresh failure on mobile&quot; beats &quot;look around the auth folder.&quot; Compose ranks on lexical signal, semantic signal, and structure, so you get a map with code attached, and from there you either edit or expand one file in anchored mode.</p>
 
-<p>Rules I enforce in skills:</p>
+<p>Three rules I put in the skill file:</p>
 
 <ul>
-<li>Do not chain search → read → symbol when compose covers the question.</li>
-<li>Do not re-read a file compose already returned in full for that symbol.</li>
-<li>Fire parallel compose or reads for unrelated areas, not serial curiosity tours.</li>
+<li>Skip the search-read-symbol chain when compose answers the question.</li>
+<li>Never re-read a file compose already returned in full for that symbol.</li>
+<li>Fire parallel calls for unrelated areas instead of serial curiosity tours.</li>
 </ul>
 
 <h2>Read modes that match the job</h2>
 
-<p>lean-ctx style tools expose modes. Use them on purpose:</p>
-
 <ul>
-<li><strong>map / signatures:</strong> API surface when you only need exports</li>
-<li><strong>task:</strong> lines relevant to the stated job</li>
-<li><strong>aggressive:</strong> large files with syntax noise reduced</li>
-<li><strong>anchored:</strong> full text plus anchors when you will patch</li>
-<li><strong>lines:N-M:</strong> surgical ranges after you know the span</li>
-<li><strong>diff:</strong> after edits, only changed lines</li>
-<li><strong>full:</strong> verbatim when fidelity matters more than tokens</li>
+<li><strong>map</strong> or <strong>signatures</strong> for the API surface when you only need exports</li>
+<li><strong>task</strong> for the lines relevant to the stated job</li>
+<li><strong>aggressive</strong> for large files with syntax noise stripped</li>
+<li><strong>anchored</strong> for full text plus anchors when you plan to patch</li>
+<li><strong>lines:N-M</strong> for surgical ranges once you know the span</li>
+<li><strong>diff</strong> after edits, for changed lines only</li>
+<li><strong>full</strong> when fidelity outranks tokens</li>
 </ul>
 
-<p>Default curiosity reads should not be <code>full</code>. Full is for the file you are about to change, or for a bug that depends on exact whitespace, binary-adjacent formats, or generated blocks compression mishandles.</p>
+<p>Curiosity reads should never default to <code>full</code>. Save it for the file you are about to change, or for a bug that turns on exact whitespace.</p>
 
-<p>Caching matters. Re-reads of the same compressed slice should be cheap. Fresh flags exist for a reason: use them when the file changed on disk under you.</p>
+<h2>Search with an action</h2>
 
-<h2>Search with an action, not a vibe</h2>
+<p>Regex finds strings. Symbol search finds definitions. Semantic search finds meaning when you lack the name. A call graph finds callers. Match the action to the question.</p>
 
-<p>Regex search finds strings. Symbol search finds definitions. Semantic search finds meaning when you lack the name. Call graph finds callers. Pick the action that matches the question.</p>
+<p>&quot;Where is <code>hydrateTheme</code> defined&quot; is a symbol question. &quot;How does theme boot relate to i18n&quot; is a compose or call-graph question. &quot;Who still hardcodes a hex color&quot; is regex. Agents that run regex for everything build false confidence and miss the definition two folders away behind a re-export.</p>
 
-<p>&quot;Where is <code>hydrateTheme</code> defined?&quot; is a symbol question. &quot;How does theme boot relate to i18n?&quot; is a compose or call-graph question. &quot;Who still hardcodes a hex color?&quot; is regex. Agents that run regex for everything create false confidence and miss the definition two folders away under a re-export.</p>
+<h2>Shell output counts as context</h2>
 
-<h2>Shell output is context too</h2>
+<p>Test logs, git status, and build traces eat windows faster than source files. Keep status summaries until a failure needs detail. Cap log tails to the failing suite. Strip decorative tables the human already read. Watch for mistaken globs that paste a dependency tree into the prompt.</p>
 
-<p>Test logs, git status, and build traces can dominate a window. Compress them:</p>
+<p>An agent that dumps four thousand lines of test output spent the budget that should have bought a second look at the failing assertion.</p>
 
-<ul>
-<li>Prefer status summaries over full traces until a failure needs detail</li>
-<li>Cap log tails to the failing suite</li>
-<li>Strip decorative tables the human already saw</li>
-<li>Avoid pasting entire <code>node_modules</code> trees from mistaken globs</li>
-</ul>
+<h2>Write, select, compress, isolate</h2>
 
-<p>A coding agent that pastes a 4,000-line Jest dump is not being careful. It is spending the budget that should buy a second look at the failing assertion.</p>
+<p>Write means decisions live outside the chat: architecture notes, skill files, memory, ticket comments. The window is not your filing cabinet.</p>
 
-<h2>Write, select, compress, isolate in practice</h2>
+<p>Select means compose and symbol tools pull the few files that matter, and your rules select instructions the same way.</p>
 
-<p>Map LangChain's four buckets onto a product engineering day:</p>
+<p>Compress means read modes, log tails, and session summaries keep the history short.</p>
 
-<p><strong>Write.</strong> Persist decisions outside the chat: ADRs, skill files, memory MCP (next tip), ticket comments. The window should not be the only memory.</p>
-
-<p><strong>Select.</strong> Compose and symbol tools pull the few files that matter. Rules and skills select instructions the same way.</p>
-
-<p><strong>Compress.</strong> Read modes, log tails, and session summaries keep history short.</p>
-
-<p><strong>Isolate.</strong> Subagents or separate chats for research versus edit. Tip 3's caveman mode isolates verbosity. Tip 4's <a class="article-link" href="./keep-ai-coding-changes-minimal-with-ponytail.html" rel="noopener"><span class="article-link-text">ponytail</span></a> isolates scope of the diff.</p>
-
-<p>When a session mixes research, design debate, and a production patch, split it. Isolation is a context tool.</p>
+<p>Isolate means research and edits get separate threads. Tip 4's <a class="article-link" href="./keep-ai-coding-changes-minimal-with-ponytail.html" rel="noopener"><span class="article-link-text">ponytail</span></a> isolates the scope of the diff the same way. When one session mixes research, a design debate, and a production patch, split it.</p>
 
 <h2>Team rules that stick</h2>
 
-<p>Put these lines in your agent skill or project rules:</p>
+<p>1. Call compose before broad reads on multi-file tasks. 2. Prefer signatures or task mode until an edit needs anchors. 3. Allow one full-file curiosity read, with a stated reason. 4. Shell summary first, full log only on failure. 5. Name the files you will change before changing them. 6. When the window feels full, write decisions to memory and open a fresh thread for the patch.</p>
 
-<p>1. Call compose before broad reads on multi-file tasks. 2. Prefer signatures or task mode until an edit requires anchors. 3. Max one full-file curiosity read without a stated reason. 4. Shell: summary first, full log on failure only. 5. Name the files you will change before you change them. 6. If the window feels full, summarize decisions to memory and open a fresh thread for the patch.</p>
+<p>Reviewers can ask for the compose output or the file list in the pull request description, which creates the social check without new infrastructure. Leave one line in <code>AGENTS.md</code>: orient with compose before broad reads, prefer task or signature modes until you patch. That sentence outlives every workshop.</p>
 
-<p>Reviewers can ask for the compose output or the file list in the PR description. That creates a social check without new infrastructure.</p>
+<h2>One task, two diets</h2>
 
-<h2>Measuring compression</h2>
+<p>The dark mode icon stops updating after <code>setMode</code>. The dump approach reads all of <code>app.mjs</code>, every theme file, the header markup, and half the vendor directory. The compressed approach composes &quot;theme mode toggle icon refresh&quot;, lands on <code>setMode</code>, <code>hydrateTheme</code>, and the header icon updater, reads those three symbols, and patches the chrome refresh in one pass.</p>
 
-<p>Track:</p>
+<p>Same repository, same bug, and a bill that differs by an order of magnitude.</p>
 
-<ul>
-<li>average input tokens per successful agent task</li>
-<li>retries per task</li>
-<li>time to first correct edit</li>
-<li>share of PRs that touch unexpected directories</li>
-</ul>
+<h2>Ship the habit this week</h2>
 
-<p>Compression works when tokens and retries fall while correct-edit time holds or improves. If accuracy drops, your modes are too aggressive for that repo. Dial task mode looser, or require anchored reads before patches in dense modules.</p>
+<p>Add the six rules to your agent skill, run compose as the first call on the next three multi-file tickets, and track retries. Minimal diffs depend on clean context, since ponytail cannot reuse a helper the agent never saw. When every chat still starts from zero, tip 6 covers how to <a class="article-link" href="./persist-codebase-knowledge-across-ai-chats.html" rel="noopener"><span class="article-link-text">persist codebase knowledge across AI chats</span></a> so decisions survive the session.</p>
 
-<h2>Repo-specific notes for product teams</h2>
-
-<p>Monorepos need stricter select rules. A mobile package and a billing package can share names. Compose with a path root. Ban repo-wide globs unless the task is truly cross-cutting.</p>
-
-<p>Generated code (GraphQL types, Prisma clients, route manifests) should stay out of default reads. Point agents at the source of truth schema instead. Compression that still loads generated giants is cosplay.</p>
-
-<p>Design systems and theme tokens are high-signal and small. Prefer them over component implementation dumps when the task is visual. On calvinmaighan.com, theme CSS variables beat pasting entire <code>styles.css</code> into the prompt.</p>
-
-<h2>How this tip connects</h2>
-
-<p>Minimal diffs need clean context. If the agent never saw the existing helper, ponytail cannot reuse it. If every chat starts from zero, you need <a class="article-link" href="./persist-codebase-knowledge-across-ai-chats.html" rel="noopener"><span class="article-link-text">persistent codebase knowledge</span></a> next. Compression and memory reinforce each other: memory stores decisions, compression keeps the active window sharp.</p>
-
-<p>Browse the rest of the series from the <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">tips index</span></a>.</p>
-
-<h2>A day-one install checklist</h2>
-
-<p>1. Install lean-ctx or enable your IDE's equivalent compression hooks. 2. Add a skill: &quot;compose first; no search→read chains for orientation.&quot; 3. Document read modes in one screen for the team. 4. Add a PR note field: files consulted versus files changed. 5. Pick one noisy workflow (flaky test debug) and rewrite it with compressed logs. 6. Compare token usage for a week against the old habit.</p>
-
-<h2>Common objections</h2>
-
-<p><strong>&quot;The model has a huge window now.&quot;</strong> Huge windows still degrade. Attention is uneven. Noise still wins. Cost still scales. Latency still scales. Compression remains rational even at million-token marketing numbers.</p>
-
-<p><strong>&quot;Compression might hide a bug.&quot;</strong> So might a 200k dump. Prefer compose plus expand over either extreme. When a bug smells like an off-by-one in a dense function, switch to anchored or full for that file only.</p>
-
-<p><strong>&quot;We do not have time to learn tools.&quot;</strong> You already lose time in retries. One afternoon of skill text pays back on the next incident.</p>
-
-<p><strong>&quot;Our agent framework already summarizes.&quot;</strong> Summaries of chat are not the same as structured code reads. You want both.</p>
-
-<h2>Concrete scenario</h2>
-
-<p>Task: dark mode icon wrong after <code>setMode</code>.</p>
-
-<p>Dump approach: read all of <code>app.mjs</code>, all theme CSS, all header HTML, half the vendor files.</p>
-
-<p>Compress approach: compose &quot;theme mode toggle icon refresh&quot;. Land on <code>setMode</code>, <code>hydrateTheme</code>, and the header icon updater. Read those symbols. Patch the chrome refresh after <code>setMode</code>. Done in one pass.</p>
-
-<p>Same repository. Different context diet. Different bill.</p>
-
-<h2>Anti-patterns to ban in skill text</h2>
-
-<p>Write these as hard nos so agents cannot negotiate them away:</p>
-
-<ul>
-<li>&quot;Read the whole <code>src</code> tree to be safe.&quot;</li>
-<li>&quot;Paste the full CI log before reading the failing test name.&quot;</li>
-<li>&quot;Open every CSS file that mentions color.&quot;</li>
-<li>&quot;Re-run a broad glob after compose already ranked the files.&quot;</li>
-<li>&quot;Keep the research thread and the production patch in one endless chat.&quot;</li>
-</ul>
-
-<p>Replace each with a positive: compose with a task phrase, open the failing test file first, read theme tokens before components, trust compose ranks until they miss, split research from patch.</p>
-
-<h2>Budget thinking for leads</h2>
-
-<p>Give each agent task a soft token budget the way you give engineers a timebox. Example: orientation under a fixed input budget, then a separate budget for the edit pass. When orientation blows the budget, the agent must summarize findings to memory or a scratch note and restart clean for the patch. Leads who never budget tokens quietly fund fishing expeditions.</p>
-
-<p>Pair budgets with model choice. Cheap models are fine for compose ranking and log triage. Spend the stronger model on the edit once context is tight. Compression makes that split practical because the expensive call sees less junk.</p>
-
-<h2>Incident replay with compression</h2>
-
-<p>When production breaks, people paste everything into chat: dashboards, stack traces, Slack threads, half the service map. The agent drowns and invents a root cause from the loudest log line.</p>
-
-<p>Compressed incident replay looks different. First command: extract the failing assertion or status code. Second: compose on that symbol and the deploy SHA. Third: open only the two files on the critical path. Fourth: patch or roll back. Fifth: write the dated observation into memory so the next outage starts smarter.</p>
-
-<p>I run that sequence on client bridges when on-call is already tired. The win is not cleverness. The win is refusing a 20,000-token dump when 800 tokens of the right symbols close the page.</p>
-
-<h2>Office hours drill</h2>
-
-<p>Pick one noisy workflow each Friday: flaky CI, theme bug, migration plan. Time the agent with dump habits, then with compose-first habits. Post both times in the engineering channel. Numbers beat slogans when you ask a team to change muscle memory.</p>
-
-<h2>Handoff line for clients</h2>
-
-<p>Leave one sentence in AGENTS.md: &quot;Orient with compose before broad reads; prefer task or signature modes until you patch.&quot; That line outlives every workshop. When a new contractor opens the repo, the agent inherits the diet without a kickoff call.</p>
+<p>If you want lean-ctx wired into your team workflow, <a class="article-link" href="../../contact.html" rel="noopener"><span class="article-link-text">book a call</span></a>. More notes live in the <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">tips index</span></a>.</p>
 
 <h2>Sources</h2>
 
@@ -734,8 +640,6 @@
 <li><a class="article-link is-external is-github" href="https://github.com/yvgude/lean-ctx" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">lean-ctx on GitHub</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
 <li><a class="article-link is-external" href="https://www.langchain.com/blog/context-engineering-for-agents" rel="noopener" target="_blank"><span class="article-link-text">Context engineering for agents (LangChain)</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
 <li><a class="article-link is-external" href="https://docs.langchain.com/oss/python/langchain/context-engineering" rel="noopener" target="_blank"><span class="article-link-text">Context engineering in agents (LangChain docs)</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
-<li>Related: <a class="article-link" href="./keep-ai-coding-changes-minimal-with-ponytail.html" rel="noopener"><span class="article-link-text">Keep AI coding changes minimal with ponytail</span></a></li>
-<li>Series cards on <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">calvinmaighan.com tips</span></a></li>
 </ul>
 
             <div class="article-cta-end">
@@ -751,22 +655,27 @@
 
 <details class="faq-item">
 <summary class="faq-question">What does lean-ctx do for coding agents?</summary>
-<p class="faq-answer">lean-ctx compresses file reads, search results, and shell output so agents get ranked symbols and task-relevant slices instead of full file dumps that burn the context window.</p>
+<p class="faq-answer">It compresses file reads, search results, and shell output so agents get ranked symbols and task-relevant slices instead of full dumps that burn the window.</p>
 </details>
 
 <details class="faq-item">
 <summary class="faq-question">Is context compression the same as summarization?</summary>
-<p class="faq-answer">Related but different. Summarization rewrites history. lean-ctx focuses on how tools return code and command output: modes, caching, and ranked compose so the model sees structure without noise.</p>
+<p class="faq-answer">Related, and different. Summarization rewrites history. lean-ctx changes how tools return code and command output through modes, caching, and ranked compose.</p>
 </details>
 
 <details class="faq-item">
 <summary class="faq-question">When should I still read a full file?</summary>
-<p class="faq-answer">Read full or anchored mode when you will edit that file, when a bug depends on exact formatting, or when compression hid a symbol you still need. Prefer compose first, then expand.</p>
+<p class="faq-answer">Read full or anchored when you will edit that file, when the bug depends on exact formatting, or when compression hid a symbol you need. Compose first, then expand.</p>
 </details>
 
 <details class="faq-item">
 <summary class="faq-question">Does compression hurt accuracy?</summary>
-<p class="faq-answer">Bad compression does. Good compression removes repetition and off-task files while keeping the symbols on the critical path. Measure with escaped defects and retry rate, not vibes.</p>
+<p class="faq-answer">Bad compression does. Good compression drops repetition and off-task files while keeping the critical path intact. Measure with escaped defects and retry rate.</p>
+</details>
+
+<details class="faq-item">
+<summary class="faq-question">Our framework already summarizes. Why add lean-ctx?</summary>
+<p class="faq-answer">Chat summaries and structured code reads solve different problems. Keep compressed tool output for live code and summaries for long thread history.</p>
 </details>
 
 </div>
@@ -779,15 +688,39 @@
 
     <footer class="site-footer">
       <div class="wrap">
-        <p class="foot-statement" data-i18n="footer.statement">Available for hard builds.</p>
+        <p class="foot-statement" data-i18n="footer.statement">Let's Connect.</p>
         <p class="foot-meta">
           <strong>Calvin Maighan</strong>
           <span class="sep" aria-hidden="true">·</span>
           <span data-i18n="footer.role">Senior AI and SaaS Engineer</span>
           <span class="sep" aria-hidden="true">·</span>
-          <span data-i18n="footer.meta">Montreal · remote contracts</span>
+          <span class="foot-place">
+            <svg
+              class="icon foot-canada"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 480"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path fill="#fff" d="M150.1 0h339.7v480H150z" />
+              <path
+                fill="#d52b1e"
+                d="M-19.7 0h169.8v480H-19.7zm509.5 0h169.8v480H489.9zM201 232l-13.3 4.4l61.4 54c4.7 13.7-1.6 17.8-5.6 25l66.6-8.4l-1.6 67l13.9-.3l-3.1-66.6l66.7 8c-4.1-8.7-7.8-13.3-4-27.2l61.3-51l-10.7-4c-8.8-6.8 3.8-32.6 5.6-48.9c0 0-35.7 12.3-38 5.8l-9.2-17.5l-32.6 35.8c-3.5.9-5-.5-5.9-3.5l15-74.8l-23.8 13.4q-3.2 1.3-5.2-2.2l-23-46l-23.6 47.8q-2.8 2.5-5 .7L264 130.8l13.7 74.1c-1.1 3-3.7 3.8-6.7 2.2l-31.2-35.3c-4 6.5-6.8 17.1-12.2 19.5s-23.5-4.5-35.6-7c4.2 14.8 17 39.6 9 47.7"
+              />
+            </svg>
+            <span data-i18n="footer.city">Montreal</span>
+          </span>
           <span class="sep" aria-hidden="true">·</span>
-          <a class="foot-ico" href="https://github.com/CalvinMaighan" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub</a>
+          <span data-i18n="footer.remote">remote contracts</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <a
+            class="foot-ico"
+            href="https://github.com/CalvinMaighan"
+            rel="noopener noreferrer"
+            target="_blank"
+            ><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg
+            >GitHub</a
+          >
         </p>
       </div>
     </footer>

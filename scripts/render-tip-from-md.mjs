@@ -228,6 +228,14 @@ function pageHtml({ data, bodyHtml, faq, readMinutes }) {
       ? seriesIdx + 1
       : null;
   const imgAlt = data.inBodyImageAlt || title;
+  const coverStem = (() => {
+    const raw = String(data.inBodyImage || "");
+    const m = raw.match(/(calvin(?:maighan)?-article(?:-series)?-\d+)\.png$/i);
+    return m ? m[1] : null;
+  })();
+  const coverImg = coverStem
+    ? `<img src="${toRoot}/img/${coverStem}-1200.webp" srcset="${toRoot}/img/${coverStem}-664.webp 664w, ${toRoot}/img/${coverStem}-996.webp 996w, ${toRoot}/img/${coverStem}-1200.webp 1200w" sizes="(max-width: 720px) 100vw, min(720px, 100%)" alt="${escapeHtml(imgAlt)}" width="1200" height="675" decoding="async" />`
+    : `<img src="${escapeHtml(data.inBodyImage || `${toRoot}/calvin-article-2.png`)}" alt="${escapeHtml(imgAlt)}" width="1672" height="941" decoding="async" />`;
   const updated = data.updatedAt || "2026-07-22";
   const updatedHuman = data.updatedHuman || "July 22, 2026";
   let ctaFold = data.ctaAboveFold || "Book a call";
@@ -364,7 +372,15 @@ ${JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2)
         } catch (_) {}
       })();
     </script>
-    <link rel="stylesheet" href="${toRoot}/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/archivoblack/v23/HTxqL289NzCGg4MzN6KJ7eW6CYyF_jzx13E.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g7M8btVsD8Ck0q7u6-K6z9mXgjU0.woff2" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" /></noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" /></noscript>
+    <link rel="stylesheet" href="${toRoot}/site.css" />
   </head>
   <body class="article-page" data-series-slug="${escapeHtml(seriesSlug)}">
     <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
@@ -474,7 +490,7 @@ ${JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2)
             <a class="btn btn-primary article-byline-cta" href="${toRoot}/contact.html" data-i18n="article.book">${escapeHtml(ctaFold)}</a>
           </div>
           <figure class="article-cover">
-            <img src="${escapeHtml(data.inBodyImage || `${toRoot}/calvin-article-2.png`)}" alt="${escapeHtml(imgAlt)}" width="1672" height="941" decoding="async" />
+            ${coverImg}
           </figure>
           <p class="article-summary">${inline(summary)}</p>
           <aside class="article-aside" aria-label="Series">
@@ -498,19 +514,39 @@ ${faqHtml}
 
     <footer class="site-footer">
       <div class="wrap">
-        <p class="foot-statement" data-i18n="footer.statement">Available for hard builds.</p>
+        <p class="foot-statement" data-i18n="footer.statement">Let's Connect.</p>
         <p class="foot-meta">
           <strong>Calvin Maighan</strong>
           <span class="sep" aria-hidden="true">·</span>
           <span data-i18n="footer.role">Senior AI and SaaS Engineer</span>
           <span class="sep" aria-hidden="true">·</span>
-          <span data-i18n="footer.meta">Montreal · remote contracts</span>
+          <span class="foot-place">
+            <svg
+              class="icon foot-canada"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 480"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path fill="#fff" d="M150.1 0h339.7v480H150z" />
+              <path
+                fill="#d52b1e"
+                d="M-19.7 0h169.8v480H-19.7zm509.5 0h169.8v480H489.9zM201 232l-13.3 4.4l61.4 54c4.7 13.7-1.6 17.8-5.6 25l66.6-8.4l-1.6 67l13.9-.3l-3.1-66.6l66.7 8c-4.1-8.7-7.8-13.3-4-27.2l61.3-51l-10.7-4c-8.8-6.8 3.8-32.6 5.6-48.9c0 0-35.7 12.3-38 5.8l-9.2-17.5l-32.6 35.8c-3.5.9-5-.5-5.9-3.5l15-74.8l-23.8 13.4q-3.2 1.3-5.2-2.2l-23-46l-23.6 47.8q-2.8 2.5-5 .7L264 130.8l13.7 74.1c-1.1 3-3.7 3.8-6.7 2.2l-31.2-35.3c-4 6.5-6.8 17.1-12.2 19.5s-23.5-4.5-35.6-7c4.2 14.8 17 39.6 9 47.7"
+              />
+            </svg>
+            <span data-i18n="footer.city">Montreal</span>
+          </span>
           <span class="sep" aria-hidden="true">·</span>
-          <a class="foot-ico" href="https://github.com/CalvinMaighan" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub</a>
+          <span data-i18n="footer.remote">remote contracts</span>
           <span class="sep" aria-hidden="true">·</span>
-          <a class="foot-ico" href="mailto:hello@calvinmaighan.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email</a>
-          <span class="sep" aria-hidden="true">·</span>
-          <a href="${toRoot}/contact.html" data-i18n="nav.cta">Book a call</a>
+          <a
+            class="foot-ico"
+            href="https://github.com/CalvinMaighan"
+            rel="noopener noreferrer"
+            target="_blank"
+            ><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg
+            >GitHub</a
+          >
         </p>
       </div>
     </footer>

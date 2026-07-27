@@ -7,9 +7,9 @@ metaDescription: "keep AI coding changes minimal with ponytail so agents ship th
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html
 inBodyImage: "../../calvin-article-4.png"
 ogImage: "https://calvinmaighan.com/calvin-article-4.png"
-updatedAt: 2026-07-22
-updatedHuman: July 22, 2026
-summary: "Keep AI coding changes minimal with ponytail by forcing every agent edit through a YAGNI ladder: skip work that should not exist, reuse what the repo already has, prefer stdlib and native features, then ship the shortest correct diff. You get smaller pull requests, fewer speculative abstractions, and reviews that finish in one pass."
+updatedAt: 2026-07-26
+updatedHuman: July 26, 2026
+summary: "Keep AI coding changes minimal with ponytail by forcing every agent edit through a YAGNI ladder: skip work that should not exist, reuse what the repo already has, prefer stdlib and native features, then ship the shortest correct diff. You get smaller pull requests, fewer speculative abstractions, and reviews that finish in one pass instead of three."
 standalone: false
 kicker: ""
 series: ""
@@ -18,178 +18,85 @@ nextLabel: "Next article"
 nextLocked: "true"
 ctaAboveFold: "Book a call"
 ctaEnd: "Want ponytail wired into your team workflow"
-inBodyImageAlt: "Cover for skill 4: keep AI coding changes minimal with ponytail"
+inBodyImageAlt: "Cover for tip 4: keep AI coding changes minimal with ponytail"
 out: site/tips/secret-agent-tips/keep-ai-coding-changes-minimal-with-ponytail.html
 ---
 
-You keep AI coding changes minimal with ponytail when you treat every agent session like a senior engineer who has been paged at 3am for one clever abstraction too many. Ponytail is a skill file that encodes that laziness on purpose. Lazy here means efficient. The best code is the code nobody wrote. Agents default the other way: they scaffold folders, invent interfaces with one implementation, and rename half the module while fixing a null check. Your job is to put a hard ladder in front of that impulse before the first file opens.
+Keep AI coding changes minimal with ponytail the next time an agent answers a null-check ticket with forty changed files. Your reviewer opens the pull request, sees a new folder, an interface with one implementation, and a config object for a value that will never change. The bug fix is in there somewhere. Nobody finds it before lunch.
 
-I use ponytail on consulting builds where clients care about merge speed and blast radius. A five-file fix that solves the ticket beats a forty-file cleanup that invents a plugin system. [Martin Fowler's note on YAGNI](https://martinfowler.com/bliki/Yagni.html) still names the cost: you pay for design you never use, then you pay again to delete or drag it through later changes. Wikipedia's overview of [You aren't gonna need it](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it) tracks the same Extreme Programming rule. Ponytail turns that rule into agent-readable steps so the model cannot skip them while looking helpful.
+Ponytail is a skill file that encodes deliberate laziness. Lazy means efficient. I run it on consulting builds where clients measure merge speed and blast radius, because a five-file fix that solves the ticket beats a forty-file cleanup that invents a plugin system. [Martin Fowler's note on YAGNI](https://martinfowler.com/bliki/Yagni.html) still names the bill: you pay for design you never use, then you pay again to drag it through every later change.
 
-## Why agents overbuild by default
+## Why agents overbuild
 
-Language models train on public repos full of frameworks, tutorials, and aspirational architecture. When you ask for a date picker, the training prior often prefers a component library. When you ask for caching, the prior prefers a typed cache class with TTL knobs. None of that proves your product needs those pieces today.
+Models train on public repos full of frameworks, tutorials, and aspirational architecture. Ask for a date picker and the prior reaches for a component library. Ask for caching and the prior reaches for a typed cache class with TTL knobs. Neither proves your product needs those pieces this quarter.
 
-Agents also optimize for looking complete. A long diff signals effort. A one-line fix can feel too small to the model, so it pads the change with comments, helpers, and future-proof options. Reviewers pay for that padding in attention. CI pays in flake surface. Future you pays when the unused factory finally conflicts with a real requirement.
+Agents also optimize for looking complete. A long diff signals effort, so a one-line fix feels too small and the model pads it with helpers and future-proof options. Reviewers pay in attention. CI pays in flake surface. You pay later when the unused factory blocks a real requirement.
 
-[Anthropic's guidance on building effective agents](https://www.anthropic.com/engineering/building-effective-agents) pushes the same simplicity bias at the system level: start with simple composable patterns, add complexity when measurement says you must. Ponytail applies that bias at the pull request level. One skill. One ladder. No essay after the code unless you asked for a report.
+[Anthropic's guidance on building effective agents](https://www.anthropic.com/engineering/building-effective-agents) pushes the same bias at the system level: start with simple composable patterns, add complexity when measurement demands it. Ponytail applies that at the pull request level.
 
-## The ponytail ladder
+## The ladder
 
-Stop at the first rung that holds. Run the ladder after you understand the problem, never instead of reading the code.
+Stop at the first rung that holds. Run it after you understand the problem, never instead of reading the code.
 
-### Does this need to exist at all?
-
-Speculative need equals skip. If the ticket is a nice-to-have with no user path, say so in one line and stop. Agents love building dashboards for metrics nobody watches. Ponytail asks the rude question first.
-
-### Does this codebase already solve it?
-
-Search before you invent. A helper three files over beats a new util package. Re-implementing what already exists is the most common agent slop I see in reviews. Point the agent at the existing pattern with a path. Make reuse the default.
-
-### Does the standard library cover it?
-
-`lru_cache`, `URLSearchParams`, `Intl.DateTimeFormat`, `path.basename`: boring tools that already shipped. Prefer them over a new dependency. Dependencies are forever in security reviews and lockfile fights.
-
-### Does the native platform cover it?
-
-`<input type="date">` before a date picker library. CSS before a JS animation runtime. A database unique constraint before app-layer dedupe. Native features shrink the surface the agent can break.
-
-### Does an already-installed dependency cover it?
-
-Use what is in `package.json` or the lockfile today. Do not add a package for twenty lines of code. Adding deps is a product decision, not an agent reflex.
-
-### Can it be one line?
-
-If one line is correct on the edge cases that matter, ship the one line. Two stdlib options of equal size: take the one that handles edges. Lazy never means flimsy algorithms.
-
-### Only then write the minimum code that works
-
-When you must add structure, keep files few, names plain, and abstractions at zero until a second call site appears. Deletion still beats addition when both work.
+1. **Does this need to exist at all?** Speculative need means skip, in one line, out loud. Agents love building dashboards for metrics nobody opens.
+2. **Does this codebase already solve it?** A helper three files over beats a new util package. Re-implementing what already exists is the most common slop I catch in review.
+3. **Does the standard library cover it?** `lru_cache`, `URLSearchParams`, `Intl.DateTimeFormat`, `path.basename`. Boring tools that already shipped.
+4. **Does the platform cover it?** `<input type="date">` before a picker library. CSS before a JS animation runtime. A unique constraint before app-layer dedupe.
+5. **Does an installed dependency cover it?** Use what the lockfile already carries. Adding a package is a product decision, not an agent reflex.
+6. **Can it be one line?** Ship the one line when it handles the edge cases that matter. Two stdlib options of equal size go to the one that survives edges.
+7. **Only then, the minimum code that works.** Few files, plain names, no abstraction until a second call site appears.
 
 ## Root cause beats symptom patches
 
-A bug report names a symptom. Ponytail still demands a root-cause read. Grep every caller of the function you plan to touch. One guard in the shared function is smaller than a guard in every caller, and patching only the ticket path leaves sibling callers broken. The lazy fix is the shared fix once you traced the graph.
+A bug report names a symptom. Ponytail still demands the root-cause read. Grep every caller of the function you plan to touch. One guard in the shared function is smaller than a guard in six callers, and patching only the path the ticket named leaves every sibling broken.
 
-This is where teams get ponytail wrong. They confuse small diff with touch only the file named in the ticket. Small in the wrong place is a second bug. Read fully, then climb the ladder.
-
-[Claude Code best practices from Anthropic](https://www.anthropic.com/engineering/claude-code-best-practices) stress exploring and planning before heavy edits. Ponytail agrees, then refuses the tour-guide prose after the edit. Code first. At most three short lines on what you skipped and when to add it.
+Teams get this wrong when they read "small diff" as "touch only the file in the ticket." Small in the wrong place is a second bug. [Claude Code best practices](https://www.anthropic.com/engineering/claude-code-best-practices) put exploration before heavy edits for the same reason. Read fully, then climb.
 
 ## What ponytail refuses to cut
 
-Never simplify away:
+- Input validation at trust boundaries
+- Error handling that prevents data loss
+- Security measures you already require
+- Accessibility basics on UI work
+- Anything you explicitly asked for
 
-- input validation at trust boundaries
-- error handling that prevents data loss
-- security measures you already require
-- accessibility basics for UI work
-- anything the user explicitly requested
+When you want the full design, say so and get the full design. Ponytail sets a default, and it never overrides product intent.
 
-If the user insists on the full design, build the full design. Ponytail is a default, not a veto over product intent. Hardware and money paths also keep their calibration knobs; the physical world and finance code need tuning that a one-liner cannot see.
+Non-trivial logic still leaves one runnable check behind: a small assert demo or one focused test that fails when the branch breaks. No fixture factories, no per-function suite unless you asked. Tests follow YAGNI too.
 
-Non-trivial logic should leave one runnable check: a tiny assert demo or one focused test that fails if the branch breaks. No fixture factories. No per-function suite unless you asked for it. Tests follow YAGNI too.
+## Review signals
 
-## Review signals that ponytail worked
-
-Use this checklist on every agent PR:
+Run this on every agent pull request:
 
 1. File count matches the blast radius of the bug or feature.
 2. No new interface with a single implementation.
-3. No config object for a constant that never changes.
-4. No drive-by renames outside the change.
+3. No config object for a constant.
+4. No drive-by renames or formatting outside the change.
 5. No new dependency without an explicit ask.
-6. Root cause sits in the shared path, not only the ticket path.
-7. Description names what was skipped and the trigger to add it later.
+6. Root cause sits in the shared path.
+7. The description names what was skipped and the trigger to add it later.
 
-When a PR fails two or more of those checks, send it back with the ladder pasted in the review. Agents respond well to concrete rungs. Vague "make it simpler" invites another creative rewrite.
+Two failures send it back with the ladder pasted into the review. Agents respond to concrete rungs. "Make it simpler" invites another creative rewrite.
 
-## Pair ponytail with the rest of the series
+## Two tickets, two outcomes
 
-Ponytail sits next to token-tight talk and compressed context. Tip 3 on [agent talk less with caveman](./cut-ai-agent-tokens-with-caveman.html) keeps the prompt short. Tip 5 on [compressing agent context before you code](./compress-agent-context-before-you-code.html) keeps the files short. Ponytail keeps the diff short. Together they reduce cost, noise, and merge risk.
+Cache the API responses on a settings page. Without ponytail you get a `CacheService` class, TTL config, an in-memory map, eviction tests, an adapter interface, and a README section. With ponytail you wrap the fetch in the language's LRU helper or reuse the cache headers the API already sends, then note that a custom class waits for a profiler.
 
-On this portfolio I also keep product copy and theme work under the same bias: reuse `active-*` vendors, paint with theme tokens, avoid new infra unless a client asks. The skill matches how I already ship consulting work. Browse more tips from the [tips index](../../index.html#tips).
+Fix the null crash in billing when `plan` is missing. Without ponytail you get optional chaining on the screen that crashed. With ponytail you find every reader of `plan`, put the default in the shared loader, add one assert for the missing-plan path, and leave the screens alone.
 
-## Team install pattern
+Both tickets look small. They compound in a codebase agents touch daily.
 
-Put ponytail where your agent loads skills. Name the skill after the job: `keep-ai-coding-changes-minimal` works better than `ponytail-vibes`. In the skill body, paste the ladder as numbered rules the model cannot summarize away. Add two repo-specific examples: one good one-line fix from your history, one rejected overbuild.
+## Install it on the team
 
-Set intensity:
+Put ponytail where your agent loads skills and name it after the job, `keep-ai-coding-changes-minimal` rather than `ponytail-vibes`. Paste the ladder as numbered rules. Add two examples from your own repo: one good one-line fix, one rejected overbuild. Set `full` as the default for product work, `lite` when juniors need room, `ultra` only in spikes. Add one checkbox to the pull request template: "Ponytail ladder applied."
 
-- `lite`: build what was asked, name the lazier alternative in one line
-- `full`: enforce the ladder; default for product work
-- `ultra`: YAGNI extremist; ship the one-liner and challenge the rest of the ask
+Coach against the four repeat offenders. Scaffolded folders get deleted in review. A new state library beside your existing bus gets answered with a path to the existing store. Drive-by formatting belongs to the formatter on save. Long justification essays get one line in the skill: code first, three lines maximum.
 
-Most product teams should live on `full`. Ultra belongs in spikes and personal scripts. Lite belongs when a junior agent needs room to learn patterns you still want documented.
+## Ship the habit this week
 
-Wire a PR template checkbox: "Ponytail ladder applied." Make humans tick it. Agents will start echoing the checkbox language in commit bodies, which helps reviewers scan.
+Add the ladder to one skill file, apply it to the next three agent pull requests, and count files touched before and after. Tip 3 on [agent talk less with caveman](./cut-ai-agent-tokens-with-caveman.html) keeps the prompt short. Tip 5 on [compressing agent context before you code](./compress-agent-context-before-you-code.html) keeps the input short. Ponytail keeps the diff short.
 
-## Failure modes and fixes
-
-**Agent adds a folder of empty scaffolding.** Delete the folder in review. Add a skill line: "Fewest files possible. No scaffolding for later."
-
-**Agent introduces a new state library beside your existing bus.** Point at the existing store with a path. On this site that would be `active-state` under `site/vendor/`. Reuse beats rewrite.
-
-**Agent improves unrelated formatting.** Ban drive-by format in the skill. Formatting belongs to the formatter on save, not the coding agent mid-ticket.
-
-**Agent writes a long justification essay.** Pair with caveman or a hard "code first, three lines max" rule. Explanation the user asked for still ships in full. Unrequested defense of a simplification is complexity smuggled back as prose.
-
-**Agent skips reading and patches the symptom.** Require a preflight: list callers, name root file, then edit. Refuse diffs that cannot name the shared function.
-
-## A concrete walkthrough
-
-Ticket: cache API responses for a settings page.
-
-Lite agent without ponytail: new `CacheService` class, TTL config, in-memory map, unit tests for eviction, adapter interface, and a README section.
-
-Ponytail agent on `full`: wrap the fetch in the language's LRU helper or reuse the HTTP cache headers the API already sends. Skipped custom class. Add when a profiler shows LRU falling short.
-
-Ticket: add a date field on a form.
-
-Without ponytail: install a date library, theme the calendar, add localization packs.
-
-With ponytail: native date input, constrain format in validation you already own, ship. Add a picker library when design explicitly requires a custom calendar UI.
-
-Ticket: null crash in billing when `plan` is missing.
-
-Without ponytail: optional chaining at the screen that crashed.
-
-With ponytail: find every reader of `plan`, put the guard or default in the shared loader, add one assert for the missing-plan path, leave screens alone.
-
-Those three tickets look small. They save weeks of compound interest in a codebase agents touch daily.
-
-## Metrics that prove the tip
-
-Track for two sprints:
-
-- median files changed per agent PR
-- median lines changed
-- review rounds until merge
-- escaped defects from agent PRs
-- new dependencies introduced by agents
-
-You want files and review rounds down without escaped defects up. If defects rise, the team is confusing ponytail with recklessness. Bring validation rules back into the skill text. If files stay high, the skill is not loading or reviewers are waving through scaffolding.
-
-## Ship it this week
-
-1. Add a ponytail skill named for the job.
-2. Paste the seven-rung ladder and two local examples.
-3. Set default intensity to `full`.
-4. Add the PR checkbox.
-5. Reject one overbuilt agent PR in public on the team channel with the ladder cited.
-6. Measure file counts for two weeks.
-
-Minimal diffs are a culture. Skills only encode culture so agents can join it.
-
-## How I brief agents on day one
-
-I paste three lines into the kickoff prompt on new repos:
-
-1. "Apply ponytail at full intensity for all code edits."
-2. "Name the shared root-cause file before you patch a symptom."
-3. "List every new file and dependency you plan to add; expect pushback."
-
-Those three lines cut the first-week overbuild tax more than a slide deck. When a junior engineer watches the agent shrink a fifty-file proposal into three files, the culture sticks without a workshop.
-
-On fixed-bid consulting I also write the ladder into the statement of work as a quality bar: "agent-authored PRs must show the ponytail checklist in the description." Clients then have language to reject bloat without arguing taste.
+If you want it wired into your workflow with job-named skills and pull request templates, [book a call](../../contact.html). More notes live in the [tips index](../../index.html#tips).
 
 ## Sources
 
@@ -197,23 +104,21 @@ On fixed-bid consulting I also write the ladder into the statement of work as a 
 - [You aren't gonna need it (Wikipedia)](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it)
 - [Building effective agents (Anthropic)](https://www.anthropic.com/engineering/building-effective-agents)
 - [Claude Code best practices (Anthropic)](https://www.anthropic.com/engineering/claude-code-best-practices)
-- Related: [Agent talk less with caveman](./cut-ai-agent-tokens-with-caveman.html)
-- Series cards on [calvinmaighan.com tips](../../index.html#tips)
 
 ## FAQ
 
 ### What is the ponytail skill for AI coding agents?
 
-Ponytail is a coding discipline skill that forces the laziest solution that still works: YAGNI first, reuse existing code, prefer stdlib and native features, then ship the shortest correct diff.
+A coding discipline skill that forces the laziest solution that still works: YAGNI first, reuse existing code, prefer stdlib and native features, then ship the shortest correct diff.
 
 ### Does minimal mean skip tests and error handling?
 
-No. Ponytail never cuts validation at trust boundaries, data-loss protection, security basics, or anything you explicitly requested. Lazy means fewer files and fewer abstractions, not careless code.
+No. Ponytail never cuts validation at trust boundaries, data-loss protection, security basics, or anything you requested. Fewer files and fewer abstractions, same care.
 
 ### How do I know an agent ignored ponytail?
 
-Look for new folders, unused interfaces, config for values that never change, and drive-by refactors outside the ticket. A healthy ponytail PR touches the fewest files that fix the root cause.
+Look for new folders, unused interfaces, config for constants, and refactors outside the ticket. A healthy pull request touches the fewest files that fix the root cause.
 
 ### When should I turn ponytail off?
 
-Turn it off when the user asks for the full design, when you are doing greenfield architecture on purpose, or when a measured bottleneck proves the simple path failed.
+When you asked for the full design, when you are doing greenfield architecture on purpose, or when a measured bottleneck proves the simple path failed.

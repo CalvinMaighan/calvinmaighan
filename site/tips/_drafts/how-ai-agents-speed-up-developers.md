@@ -7,9 +7,9 @@ metaDescription: "14 ai agent skills to speed up developers: a plain-language ma
 canonical: https://calvinmaighan.com/tips/how-ai-agents-speed-up-developers.html
 inBodyImage: "../calvinmaighan-article-series-1.png"
 ogImage: "https://calvinmaighan.com/calvinmaighan-article-series-1.png"
-updatedAt: 2026-07-23
-updatedHuman: July 23, 2026
-summary: "14 ai agent skills to speed up developers is not about typing faster. It is about cutting the waiting between a clear goal and a change your team trusts: research, reading unfamiliar code, drafting, review, and release checks. This page is the map. The next fourteen tips are the practical skills I use with teams so agents help you ship instead of creating cleanup."
+updatedAt: 2026-07-26
+updatedHuman: July 26, 2026
+summary: "14 ai agent skills to speed up developers is about cutting the waiting between a clear goal and a change your team trusts: research, reading unfamiliar code, drafting, review, cleanup, and release checks. This page is the map. The next fourteen tips are the practical skills I use with teams so agents help you ship instead of creating cleanup."
 standalone: false
 intro: true
 kicker: ""
@@ -32,7 +32,7 @@ I work with startups, SaaS teams, and agencies that want AI in the build loop wi
 
 Your developers spend their day waiting on their agents.
 
-The agent reaches for stale docs when the live page already changed. It guesses how a library works instead of reading the real code on disk. Answers get padded. Changes get oversized. Last week's decisions vanish the moment a new chat opens. Marketing copy sounds fake. Landing pages look like every other AI template. Product videos pile up with no clean way to revise them. The agent cannot take a safe action in your product. Quality checks get skipped. Release becomes a button because nobody wrote the checklist down. SEO drafts arrive with no clear topic, no summary, and no structure the next person can reuse.
+The agent guesses how a library works instead of reading the real code on disk. It reaches for stale docs when the live page already changed. Answers get padded. Changes get oversized. Context floods the chat and hides the symbols that matter. Last week's decisions vanish the moment a new chat opens. Research cites last year's blog instead of what people said this month. Marketing copy sounds fake. Landing pages look like every other AI template. Product videos pile up with no clean way to revise them. Quality checks get skipped. Release becomes a button because nobody wrote the checklist down. Dead code and unused exports pile up after every agent refactor. The agent still cannot take a safe action in your product.
 
 Those stalls are what the next fourteen tips attack, one job at a time. Read this map. Send the rest to engineering.
 
@@ -46,12 +46,12 @@ It does not mean the agent owns production. Humans still approve. Humans still s
 
 A chat box pointed at the repo is not a plan. You need jobs the agent can run.
 
-- Research jobs that pull fresh sources before making claims
-- Reading jobs that open real library code before changing yours
+- Research jobs that pull fresh sources and recent voices before making claims
+- Reading jobs that open real library code and compress context before changing yours
 - Writing jobs that strip the usual AI tells before you publish
 - Design and video jobs that keep your brand and product truth
+- Gate jobs that catch mistakes, follow a release checklist, and remove dead code
 - Product jobs that let the agent take safe, scoped actions
-- Gate jobs that catch mistakes and follow a release checklist
 
 ## Why teams stall
 
@@ -94,4 +94,3 @@ No. They compress grunt work. Your seniors still own architecture, risk, and wha
 ### Do we need one specific coding tool?
 
 No. The jobs transfer. Packaging changes by editor. Shared playbooks, quality gates, and release habits still apply.
-
