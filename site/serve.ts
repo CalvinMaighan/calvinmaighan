@@ -22,8 +22,12 @@ function contentType(path: string) {
   return "application/octet-stream";
 }
 
+const port = Number(process.env.PORT) || 5173;
+const isProd = process.env.NODE_ENV === "production";
+
 const server = Bun.serve({
-  port: 5173,
+  port,
+  hostname: "0.0.0.0",
   async fetch(req, srv) {
     const url = new URL(req.url);
 
@@ -38,7 +42,7 @@ const server = Bun.serve({
 
     if (path.endsWith(".html")) {
       let html = await file.text();
-      if (!html.includes("/__reload")) {
+      if (!isProd && !html.includes("/__reload")) {
         html = html.replace("</body>", `<script>${reloadScript}</script></body>`);
       }
       return new Response(html, {
@@ -72,33 +76,36 @@ async function rebuildSiteCss() {
   );
 }
 
-let debounce: ReturnType<typeof setTimeout> | null = null;
-watch(root, { recursive: true }, (_event, filename) => {
-  if (!filename || String(filename).endsWith("serve.ts")) return;
-  if (String(filename) === "site.css") return; // avoid rebuild loop
-  if (debounce) clearTimeout(debounce);
-  debounce = setTimeout(async () => {
-    const f = String(filename);
-    if (
-      f === "styles.css" ||
-      f.endsWith("bundle.css") ||
-      f.startsWith("themes/")
-    ) {
-      try {
-        await rebuildSiteCss();
-      } catch {
-        /* ignore mid-write races */
+if (!isProd) {
+  let debounce: ReturnType<typeof setTimeout> | null = null;
+  watch(root, { recursive: true }, (_event, filename) => {
+    if (!filename || String(filename).endsWith("serve.ts")) return;
+    if (String(filename) === "site.css") return; // avoid rebuild loop
+    if (debounce) clearTimeout(debounce);
+    debounce = setTimeout(async () => {
+      const f = String(filename);
+      if (
+        f === "styles.css" ||
+        f.endsWith("bundle.css") ||
+        f.startsWith("themes/")
+      ) {
+        try {
+          await rebuildSiteCss();
+        } catch {
+          /* ignore mid-write races */
+        }
       }
-    }
-    for (const ws of clients) {
-      try {
-        ws.send("reload");
-      } catch {
-        clients.delete(ws);
+      for (const ws of clients) {
+        try {
+          ws.send("reload");
+        } catch {
+          clients.delete(ws);
+        }
       }
-    }
-  }, 60);
-});
+    }, 60);
+  });
 
-await rebuildSiteCss();
+  await rebuildSiteCss();
+}
+
 console.log(`portfolio → ${server.url}`);
