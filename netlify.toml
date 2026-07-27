@@ -12,11 +12,21 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "/themes/*"
+  for = "/site.css"
   [headers.values]
     Cache-Control = "public, max-age=604800"
 
 [[headers]]
+  for = "/themes/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
   for = "/vendor/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.mjs"
   [headers.values]
     Cache-Control = "public, max-age=604800"

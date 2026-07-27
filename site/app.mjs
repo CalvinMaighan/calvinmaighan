@@ -1,7 +1,8 @@
 import { catalog, key, set, get, init } from "./vendor/active-state.js";
 import { defineTheme, setMode, hydrateTheme } from "./vendor/active-theme.js";
 import { defineI18n, setLocale, t, hydrateI18n, getLocale } from "./vendor/active-i18n.js";
-import { SERIES_INTRO_SLUG, slugFromHref } from "./tip-series.mjs";
+/** Keep tip-series.mjs off the critical import graph (Lighthouse chain). */
+const SERIES_INTRO_SLUG = "how-ai-agents-speed-up-developers";
 
 const theme = defineTheme({
   modes: ["light", "dark"],
@@ -465,12 +466,16 @@ function wireAmbient() {
     });
   };
 
-  // Keep first paint free of canvas work; Lighthouse TBT was dominated by ambient.
-  if ("requestIdleCallback" in window) {
-    requestIdleCallback(boot, { timeout: 1200 });
-  } else {
-    setTimeout(boot, 200);
-  }
+  // After window load + idle — keep ambient off FCP/LCP critical path.
+  const schedule = () => {
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(boot, { timeout: 4000 });
+    } else {
+      setTimeout(boot, 800);
+    }
+  };
+  if (document.readyState === "complete") schedule();
+  else window.addEventListener("load", schedule, { once: true });
 }
 
 function unlockedSlugs() {
@@ -591,7 +596,10 @@ function wireArticleNext() {
       event.preventDefault();
       return;
     }
-    unlockSeriesSlug(slugFromHref(next.getAttribute("href") || ""));
+    const href = next.getAttribute("href") || "";
+    import("./tip-series.mjs").then(({ slugFromHref }) => {
+      unlockSeriesSlug(slugFromHref(href));
+    });
   });
   window.addEventListener("scroll", update, { passive: true });
   window.addEventListener("resize", update);
