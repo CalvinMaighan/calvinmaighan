@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "start": "bun site/serve.ts",
     "dev": "bun run css:bundle && bun site/serve.ts",
     "dev:kill": "lsof -ti tcp:5173 | xargs kill -9 2>/dev/null || true",
     "env": "bun scripts/pull-env.mjs",
