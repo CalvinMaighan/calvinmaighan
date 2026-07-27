@@ -1670,13 +1670,18 @@ main {
 .article-body code,
 .article-summary code {
  font-family: var(--mono);
- font-size: inherit;
- color: var(--cta);
- background: var(--background);
- padding: 4px 8px;
+ font-size: var(--font-s);
+ color: var(--accent-text);
+ background: var(--card);
+ padding: 2px 7px;
  border-radius: var(--radius-m);
  corner-shape: squircle;
- box-shadow: var(--shadow);
+}
+@media (min-width: 720px) {
+ .article-body code,
+ .article-summary code {
+  font-size: var(--font-m);
+ }
 }
 .article-body h2 {
  font-family: var(--font-display);

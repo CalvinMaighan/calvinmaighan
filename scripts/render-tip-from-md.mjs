@@ -228,6 +228,14 @@ function pageHtml({ data, bodyHtml, faq, readMinutes }) {
       ? seriesIdx + 1
       : null;
   const imgAlt = data.inBodyImageAlt || title;
+  const coverStem = (() => {
+    const raw = String(data.inBodyImage || "");
+    const m = raw.match(/(calvin(?:maighan)?-article(?:-series)?-\d+)\.png$/i);
+    return m ? m[1] : null;
+  })();
+  const coverImg = coverStem
+    ? `<img src="${toRoot}/img/${coverStem}-1200.webp" srcset="${toRoot}/img/${coverStem}-664.webp 664w, ${toRoot}/img/${coverStem}-996.webp 996w, ${toRoot}/img/${coverStem}-1200.webp 1200w" sizes="(max-width: 720px) 100vw, min(720px, 100%)" alt="${escapeHtml(imgAlt)}" width="1200" height="675" decoding="async" />`
+    : `<img src="${escapeHtml(data.inBodyImage || `${toRoot}/calvin-article-2.png`)}" alt="${escapeHtml(imgAlt)}" width="1672" height="941" decoding="async" />`;
   const updated = data.updatedAt || "2026-07-22";
   const updatedHuman = data.updatedHuman || "July 22, 2026";
   let ctaFold = data.ctaAboveFold || "Book a call";
@@ -364,7 +372,15 @@ ${JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2)
         } catch (_) {}
       })();
     </script>
-    <link rel="stylesheet" href="${toRoot}/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/archivoblack/v23/HTxqL289NzCGg4MzN6KJ7eW6CYyF_jzx13E.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g7M8btVsD8Ck0q7u6-K6z9mXgjU0.woff2" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" /></noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" /></noscript>
+    <link rel="stylesheet" href="${toRoot}/site.css" />
   </head>
   <body class="article-page" data-series-slug="${escapeHtml(seriesSlug)}">
     <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
@@ -474,7 +490,7 @@ ${JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2)
             <a class="btn btn-primary article-byline-cta" href="${toRoot}/contact.html" data-i18n="article.book">${escapeHtml(ctaFold)}</a>
           </div>
           <figure class="article-cover">
-            <img src="${escapeHtml(data.inBodyImage || `${toRoot}/calvin-article-2.png`)}" alt="${escapeHtml(imgAlt)}" width="1672" height="941" decoding="async" />
+            ${coverImg}
           </figure>
           <p class="article-summary">${inline(summary)}</p>
           <aside class="article-aside" aria-label="Series">

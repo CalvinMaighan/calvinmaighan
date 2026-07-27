@@ -7,9 +7,9 @@ metaDescription: "design landing pages without AI slop by forcing brand-first fi
 canonical: https://calvinmaighan.com/tips/secret-agent-tips/design-landing-pages-without-ai-slop.html
 inBodyImage: "../../calvin-article-9.png"
 ogImage: "https://calvinmaighan.com/calvin-article-9.png"
-updatedAt: 2026-07-22
-updatedHuman: July 22, 2026
-summary: "design landing pages without AI slop when default model layouts converge on purple gradients, cream terracotta serif kits, and dashboard heroes. hallmark pushes distinctive composition and a brand-first first viewport. I use it on greenfield marketing pages and on audits where hiding the nav would make the page unrecognizable as yours."
+updatedAt: 2026-07-26
+updatedHuman: July 26, 2026
+summary: "Design landing pages without AI slop when default model layouts converge on purple gradients, cream terracotta serif kits, and dashboard heroes. The hallmark skill pushes distinctive composition and a brand-first first viewport, inside your existing tokens rather than beside them. Use it on greenfield marketing pages and on audits where hiding the nav would leave the page unrecognizable as yours."
 standalone: false
 kicker: ""
 series: ""
@@ -18,126 +18,103 @@ nextLabel: "Next article"
 nextLocked: "true"
 ctaAboveFold: "Book a call"
 ctaEnd: "If you want a sharper marketing surface for your product"
-inBodyImageAlt: "Cover art for designing landing pages without AI slop"
+inBodyImageAlt: "Cover for tip 9: design landing pages without AI slop"
 out: site/tips/secret-agent-tips/design-landing-pages-without-ai-slop.html
 ---
 
-design landing pages without AI slop if your site could belong to another company after you remove the logo. That brand test is rude and useful. I run it in critiques on purpose.
+Design landing pages without AI slop by running one test before you argue about spacing: hide the logo and ask whether this page could belong to three other companies in your category. Most agent-generated pages fail it. You get the purple gradient, the three feature cards, the dashboard screenshot floating in a rounded frame, and a headline that could sell anything.
 
-hallmark is the design skill I use for greenfield pages, audits, and redesigns. It is judgment, not a component library. Your CSS tokens still ship the look. The skill kills generic composition. Pair visual direction with [Google's SEO starter guidance](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) for clear pages and [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) so distinctive never means unreadable. [Cursor skills](https://cursor.com/docs/skills) are just how I package the checklist for agents.
+hallmark is the design skill I use for greenfield pages, audits, and redesigns. It carries judgment, not components, so your CSS tokens still ship the look. Pair the visual direction with [Google's SEO starter guidance](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) for page clarity and [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) so distinctive stays readable. [Cursor skills](https://cursor.com/docs/skills) package the checklist where agents will read it.
 
-## First viewport budget
+## Budget the first viewport
 
-One composition. Brand as a hero-level signal. One headline. One short supporting sentence. One CTA group. One dominant image or atmosphere. No stat strips, schedule widgets, or promo stickers floating on the hero.
+One composition. The brand as a hero-level signal. One headline, one supporting sentence, one call-to-action group, one dominant image or atmosphere. No stat strips, schedule widgets, or promotional stickers floating over the hero.
 
-If the first screen looks like a dashboard, you already lost people who came for a story.
+A first screen that looks like a dashboard loses the person who came for a story.
 
 ## Cards and chrome
 
-Default to no cards. Cards earn their border when they contain an interaction. If removing shadow, radius, or background does not hurt understanding, remove them.
+Default to no cards. A card earns its border when it holds an interaction. Remove the shadow, radius, and background in your head, and when meaning survives, remove them in the code too.
 
-Avoid pill clusters, badge stickers on media, and glow stacks that scream "generated." Motion should create hierarchy. Two or three intentional motions beat a particle zoo.
+Skip pill clusters, badge stickers on media, and stacked glows. Motion should build hierarchy, so two or three intentional moves beat a particle zoo.
 
 ## Imagery and type
 
-Use a real visual anchor: product UI, place, process, or people doing the work. Decorative gradients alone do not count as the idea.
+Anchor the page on something real: product UI, a place, a process, people doing the work. A gradient is atmosphere, never the idea.
 
-Typography should be expressive on purpose. Default stacks signal placeholder design. Accessibility stays non-negotiable. Pretty that fails contrast still fails.
+Choose type with intent, because default stacks read as placeholder design. Accessibility holds regardless. A page that looks sharp and fails contrast still fails.
 
-## Working inside a system
+## Work inside the system you have
 
-If a design system exists, preserve it. hallmark should kill sloppy composition inside those constraints, not invent a second brand for fun. When redesigning from a URL or screenshot, extract patterns, then rebuild with restraint instead of cloning decorations.
+When a design system exists, preserve it. hallmark kills sloppy composition inside those constraints rather than inventing a second brand. Redesigning from a URL or a screenshot means extracting the pattern and rebuilding with restraint, never cloning the decoration.
 
-Pair with stop-slop so headlines match the visual ambition. Pretty type over soggy copy is still soggy.
+Define CSS variables for the direction you picked and paint with tokens. A one-off purple hardcoded in a component fights the hue ladder your theme already owns. On this portfolio the theme tokens and ambient motion sit under the same rule: atmosphere without the generic AI costume, and reading surfaces calm enough that the words carry the page.
 
-## How I review agent output
+## Sections do one job each
 
-1. Hide the nav. Does the page still feel owned?
-2. Count jobs in the first viewport. More than one is usually too many.
-3. Remove card chrome mentally. Does meaning survive?
-4. Check motion count and purpose.
-5. Check contrast and focus states like you mean it.
+Give every section one headline and usually one supporting sentence. A second job means a second section. Agents stuff stats, logos, and testimonials into the hero because a full screen looks finished in a demo. Clear beats complete.
 
-For consulting, show before and after. Clients buy the delta, not your vocabulary about vibes.
+Full-bleed hero media should read as a plane rather than a floating card. Inset hero images in rounded frames read as a template unless your system already owns that pattern.
 
-## Composition defaults I push back on
+## The defaults I push back on
 
-Purple-to-indigo gradients on white. Warm cream plus terracotta serif kits that all look related. Broadsheet hairline layouts with zero radius pretending to be a newspaper. Multi-layer shadows on every card. Rounded-full pill rows that say nothing. Glow effects on dark backgrounds that hide weak hierarchy.
+Purple-to-indigo gradients on white. Warm cream and terracotta serif kits that all look related to each other. Hairline broadsheet layouts with zero radius pretending to be a newspaper. Multi-layer shadows on every card. Rounded-full pill rows that carry no information. Glow effects on dark backgrounds hiding weak hierarchy.
 
-You can use any of those on purpose. Defaulting into them because the model likes them is how brands die of sameness.
+Any of those work when you choose them. Falling into them because the model likes them is how a brand dies of sameness.
 
-## Section jobs
+## Mobile decides the test
 
-Each section gets one headline and usually one supporting sentence. If you need a second job, make a second section. Agents love stuffing stats, logos, and testimonials into the hero because demos look "complete." Complete is not the same as clear.
+The first viewport on a phone runs smaller than your laptop preview. When the brand mark, headline, and call to action do not fit without pinch-zoom theater, cut something. Agents stack desktop-only flourishes and check the wide breakpoint only.
 
-Full-bleed hero media should feel like a plane, not a floating card. Inset hero images in rounded frames read as templates unless your system already owns that pattern for a reason.
+## A thirty-minute audit
 
-## Implementation notes for agents
+1. Screenshot the first viewport at 390px and 1280px.
+2. Hide the logo and guess the company. A wrong guess means weak branding.
+3. Count interactive cards and remove the decorative ones.
+4. List section jobs and merge the duplicates.
+5. Read the hero copy aloud after a stop-slop pass.
+6. Check contrast on body text, buttons, and focus states.
 
-Define CSS variables for the direction you chose. Paint with tokens. Do not hardcode a one-off purple in a component when the theme already has a hue ladder.
+I run this before accepting an agent redesign, and it settles arguments faster than a taste debate. For client work, show the before and after. Buyers pay for the delta they can see.
 
-On this portfolio, theme tokens and ambient motion live under the same pressure: atmosphere without generic AI cosplay. The tips pages keep reading surfaces calm so the words can work.
-
-## Failure modes
-
-Defaulting to dark glow because models like it. Choose on purpose.
-
-Shipping five sections that all try to close. One job per section.
-
-Treating hallmark as a Figma replacement. It judges direction. Someone still implements tokens and layout.
-
-Asking the agent to "make it pop." Pop is not a requirement. Clarity is.
-
-## Copy and layout together
-
-A sharp layout with soggy headlines still fails. Run stop-slop on the hero and section opens before you debate spacing. Agents will happily kern a bad sentence.
-
-Hire CTAs should sound like an invitation with a cost of time, not a plea. "Book a call" is enough. "We would love to partner with visionary teams like yours" is how you lose serious buyers.
-
-## Mobile is not an afterthought
-
-First viewport on a phone is smaller than your laptop preview. If the brand mark, headline, and CTA do not fit without pinch zoom theater, cut. Agents stack desktop-only flourishes. Check the narrow width every time.
-
-## A 30-minute audit script
-
-1. Screenshot first viewport at 390px and 1280px.
-2. Hide the logo in the screenshot. Guess the company. If you cannot, branding is weak.
-3. Count interactive cards. Remove any that are only decoration.
-4. List section jobs. Merge duplicates.
-5. Read hero copy aloud after a stop-slop pass.
-6. Check contrast on body text and buttons.
-
-I run this before I accept an agent redesign. It takes less time than arguing about taste.
-
-## What I tell agents instead of "make it beautiful"
+## Say this instead of "make it beautiful"
 
 "One composition in the first viewport. Brand name is the loudest text. One headline, one supporting sentence, one CTA group, one full-bleed visual. No cards in the hero. No floating badges. No purple default. Use theme tokens. Mobile first at 390px."
 
-That prompt is boring on purpose. Boring prompts produce owned pages. Vague beauty prompts produce the same SaaS costume you have already seen.
+That prompt reads boring on purpose. Boring prompts produce owned pages, and vague beauty prompts produce the SaaS costume you have already seen this week.
+
+## Copy and layout ship together
+
+A sharp layout with soggy headlines still fails, so run tip 8's [stop-slop pass](./remove-ai-writing-tells-from-prose.html) on the hero before you debate spacing. Agents will happily kern a bad sentence.
+
+Keep the hire CTA plain. "Book a call" works. "We would love to partner with visionary teams like yours" loses serious buyers.
+
+## Ship the habit this week
+
+Pick your weakest live page, run the six-step audit, and fix the first viewport only. Ship that, then move down the page next week. Tip 10 takes the same discipline into motion, where you [build product videos with HyperFrames](./build-product-videos-with-hyperframes.html) instead of assembling clips nobody can revise.
+
+If you want a sharper marketing surface for your product, [book a call](../../contact.html). More notes live in the [tips index](../../index.html#tips).
 
 ## Sources
 
 - [Google SEO starter guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
 - [WCAG overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
 - [Cursor skills docs](https://cursor.com/docs/skills)
-- Related: [Name AI agent skills after the job](../name-ai-agent-skills-after-the-job.html)
-- Series: [tips on calvinmaighan.com](../../index.html#tips)
 
 ## FAQ
 
 ### Can hallmark work inside an existing design system?
 
-Yes. Preserve the system. Use the skill to kill sloppy composition inside it.
+Yes, and it should. Preserve the system, then use the skill to kill sloppy composition inside those constraints.
 
 ### Do I need custom illustration?
 
-You need a real visual anchor. Product UI, place, or process beats abstract blobs.
+You need a real visual anchor. Product UI, a place, or a process beats an abstract blob every time.
 
 ### What about dark mode defaults?
 
-Do not default to glow-on-black because generators like it. Choose on purpose.
+Avoid glow-on-black because a generator likes it. Choose the mode deliberately and check contrast in both.
 
 ### How do I review agent output quickly?
 
-Brand test without nav, first viewport budget, card necessity, motion purpose, accessibility.
-
+Brand test with the nav hidden, first viewport budget, card necessity, motion purpose, then accessibility.

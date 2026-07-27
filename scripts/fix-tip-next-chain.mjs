@@ -11,11 +11,11 @@ const chain = [
   ["research-what-people-said-last-month.md", "./remove-ai-writing-tells-from-prose.html", "Next article"],
   ["remove-ai-writing-tells-from-prose.md", "./design-landing-pages-without-ai-slop.html", "Next article"],
   ["design-landing-pages-without-ai-slop.md", "./build-product-videos-with-hyperframes.html", "Next article"],
-  ["build-product-videos-with-hyperframes.md", "./expose-product-actions-as-mcp-tools.html", "Next article"],
-  ["expose-product-actions-as-mcp-tools.md", "./catch-ai-code-mistakes-with-lint.html", "Next article"],
+  ["build-product-videos-with-hyperframes.md", "./catch-ai-code-mistakes-with-lint.html", "Next article"],
   ["catch-ai-code-mistakes-with-lint.md", "./ship-production-releases-with-agent-checks.html", "Next article"],
-  ["ship-production-releases-with-agent-checks.md", "./write-seo-articles-agents-can-follow.html", "Next article"],
-  ["write-seo-articles-agents-can-follow.md", "../../contact.html", "Book a call"],
+  ["ship-production-releases-with-agent-checks.md", "./find-dead-code-with-fallow.html", "Next article"],
+  ["find-dead-code-with-fallow.md", "./expose-product-actions-as-mcp-tools.html", "Next article"],
+  ["expose-product-actions-as-mcp-tools.md", "../../contact.html", "Book a call"],
 ];
 
 function upsert(fm, key, value) {

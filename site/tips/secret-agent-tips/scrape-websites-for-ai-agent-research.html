@@ -31,8 +31,8 @@
       "@type": "Article",
       "headline": "Scrape websites for AI agent research",
       "description": "scrape websites for AI agent research with Firecrawl so agents ground answers in live pages. Pick /scrape for one known URL, /agent for discovery, and keep citations your team can audit.",
-      "datePublished": "2026-07-22",
-      "dateModified": "2026-07-22",
+      "datePublished": "2026-07-26",
+      "dateModified": "2026-07-26",
       "author": {
         "@type": "Person",
         "name": "Calvin Maighan",
@@ -54,7 +54,7 @@
           "name": "Should every research question use Firecrawl Agent?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Firecrawl’s own guide says JSON mode on /scrape is cheaper and synchronous for a single known URL. Reserve /agent for discovery when URLs are unknown or navigation spans many sites."
+            "text": "No. Firecrawl's guide says JSON mode on /scrape stays cheaper and synchronous for a single known URL. Reserve /agent for discovery when the URLs are unknown or the job spans many sites."
           }
         },
         {
@@ -70,7 +70,7 @@
           "name": "What belongs in the skill description?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Name the job: gather evidence from live web pages for product decisions. List triggers such as pricing checks, changelog reads, and competitor feature claims."
+            "text": "The job: gather evidence from live web pages for product decisions. Then the triggers, such as pricing checks, changelog reads, and competitor feature claims."
           }
         },
         {
@@ -78,7 +78,7 @@
           "name": "Can agents scrape authenticated product surfaces?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Only with explicit credentials and an allowlist your security team approves. Default research skills should target public docs and marketing pages."
+            "text": "Only with explicit credentials and an allowlist your security team approved. Default research skills stay on public docs and marketing pages."
           }
         }
       ]
@@ -208,16 +208,16 @@
             />
             <span class="article-byline-name">Calvin Maighan</span>
             <span class="article-byline-meta">
-              <span>10 min read</span>
+              <span>6 min read</span>
               <span class="sep" aria-hidden="true">·</span>
-              <time datetime="2026-07-22">July 22, 2026</time>
+              <time datetime="2026-07-26">July 26, 2026</time>
             </span>
             <a class="btn btn-primary article-byline-cta" href="../../contact.html" data-i18n="article.book">Book a call</a>
           </div>
           <figure class="article-cover">
-            <img alt="Brand series image introducing a Firecrawl workflow for agent web research on product teams" decoding="async" src="../../img/calvin-article-2-1200.webp" srcset="../../img/calvin-article-2-664.webp 664w, ../../img/calvin-article-2-996.webp 996w, ../../img/calvin-article-2-1200.webp 1200w" sizes="(max-width: 720px) 100vw, min(720px, 100%)" width="1200" height="675">
+            <img src="../../img/calvin-article-2-1200.webp" srcset="../../img/calvin-article-2-664.webp 664w, ../../img/calvin-article-2-996.webp 996w, ../../img/calvin-article-2-1200.webp 1200w" sizes="(max-width: 720px) 100vw, min(720px, 100%)" alt="Cover for tip 2: scrape websites for AI agent research" width="1200" height="675" decoding="async" />
           </figure>
-          <p class="article-summary">scrape websites for AI agent research. When answers live outside the repo, scrape websites for AI agent research instead of trusting training cutoffs. Firecrawl turns pages into clean markdown agents can quote. Use /scrape when you know the URL. Use /agent when you need discovery across the web. Write a skill that forces URL, extract goal, and citation before product changes. Skip full-site crawls for questions one page already answers. Pair scraping with dependency source reading so library truth and web truth stay in different tools.</p>
+          <p class="article-summary">scrape websites for AI agent research when the answer lives outside your repo. Firecrawl turns live pages into clean markdown an agent can quote and a reviewer can click. Use /scrape for a known URL and /agent when the URLs are unknown. Write the skill as a contract: name the decision, pick the surface, extract to a schema, return citations with dates. Save raw pages to disk instead of the prompt. Keep it pointed at public pages unless security signs off on more.</p>
           <aside class="article-aside" aria-label="Series">
             <ol class="article-series-rail">
             <li>
@@ -465,39 +465,17 @@
             <li>
               <a
                 class="article-series-card is-locked"
-                data-series-slug="expose-product-actions-as-mcp-tools"
-                data-series-title="Expose product actions as MCP tools"
-                data-series-subtitle="Tools with schemas, scopes, and audit trails"
-                data-series-tip="11"
-                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
-                href="#"
-                aria-disabled="true"
-              >
-                <span class="article-series-card-copy">
-                  <span class="article-series-card-head">
-                    <span class="article-series-card-title">Skill #11: Keep reading to unlock</span>
-                    <span class="article-series-card-check" hidden aria-hidden="true">
-                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
-                    </span>
-                  </span>
-                  <span class="article-series-card-subtitle">Tools with schemas, scopes, and audit trails</span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="article-series-card is-locked"
                 data-series-slug="catch-ai-code-mistakes-with-lint"
                 data-series-title="Catch AI code mistakes with lint"
                 data-series-subtitle="Lint as a hard gate after every agent edit"
-                data-series-tip="12"
+                data-series-tip="11"
                 data-href="/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html"
                 href="#"
                 aria-disabled="true"
               >
                 <span class="article-series-card-copy">
                   <span class="article-series-card-head">
-                    <span class="article-series-card-title">Skill #12: Keep reading to unlock</span>
+                    <span class="article-series-card-title">Skill #11: Keep reading to unlock</span>
                     <span class="article-series-card-check" hidden aria-hidden="true">
                       <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
                     </span>
@@ -512,14 +490,14 @@
                 data-series-slug="ship-production-releases-with-agent-checks"
                 data-series-title="Ship production releases with agent checks"
                 data-series-subtitle="Release checks agents cannot skip"
-                data-series-tip="13"
+                data-series-tip="12"
                 data-href="/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html"
                 href="#"
                 aria-disabled="true"
               >
                 <span class="article-series-card-copy">
                   <span class="article-series-card-head">
-                    <span class="article-series-card-title">Skill #13: Keep reading to unlock</span>
+                    <span class="article-series-card-title">Skill #12: Keep reading to unlock</span>
                     <span class="article-series-card-check" hidden aria-hidden="true">
                       <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
                     </span>
@@ -531,11 +509,33 @@
             <li>
               <a
                 class="article-series-card is-locked"
-                data-series-slug="write-seo-articles-agents-can-follow"
-                data-series-title="Write SEO articles agents can follow"
-                data-series-subtitle="Structure humans and agents can both follow"
+                data-series-slug="find-dead-code-with-fallow"
+                data-series-title="Find dead code with fallow"
+                data-series-subtitle="Unused code agents can delete with evidence"
+                data-series-tip="13"
+                data-href="/tips/secret-agent-tips/find-dead-code-with-fallow.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #13: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Unused code agents can delete with evidence</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="expose-product-actions-as-mcp-tools"
+                data-series-title="Expose product actions as MCP tools"
+                data-series-subtitle="Tools with schemas, scopes, and audit trails"
                 data-series-tip="14"
-                data-href="/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html"
+                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
                 href="#"
                 aria-disabled="true"
               >
@@ -546,147 +546,99 @@
                       <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
                     </span>
                   </span>
-                  <span class="article-series-card-subtitle">Structure humans and agents can both follow</span>
+                  <span class="article-series-card-subtitle">Tools with schemas, scopes, and audit trails</span>
                 </span>
               </a>
             </li>
             </ol>
           </aside>
           <div class="article-body">
-<p>Teams that scrape websites for AI agent research replace memory theater with page-level evidence. Changelogs move. Pricing tables change. Competitor feature pages rewrite themselves every sprint. An agent that answers from last year’s weights will sound sure and still miss the current sentence. Firecrawl gives that agent a way to open the live page, extract the part that matters, and cite it.</p>
+<p>Scrape websites for AI agent research when the answer sits on a page nobody has opened this quarter. Changelogs move. Pricing tables change. A competitor rewrites their feature list every sprint. Your agent answers from weights trained months ago, sounds certain, and misses the sentence that mattered.</p>
 
-<h2>Why web research is a skill, not a side quest</h2>
+<p>I hand teams this skill second, right after source reading, because it covers the other half of &quot;where does truth live.&quot; Tip 1 opens the library on disk. This one opens the live web.</p>
 
-<p>Product work leans on the public web more than engineers admit. Support macros quote docs. Sales asks whether a rival shipped SSO. Design wants the exact constraint from a browser API page. If those lookups stay outside the agent loop, humans become the scraper. If they enter the loop without structure, agents drown the session in HTML.</p>
+<h2>Why web research needs a skill</h2>
 
-<p>A dedicated skill fixes both failure modes. Name it after the job, per <a class="article-link" href="../name-ai-agent-skills-after-the-job.html" rel="noopener"><span class="article-link-text">name AI agent skills after the job</span></a>. Something like research-live-web-evidence beats firecrawl-utils. The description should say when to scrape and when to stop.</p>
+<p>Product work leans on the public web more than engineers admit. Support quotes docs. Sales asks whether a rival shipped SSO. Design needs the exact constraint from a browser API page. Leave those lookups outside the agent loop and a human becomes the scraper. Let them in without structure and the agent drowns the session in HTML.</p>
 
-<h2>Pick the Firecrawl surface that matches the question</h2>
+<p>A job-named skill fixes both. Call it <code>research-live-web-evidence</code> rather than <code>firecrawl-utils</code>, following the convention in <a class="article-link" href="../name-ai-agent-skills-after-the-job.html" rel="noopener"><span class="article-link-text">name AI agent skills after the job</span></a>. The description states when to scrape and when to stop.</p>
 
-<p>Firecrawl’s guide on <a class="article-link is-external" href="https://docs.firecrawl.dev/developer-guides/usage-guides/choosing-the-data-extractor" rel="noopener" target="_blank"><span class="article-link-text">choosing the data extractor</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> draws a clean line. Know the exact URL and need one page? Use /scrape, optionally with JSON mode. Need autonomous discovery across sites? Use <a class="article-link is-external" href="https://docs.firecrawl.dev/features/agent" rel="noopener" target="_blank"><span class="article-link-text">/agent</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a>. Their docs are blunt: Agent is right when you do not know the URLs or need navigation across the web. For a single known URL, scrape stays cheaper and synchronous.</p>
+<h2>Pick the surface that matches the question</h2>
 
-<h3>Practical defaults for product teams</h3>
+<p>Firecrawl's guide on <a class="article-link is-external" href="https://docs.firecrawl.dev/developer-guides/usage-guides/choosing-the-data-extractor" rel="noopener" target="_blank"><span class="article-link-text">choosing the data extractor</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> draws the line for you. One known URL takes <code>/scrape</code>, optionally with JSON mode, and it stays cheaper and synchronous. Discovery across sites takes <a class="article-link is-external" href="https://docs.firecrawl.dev/features/agent" rel="noopener" target="_blank"><span class="article-link-text">/agent</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a>, which their docs reserve for cases where you do not know the URLs or need navigation across the web.</p>
+
+<p>Three defaults cover most product questions:</p>
 
 <ul>
-<li>Changelog paragraph on a known docs URL → /scrape.</li>
-<li>“Which rivals list SCIM on pricing?” → /agent with a tight prompt and schema.</li>
-<li>Fifty known partner pages for contact fields → batch /scrape, not a romantic crawl of the internet.</li>
+<li>A changelog paragraph on a known docs URL takes <code>/scrape</code>.</li>
+<li>&quot;Which rivals list SCIM on the mid tier&quot; takes <code>/agent</code> with a tight prompt and a schema.</li>
+<li>Fifty known partner pages take batched <code>/scrape</code>, never a crawl of the open internet.</li>
 </ul>
 
-<p>Agents love the biggest tool. Your skill should refuse that gluttony. Start narrow. Escalate only when the narrow path fails.</p>
+<p>Agents reach for the biggest tool available. Your skill has to refuse that. Start narrow, escalate when the narrow path fails.</p>
 
-<h2>A research contract the agent can follow</h2>
+<h2>Write the skill as a contract</h2>
 
-<p>Write the skill body as a contract, not a brochure.</p>
+<p>1. Restate the decision this research has to inform. 2. List allowed domains, or write &quot;public web, no authenticated app surfaces.&quot; 3. Choose <code>/scrape</code> or <code>/agent</code> and give a one-line reason. 4. Extract only the fields in the schema or bullet list. 5. Return citations as URL plus quoted span plus retrieval date. 6. Block product code edits until those citations exist.</p>
 
-<p>1. Restate the decision the scrape must inform. 2. List allowed domains or say “public web, no authenticated app surfaces.” 3. Choose /scrape or /agent with a one-line reason. 4. Extract only the fields in a schema or bullet list. 5. Return citations with URL plus quoted span. 6. Refuse product code edits until citations exist.</p>
+<p>Ungated research turns into decoration that nobody reads twice. Gated research shows up in pull requests.</p>
 
-<p>That last rule matters. Research without a gate becomes decorative. Research with a gate changes pull requests.</p>
+<h2>Keep raw pages out of the prompt</h2>
 
-<h2>Keep raw pages out of the hot prompt</h2>
+<p>Scraped markdown beats raw HTML and still runs too large for casual pasting. Write outputs to a research folder such as <code>site/tips/_research/</code> or a private <code>.firecrawl/</code> directory. The agent reads the saved file, summarizes it, and keeps the path in the answer. You reopen the artifact next quarter, and the context window survives the session.</p>
 
-<p>Scraped markdown is cheaper than HTML and still too large for casual pasting. Save outputs under something like site/tips/_research/ or a private .firecrawl/ folder. Have the agent read the saved file, summarize, and keep the path in the answer. Your future self can reopen the artifact. Your context window stays alive.</p>
-
-<p>Tip 3 in this series shows how to <a class="article-link" href="./cut-ai-agent-tokens-with-caveman.html" rel="noopener"><span class="article-link-text">agent talk less with caveman</span></a> once the research returns. Compression helps the narration around citations. It does not replace saving the source artifact.</p>
+<p>Tip 3 covers the other half of that budget, where you <a class="article-link" href="./cut-ai-agent-tokens-with-caveman.html" rel="noopener"><span class="article-link-text">make the agent talk less with caveman</span></a>. Compression trims the narration around citations. Saving the artifact still matters.</p>
 
 <h2>Schemas beat vibes</h2>
 
-<p>When you need structured comparison, give Firecrawl a schema. Pricing tiers, feature flags, support channels, last-updated dates. Structured extract turns a marketing page into rows you can diff next month. Free-form summaries are fine for a quick read. They fail for recurring competitive tracking.</p>
+<p>Structured comparison needs a schema. Pricing tiers, feature flags, support channels, last-updated dates. A schema turns a marketing page into rows you can diff in three months. Free-form summaries work for a one-time read and fail for recurring competitive tracking.</p>
 
-<p>Example prompt shape for Agent: “Find public pricing pages for tools A, B, and C. Return plan name, monthly price, and SSO availability. Prefer primary vendor pages over blogs.” Optional URL seeds help when you already know the homepages. The <a class="article-link is-external" href="https://www.firecrawl.dev/agent" rel="noopener" target="_blank"><span class="article-link-text">Firecrawl Agent product page</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> shows the same prompt-to-dataset pattern.</p>
+<p>A workable Agent prompt reads like this: &quot;Find public pricing pages for tools A, B, and C. Return plan name, monthly price, and SSO availability. Prefer primary vendor pages over blogs.&quot; Seed it with homepages when you already know them. The <a class="article-link is-external" href="https://www.firecrawl.dev/agent" rel="noopener" target="_blank"><span class="article-link-text">Firecrawl Agent product page</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> shows the same prompt-to-dataset shape.</p>
 
-<h2>Compose with opensrc, do not collapse the tools</h2>
+<h2>The citation bar</h2>
 
-<p>Tip 1 covered <a class="article-link" href="./read-dependency-source-code-with-opensrc.html" rel="noopener"><span class="article-link-text">read dependency source code with opensrc</span></a>. That tool answers “what does our installed library do?” Firecrawl answers “what does this public page say today?” Mixing them into one mega-skill creates muddy triggers. Keep two job names. Let the agent pick.</p>
+<p>A useful research answer names the page, quotes the line behind the claim, and dates the retrieval. &quot;According to the web&quot; fails that bar. &quot;Per https://example.com/pricing retrieved 2026-07-26: Enterprise includes SSO&quot; passes it. Reviewers click. The next agent re-scrapes when the decision still matters.</p>
 
-<p>A clean split looks like this. Bug in zod coercion → opensrc. Claim on a vendor status page → Firecrawl. Architecture decision that needs both → run both, cite both, then decide.</p>
+<p>Prefer primary pages over roundup blogs, and say so when a blog is the only source available. Inventing URLs is forbidden. A failed scrape gets reported, not paraphrased from memory.</p>
 
-<h2>Governance without killing speed</h2>
+<h2>Governance that does not kill speed</h2>
 
-<p>Scraping can trip legal and security alarms if you point it at private apps or paywalled data. Default the skill to public documentation, marketing pages, and open changelogs. Require a human for anything behind login. Log the URLs touched in the research note. Delete stale scrapes on a schedule if they contain customer-adjacent material.</p>
+<p>Scraping trips legal and security alarms when you aim it at private apps or paywalled data. Default the skill to public documentation, marketing pages, and open changelogs. Route anything behind a login through a human. Log the URLs each research note touched.</p>
 
-<p>Rate limits and credit burn are the other governance axis. Firecrawl’s docs call out cost differences between scrape and agent runs. Put a credit ceiling in the skill for Agent jobs. Teach the agent to stop after N sources unless a human expands the budget.</p>
-
-<h2>Quality bar for citations</h2>
-
-<p>A useful research answer names the page, quotes the line that drove the claim, and dates the retrieval. “According to the web” is not a citation. “Per https://example.com/pricing retrieved 2026-07-22: Enterprise includes SSO” is a citation. Reviewers can click. Agents in the next session can re-scrape if the decision still matters.</p>
-
-<p>Prefer primary pages over roundup blogs. If a blog is the only source, say so. Inventing URLs is forbidden. If the scrape fails, report the failure. Silence that hides a miss is worse than an honest gap.</p>
-
-<h2>A one-day rollout plan</h2>
-
-<p>Morning: install the Firecrawl CLI or SDK your agents already call, confirm auth, and scrape one known docs URL by hand. Midday: write the job-named skill with the contract above. Afternoon: run three real questions from your backlog. Evening: keep the two scrapes that changed a decision, delete the rest, and note credit spend.</p>
-
-<p>Open source context lives on <a class="article-link is-external is-github" href="https://github.com/firecrawl/firecrawl" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">github.com/firecrawl/firecrawl</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> and the <a class="article-link is-external" href="https://docs.firecrawl.dev/" rel="noopener" target="_blank"><span class="article-link-text">docs root</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a>. Read the extractor guide before you let agents choose tools unsupervised.</p>
-
-<h2>Where consultants earn their keep</h2>
-
-<p>Most teams stall on prompt fluff: “research the web thoroughly.” That instruction burns credits and returns essays. The install that works is boring. Job name. Allowed domains. Tool chooser. Schema. Disk artifacts. Citation gate. If you want that kit dropped into Cursor or Claude Code for your product org, <a class="article-link" href="../../contact.html" rel="noopener"><span class="article-link-text">book a call</span></a>.</p>
-
-<p>Web pages move. Your agent stack should move with them, on purpose, with receipts.</p>
-
-<h2>Worked example: SSO claims on pricing pages</h2>
-
-<p>A founder asked whether three rivals included SSO on the mid tier. An agent without scraping produced a confident matrix from memory. Two cells were wrong. We switched to a Firecrawl Agent prompt with a schema for plan name, monthly price, and SSO boolean, seeded with the three marketing domains. The structured result matched the live pages. Sales reused the artifact the same afternoon.</p>
-
-<p>The win was not “AI researched the market.” The win was a repeatable extract with URLs attached. Next quarter, the same skill can run again and diff the rows.</p>
-
-<h2>Docs pages that move under your feet</h2>
-
-<p>Browser API docs and cloud IAM pages change quietly. When an agent implements against a remembered API shape, you ship broken calls. A scrape of the canonical docs URL before implementation is cheaper than a rollback. Put that step in the skill for any task that touches a vendor API outside your lockfile.</p>
-
-<p>If the vendor also publishes an OpenAPI file, prefer that file after you confirm the URL. Scraping the pretty docs page is a fallback when the machine-readable contract is missing or stale.</p>
-
-<h2>Team rituals that keep scrapes honest</h2>
-
-<p>Add a “sources” section to decision records. Require at least one live URL for web claims. During standup, ask which decisions leaned on scrapes this week. If the answer is never, the skill is theater. If the answer is always, you may be scraping instead of talking to customers. Aim for a middle path: scrape when the page is the authority.</p>
-
-<p>Rotate ownership of the research skill monthly so it does not become one person’s pet CLI. Ownership includes credit budgets, allowlists, and deleting stale artifacts.</p>
-
-<h2>Cost control patterns</h2>
-
-<p>Cache page results for a day when the question is about slow-moving docs. Re-scrape on demand for pricing and status pages. Cap Agent runs at a credit ceiling and require a human to raise it. Log spend next to the decision record so people see the price of curiosity.</p>
-
-<p>Prefer markdown format over screenshot-heavy extracts for coding agents. Images burn tokens in multimodal stacks and rarely help a TypeScript patch. Keep screenshots for design reviews, not for API shape questions.</p>
-
-<h2>Prompt templates you can paste into a skill</h2>
-
-<p>Single page: &quot;Scrape URL {url} as markdown. Extract the sections that answer: {question}. Quote the exact lines. Note the retrieval date. Do not edit product code yet.&quot; Discovery: &quot;Find primary vendor pages that answer: {question}. Prefer vendor domains over blogs. Return a JSON array of {url, claim, quote}. Stop after {n} sources or {credits} credits.&quot;</p>
-
-<p>Keep those templates in the skill file. Agents waste turns reinventing prompts. Humans waste meetings debating them. Frozen templates also make spend predictable.</p>
+<p>Credits are the other axis. Firecrawl documents the cost difference between scrape and agent runs, so put a ceiling on Agent jobs and teach the agent to stop after a fixed number of sources unless someone raises the budget.</p>
 
 <h2>When scraping is the wrong move</h2>
 
-<p>If the answer lives in your own database, query the database. If the answer lives in a dependency, use opensrc. If the answer lives in a teammate's head, schedule a conversation. Scraping shines for public, changing, page-shaped truth. Stretching it to every question creates a slow agent that burns credits for theater.</p>
+<p>Query the database when the answer lives in your data. Use opensrc when the answer lives in a dependency. Book fifteen minutes when the answer lives in a teammate's head. Scraping earns its place on public, changing, page-shaped truth.</p>
 
-<p>Also skip scraping when you already pasted the page into the thread. Re-scraping the same URL five times in one hour is a bug in the skill, not diligence.</p>
+<p>Skip it when the page is already in the thread. Re-scraping the same URL five times in an hour points at a bug in the skill body.</p>
 
-<h2>Integrating with CI research jobs</h2>
+<h2>A worked example</h2>
 
-<p>Some teams run nightly scrapes of pricing pages and docs hubs, store the markdown, and let daytime agents read the store. That pattern cuts interactive latency and smooths credit spikes. It also introduces staleness. Label artifacts with retrievedAt. Teach agents to refresh when the decision is money-sensitive or security-sensitive.</p>
+<p>A founder asked whether three rivals bundled SSO on the mid tier. The agent without scraping produced a confident matrix from memory, and two cells were wrong. We reran it as a Firecrawl Agent prompt with a schema for plan name, monthly price, and SSO boolean, seeded with the three marketing domains. The structured result matched the live pages, and sales reused the artifact that afternoon.</p>
 
-<p>Keep CI credentials in secrets managers. Never commit API keys beside the skill. The skill should read env vars and fail closed when missing.</p>
+<p>The value was the repeatable extract with URLs attached. Next quarter the same skill runs again and diffs the rows.</p>
 
-<h2>Reviewer checklist for research PRs</h2>
+<h2>Ship the habit this week</h2>
+
+<p>Install the Firecrawl CLI or SDK your agents already call and scrape one known docs URL by hand. Write the job-named skill with the contract above. Run three real questions from your backlog, keep the two scrapes that changed a decision, and note the credit spend. Open source context lives on <a class="article-link is-external is-github" href="https://github.com/firecrawl/firecrawl" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">github.com/firecrawl/firecrawl</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> and the <a class="article-link is-external" href="https://docs.firecrawl.dev/" rel="noopener" target="_blank"><span class="article-link-text">docs root</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a>.</p>
+
+<p>Tip 1 covered <a class="article-link" href="./read-dependency-source-code-with-opensrc.html" rel="noopener"><span class="article-link-text">read dependency source code with opensrc</span></a> for installed libraries. Keep both skills with separate triggers so the agent picks instead of guessing. A zod coercion bug goes to opensrc. A vendor status claim goes to Firecrawl. An architecture decision that needs both runs both and cites both.</p>
+
+<p>If you want that kit dropped into Cursor or Claude Code for your product org, <a class="article-link" href="../../contact.html" rel="noopener"><span class="article-link-text">book a call</span></a>.</p>
+
+<h2>Sources</h2>
 
 <ul>
-<li>Does the PR state the decision the scrape informed?</li>
-<li>Are URLs primary and clickable?</li>
-<li>Is there a quote or structured field, not only a paraphrase?</li>
-<li>Is the retrieval date present?</li>
-<li>Did the agent avoid authenticated surfaces?</li>
+<li><a class="article-link is-external" href="https://docs.firecrawl.dev/" rel="noopener" target="_blank"><span class="article-link-text">Firecrawl docs</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://docs.firecrawl.dev/features/agent" rel="noopener" target="_blank"><span class="article-link-text">Firecrawl Agent</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://docs.firecrawl.dev/developer-guides/usage-guides/choosing-the-data-extractor" rel="noopener" target="_blank"><span class="article-link-text">Choosing the data extractor</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external is-github" href="https://github.com/firecrawl/firecrawl" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">firecrawl/firecrawl on GitHub</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://www.firecrawl.dev/agent" rel="noopener" target="_blank"><span class="article-link-text">Firecrawl Agent product page</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
 </ul>
 
-<p>If any box fails, send the PR back. Research quality is a product quality input. Treat it like tests.</p>
-
-<h2>A closing field guide</h2>
-
-<p>Scraping is a power tool. Power tools need guards. Domain allowlists, credit caps, disk artifacts, and citation gates turn Firecrawl from a toy into infrastructure. Skip any one of those and you get either a bill shock or a confident wrong matrix.</p>
-
-<p>Start with one decision that already suffers from stale web knowledge. Write the skill. Win once in public inside the team. Expand only after the first win has a paper trail. That sequence beats a grand platform launch with nobody asking research questions.</p>
-
             <div class="article-cta-end">
-              <p>Need a research skill kit wired for your stack? Book a call. Next tip covers cutting agent tokens with caveman mode.</p>
+              <p>Need a research skill kit wired for your stack</p>
               <a class="btn btn-primary" href="../../contact.html" data-i18n="article.book">Book a call</a>
             </div>
 
@@ -698,7 +650,7 @@
 
 <details class="faq-item">
 <summary class="faq-question">Should every research question use Firecrawl Agent?</summary>
-<p class="faq-answer">No. Firecrawl’s own guide says JSON mode on /scrape is cheaper and synchronous for a single known URL. Reserve /agent for discovery when URLs are unknown or navigation spans many sites.</p>
+<p class="faq-answer">No. Firecrawl's guide says JSON mode on <code>/scrape</code> stays cheaper and synchronous for a single known URL. Reserve <code>/agent</code> for discovery when the URLs are unknown or the job spans many sites.</p>
 </details>
 
 <details class="faq-item">
@@ -708,12 +660,12 @@
 
 <details class="faq-item">
 <summary class="faq-question">What belongs in the skill description?</summary>
-<p class="faq-answer">Name the job: gather evidence from live web pages for product decisions. List triggers such as pricing checks, changelog reads, and competitor feature claims.</p>
+<p class="faq-answer">The job: gather evidence from live web pages for product decisions. Then the triggers, such as pricing checks, changelog reads, and competitor feature claims.</p>
 </details>
 
 <details class="faq-item">
 <summary class="faq-question">Can agents scrape authenticated product surfaces?</summary>
-<p class="faq-answer">Only with explicit credentials and an allowlist your security team approves. Default research skills should target public docs and marketing pages.</p>
+<p class="faq-answer">Only with explicit credentials and an allowlist your security team approved. Default research skills stay on public docs and marketing pages.</p>
 </details>
 
 </div>
@@ -735,6 +687,10 @@
           <span data-i18n="footer.meta">Montreal · remote contracts</span>
           <span class="sep" aria-hidden="true">·</span>
           <a class="foot-ico" href="https://github.com/CalvinMaighan" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="mailto:hello@calvinmaighan.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a href="../../contact.html" data-i18n="nav.cta">Book a call</a>
         </p>
       </div>
     </footer>

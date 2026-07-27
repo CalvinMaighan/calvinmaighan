@@ -67,12 +67,6 @@ export const SERIES = [
     path: "/tips/secret-agent-tips/build-product-videos-with-hyperframes.html",
   },
   {
-    slug: "expose-product-actions-as-mcp-tools",
-    title: "Expose product actions as MCP tools",
-    subtitle: "Tools with schemas, scopes, and audit trails",
-    path: "/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html",
-  },
-  {
     slug: "catch-ai-code-mistakes-with-lint",
     title: "Catch AI code mistakes with lint",
     subtitle: "Lint as a hard gate after every agent edit",
@@ -85,10 +79,16 @@ export const SERIES = [
     path: "/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html",
   },
   {
-    slug: "write-seo-articles-agents-can-follow",
-    title: "Write SEO articles agents can follow",
-    subtitle: "Structure humans and agents can both follow",
-    path: "/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html",
+    slug: "find-dead-code-with-fallow",
+    title: "Find dead code with fallow",
+    subtitle: "Unused code agents can delete with evidence",
+    path: "/tips/secret-agent-tips/find-dead-code-with-fallow.html",
+  },
+  {
+    slug: "expose-product-actions-as-mcp-tools",
+    title: "Expose product actions as MCP tools",
+    subtitle: "Tools with schemas, scopes, and audit trails",
+    path: "/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html",
   },
 ];
 
@@ -104,4 +104,3 @@ export function slugFromHref(href) {
     return "";
   }
 }
-

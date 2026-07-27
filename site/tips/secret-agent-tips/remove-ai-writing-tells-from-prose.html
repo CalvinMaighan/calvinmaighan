@@ -31,8 +31,8 @@
       "@type": "Article",
       "headline": "Remove AI writing tells from prose",
       "description": "remove AI writing tells from prose with a stop-slop pass so public writing sounds like a person with judgment, not a model performing intelligence.",
-      "datePublished": "2026-07-22",
-      "dateModified": "2026-07-22",
+      "datePublished": "2026-07-26",
+      "dateModified": "2026-07-26",
       "author": {
         "@type": "Person",
         "name": "Calvin Maighan",
@@ -54,7 +54,7 @@
           "name": "Will stop-slop make copy boring?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It removes fake drama. Specific stories stay interesting."
+            "text": "It removes manufactured drama, not detail. Specific stories, numbers, and opinions all survive the pass and carry more weight once the filler leaves."
           }
         },
         {
@@ -62,7 +62,7 @@
           "name": "Should I run it on code comments?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Only when comments are prose. Leave terse technical comments alone."
+            "text": "Only where comments run as prose. Terse technical comments already do their job, and expanding them wastes the reader's time."
           }
         },
         {
@@ -70,7 +70,7 @@
           "name": "What about brand style guides?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Run stop-slop first, then apply brand constraints."
+            "text": "Run stop-slop first, then apply brand constraints. Voice rules land better on clean sentences than on padded ones."
           }
         },
         {
@@ -78,23 +78,15 @@
           "name": "How often do agents reintroduce slop?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Every draft. Keep the pass on the checklist."
+            "text": "Every draft. Model updates shift which tells appear, so keep the pass on the checklist rather than in your memory."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I automate stop-slop in CI?",
+          "name": "Can I automate it in CI?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You can fail a docs PR on banned phrases. You still need a human ear for voice. CI catches laziness. It does not catch emptiness that uses fresh words."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Should marketing keep a separate voice guide?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. stop-slop clears model sludge. Brand guides set the voice that remains. Run them in that order."
+            "text": "You can fail a docs pull request on banned phrases, which catches laziness. A human ear still catches emptiness written in fresh words."
           }
         }
       ]
@@ -226,14 +218,14 @@
             <span class="article-byline-meta">
               <span>5 min read</span>
               <span class="sep" aria-hidden="true">·</span>
-              <time datetime="2026-07-22">July 22, 2026</time>
+              <time datetime="2026-07-26">July 26, 2026</time>
             </span>
             <a class="btn btn-primary article-byline-cta" href="../../contact.html" data-i18n="article.book">Book a call</a>
           </div>
           <figure class="article-cover">
-            <img alt="Cover for skill 8: remove AI writing tells from prose" decoding="async" src="../../img/calvin-article-8-1200.webp" srcset="../../img/calvin-article-8-664.webp 664w, ../../img/calvin-article-8-996.webp 996w, ../../img/calvin-article-8-1200.webp 1200w" sizes="(max-width: 720px) 100vw, min(720px, 100%)" width="1200" height="675">
+            <img src="../../img/calvin-article-8-1200.webp" srcset="../../img/calvin-article-8-664.webp 664w, ../../img/calvin-article-8-996.webp 996w, ../../img/calvin-article-8-1200.webp 1200w" sizes="(max-width: 720px) 100vw, min(720px, 100%)" alt="Cover for tip 8: remove AI writing tells from prose" width="1200" height="675" decoding="async" />
           </figure>
-          <p class="article-summary">remove AI writing tells from prose before you publish anything that left an agent chat. stop-slop cuts filler, false agency, binary contrasts, and em dash crutches. I run it on articles, proposals, and UI microcopy. Read the draft aloud. If it sounds like a keynote, cut until it sounds like a colleague. Trust ranks longer than clever cadence.</p>
+          <p class="article-summary">Remove AI writing tells from prose before you publish anything that left an agent chat. A stop-slop pass cuts filler, false agency, binary contrasts, adverb stacks, and em dash crutches. I run it on articles, proposals, and UI microcopy. Read the draft aloud, and when you hear a keynote, cut until you hear a colleague. Readers who cannot name the patterns still feel them, and trust outlasts clever cadence.</p>
           <aside class="article-aside" aria-label="Series">
             <ol class="article-series-rail">
             <li>
@@ -481,39 +473,17 @@
             <li>
               <a
                 class="article-series-card is-locked"
-                data-series-slug="expose-product-actions-as-mcp-tools"
-                data-series-title="Expose product actions as MCP tools"
-                data-series-subtitle="Tools with schemas, scopes, and audit trails"
-                data-series-tip="11"
-                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
-                href="#"
-                aria-disabled="true"
-              >
-                <span class="article-series-card-copy">
-                  <span class="article-series-card-head">
-                    <span class="article-series-card-title">Skill #11: Keep reading to unlock</span>
-                    <span class="article-series-card-check" hidden aria-hidden="true">
-                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
-                    </span>
-                  </span>
-                  <span class="article-series-card-subtitle">Tools with schemas, scopes, and audit trails</span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="article-series-card is-locked"
                 data-series-slug="catch-ai-code-mistakes-with-lint"
                 data-series-title="Catch AI code mistakes with lint"
                 data-series-subtitle="Lint as a hard gate after every agent edit"
-                data-series-tip="12"
+                data-series-tip="11"
                 data-href="/tips/secret-agent-tips/catch-ai-code-mistakes-with-lint.html"
                 href="#"
                 aria-disabled="true"
               >
                 <span class="article-series-card-copy">
                   <span class="article-series-card-head">
-                    <span class="article-series-card-title">Skill #12: Keep reading to unlock</span>
+                    <span class="article-series-card-title">Skill #11: Keep reading to unlock</span>
                     <span class="article-series-card-check" hidden aria-hidden="true">
                       <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
                     </span>
@@ -528,14 +498,14 @@
                 data-series-slug="ship-production-releases-with-agent-checks"
                 data-series-title="Ship production releases with agent checks"
                 data-series-subtitle="Release checks agents cannot skip"
-                data-series-tip="13"
+                data-series-tip="12"
                 data-href="/tips/secret-agent-tips/ship-production-releases-with-agent-checks.html"
                 href="#"
                 aria-disabled="true"
               >
                 <span class="article-series-card-copy">
                   <span class="article-series-card-head">
-                    <span class="article-series-card-title">Skill #13: Keep reading to unlock</span>
+                    <span class="article-series-card-title">Skill #12: Keep reading to unlock</span>
                     <span class="article-series-card-check" hidden aria-hidden="true">
                       <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
                     </span>
@@ -547,11 +517,33 @@
             <li>
               <a
                 class="article-series-card is-locked"
-                data-series-slug="write-seo-articles-agents-can-follow"
-                data-series-title="Write SEO articles agents can follow"
-                data-series-subtitle="Structure humans and agents can both follow"
+                data-series-slug="find-dead-code-with-fallow"
+                data-series-title="Find dead code with fallow"
+                data-series-subtitle="Unused code agents can delete with evidence"
+                data-series-tip="13"
+                data-href="/tips/secret-agent-tips/find-dead-code-with-fallow.html"
+                href="#"
+                aria-disabled="true"
+              >
+                <span class="article-series-card-copy">
+                  <span class="article-series-card-head">
+                    <span class="article-series-card-title">Skill #13: Keep reading to unlock</span>
+                    <span class="article-series-card-check" hidden aria-hidden="true">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                    </span>
+                  </span>
+                  <span class="article-series-card-subtitle">Unused code agents can delete with evidence</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="article-series-card is-locked"
+                data-series-slug="expose-product-actions-as-mcp-tools"
+                data-series-title="Expose product actions as MCP tools"
+                data-series-subtitle="Tools with schemas, scopes, and audit trails"
                 data-series-tip="14"
-                data-href="/tips/secret-agent-tips/write-seo-articles-agents-can-follow.html"
+                data-href="/tips/secret-agent-tips/expose-product-actions-as-mcp-tools.html"
                 href="#"
                 aria-disabled="true"
               >
@@ -562,94 +554,86 @@
                       <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
                     </span>
                   </span>
-                  <span class="article-series-card-subtitle">Structure humans and agents can both follow</span>
+                  <span class="article-series-card-subtitle">Tools with schemas, scopes, and audit trails</span>
                 </span>
               </a>
             </li>
             </ol>
           </aside>
           <div class="article-body">
-<p>remove AI writing tells from prose if you care whether readers trust you. Template cadence is obvious now. People may not name the patterns. They still feel them.</p>
+<p>Remove AI writing tells from prose before your buyer decides a machine wrote your pitch. Your reader may never name the pattern. They still slow down at the third &quot;not just X, but Y&quot;, the adverb stack, the paragraph that ends on a line built for screenshots. Something feels rented, and the trust you were building leaks out.</p>
 
-<p>stop-slop is the skill I use for that cleanup. Credit to the public craft notes around <a class="article-link is-external" href="https://hvpandya.com" rel="noopener" target="_blank"><span class="article-link-text">Hardik Pandya's writing</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a>. Pair it with <a class="article-link is-external" href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener" target="_blank"><span class="article-link-text">Google's helpful content guidance</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> and honest <a class="article-link is-external" href="https://schema.org/Article" rel="noopener" target="_blank"><span class="article-link-text">Article schema</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> when the piece is public. Ranking without trust is temporary.</p>
+<p>stop-slop is the skill I run on that cleanup, with credit to the craft notes around <a class="article-link is-external" href="https://hvpandya.com" rel="noopener" target="_blank"><span class="article-link-text">Hardik Pandya's writing</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a>. Pair it with <a class="article-link is-external" href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener" target="_blank"><span class="article-link-text">Google's helpful content guidance</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> and honest <a class="article-link is-external" href="https://schema.org/Article" rel="noopener" target="_blank"><span class="article-link-text">Article schema</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> on public pages. Ranking without trust lasts one visit.</p>
 
-<h2>What I cut</h2>
+<h2>What the pass cuts</h2>
 
-<p>Throat-clearing openers. Emphasis crutches. Adverb stacks. Binary &quot;not X, but Y&quot; templates. False agency where &quot;the solution emerges.&quot; Quotable fluff that sounds carved for LinkedIn. Em dashes used as perfume.</p>
+<p>Throat-clearing openers. Emphasis crutches. Adverb stacks. Binary &quot;not X, but Y&quot; templates. False agency, where a solution emerges and a complaint becomes a fix without a human doing either. Quotable fluff carved for a LinkedIn screenshot. Em dashes sprinkled like perfume.</p>
 
-<p>What I keep: active voice, specific nouns, varied rhythm, technical terms exact, your actual point.</p>
+<p>It keeps active voice, specific nouns, uneven rhythm, exact technical terms, and your actual point.</p>
 
 <h2>Where I run it</h2>
 
-<p>Every public article. Proposal narratives. UI microcopy that came from an agent. Incident mail when an agent drafted the first pass. I do not run it as a personality eraser on private scratch notes.</p>
+<p>Every public article. Proposal narratives. UI microcopy that came out of an agent. Incident email when an agent drafted the first pass. Private scratch notes get left alone, because the skill is a publishing gate rather than a personality eraser.</p>
 
-<p>On this portfolio, <code>/article</code> requires a stop-slop pass before done. That rule exists because I got tired of publishing sentences that sounded smarter than they were.</p>
+<p>On this portfolio the <code>/article</code> skill blocks &quot;done&quot; until the pass runs. That rule exists because I published sentences that sounded smarter than they were and cringed at them a month later.</p>
 
-<h2>A quick human check</h2>
+<h2>Patterns worth killing on sight</h2>
 
-<p>Read the draft aloud once. If you hear a keynote, cut until you hear a colleague. Score directness, rhythm, trust, authenticity, density. Below the bar means another pass, not a synonym swap.</p>
+<p>&quot;In today's fast-paced world.&quot; Delete it and start with the fact.</p>
 
-<p>Keep code identifiers and legal names exact while you delete the adverbs around them. stop-slop is not caveman. Public essays stay grammatical. They stop performing intelligence.</p>
+<p>&quot;It is important to note that.&quot; Delete it. If it mattered, you would already be saying it.</p>
 
-<h2>Team habit</h2>
+<p>&quot;Not only X, but also Y.&quot; State Y, and add X when it earns the space.</p>
 
-<p>Paste the quick checks into a docs PR template. Humans catch what the skill misses. Agents reintroduce slop every draft. Make the pass a checklist item, not a mood.</p>
+<p>&quot;The landscape is evolving.&quot; Name the change with a date, a product, or a number.</p>
 
-<p>Brand style guides still apply after the cleanup. Clean clay shapes better than sloppy clay with a logo stamped on top.</p>
-
-<h2>Patterns I kill on sight</h2>
-
-<p>&quot;In today's fast-paced world.&quot; Delete and start with the fact.</p>
-
-<p>&quot;It is important to note that.&quot; Delete. If it mattered, you would already be saying it.</p>
-
-<p>&quot;Not only X, but also Y.&quot; State Y. Add X only if it earns space.</p>
-
-<p>&quot;The landscape is evolving.&quot; Name the change with a date, a product, or a metric.</p>
-
-<p>&quot;Let's dive in.&quot; You are already in. Write the next useful sentence.</p>
+<p>&quot;Let's dive in.&quot; The reader is already in. Write the next useful sentence.</p>
 
 <p>&quot;At the end of the day.&quot; End the paragraph instead.</p>
 
-<p>These phrases are not evil. They are empty. Empty sentences on a consulting site tax trust.</p>
+<p>Empty sentences cost more on a consulting site than anywhere else, because your prose is the sample of your thinking.</p>
 
-<h2>A 10-minute pass that works</h2>
+<h2>The ten-minute pass</h2>
 
-<p>1. Search the draft for &quot;not&quot; contrasts and rewrite the positive claim. 2. Search for em dashes and replace with periods or commas. 3. Cut the first sentence of every section if it only announces the section. 4. Replace three adjectives with one concrete noun each. 5. Read the summary aloud. If you would not say it to a peer over coffee, rewrite.</p>
+<p>1. Search for &quot;not&quot; contrasts and rewrite each as the positive claim. 2. Search for em dashes and replace them with periods or commas. 3. Cut the first sentence of any section that only announces the section. 4. Replace three adjectives with one concrete noun each. 5. Read the summary aloud, and rewrite anything you would not say to a peer over coffee.</p>
 
-<p>I keep this list in the skill and in a PR checklist for docs. Agents forget. Checklists remember.</p>
+<p>Keep that list in the skill and in the docs pull request template. Agents forget between drafts. Checklists do not.</p>
 
-<h2>Where stop-slop meets SEO</h2>
-
-<p>Helpful content guidance and stop-slop point the same way. Answer the query. Show experience. Avoid filler that exists to hit a word count. A dense 900-word answer that solves the job beats a 2,400-word tour of synonyms.</p>
-
-<p>Schema does not fix soggy prose. <a class="article-link is-external" href="https://schema.org/Article" rel="noopener" target="_blank"><span class="article-link-text">Article</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> markup on empty cadence still reads empty to humans. Clean the words first.</p>
-
-<h2>Before and after from real drafts</h2>
+<h2>Two rewrites from real drafts</h2>
 
 <p>Before: &quot;In this comprehensive guide, we will explore how modern teams can leverage AI agents to unlock unprecedented productivity across the entire software development lifecycle.&quot;</p>
 
-<p>After: &quot;This guide shows how I wire agent skills so a SaaS team ships smaller PRs with fewer invented APIs.&quot;</p>
+<p>After: &quot;This guide shows how I wire agent skills so a SaaS team ships smaller pull requests with fewer invented APIs.&quot;</p>
 
 <p>Before: &quot;The platform seamlessly empowers stakeholders to collaborate in real time while maintaining robust security postures.&quot;</p>
 
 <p>After: &quot;Admins invite teammates. Roles gate billing. Sessions expire after seven days.&quot;</p>
 
-<p>The after versions sound less impressive in a pitch deck. They survive a technical buyer. That is the trade I want on a consulting site.</p>
+<p>The rewrites read smaller in a pitch deck and survive a technical buyer. On a consulting site that trade pays.</p>
 
-<h2>People-pleasing is also slop</h2>
+<h2>Where it meets SEO</h2>
 
-<p>&quot;Happy to help.&quot; &quot;Great question.&quot; &quot;I would love to partner with visionary teams.&quot; These lines soothe the writer. They do not inform the reader. Cut them from public pages. Keep warmth in how you explain the work, not in empty praise.</p>
+<p>Helpful content guidance and stop-slop pull in the same direction. Answer the query, show real experience, and drop the filler that exists to hit a word count. A dense 900-word answer that solves the job beats a 2,400-word tour of synonyms.</p>
+
+<p>Structured data will not rescue soggy prose. <a class="article-link is-external" href="https://schema.org/Article" rel="noopener" target="_blank"><span class="article-link-text">Article</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> markup on empty cadence still reads empty to a human. Clean the words first, then mark them up honestly.</p>
 
 <h2>Failure modes</h2>
 
-<p>Using stop-slop to erase voice until everything sounds like beige cardboard. Specific stories should survive. Fake drama should not.</p>
+<p>Sanding away voice until the page reads like beige cardboard. Specific stories should survive the pass, and only the fake drama should die.</p>
 
-<p>Running it on terse code comments and creating essays in the margins. Leave technical comments tight.</p>
+<p>Running it over terse code comments and producing essays in the margins. Leave technical comments tight.</p>
 
-<p>Skipping it because &quot;the model is better now.&quot; The tells evolve. The pass stays.</p>
+<p>Skipping it because the model got better. The tells shift with each model generation. The pass stays.</p>
 
-<p>Treating the pass as optional on &quot;short&quot; posts. Short posts still get shared. Short slop spreads faster.</p>
+<p>Treating it as optional on short posts. Short posts get shared faster, so short slop travels further.</p>
+
+<h2>Ship the habit this week</h2>
+
+<p>Take the last thing an agent drafted for you, run the five-step pass, and read both versions aloud to one colleague. Add the checks to your docs pull request template so the next draft starts closer.</p>
+
+<p>Tip 7 gives you the angle and the language bank from <a class="article-link" href="./research-what-people-said-last-month.html" rel="noopener"><span class="article-link-text">what people said last month</span></a>. This pass keeps the draft from sounding like every other article on that angle. Tip 9 carries the same discipline into layout, where you <a class="article-link" href="./design-landing-pages-without-ai-slop.html" rel="noopener"><span class="article-link-text">design landing pages without AI slop</span></a>.</p>
+
+<p>If you want cleaner public writing in your agent workflow, <a class="article-link" href="../../contact.html" rel="noopener"><span class="article-link-text">book a call</span></a>. More notes live in the <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">tips index</span></a>.</p>
 
 <h2>Sources</h2>
 
@@ -657,8 +641,6 @@
 <li><a class="article-link is-external" href="https://hvpandya.com" rel="noopener" target="_blank"><span class="article-link-text">Hardik Pandya</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
 <li><a class="article-link is-external" href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener" target="_blank"><span class="article-link-text">Google helpful content guidance</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
 <li><a class="article-link is-external" href="https://schema.org/Article" rel="noopener" target="_blank"><span class="article-link-text">Schema.org Article</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
-<li>Related: <a class="article-link" href="../name-ai-agent-skills-after-the-job.html" rel="noopener"><span class="article-link-text">Name AI agent skills after the job</span></a></li>
-<li>Series: <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">tips on calvinmaighan.com</span></a></li>
 </ul>
 
             <div class="article-cta-end">
@@ -674,32 +656,27 @@
 
 <details class="faq-item">
 <summary class="faq-question">Will stop-slop make copy boring?</summary>
-<p class="faq-answer">It removes fake drama. Specific stories stay interesting.</p>
+<p class="faq-answer">It removes manufactured drama, not detail. Specific stories, numbers, and opinions all survive the pass and carry more weight once the filler leaves.</p>
 </details>
 
 <details class="faq-item">
 <summary class="faq-question">Should I run it on code comments?</summary>
-<p class="faq-answer">Only when comments are prose. Leave terse technical comments alone.</p>
+<p class="faq-answer">Only where comments run as prose. Terse technical comments already do their job, and expanding them wastes the reader's time.</p>
 </details>
 
 <details class="faq-item">
 <summary class="faq-question">What about brand style guides?</summary>
-<p class="faq-answer">Run stop-slop first, then apply brand constraints.</p>
+<p class="faq-answer">Run stop-slop first, then apply brand constraints. Voice rules land better on clean sentences than on padded ones.</p>
 </details>
 
 <details class="faq-item">
 <summary class="faq-question">How often do agents reintroduce slop?</summary>
-<p class="faq-answer">Every draft. Keep the pass on the checklist.</p>
+<p class="faq-answer">Every draft. Model updates shift which tells appear, so keep the pass on the checklist rather than in your memory.</p>
 </details>
 
 <details class="faq-item">
-<summary class="faq-question">Can I automate stop-slop in CI?</summary>
-<p class="faq-answer">You can fail a docs PR on banned phrases. You still need a human ear for voice. CI catches laziness. It does not catch emptiness that uses fresh words.</p>
-</details>
-
-<details class="faq-item">
-<summary class="faq-question">Should marketing keep a separate voice guide?</summary>
-<p class="faq-answer">Yes. stop-slop clears model sludge. Brand guides set the voice that remains. Run them in that order.</p>
+<summary class="faq-question">Can I automate it in CI?</summary>
+<p class="faq-answer">You can fail a docs pull request on banned phrases, which catches laziness. A human ear still catches emptiness written in fresh words.</p>
 </details>
 
 </div>
@@ -721,6 +698,10 @@
           <span data-i18n="footer.meta">Montreal · remote contracts</span>
           <span class="sep" aria-hidden="true">·</span>
           <a class="foot-ico" href="https://github.com/CalvinMaighan" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>GitHub</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a class="foot-ico" href="mailto:hello@calvinmaighan.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a href="../../contact.html" data-i18n="nav.cta">Book a call</a>
         </p>
       </div>
     </footer>

@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="14 ai agent skills to speed up developers when you treat them like junior contractors with sharp jobs, real sources, and release gates. This URL redirects to the series intro." />
-    <title>14 AI agent skills to speed up developers · Calvin Maighan</title>
-    <link rel="canonical" href="https://calvinmaighan.com/tips/how-ai-agents-speed-up-developers.html" />
+    <meta name="description" content="find dead code with fallow so agents get deterministic unused-file and unused-export reports before they delete, with typed JSON output, dry-run fixes, and a health score you can gate in CI." />
+    <title>Find dead code with fallow · Calvin Maighan</title>
+    <link rel="canonical" href="https://calvinmaighan.com/tips/secret-agent-tips/find-dead-code-with-fallow.html" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -15,36 +15,73 @@
     <meta name="theme-color" content="#221D19" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Calvin Maighan" />
-    <meta property="og:title" content="14 AI agent skills to speed up developers" />
-    <meta property="og:description" content="14 ai agent skills to speed up developers when you treat them like junior contractors with sharp jobs, real sources, and release gates. This URL redirects to the series intro." />
-    <meta property="og:url" content="https://calvinmaighan.com/tips/how-ai-agents-speed-up-developers.html" />
-    <meta property="og:image" content="https://calvinmaighan.com/calvin-article-2.png" />
+    <meta property="og:title" content="Find dead code with fallow" />
+    <meta property="og:description" content="find dead code with fallow so agents get deterministic unused-file and unused-export reports before they delete, with typed JSON output, dry-run fixes, and a health score you can gate in CI." />
+    <meta property="og:url" content="https://calvinmaighan.com/tips/secret-agent-tips/find-dead-code-with-fallow.html" />
+    <meta property="og:image" content="https://calvinmaighan.com/calvin-article-13.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="14 AI agent skills to speed up developers" />
-    <meta name="twitter:description" content="14 ai agent skills to speed up developers when you treat them like junior contractors with sharp jobs, real sources, and release gates. This URL redirects to the series intro." />
-    <meta name="twitter:image" content="https://calvinmaighan.com/calvin-article-2.png" />
+    <meta name="twitter:title" content="Find dead code with fallow" />
+    <meta name="twitter:description" content="find dead code with fallow so agents get deterministic unused-file and unused-export reports before they delete, with typed JSON output, dry-run fixes, and a health score you can gate in CI." />
+    <meta name="twitter:image" content="https://calvinmaighan.com/calvin-article-13.png" />
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Article",
-      "headline": "14 AI agent skills to speed up developers",
-      "description": "14 ai agent skills to speed up developers when you treat them like junior contractors with sharp jobs, real sources, and release gates. This URL redirects to the series intro.",
-      "datePublished": "2026-07-23",
-      "dateModified": "2026-07-23",
+      "headline": "Find dead code with fallow",
+      "description": "find dead code with fallow so agents get deterministic unused-file and unused-export reports before they delete, with typed JSON output, dry-run fixes, and a health score you can gate in CI.",
+      "datePublished": "2026-07-26",
+      "dateModified": "2026-07-26",
       "author": {
         "@type": "Person",
         "name": "Calvin Maighan",
         "url": "https://calvinmaighan.com/"
       },
       "image": [
-        "https://calvinmaighan.com/calvin-article-2.png"
+        "https://calvinmaighan.com/calvin-article-13.png"
       ],
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://calvinmaighan.com/tips/how-ai-agents-speed-up-developers.html"
+        "@id": "https://calvinmaighan.com/tips/secret-agent-tips/find-dead-code-with-fallow.html"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does fallow replace ESLint?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Lint catches local mistakes in code you keep, and fallow finds code you should remove. Run both, in that order."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will fallow delete files without asking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only when you run fallow fix without the dry-run flag. Keep dry-run as the default in the skill, and require human confirmation for anything touching a public surface."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about JavaScript without TypeScript?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fallow covers both. Point it at the app your agents edit most often."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I keep noise down on a legacy repo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Keep agents on the changed-since lane for daily work, and schedule full fallow dead-code passes as separate cleanup tickets."
+          }
+        }
+      ]
     }
   ]
 }
@@ -68,9 +105,9 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" /></noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" /></noscript>
-    <link rel="stylesheet" href="../site.css" />
+    <link rel="stylesheet" href="../../site.css" />
   </head>
-  <body class="article-page" data-series-slug="name-ai-agent-skills-after-the-job">
+  <body class="article-page" data-series-slug="find-dead-code-with-fallow">
     <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
       <symbol id="icon-sun" viewBox="0 0 24 24">
         <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -113,7 +150,7 @@
 
     <header class="site-header" id="site-header">
       <div class="bar">
-        <a class="brand" href="../index.html" data-i18n="brand">Calvin Maighan</a>
+        <a class="brand" href="../../index.html" data-i18n="brand">Calvin Maighan</a>
         <div class="header-actions">
           <div class="locale-menu" id="locale-menu">
             <button type="button" class="icon-btn icon-btn-wide" id="locale-toggle" aria-label="Language" aria-haspopup="listbox" aria-expanded="false" aria-controls="locale-popover">
@@ -137,10 +174,10 @@
 
     <div class="backdrop" id="menu-backdrop"></div>
     <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
-      <a href="../index.html#tips" data-i18n="article.back">Back to tips</a>
-      <a href="../index.html#work" data-i18n="nav.work">Work</a>
-      <a href="../contact.html" data-i18n="nav.contact">Contact</a>
-      <a class="btn btn-primary" href="../contact.html" data-i18n="nav.cta">Book a call</a>
+      <a href="../../index.html#tips" data-i18n="article.back">Back to tips</a>
+      <a href="../../index.html#work" data-i18n="nav.work">Work</a>
+      <a href="../../contact.html" data-i18n="nav.contact">Contact</a>
+      <a class="btn btn-primary" href="../../contact.html" data-i18n="nav.cta">Book a call</a>
     </nav>
 
     <main id="top">
@@ -149,8 +186,8 @@
           <div class="wrap">
             <nav class="article-breadcrumbs" aria-label="Breadcrumb">
               <ol>
-                <li><a href="../index.html" data-i18n="article.home">Home</a></li>
-                <li aria-current="page">14 AI agent skills to speed up developers</li>
+                <li><a href="../../index.html" data-i18n="article.home">Home</a></li>
+                <li aria-current="page">Find dead code with fallow</li>
               </ol>
             </nav>
             
@@ -158,12 +195,12 @@
         </header>
 
         <div class="wrap article-layout">
-          <h1>14 AI agent skills to speed up developers</h1>
-          
+          <h1>Find dead code with fallow</h1>
+          <p class="article-subtitle">Unused code agents can delete with evidence</p>
           <div class="article-byline">
             <img
               class="article-byline-avatar"
-              src="../calvinprofile.jpg"
+              src="../../calvinprofile.jpg"
               alt="Calvin Maighan"
               width="48"
               height="48"
@@ -171,16 +208,16 @@
             />
             <span class="article-byline-name">Calvin Maighan</span>
             <span class="article-byline-meta">
-              <span>1 min read</span>
+              <span>5 min read</span>
               <span class="sep" aria-hidden="true">·</span>
-              <time datetime="2026-07-23">July 23, 2026</time>
+              <time datetime="2026-07-26">July 26, 2026</time>
             </span>
-            <a class="btn btn-primary article-byline-cta" href="../contact.html" data-i18n="article.book">Book a call</a>
+            <a class="btn btn-primary article-byline-cta" href="../../contact.html" data-i18n="article.book">Book a call</a>
           </div>
           <figure class="article-cover">
-            <img src="../img/calvin-article-2-1200.webp" srcset="../img/calvin-article-2-664.webp 664w, ../img/calvin-article-2-996.webp 996w, ../img/calvin-article-2-1200.webp 1200w" sizes="(max-width: 720px) 100vw, min(720px, 100%)" alt="Redirect notice" width="1200" height="675" decoding="async" />
+            <img src="../../img/calvin-article-13-1200.webp" srcset="../../img/calvin-article-13-664.webp 664w, ../../img/calvin-article-13-996.webp 996w, ../../img/calvin-article-13-1200.webp 1200w" sizes="(max-width: 720px) 100vw, min(720px, 100%)" alt="Cover for tip 13: find dead code with fallow" width="1200" height="675" decoding="async" />
           </figure>
-          <p class="article-summary">This page moved. Read how AI agents can speed up developers, then continue into the fourteen secret agent tips.</p>
+          <p class="article-summary">Find dead code with fallow when agent refactors leave unused files, orphan exports, and circular dependencies nobody owns. Fallow runs deterministic static analysis over TypeScript and JavaScript: dead code, duplication, a health score, and typed JSON agents can parse. Audit the pull request diff, preview deletes with a dry run, then remove only what the evidence and a human both support.</p>
           <aside class="article-aside" aria-label="Series">
             <ol class="article-series-rail">
             <li>
@@ -471,7 +508,7 @@
             </li>
             <li>
               <a
-                class="article-series-card is-locked"
+                class="article-series-card is-locked is-current"
                 data-series-slug="find-dead-code-with-fallow"
                 data-series-title="Find dead code with fallow"
                 data-series-subtitle="Unused code agents can delete with evidence"
@@ -516,16 +553,120 @@
             </ol>
           </aside>
           <div class="article-body">
-<p>This URL used to host a naming tip. The series now opens with a big-picture intro, then fourteen practical tips.</p>
+<p>Find dead code with fallow before your agent proposes a cleanup from vibes. Agents add files faster than any team deletes them. Three months into AI-assisted shipping you have orphaned exports, tests importing modules nobody ships, and a circular dependency that slows every build. Ask an agent to tidy that and it deletes whatever looks lonely, which is how a dynamic import disappears from production.</p>
 
-<p>Go to <a class="article-link" href="./how-ai-agents-speed-up-developers.html" rel="noopener"><span class="article-link-text">how AI agents can speed up developers</span></a>, then use <strong>Next article</strong> in the footer to reach tip 1 of 14.</p>
+<p>I place this skill after lint and the release gates on purpose. Lint checks the patch you just wrote. The release skill gates what ships. Fallow answers a different question: what should leave the tree so the next agent starts from less noise.</p>
+
+<h2>What fallow gives you</h2>
+
+<p><a class="article-link is-external" href="https://www.npmjs.com/package/fallow" rel="noopener" target="_blank"><span class="article-link-text">Fallow</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> is codebase intelligence for TypeScript and JavaScript. The static analyzer finds unused code, circular dependencies, duplication, complexity hotspots, and design-system drift. No model runs inside the analyzer, so results stay deterministic, and the output arrives as typed JSON with traceable explanations. The <a class="article-link is-external" href="https://docs.fallow.tools" rel="noopener" target="_blank"><span class="article-link-text">docs</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> and the <a class="article-link is-external is-github" href="https://github.com/fallow-rs/fallow" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">GitHub repo</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a> cover the full contract.</p>
+
+<p>Install it in the app your agents touch most:</p>
+
+<p><code>bun add -d fallow</code></p>
+
+<p>or <code>npm install --save-dev fallow</code>. That also ships the <code>fallow-lsp</code> and <code>fallow-mcp</code> launchers so editors and agents resolve the project-local binary rather than whatever sits on <code>PATH</code>.</p>
+
+<h2>Commands to lock in the skill</h2>
+
+<ul>
+<li><code>npx fallow</code> for the full pipeline of dead code, duplication, and health</li>
+<li><code>npx fallow audit</code> to gate what the pull request changed, with a pass, warn, or fail verdict</li>
+<li><code>npx fallow dead-code</code> for cleanup-focused findings</li>
+<li><code>npx fallow health --score</code> for a score from 0 to 100 with a letter grade</li>
+<li><code>npx fallow fix --dry-run</code> to preview automatic cleanup</li>
+<li><code>npx fallow --format json --quiet</code> for one typed document on stdout</li>
+</ul>
+
+<p>Teach the exit codes too. Code 1 means findings, code 0 means clean or an audit pass, code 2 means a validation error. Agents that treat every non-zero exit as a broken tool will abandon the skill on its first useful run.</p>
+
+<h2>Why agents need the evidence</h2>
+
+<p>Lonely and unused are different states. Dynamic imports, framework plugins, and design-system re-exports all look dead to a casual grep, and a confident model will delete them. Fallow's graph and framework plugins cut those false positives, and the JSON carries an <code>actions[]</code> array with an <code>auto_fixable</code> flag so the agent knows which findings it may hand to <code>fallow fix</code> and which need a person.</p>
+
+<h2>Wire the habit</h2>
+
+<p>Name the skill after the job, <code>find-dead-code</code> rather than <code>fallow-helpers</code>. Trigger it when the agent finishes a multi-file refactor, before a large pull request, or during a scoped cleanup week. The method:</p>
+
+<p>1. Run <code>fallow audit</code> on the branch against main. 2. Read the JSON findings when the verdict fails. 3. Preview with <code>fallow fix --dry-run</code>, then apply only the auto-fixable deletes the skill allows. 4. Re-run typecheck and lint on the touched paths. 5. Cite finding ids in the pull request so reviewers see the evidence.</p>
+
+<p>Keep one stop rule in bold in the skill body: no deleting public package exports, GraphQL schema roots, or CSS tokens without a human. A false positive costs more than a quiet unused helper.</p>
+
+<h2>Start small on a dirty repo</h2>
+
+<p>A first run on a large product reports hundreds of unused exports, and nobody should hand that backlog to an agent in one pull request. Script three lanes instead:</p>
+
+<ul>
+<li><code>fallow:dead-code</code> for the full report</li>
+<li><code>fallow:changed</code> with <code>--changed-since main</code> for day-to-day agent work</li>
+<li><code>fallow:fix-dry</code> for preview deletes</li>
+</ul>
+
+<p>Agents live on the changed lane. Humans schedule the full passes as their own tickets. That split matches how I coach teams already drowning in lint debt.</p>
+
+<h2>Where it sits next to lint</h2>
+
+<p>Lint asks whether this file is wrong. Fallow asks whether this file should exist. Both belong in the agent stop path, with lint on every edit and fallow after a change that removed call sites or finished a rename. Running fallow on a typo fix wastes tokens. Never running it grows zombies.</p>
+
+<h2>Failure modes</h2>
+
+<p>Agents delete tests that only the CI matrix imports, so put those entry patterns in the fallow config or the skill stop list.</p>
+
+<p>Agents read a warn verdict as green. When your policy blocks merge on new unused exports, write that in the skill.</p>
+
+<p>Agents paste the whole JSON document into chat. Require a summary instead: counts by category, the top five paths, and the proposed deletes, with the full report kept as a CI artifact.</p>
+
+<h2>Ship the habit this week</h2>
+
+<p>Install fallow on one TypeScript app and add the three scripts. Run <code>fallow audit</code> on an open pull request, delete one auto-fixable unused file after a dry run, and paste the finding id into the description. After three clean wins, add the audit to the agent stop path for multi-file refactors.</p>
+
+<p>Tip 12 got the release out the door with <a class="article-link" href="./ship-production-releases-with-agent-checks.html" rel="noopener"><span class="article-link-text">agent checks</span></a>. Tip 14 closes the series inside your product, where you <a class="article-link" href="./expose-product-actions-as-mcp-tools.html" rel="noopener"><span class="article-link-text">expose product actions as MCP tools</span></a> with scopes and audit trails.</p>
+
+<p>If you want this wired into Cursor or Claude Code with job-named skills and a changed-since gate, <a class="article-link" href="../../contact.html" rel="noopener"><span class="article-link-text">book a call</span></a>. More notes live in the <a class="article-link" href="../../index.html#tips" rel="noopener"><span class="article-link-text">tips index</span></a>.</p>
+
+<h2>Sources</h2>
+
+<ul>
+<li><a class="article-link is-external" href="https://www.npmjs.com/package/fallow" rel="noopener" target="_blank"><span class="article-link-text">fallow on npm</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://docs.fallow.tools" rel="noopener" target="_blank"><span class="article-link-text">fallow documentation</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external is-github" href="https://github.com/fallow-rs/fallow" rel="noopener" target="_blank"><svg class="icon article-link-ico" aria-hidden="true"><use href="#icon-github"></use></svg><span class="article-link-text">fallow on GitHub</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+<li><a class="article-link is-external" href="https://cursor.com/docs/skills" rel="noopener" target="_blank"><span class="article-link-text">Cursor Agent Skills</span><svg class="icon article-link-ico article-link-ico-external" aria-hidden="true"><use href="#icon-external"></use></svg></a></li>
+</ul>
 
             <div class="article-cta-end">
-              <p>Continue to the series intro</p>
-              <a class="btn btn-primary" href="../contact.html" data-i18n="article.book">Book a call</a>
+              <p>Want fallow wired into your agent cleanup loop</p>
+              <a class="btn btn-primary" href="../../contact.html" data-i18n="article.book">Book a call</a>
             </div>
 
+<section class="article-faq">
 
+<h2>FAQ</h2>
+
+<div class="faq-list">
+
+<details class="faq-item">
+<summary class="faq-question">Does fallow replace ESLint?</summary>
+<p class="faq-answer">No. Lint catches local mistakes in code you keep, and fallow finds code you should remove. Run both, in that order.</p>
+</details>
+
+<details class="faq-item">
+<summary class="faq-question">Will fallow delete files without asking?</summary>
+<p class="faq-answer">Only when you run <code>fallow fix</code> without the dry-run flag. Keep dry-run as the default in the skill, and require human confirmation for anything touching a public surface.</p>
+</details>
+
+<details class="faq-item">
+<summary class="faq-question">What about JavaScript without TypeScript?</summary>
+<p class="faq-answer">Fallow covers both. Point it at the app your agents edit most often.</p>
+</details>
+
+<details class="faq-item">
+<summary class="faq-question">How do I keep noise down on a legacy repo?</summary>
+<p class="faq-answer">Keep agents on the changed-since lane for daily work, and schedule full <code>fallow dead-code</code> passes as separate cleanup tickets.</p>
+</details>
+
+</div>
+
+</section>
           </div>
         </div>
       </article>
@@ -545,7 +686,7 @@
           <span class="sep" aria-hidden="true">·</span>
           <a class="foot-ico" href="mailto:hello@calvinmaighan.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email</a>
           <span class="sep" aria-hidden="true">·</span>
-          <a href="../contact.html" data-i18n="nav.cta">Book a call</a>
+          <a href="../../contact.html" data-i18n="nav.cta">Book a call</a>
         </p>
       </div>
     </footer>
@@ -553,11 +694,11 @@
     <div class="article-chrome">
       <div class="read-progress" aria-hidden="true"></div>
       <div class="article-chrome-inner">
-        
-        <a class="btn btn-primary" id="article-next" href="./how-ai-agents-speed-up-developers.html" data-i18n="article.next">Next article</a>
+        <p class="article-chrome-hint" id="article-chrome-hint" data-unlock-part="14" data-locked-text="Keep reading to unlock skill #14">Keep reading to unlock skill #14</p>
+        <a class="btn btn-primary is-locked" id="article-next" href="./expose-product-actions-as-mcp-tools.html" aria-disabled="true" data-i18n="article.next">Next article</a>
       </div>
     </div>
 
-    <script type="module" src="../app.mjs"></script>
+    <script type="module" src="../../app.mjs"></script>
   </body>
 </html>
