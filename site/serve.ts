@@ -61,11 +61,35 @@ const server = Bun.serve({
   },
 });
 
+async function rebuildSiteCss() {
+  const header =
+    "/* site.css — themes/bundle.css + styles.css. Regenerate: bun run css:bundle */\n";
+  const bundle = await Bun.file(`${root}/themes/bundle.css`).text();
+  const styles = await Bun.file(`${root}/styles.css`).text();
+  await Bun.write(
+    `${root}/site.css`,
+    `${header}${bundle}\n/* ===== styles.css ===== */\n${styles}`,
+  );
+}
+
 let debounce: ReturnType<typeof setTimeout> | null = null;
 watch(root, { recursive: true }, (_event, filename) => {
   if (!filename || String(filename).endsWith("serve.ts")) return;
+  if (String(filename) === "site.css") return; // avoid rebuild loop
   if (debounce) clearTimeout(debounce);
-  debounce = setTimeout(() => {
+  debounce = setTimeout(async () => {
+    const f = String(filename);
+    if (
+      f === "styles.css" ||
+      f.endsWith("bundle.css") ||
+      f.startsWith("themes/")
+    ) {
+      try {
+        await rebuildSiteCss();
+      } catch {
+        /* ignore mid-write races */
+      }
+    }
     for (const ws of clients) {
       try {
         ws.send("reload");
@@ -76,5 +100,5 @@ watch(root, { recursive: true }, (_event, filename) => {
   }, 60);
 });
 
+await rebuildSiteCss();
 console.log(`portfolio → ${server.url}`);
-
