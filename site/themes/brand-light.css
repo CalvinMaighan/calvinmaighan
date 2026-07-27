@@ -25,8 +25,9 @@
   --l-5: 0.99;
 
   --text: oklch(0.2 var(--chroma-text) var(--hue) / 88%);
-  --text-muted: oklch(0.42 var(--chroma-text) var(--hue) / 80%);
-  --secondary-text: oklch(0.34 var(--chroma-secondary) var(--hue-secondary));
+  /* Darker muted/secondary so body copy clears WCAG on --muted / --background. */
+  --text-muted: oklch(0.32 var(--chroma-text) var(--hue) / 92%);
+  --secondary-text: oklch(0.28 var(--chroma-secondary) var(--hue-secondary));
   --article: #232323;
   --reading: var(--button);
 
@@ -46,8 +47,8 @@
   /* Accent-as-text: same chroma as --cta (0.2); L mid so it stays on-gamut. */
   --accent-text: oklch(0.42 0.2 48);
 
-  /* Same hue as --cta (145). Keep chroma modest — high C at low L clips to black. */
-  --cta-text: oklch(0.42 0.11 145);
+  /* Dark ink on green fill — mid-green on --cta fails contrast. */
+  --cta-text: oklch(0.22 0.08 145);
 
   --hero-text: oklch(0.48 var(--chroma-label) var(--hue-accent));
   --text-gradient: linear-gradient(
@@ -110,5 +111,3 @@
 
   color-scheme: light;
 }
-
-

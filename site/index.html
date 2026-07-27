@@ -1,4 +1,3 @@
-index.html [700L]
 <!doctype html>
 <html lang="en" data-theme="light" data-accent="beige">
  <head>
@@ -107,6 +106,15 @@ index.html [700L]
     } catch (_) {}
    })();
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/archivoblack/v23/HTxqL289NzCGg4MzN6KJ7eW6CYyF_jzx13E.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g7M8btVsD8Ck0q7u6-K6z9mXgjU0.woff2" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" /></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" /></noscript>
+  <link rel="stylesheet" href="./themes/bundle.css" />
   <link rel="stylesheet" href="./styles.css" />
  </head>
  <body>
@@ -198,10 +206,10 @@ index.html [700L]
        type="button"
        class="icon-btn icon-btn-wide"
        id="locale-toggle"
-       aria-label="Language"
-       aria-haspopup="listbox"
-       aria-expanded="false"
-       aria-controls="locale-popover"
+   aria-label="EN, language"
+   aria-haspopup="listbox"
+   aria-expanded="false"
+   aria-controls="locale-popover"
       >
        <svg class="icon" aria-hidden="true"><use href="#icon-languages"></use></svg>
        <span class="icon-btn-text" id="locale-label">EN</span>
@@ -304,21 +312,26 @@ index.html [700L]
           href="./tips/how-ai-agents-speed-up-developers.html"
           data-series-unlock="how-ai-agents-speed-up-developers"
          >
-          <img
-           src="./calvinmaighan-article-series-1.png"
-           alt="Cover for how AI agents can speed up developers"
-           width="1672"
-           height="941"
-           loading="lazy"
-           decoding="async"
-          />
-         </a>
-         <a
-          class="btn btn-primary tips-card-cta"
-          href="./tips/how-ai-agents-speed-up-developers.html"
-          data-series-unlock="how-ai-agents-speed-up-developers"
-         >
-          <span data-i18n="tips.series1.cta">Read More</span>
+     <img
+     src="./img/calvinmaighan-article-series-1-996.webp"
+     srcset="
+      ./img/calvinmaighan-article-series-1-664.webp 664w,
+      ./img/calvinmaighan-article-series-1-996.webp 996w
+     "
+     sizes="(max-width: 720px) 46vw, 280px"
+     alt="Cover for how AI agents can speed up developers"
+     width="996"
+     height="560"
+     loading="lazy"
+     decoding="async"
+     />
+    </a>
+    <a
+     class="btn btn-primary tips-card-cta"
+     href="./tips/how-ai-agents-speed-up-developers.html"
+     data-series-unlock="how-ai-agents-speed-up-developers"
+    >
+     <span data-i18n="tips.series1.cta">Read More</span>
           <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
          </a>
         </div>

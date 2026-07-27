@@ -1,7 +1,6 @@
 import { catalog, key, set, get, init } from "./vendor/active-state.js";
 import { defineTheme, setMode, hydrateTheme } from "./vendor/active-theme.js";
 import { defineI18n, setLocale, t, hydrateI18n, getLocale } from "./vendor/active-i18n.js";
-import { startAmbient } from "./ambient.mjs";
 import { SERIES_INTRO_SLUG, slugFromHref } from "./tip-series.mjs";
 
 const theme = defineTheme({
@@ -274,9 +273,14 @@ function applyI18n() {
   }
 
   const localeLabel = document.getElementById("locale-label");
-  if (localeLabel) localeLabel.textContent = locale.toUpperCase();
+  const code = locale.toUpperCase();
+  if (localeLabel) localeLabel.textContent = code;
   const localeBtn = document.getElementById("locale-toggle");
-  localeBtn?.setAttribute("aria-label", locale === "en" ? "Language" : "Langue");
+  // Visible label (EN/FR) must appear in accessible name (WCAG 2.5.3).
+  localeBtn?.setAttribute(
+    "aria-label",
+    locale === "en" ? `${code}, language` : `${code}, langue`,
+  );
   document.querySelectorAll(".locale-option").forEach((opt) => {
     const selected = opt.getAttribute("data-locale") === locale;
     opt.setAttribute("aria-selected", String(selected));
@@ -449,12 +453,24 @@ function wireTempo() {
 function wireAmbient() {
   const canvas = document.getElementById("hero-ambient");
   if (!canvas) return;
-  startAmbient({
-    canvas,
-    getPointer: () => get(POINTER),
-    getTempo: () => get(TEMPO) ?? 2,
-    getDark: () => currentMode() === "dark",
-  });
+
+  const boot = () => {
+    import("./ambient.mjs").then(({ startAmbient }) => {
+      startAmbient({
+        canvas,
+        getPointer: () => get(POINTER),
+        getTempo: () => get(TEMPO) ?? 2,
+        getDark: () => currentMode() === "dark",
+      });
+    });
+  };
+
+  // Keep first paint free of canvas work; Lighthouse TBT was dominated by ambient.
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(boot, { timeout: 1200 });
+  } else {
+    setTimeout(boot, 200);
+  }
 }
 
 function unlockedSlugs() {
