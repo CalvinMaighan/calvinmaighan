@@ -594,6 +594,11 @@ main {
  text-box-edge: cap text;
  padding-bottom: var(--gap-xs);
 }
+@media (max-width: 600px) {
+ .hero-copy h1 {
+  font-size: clamp(var(--font-h1), 12vw, 64px);
+ }
+}
 .hero-copy h1 .hero-word {
  background: linear-gradient(
   180deg,
