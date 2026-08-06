@@ -17,6 +17,7 @@ function contentType(path: string) {
   if (path.endsWith(".svg")) return "image/svg+xml";
   if (path.endsWith(".png")) return "image/png";
   if (path.endsWith(".webp")) return "image/webp";
+  if (path.endsWith(".pdf")) return "application/pdf";
   if (path.endsWith(".ico")) return "image/x-icon";
   if (path.endsWith(".webmanifest")) return "application/manifest+json";
   return "application/octet-stream";
@@ -50,9 +51,11 @@ const server = Bun.serve({
       });
     }
 
-    return new Response(file, {
-      headers: { "Content-Type": contentType(path) },
-    });
+    const headers = new Headers({ "Content-Type": contentType(path) });
+    if (path === "/resume.pdf") {
+      headers.set("Content-Disposition", 'inline; filename="resume.pdf"');
+    }
+    return new Response(file, { headers });
   },
   websocket: {
     open(ws) {
